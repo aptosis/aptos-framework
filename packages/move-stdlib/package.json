@@ -1,0 +1,50 @@
+{
+  "name": "@aptosis/move-stdlib",
+  "version": "0.1.0",
+  "description": "TypeScript SDK for Aptos Move Stdlib",
+  "author": "Ian Macalinao <ian@aptos.is>",
+  "homepage": "https://github.com/aptosis/aptos-framework#readme",
+  "license": "Apache-2.0",
+  "sideEffects": false,
+  "type": "module",
+  "exports": {
+    ".": {
+      "import": "./dist/esm/index.js",
+      "require": "./dist/cjs/index.js"
+    }
+  },
+  "main": "dist/cjs/index.js",
+  "module": "dist/esm/index.js",
+  "files": [
+    "src/",
+    "dist/"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aptosis/aptos-framework.git"
+  },
+  "scripts": {
+    "build": "tsc && tsc --project tsconfig.cjs.json"
+  },
+  "bugs": {
+    "url": "https://github.com/aptosis/aptos-framework/issues"
+  },
+  "dependencies": {
+    "@movingco/prelude": "^0.1.43",
+    "tslib": "^2.4.0"
+  },
+  "devDependencies": {
+    "@saberhq/tsconfig": "^2.0.1",
+    "@types/bn.js": "^5.1.0",
+    "bn.js": "^5.2.1",
+    "jsbi": "^4.3.0",
+    "typescript": "^4.7.4"
+  },
+  "peerDependencies": {
+    "bn.js": "^5.2.0",
+    "jsbi": "^4.3.0"
+  }
+}

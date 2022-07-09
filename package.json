@@ -1,0 +1,49 @@
+{
+  "private": true,
+  "workspaces": [
+    "packages/*"
+  ],
+  "type": "module",
+  "name": "@aptosis/aptos-framework-workspace",
+  "version": "0.1.0",
+  "license": "Apache-2.0",
+  "packageManager": "yarn@3.2.1",
+  "devDependencies": {
+    "@jest/types": "^28.1.1",
+    "@rushstack/eslint-patch": "^1.1.4",
+    "@saberhq/eslint-config": "^2.0.1",
+    "@saberhq/tsconfig": "^2.0.1",
+    "@types/bn.js": "^5.1.0",
+    "@types/eslint": "^8.4.5",
+    "@types/jest": "^28.1.4",
+    "@types/node": "^18.0.3",
+    "@types/prettier": "^2.6.3",
+    "@typescript-eslint/utils": "^5.30.5",
+    "@yarnpkg/doctor": "^3.1.3",
+    "bn.js": "^5.2.1",
+    "eslint": "^8.19.0",
+    "husky": "^8.0.1",
+    "jest": "^28.1.2",
+    "jest-runtime": "^28.1.2",
+    "lint-staged": "^13.0.3",
+    "prettier": "^2.7.1",
+    "ts-jest": "^28.0.5",
+    "typedoc": "^0.22.18",
+    "typescript": "^4.7.4"
+  },
+  "scripts": {
+    "build": "yarn workspaces foreach --exclude @aptosis/aptos-framework-workspace -vpti --topological-dev run build",
+    "publish:all": "yarn workspaces foreach --exclude @aptosis/aptos-framework-workspace -vpti --topological-dev npm publish",
+    "docs:generate": "typedoc --excludePrivate --includeVersion --out docs/ --entryPointStrategy packages --includes packages/ $(find ./packages -mindepth 1 -maxdepth 1 | grep -v browserslist)",
+    "bump": "yarn workspaces foreach -t version",
+    "test": "jest",
+    "lint": "eslint . --cache",
+    "lint:ci": "eslint . --max-warnings=0",
+    "typecheck": "tsc --build",
+    "prepare": "husky install"
+  },
+  "lint-staged": {
+    "*.{ts,tsx}": "eslint --cache --fix",
+    "*.{md,js,json,yml,yaml,css,md}": "prettier --write"
+  }
+}
