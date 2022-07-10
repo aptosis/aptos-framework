@@ -232,14 +232,18 @@ export type VaultTransferEventData = {
 
 export { idl } from "./idl.js";
 
+/** The address of the module. */
+export const ADDRESS = "0x1" as const;
+/** The full module name. */
+export const FULL_NAME = "0x1::Vault" as const;
+/** The name of the module. */
+export const NAME = "Vault" as const;
+
 /** Module ID information. */
 export const id = {
-  /** The address of the module. */
-  ADDRESS: "0x1",
-  /** The full module name. */
-  FULL_NAME: "0x1::Vault",
-  /** The name of the module. */
-  NAME: "Vault",
+  ADDRESS,
+  FULL_NAME,
+  NAME,
 } as const;
 
 export * as errors from "./errors.js";

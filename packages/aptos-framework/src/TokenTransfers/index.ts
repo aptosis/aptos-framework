@@ -67,14 +67,18 @@ export type OfferScriptPayload = {
 export * as entry from "./entry.js";
 export { idl } from "./idl.js";
 
+/** The address of the module. */
+export const ADDRESS = "0x1" as const;
+/** The full module name. */
+export const FULL_NAME = "0x1::TokenTransfers" as const;
+/** The name of the module. */
+export const NAME = "TokenTransfers" as const;
+
 /** Module ID information. */
 export const id = {
-  /** The address of the module. */
-  ADDRESS: "0x1",
-  /** The full module name. */
-  FULL_NAME: "0x1::TokenTransfers",
-  /** The name of the module. */
-  NAME: "TokenTransfers",
+  ADDRESS,
+  FULL_NAME,
+  NAME,
 } as const;
 
 /** Module error codes. */

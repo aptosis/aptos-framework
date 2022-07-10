@@ -22,14 +22,18 @@ import type * as p from "@movingco/prelude";
 
 export { idl } from "./idl.js";
 
+/** The address of the module. */
+export const ADDRESS = "0x1" as const;
+/** The full module name. */
+export const FULL_NAME = "0x1::Errors" as const;
+/** The name of the module. */
+export const NAME = "Errors" as const;
+
 /** Module ID information. */
 export const id = {
-  /** The address of the module. */
-  ADDRESS: "0x1",
-  /** The full module name. */
-  FULL_NAME: "0x1::Errors",
-  /** The name of the module. */
-  NAME: "Errors",
+  ADDRESS,
+  FULL_NAME,
+  NAME,
 } as const;
 
 /** Module error codes. */
