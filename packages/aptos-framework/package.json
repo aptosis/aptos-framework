@@ -33,7 +33,7 @@
     "url": "https://github.com/aptosis/aptos-framework/issues"
   },
   "dependencies": {
-    "@movingco/prelude": "^0.1.43",
+    "@movingco/prelude": "^0.1.44",
     "tslib": "^2.4.0"
   },
   "devDependencies": {
