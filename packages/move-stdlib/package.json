@@ -1,6 +1,6 @@
 {
   "name": "@aptosis/move-stdlib",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "TypeScript SDK for Aptos Move Stdlib",
   "author": "Ian Macalinao <ian@aptos.is>",
   "homepage": "https://github.com/aptosis/aptos-framework#readme",
