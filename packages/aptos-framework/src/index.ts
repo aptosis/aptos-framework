@@ -1,3 +1,9 @@
+/**
+ * This module contains generated types and helper functions for the package `AptosFramework`.
+ *
+ * @module
+ */
+
 export * as AccountModule from "./Account/index.js";
 export * as AccountUtilsModule from "./AccountUtils/index.js";
 export * as AptosGovernanceModule from "./AptosGovernance/index.js";
@@ -8,6 +14,7 @@ export * as ChainIdModule from "./ChainId/index.js";
 export * as CoinModule from "./Coin/index.js";
 export * as ComparatorModule from "./Comparator/index.js";
 export * as ConsensusConfigModule from "./ConsensusConfig/index.js";
+export * as errmap from "./errmap.js";
 export * as GenesisModule from "./Genesis/index.js";
 export * as GovernanceProposalModule from "./GovernanceProposal/index.js";
 export * as IterableTableModule from "./IterableTable/index.js";

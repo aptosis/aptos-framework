@@ -178,7 +178,7 @@ export * as errors from "./errors.js";
 export const errorCodes = {
   "0": {
     name: "ECOIN_INFO_ADDRESS_MISMATCH",
-    doc: "When address of account which is used to initilize a coin `CoinType`\n doesn't match the deployer of module containining `CoinType`.",
+    doc: "When address of account which is used to initilize a coin `CoinType`\ndoesn't match the deployer of module containining `CoinType`.",
   },
   "1": {
     name: "ECOIN_INFO_ALREADY_PUBLISHED",

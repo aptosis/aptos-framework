@@ -20,11 +20,11 @@ export const idl = {
   errors: {
     "0": {
       name: "EOPTION_IS_SET",
-      doc: "The `Option` is in an invalid state for the operation attempted.\n The `Option` is `Some` while it should be `None`.",
+      doc: "The `Option` is in an invalid state for the operation attempted.\nThe `Option` is `Some` while it should be `None`.",
     },
     "1": {
       name: "EOPTION_NOT_SET",
-      doc: "The `Option` is in an invalid state for the operation attempted.\n The `Option` is `None` while it should be `Some`.",
+      doc: "The `Option` is in an invalid state for the operation attempted.\nThe `Option` is `None` while it should be `Some`.",
     },
   },
 } as const;

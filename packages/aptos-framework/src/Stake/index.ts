@@ -1,21 +1,21 @@
 /**
  *
- * * Validator lifecycle:
- * * 1. Prepare a validator node set up and call Stake::register_validator_candidate
- * * 2. Once ready to deposit stake (or have funds assigned by a staking service in exchange for ownership capability),
- * * call Stake::add_stake and Stake::increase_lockup (or *_with_cap versions if called from the staking service)
- * * 3. Call Stake::join_validator_set (or _with_cap version) to join the active validator set. Changes are effective in
- * * the next epoch.
- * * 4. Validate and gain rewards.
- * * 5. At any point, if the validator operator wants to switch validator node operator, they can call
- * * Stake::rotate_consensus_key.
- * * 6. When lockup has expired, validator (or the owner of owner capability) can choose to either (1) increase the lockup
- * * to keep validating and receiving rewards, or (2) call Stake::unlock to unlock their stake and Stake::withdraw to
- * * withdraw in the next epoch.
- * * 7. After exiting, the validator can either explicitly leave the validator set by calling Stake::leave_validator_set
- * * or if their stake drops below the min required, they would get removed at the end of the epoch.
- * * 8. Validator can always rejoin the validator set by going through steps 2-3 again.
- * * 9. Owner can always switch operators by calling Stake::set_operator.
+ * Validator lifecycle:
+ * 1. Prepare a validator node set up and call Stake::register_validator_candidate
+ * 2. Once ready to deposit stake (or have funds assigned by a staking service in exchange for ownership capability),
+ * call Stake::add_stake and Stake::increase_lockup (or *_with_cap versions if called from the staking service)
+ * 3. Call Stake::join_validator_set (or _with_cap version) to join the active validator set. Changes are effective in
+ * the next epoch.
+ * 4. Validate and gain rewards.
+ * 5. At any point, if the validator operator wants to switch validator node operator, they can call
+ * Stake::rotate_consensus_key.
+ * 6. When lockup has expired, validator (or the owner of owner capability) can choose to either (1) increase the lockup
+ * to keep validating and receiving rewards, or (2) call Stake::unlock to unlock their stake and Stake::withdraw to
+ * withdraw in the next epoch.
+ * 7. After exiting, the validator can either explicitly leave the validator set by calling Stake::leave_validator_set
+ * or if their stake drops below the min required, they would get removed at the end of the epoch.
+ * 8. Validator can always rejoin the validator set by going through steps 2-3 again.
+ * 9. Owner can always switch operators by calling Stake::set_operator.
  *
  * **Module ID:** `0x1::Stake`
  *
@@ -761,22 +761,22 @@ const moduleImpl = {
 
 /**
  *
- * * Validator lifecycle:
- * * 1. Prepare a validator node set up and call Stake::register_validator_candidate
- * * 2. Once ready to deposit stake (or have funds assigned by a staking service in exchange for ownership capability),
- * * call Stake::add_stake and Stake::increase_lockup (or *_with_cap versions if called from the staking service)
- * * 3. Call Stake::join_validator_set (or _with_cap version) to join the active validator set. Changes are effective in
- * * the next epoch.
- * * 4. Validate and gain rewards.
- * * 5. At any point, if the validator operator wants to switch validator node operator, they can call
- * * Stake::rotate_consensus_key.
- * * 6. When lockup has expired, validator (or the owner of owner capability) can choose to either (1) increase the lockup
- * * to keep validating and receiving rewards, or (2) call Stake::unlock to unlock their stake and Stake::withdraw to
- * * withdraw in the next epoch.
- * * 7. After exiting, the validator can either explicitly leave the validator set by calling Stake::leave_validator_set
- * * or if their stake drops below the min required, they would get removed at the end of the epoch.
- * * 8. Validator can always rejoin the validator set by going through steps 2-3 again.
- * * 9. Owner can always switch operators by calling Stake::set_operator.
+ * Validator lifecycle:
+ * 1. Prepare a validator node set up and call Stake::register_validator_candidate
+ * 2. Once ready to deposit stake (or have funds assigned by a staking service in exchange for ownership capability),
+ * call Stake::add_stake and Stake::increase_lockup (or *_with_cap versions if called from the staking service)
+ * 3. Call Stake::join_validator_set (or _with_cap version) to join the active validator set. Changes are effective in
+ * the next epoch.
+ * 4. Validate and gain rewards.
+ * 5. At any point, if the validator operator wants to switch validator node operator, they can call
+ * Stake::rotate_consensus_key.
+ * 6. When lockup has expired, validator (or the owner of owner capability) can choose to either (1) increase the lockup
+ * to keep validating and receiving rewards, or (2) call Stake::unlock to unlock their stake and Stake::withdraw to
+ * withdraw in the next epoch.
+ * 7. After exiting, the validator can either explicitly leave the validator set by calling Stake::leave_validator_set
+ * or if their stake drops below the min required, they would get removed at the end of the epoch.
+ * 8. Validator can always rejoin the validator set by going through steps 2-3 again.
+ * 9. Owner can always switch operators by calling Stake::set_operator.
  */
 export const moduleDefinition = moduleImpl as p.MoveModuleDefinition<
   "0x1",

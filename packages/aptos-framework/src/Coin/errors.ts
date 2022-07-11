@@ -5,12 +5,12 @@
  */
 /**
  * When address of account which is used to initilize a coin `CoinType`
- *  doesn't match the deployer of module containining `CoinType`.
+ * doesn't match the deployer of module containining `CoinType`.
  */
 export const ECOIN_INFO_ADDRESS_MISMATCH = {
   code: 0,
   name: "ECOIN_INFO_ADDRESS_MISMATCH",
-  doc: "When address of account which is used to initilize a coin `CoinType`\n doesn't match the deployer of module containining `CoinType`.",
+  doc: "When address of account which is used to initilize a coin `CoinType`\ndoesn't match the deployer of module containining `CoinType`.",
 } as const;
 
 /** When `CoinType` is already initilized as a coin. */
