@@ -14,7 +14,7 @@ export * as ChainIdModule from "./ChainId/index.js";
 export * as CoinModule from "./Coin/index.js";
 export * as ComparatorModule from "./Comparator/index.js";
 export * as ConsensusConfigModule from "./ConsensusConfig/index.js";
-export * as errmap from "./errmap.js";
+export { errmap } from "./errmap.js";
 export * as GenesisModule from "./Genesis/index.js";
 export * as GovernanceProposalModule from "./GovernanceProposal/index.js";
 export * as IterableTableModule from "./IterableTable/index.js";
