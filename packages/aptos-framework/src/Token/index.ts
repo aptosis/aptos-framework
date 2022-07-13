@@ -11,12 +11,8 @@ import type * as p from "@movingco/prelude";
 export type BurnCapabilityData = {
   token_id: {
     creator: p.RawAddress;
-    collection: {
-      bytes: p.ByteString;
-    };
-    name: {
-      bytes: p.ByteString;
-    };
+    collection: string;
+    name: string;
   };
 };
 
@@ -24,12 +20,8 @@ export type BurnCapabilityData = {
 export type DepositEventData = {
   id: {
     creator: p.RawAddress;
-    collection: {
-      bytes: p.ByteString;
-    };
-    name: {
-      bytes: p.ByteString;
-    };
+    collection: string;
+    name: string;
   };
   amount: p.U64;
 };
@@ -38,12 +30,8 @@ export type DepositEventData = {
 export type MintCapabilityData = {
   token_id: {
     creator: p.RawAddress;
-    collection: {
-      bytes: p.ByteString;
-    };
-    name: {
-      bytes: p.ByteString;
-    };
+    collection: string;
+    name: string;
   };
 };
 
@@ -51,12 +39,8 @@ export type MintCapabilityData = {
 export type WithdrawEventData = {
   id: {
     creator: p.RawAddress;
-    collection: {
-      bytes: p.ByteString;
-    };
-    name: {
-      bytes: p.ByteString;
-    };
+    collection: string;
+    name: string;
   };
   amount: p.U64;
 };
@@ -65,27 +49,17 @@ export type WithdrawEventData = {
 export type TokenData = {
   id: {
     creator: p.RawAddress;
-    collection: {
-      bytes: p.ByteString;
-    };
-    name: {
-      bytes: p.ByteString;
-    };
+    collection: string;
+    name: string;
   };
   value: p.U64;
 };
 
 /** Represent the collection metadata */
 export type CollectionData = {
-  description: {
-    bytes: p.ByteString;
-  };
-  name: {
-    bytes: p.ByteString;
-  };
-  uri: {
-    bytes: p.ByteString;
-  };
+  description: string;
+  name: string;
+  uri: string;
   count: p.U64;
   maximum: {
     vec: ReadonlyArray<p.U64>;
@@ -169,15 +143,9 @@ export type CollectionsData = {
 /** create collection event with creator address and collection name */
 export type CreateCollectionEventData = {
   creator: p.RawAddress;
-  collection_name: {
-    bytes: p.ByteString;
-  };
-  uri: {
-    bytes: p.ByteString;
-  };
-  description: {
-    bytes: p.ByteString;
-  };
+  collection_name: string;
+  uri: string;
+  description: string;
   maximum: {
     vec: ReadonlyArray<p.U64>;
   };
@@ -187,32 +155,20 @@ export type CreateCollectionEventData = {
 export type CreateTokenEventData = {
   id: {
     creator: p.RawAddress;
-    collection: {
-      bytes: p.ByteString;
-    };
-    name: {
-      bytes: p.ByteString;
-    };
+    collection: string;
+    name: string;
   };
   token_data: {
-    collection: {
-      bytes: p.ByteString;
-    };
-    description: {
-      bytes: p.ByteString;
-    };
-    name: {
-      bytes: p.ByteString;
-    };
+    collection: string;
+    description: string;
+    name: string;
     maximum: {
       vec: ReadonlyArray<p.U64>;
     };
     supply: {
       vec: ReadonlyArray<p.U64>;
     };
-    uri: {
-      bytes: p.ByteString;
-    };
+    uri: string;
     royalty: {
       royalty_points_per_million: p.U64;
       creator_account: p.RawAddress;
@@ -225,12 +181,8 @@ export type CreateTokenEventData = {
 export type MintTokenEventData = {
   id: {
     creator: p.RawAddress;
-    collection: {
-      bytes: p.ByteString;
-    };
-    name: {
-      bytes: p.ByteString;
-    };
+    collection: string;
+    name: string;
   };
   amount: p.U64;
 };
@@ -243,24 +195,16 @@ export type RoyaltyData = {
 
 /** The data associated with the Tokens */
 export type TokenDataData = {
-  collection: {
-    bytes: p.ByteString;
-  };
-  description: {
-    bytes: p.ByteString;
-  };
-  name: {
-    bytes: p.ByteString;
-  };
+  collection: string;
+  description: string;
+  name: string;
   maximum: {
     vec: ReadonlyArray<p.U64>;
   };
   supply: {
     vec: ReadonlyArray<p.U64>;
   };
-  uri: {
-    bytes: p.ByteString;
-  };
+  uri: string;
   royalty: {
     royalty_points_per_million: p.U64;
     creator_account: p.RawAddress;
@@ -270,12 +214,8 @@ export type TokenDataData = {
 /** Represents a unique identity for the token */
 export type TokenIdData = {
   creator: p.RawAddress;
-  collection: {
-    bytes: p.ByteString;
-  };
-  name: {
-    bytes: p.ByteString;
-  };
+  collection: string;
+  name: string;
 };
 
 /** Represents token resources owned by token owner */
