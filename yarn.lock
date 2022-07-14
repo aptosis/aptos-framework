@@ -23,21 +23,19 @@ __metadata:
     "@rushstack/eslint-patch": ^1.1.4
     "@saberhq/eslint-config": ^2.0.2
     "@saberhq/tsconfig": ^2.0.2
-    "@types/bn.js": ^5.1.0
     "@types/eslint": ^8.4.5
     "@types/jest": ^28.1.5
-    "@types/node": ^18.0.3
+    "@types/node": ^18.0.4
     "@types/prettier": ^2.6.3
     "@typescript-eslint/utils": ^5.30.6
     "@yarnpkg/doctor": ^3.1.3
-    bn.js: ^5.2.1
     eslint: ^8.19.0
     husky: ^8.0.1
     jest: ^28.1.3
     jest-runtime: ^28.1.3
     lint-staged: ^13.0.3
     prettier: ^2.7.1
-    ts-jest: ^28.0.5
+    ts-jest: ^28.0.6
     typedoc: ^0.23.7
     typescript: ^4.7.4
   languageName: unknown
@@ -47,15 +45,12 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@aptosis/aptos-framework@workspace:packages/aptos-framework"
   dependencies:
-    "@movingco/prelude": ^0.1.49
+    "@movingco/prelude": ^0.1.51
     "@saberhq/tsconfig": ^2.0.2
-    "@types/bn.js": ^5.1.0
-    bn.js: ^5.2.1
     jsbi: ^4.3.0
     tslib: ^2.4.0
     typescript: ^4.7.4
   peerDependencies:
-    bn.js: ^5.2.0
     jsbi: ^4.3.0
   languageName: unknown
   linkType: soft
@@ -64,15 +59,12 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@aptosis/move-nursery@workspace:packages/move-nursery"
   dependencies:
-    "@movingco/prelude": ^0.1.49
+    "@movingco/prelude": ^0.1.51
     "@saberhq/tsconfig": ^2.0.2
-    "@types/bn.js": ^5.1.0
-    bn.js: ^5.2.1
     jsbi: ^4.3.0
     tslib: ^2.4.0
     typescript: ^4.7.4
   peerDependencies:
-    bn.js: ^5.2.0
     jsbi: ^4.3.0
   languageName: unknown
   linkType: soft
@@ -81,15 +73,12 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@aptosis/move-stdlib@workspace:packages/move-stdlib"
   dependencies:
-    "@movingco/prelude": ^0.1.49
+    "@movingco/prelude": ^0.1.51
     "@saberhq/tsconfig": ^2.0.2
-    "@types/bn.js": ^5.1.0
-    bn.js: ^5.2.1
     jsbi: ^4.3.0
     tslib: ^2.4.0
     typescript: ^4.7.4
   peerDependencies:
-    bn.js: ^5.2.0
     jsbi: ^4.3.0
   languageName: unknown
   linkType: soft
@@ -869,60 +858,55 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@movingco/core@npm:0.1.49":
-  version: 0.1.49
-  resolution: "@movingco/core@npm:0.1.49"
+"@movingco/core@npm:0.1.51":
+  version: 0.1.51
+  resolution: "@movingco/core@npm:0.1.51"
   dependencies:
-    "@movingco/sha3": ^0.1.48
+    "@movingco/sha3": ^0.1.50
     "@saberhq/option-utils": ^1.13.32
     "@ubeswap/token-math": ^5.2.0
-    bn.js: ^5.2.1
     buffer: ^6.0.3
     tiny-invariant: ^1.2.0
     tslib: ^2.4.0
   peerDependencies:
-    bn.js: ^5.2.0
     jsbi: ^4.3.0
-  checksum: 72465758cc64af4d4a476ba8af86d2d708562d9aa1f4043c667e94e7859cad5c55562491e106675aaf4172c7a080ff6232a71b2641fd3eafd693ca96a17724c7
+  checksum: 0794676281d5d3f61f47deb018ff589ffc95917bd687bcdaa89d0e73ed3d72a3ceeb51b67436691dccd299ed7424fc0cf3de50192d4883a5c27c357b8ad9a403
   languageName: node
   linkType: hard
 
-"@movingco/idl@npm:^0.1.49":
-  version: 0.1.49
-  resolution: "@movingco/idl@npm:0.1.49"
+"@movingco/idl@npm:^0.1.51":
+  version: 0.1.51
+  resolution: "@movingco/idl@npm:0.1.51"
   dependencies:
-    bn.js: ^5.2.1
     tiny-invariant: ^1.2.0
     tslib: ^2.4.0
   peerDependencies:
-    bn.js: ^5.2.0
     jsbi: ^4.3.0
-  checksum: 4c2057219221a4f509f12725fcbb522995244c9222b07fedb94a0ae788fa5299a8aa8abc814ab61866d45d6751b375f1b51e0dc05e80d453dc4b929d8be7e700
+  checksum: 1bbe2a9814bd45342a23154eefaeb2f7285d37fdc509a4d3806714cb33b1db159283752d8d4ce96f467cc551052baf66ed278de7090fcd352d5286774c875a82
   languageName: node
   linkType: hard
 
-"@movingco/prelude@npm:^0.1.49":
-  version: 0.1.49
-  resolution: "@movingco/prelude@npm:0.1.49"
+"@movingco/prelude@npm:^0.1.51":
+  version: 0.1.51
+  resolution: "@movingco/prelude@npm:0.1.51"
   dependencies:
-    "@movingco/core": 0.1.49
-    "@movingco/idl": ^0.1.49
+    "@movingco/core": 0.1.51
+    "@movingco/idl": ^0.1.51
     tslib: ^2.4.0
   peerDependencies:
-    bn.js: ^5.2.0
     jsbi: ^4.3.0
-  checksum: 2e254ab26f2e203c16f58a5068d20be1f10cf6f407cdc9da5aa737ef8686606fa43b775fda580abb520849fbb92bea6a3286e3cd8decf4422cb210b8c2097a57
+  checksum: d25ac6134797373ccbbdf00f8ce488ec8bffe45058dfaa68d4858547819f028254196e1c4c44756f6811b3a447d24733a114a891ecf2600f19f8b861ce53147f
   languageName: node
   linkType: hard
 
-"@movingco/sha3@npm:^0.1.48":
-  version: 0.1.48
-  resolution: "@movingco/sha3@npm:0.1.48"
+"@movingco/sha3@npm:^0.1.50":
+  version: 0.1.50
+  resolution: "@movingco/sha3@npm:0.1.50"
   dependencies:
     js-sha3: ^0.8.0
     tiny-invariant: ^1.2.0
     tslib: ^2.4.0
-  checksum: 0ac0bbde1d149f2ddd0c5763f4735f4b14675513ace272cad51cb782aaefde43f8028501f6e2f05990ad12d15a55ec6f9f7de4fce1fb4dd58dd33796dea6bbd1
+  checksum: 302b52b49424670a01298ddc0e19cae9a723fc389cba458c5e6c416b0a48a78369efa5ee35263506d1ac515504795b52c8d3b2320d4e8f1affec4bc3be435559
   languageName: node
   linkType: hard
 
@@ -1118,15 +1102,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/bn.js@npm:^5.1.0":
-  version: 5.1.0
-  resolution: "@types/bn.js@npm:5.1.0"
-  dependencies:
-    "@types/node": "*"
-  checksum: 1dc1cbbd7a1e8bf3614752e9602f558762a901031f499f3055828b5e3e2bba16e5b88c27b3c4152ad795248fbe4086c731a5c4b0f29bb243f1875beeeabee59c
-  languageName: node
-  linkType: hard
-
 "@types/cacheable-request@npm:^6.0.1":
   version: 6.0.2
   resolution: "@types/cacheable-request@npm:6.0.2"
@@ -1265,10 +1240,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:^18.0.3":
-  version: 18.0.3
-  resolution: "@types/node@npm:18.0.3"
-  checksum: 5dec59fbbc1186c808b53df1ca717dad034dbd6a901c75f5b052c845618b531b05f27217122c6254db99529a68618e4cfc534ae3dbf4e88754e9e572df80defa
+"@types/node@npm:^18.0.4":
+  version: 18.0.4
+  resolution: "@types/node@npm:18.0.4"
+  checksum: 981284fd57941f233f0e77038087c122f56e3c2b4fc4e090dfc7f0a93abfc526d5ccdd59eb3ef551d713245cf3943e37c7b957f12ba699209341a447c39fab59
   languageName: node
   linkType: hard
 
@@ -2246,13 +2221,6 @@ __metadata:
     inherits: ^2.0.4
     readable-stream: ^3.4.0
   checksum: 9e8521fa7e83aa9427c6f8ccdcba6e8167ef30cc9a22df26effcc5ab682ef91d2cbc23a239f945d099289e4bbcfae7a192e9c28c84c6202e710a0dfec3722662
-  languageName: node
-  linkType: hard
-
-"bn.js@npm:^5.2.1":
-  version: 5.2.1
-  resolution: "bn.js@npm:5.2.1"
-  checksum: 3dd8c8d38055fedfa95c1d5fc3c99f8dd547b36287b37768db0abab3c239711f88ff58d18d155dd8ad902b0b0cee973747b7ae20ea12a09473272b0201c9edd3
   languageName: node
   linkType: hard
 
@@ -6597,9 +6565,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"ts-jest@npm:^28.0.5":
-  version: 28.0.5
-  resolution: "ts-jest@npm:28.0.5"
+"ts-jest@npm:^28.0.6":
+  version: 28.0.6
+  resolution: "ts-jest@npm:28.0.6"
   dependencies:
     bs-logger: 0.x
     fast-json-stable-stringify: 2.x
@@ -6611,6 +6579,7 @@ __metadata:
     yargs-parser: ^21.0.1
   peerDependencies:
     "@babel/core": ">=7.0.0-beta.0 <8"
+    "@jest/types": ^28.0.0
     babel-jest: ^28.0.0
     jest: ^28.0.0
     typescript: ">=4.3"
@@ -6623,7 +6592,7 @@ __metadata:
       optional: true
   bin:
     ts-jest: cli.js
-  checksum: 53e05db5b7e1e4f4137c47594f902f5caf585ebc73dda67c4552c1ed784d4fde532c5693a61d877d9462290c7965233c2124050b0f00fd4c85cde9bb1a51c974
+  checksum: 76f3c7a5a81bc757eb38f4d3be7c255e4fc6107abd8da84134908c867b5a9505af1d8591c77115d719176a52856e4adf04278df384e0a113a7ce60fed8be1f41
   languageName: node
   linkType: hard
 
