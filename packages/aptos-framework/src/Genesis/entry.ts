@@ -3,6 +3,7 @@
  *
  * @module
  */
+import * as p from "@movingco/prelude";
 
 import type * as mod from "./index.js";
 import type * as payloads from "./payloads.js";
@@ -25,11 +26,25 @@ export const create_initialize_validators = ({
   function: "0x1::Genesis::create_initialize_validators",
   type_arguments: [],
   arguments: [
-    args.owners,
-    args.consensus_pubkeys,
-    args.proof_of_possession,
-    args.validator_network_addresses,
-    args.full_node_network_addresses,
-    args.staking_distribution,
+    args.owners.map((inner_args__owners) =>
+      p.serializers.hexString(inner_args__owners)
+    ),
+    args.consensus_pubkeys.map((inner_args__consensus_pubkeys) =>
+      p.serializers.hexString(inner_args__consensus_pubkeys)
+    ),
+    args.proof_of_possession.map((inner_args__proof_of_possession) =>
+      p.serializers.hexString(inner_args__proof_of_possession)
+    ),
+    args.validator_network_addresses.map(
+      (inner_args__validator_network_addresses) =>
+        p.serializers.hexString(inner_args__validator_network_addresses)
+    ),
+    args.full_node_network_addresses.map(
+      (inner_args__full_node_network_addresses) =>
+        p.serializers.hexString(inner_args__full_node_network_addresses)
+    ),
+    args.staking_distribution.map((inner_args__staking_distribution) =>
+      p.serializers.u64(inner_args__staking_distribution)
+    ),
   ],
 });
