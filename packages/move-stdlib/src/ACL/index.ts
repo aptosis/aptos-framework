@@ -11,7 +11,7 @@
 import type * as p from "@movingco/prelude";
 
 export type ACLData = {
-  list: ReadonlyArray<string>;
+  list: ReadonlyArray<p.RawAddress>;
 };
 
 export { idl } from "./idl.js";

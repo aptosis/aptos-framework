@@ -24,27 +24,27 @@
 import type * as p from "@movingco/prelude";
 
 export type AddStakeEventData = {
-  pool_address: string;
-  amount_added: string;
+  pool_address: p.RawAddress;
+  amount_added: p.U64;
 };
 
 export type DistributeRewardsEventData = {
-  pool_address: string;
-  rewards_amount: string;
+  pool_address: p.RawAddress;
+  rewards_amount: p.U64;
 };
 
 export type IncreaseLockupEventData = {
-  pool_address: string;
-  old_locked_until_secs: string;
-  new_locked_until_secs: string;
+  pool_address: p.RawAddress;
+  old_locked_until_secs: p.U64;
+  new_locked_until_secs: p.U64;
 };
 
 export type JoinValidatorSetEventData = {
-  pool_address: string;
+  pool_address: p.RawAddress;
 };
 
 export type LeaveValidatorSetEventData = {
-  pool_address: string;
+  pool_address: p.RawAddress;
 };
 
 /**
@@ -53,23 +53,23 @@ export type LeaveValidatorSetEventData = {
  * modules to have control over a validator.
  */
 export type OwnerCapabilityData = {
-  pool_address: string;
+  pool_address: p.RawAddress;
 };
 
 export type RegisterValidatorCandidateEventData = {
-  pool_address: string;
+  pool_address: p.RawAddress;
 };
 
 export type RotateConsensusKeyEventData = {
-  pool_address: string;
-  old_consensus_pubkey: string;
-  new_consensus_pubkey: string;
+  pool_address: p.RawAddress;
+  old_consensus_pubkey: p.ByteString;
+  new_consensus_pubkey: p.ByteString;
 };
 
 export type SetOperatorEventData = {
-  pool_address: string;
-  old_operator: string;
-  new_operator: string;
+  pool_address: p.RawAddress;
+  old_operator: p.RawAddress;
+  new_operator: p.RawAddress;
 };
 
 /**
@@ -88,30 +88,30 @@ export type SetOperatorEventData = {
 export type StakePoolData = {
   active: {
     /** Amount of coin this address has. */
-    value: string;
+    value: p.U64;
   };
   inactive: {
     /** Amount of coin this address has. */
-    value: string;
+    value: p.U64;
   };
   pending_active: {
     /** Amount of coin this address has. */
-    value: string;
+    value: p.U64;
   };
   pending_inactive: {
     /** Amount of coin this address has. */
-    value: string;
+    value: p.U64;
   };
-  locked_until_secs: string;
-  operator_address: string;
-  delegated_voter: string;
+  locked_until_secs: p.U64;
+  operator_address: p.RawAddress;
+  delegated_voter: p.RawAddress;
 };
 
 /** The events emitted for the entire StakePool's lifecycle. */
 export type StakePoolEventsData = {
   register_validator_candidate_events: {
     /** Total number of events emitted to this event stream. */
-    counter: string;
+    counter: p.U64;
 
     /** A globally unique ID for this event stream. */
     guid: {
@@ -119,17 +119,17 @@ export type StakePoolEventsData = {
       guid: {
         id: {
           /** If creation_num is `i`, this is the `i+1`th GUID created by `addr` */
-          creation_num: string;
+          creation_num: p.U64;
 
           /** Address that created the GUID */
-          addr: string;
+          addr: p.RawAddress;
         };
       };
     };
   };
   set_operator_events: {
     /** Total number of events emitted to this event stream. */
-    counter: string;
+    counter: p.U64;
 
     /** A globally unique ID for this event stream. */
     guid: {
@@ -137,17 +137,17 @@ export type StakePoolEventsData = {
       guid: {
         id: {
           /** If creation_num is `i`, this is the `i+1`th GUID created by `addr` */
-          creation_num: string;
+          creation_num: p.U64;
 
           /** Address that created the GUID */
-          addr: string;
+          addr: p.RawAddress;
         };
       };
     };
   };
   add_stake_events: {
     /** Total number of events emitted to this event stream. */
-    counter: string;
+    counter: p.U64;
 
     /** A globally unique ID for this event stream. */
     guid: {
@@ -155,17 +155,17 @@ export type StakePoolEventsData = {
       guid: {
         id: {
           /** If creation_num is `i`, this is the `i+1`th GUID created by `addr` */
-          creation_num: string;
+          creation_num: p.U64;
 
           /** Address that created the GUID */
-          addr: string;
+          addr: p.RawAddress;
         };
       };
     };
   };
   rotate_consensus_key_events: {
     /** Total number of events emitted to this event stream. */
-    counter: string;
+    counter: p.U64;
 
     /** A globally unique ID for this event stream. */
     guid: {
@@ -173,17 +173,17 @@ export type StakePoolEventsData = {
       guid: {
         id: {
           /** If creation_num is `i`, this is the `i+1`th GUID created by `addr` */
-          creation_num: string;
+          creation_num: p.U64;
 
           /** Address that created the GUID */
-          addr: string;
+          addr: p.RawAddress;
         };
       };
     };
   };
   increase_lockup_events: {
     /** Total number of events emitted to this event stream. */
-    counter: string;
+    counter: p.U64;
 
     /** A globally unique ID for this event stream. */
     guid: {
@@ -191,17 +191,17 @@ export type StakePoolEventsData = {
       guid: {
         id: {
           /** If creation_num is `i`, this is the `i+1`th GUID created by `addr` */
-          creation_num: string;
+          creation_num: p.U64;
 
           /** Address that created the GUID */
-          addr: string;
+          addr: p.RawAddress;
         };
       };
     };
   };
   join_validator_set_events: {
     /** Total number of events emitted to this event stream. */
-    counter: string;
+    counter: p.U64;
 
     /** A globally unique ID for this event stream. */
     guid: {
@@ -209,17 +209,17 @@ export type StakePoolEventsData = {
       guid: {
         id: {
           /** If creation_num is `i`, this is the `i+1`th GUID created by `addr` */
-          creation_num: string;
+          creation_num: p.U64;
 
           /** Address that created the GUID */
-          addr: string;
+          addr: p.RawAddress;
         };
       };
     };
   };
   distribute_rewards_events: {
     /** Total number of events emitted to this event stream. */
-    counter: string;
+    counter: p.U64;
 
     /** A globally unique ID for this event stream. */
     guid: {
@@ -227,17 +227,17 @@ export type StakePoolEventsData = {
       guid: {
         id: {
           /** If creation_num is `i`, this is the `i+1`th GUID created by `addr` */
-          creation_num: string;
+          creation_num: p.U64;
 
           /** Address that created the GUID */
-          addr: string;
+          addr: p.RawAddress;
         };
       };
     };
   };
   unlock_stake_events: {
     /** Total number of events emitted to this event stream. */
-    counter: string;
+    counter: p.U64;
 
     /** A globally unique ID for this event stream. */
     guid: {
@@ -245,17 +245,17 @@ export type StakePoolEventsData = {
       guid: {
         id: {
           /** If creation_num is `i`, this is the `i+1`th GUID created by `addr` */
-          creation_num: string;
+          creation_num: p.U64;
 
           /** Address that created the GUID */
-          addr: string;
+          addr: p.RawAddress;
         };
       };
     };
   };
   withdraw_stake_events: {
     /** Total number of events emitted to this event stream. */
-    counter: string;
+    counter: p.U64;
 
     /** A globally unique ID for this event stream. */
     guid: {
@@ -263,17 +263,17 @@ export type StakePoolEventsData = {
       guid: {
         id: {
           /** If creation_num is `i`, this is the `i+1`th GUID created by `addr` */
-          creation_num: string;
+          creation_num: p.U64;
 
           /** Address that created the GUID */
-          addr: string;
+          addr: p.RawAddress;
         };
       };
     };
   };
   leave_validator_set_events: {
     /** Total number of events emitted to this event stream. */
-    counter: string;
+    counter: p.U64;
 
     /** A globally unique ID for this event stream. */
     guid: {
@@ -281,10 +281,10 @@ export type StakePoolEventsData = {
       guid: {
         id: {
           /** If creation_num is `i`, this is the `i+1`th GUID created by `addr` */
-          creation_num: string;
+          creation_num: p.U64;
 
           /** Address that created the GUID */
-          addr: string;
+          addr: p.RawAddress;
         };
       };
     };
@@ -302,33 +302,33 @@ export type TestCoinCapabilitiesData = {
 };
 
 export type UnlockStakeEventData = {
-  pool_address: string;
-  amount_unlocked: string;
+  pool_address: p.RawAddress;
+  amount_unlocked: p.U64;
 };
 
 /** Validator info stored in validator address. */
 export type ValidatorConfigData = {
-  consensus_pubkey: string;
-  network_addresses: string;
-  fullnode_addresses: string;
-  validator_index: string;
+  consensus_pubkey: p.ByteString;
+  network_addresses: p.ByteString;
+  fullnode_addresses: p.ByteString;
+  validator_index: p.U64;
 };
 
 /** Consensus information per validator, stored in ValidatorSet. */
 export type ValidatorInfoData = {
-  addr: string;
-  voting_power: string;
+  addr: p.RawAddress;
+  voting_power: p.U64;
   config: {
-    consensus_pubkey: string;
-    network_addresses: string;
-    fullnode_addresses: string;
-    validator_index: string;
+    consensus_pubkey: p.ByteString;
+    network_addresses: p.ByteString;
+    fullnode_addresses: p.ByteString;
+    validator_index: p.U64;
   };
 };
 
 export type ValidatorPerformanceData = {
-  num_blocks: string;
-  missed_votes: ReadonlyArray<string>;
+  num_blocks: p.U64;
+  missed_votes: ReadonlyArray<p.U64>;
 };
 
 /**
@@ -340,58 +340,58 @@ export type ValidatorPerformanceData = {
 export type ValidatorSetData = {
   consensus_scheme: number;
   active_validators: ReadonlyArray<{
-    addr: string;
-    voting_power: string;
+    addr: p.RawAddress;
+    voting_power: p.U64;
     config: {
-      consensus_pubkey: string;
-      network_addresses: string;
-      fullnode_addresses: string;
-      validator_index: string;
+      consensus_pubkey: p.ByteString;
+      network_addresses: p.ByteString;
+      fullnode_addresses: p.ByteString;
+      validator_index: p.U64;
     };
   }>;
   pending_inactive: ReadonlyArray<{
-    addr: string;
-    voting_power: string;
+    addr: p.RawAddress;
+    voting_power: p.U64;
     config: {
-      consensus_pubkey: string;
-      network_addresses: string;
-      fullnode_addresses: string;
-      validator_index: string;
+      consensus_pubkey: p.ByteString;
+      network_addresses: p.ByteString;
+      fullnode_addresses: p.ByteString;
+      validator_index: p.U64;
     };
   }>;
   pending_active: ReadonlyArray<{
-    addr: string;
-    voting_power: string;
+    addr: p.RawAddress;
+    voting_power: p.U64;
     config: {
-      consensus_pubkey: string;
-      network_addresses: string;
-      fullnode_addresses: string;
-      validator_index: string;
+      consensus_pubkey: p.ByteString;
+      network_addresses: p.ByteString;
+      fullnode_addresses: p.ByteString;
+      validator_index: p.U64;
     };
   }>;
 };
 
 /** Validator set configurations that will be stored with the @CoreResources account. */
 export type ValidatorSetConfigurationData = {
-  minimum_stake: string;
-  maximum_stake: string;
-  min_lockup_duration_secs: string;
-  max_lockup_duration_secs: string;
+  minimum_stake: p.U64;
+  maximum_stake: p.U64;
+  min_lockup_duration_secs: p.U64;
+  max_lockup_duration_secs: p.U64;
   allow_validator_set_change: boolean;
-  rewards_rate: string;
-  rewards_rate_denominator: string;
+  rewards_rate: p.U64;
+  rewards_rate_denominator: p.U64;
 };
 
 export type WithdrawStakeEventData = {
-  pool_address: string;
-  amount_withdrawn: string;
+  pool_address: p.RawAddress;
+  amount_withdrawn: p.U64;
 };
 
 /** Payload arguments for {@link entry.add_stake}. */
 export type AddStakeArgs = {
   args: {
     /** IDL type: `U64` */
-    amount: string;
+    amount: p.U64;
   };
 };
 
@@ -399,7 +399,7 @@ export type AddStakeArgs = {
 export type IncreaseLockupArgs = {
   args: {
     /** IDL type: `U64` */
-    new_locked_until_secs: string;
+    new_locked_until_secs: p.U64;
   };
 };
 
@@ -407,7 +407,7 @@ export type IncreaseLockupArgs = {
 export type JoinValidatorSetArgs = {
   args: {
     /** IDL type: `Address` */
-    pool_address: string;
+    pool_address: p.RawAddress;
   };
 };
 
@@ -415,7 +415,7 @@ export type JoinValidatorSetArgs = {
 export type LeaveValidatorSetArgs = {
   args: {
     /** IDL type: `Address` */
-    pool_address: string;
+    pool_address: p.RawAddress;
   };
 };
 
@@ -423,13 +423,13 @@ export type LeaveValidatorSetArgs = {
 export type RegisterValidatorCandidateArgs = {
   args: {
     /** IDL type: `Vector(U8)` */
-    consensus_pubkey: string;
+    consensus_pubkey: p.ByteString;
     /** IDL type: `Vector(U8)` */
-    proof_of_possession: string;
+    proof_of_possession: p.ByteString;
     /** IDL type: `Vector(U8)` */
-    network_addresses: string;
+    network_addresses: p.ByteString;
     /** IDL type: `Vector(U8)` */
-    fullnode_addresses: string;
+    fullnode_addresses: p.ByteString;
   };
 };
 
@@ -437,11 +437,11 @@ export type RegisterValidatorCandidateArgs = {
 export type RotateConsensusKeyArgs = {
   args: {
     /** IDL type: `Address` */
-    pool_address: string;
+    pool_address: p.RawAddress;
     /** IDL type: `Vector(U8)` */
-    new_consensus_pubkey: string;
+    new_consensus_pubkey: p.ByteString;
     /** IDL type: `Vector(U8)` */
-    proof_of_possession: string;
+    proof_of_possession: p.ByteString;
   };
 };
 
@@ -449,7 +449,7 @@ export type RotateConsensusKeyArgs = {
 export type SetDelegatedVoterArgs = {
   args: {
     /** IDL type: `Address` */
-    new_delegated_voter: string;
+    new_delegated_voter: p.RawAddress;
   };
 };
 
@@ -457,7 +457,7 @@ export type SetDelegatedVoterArgs = {
 export type SetOperatorArgs = {
   args: {
     /** IDL type: `Address` */
-    new_operator: string;
+    new_operator: p.RawAddress;
   };
 };
 
@@ -465,7 +465,7 @@ export type SetOperatorArgs = {
 export type UnlockArgs = {
   args: {
     /** IDL type: `U64` */
-    amount: string;
+    amount: p.U64;
   };
 };
 

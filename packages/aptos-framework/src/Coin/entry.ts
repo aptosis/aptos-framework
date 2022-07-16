@@ -3,6 +3,7 @@
  *
  * @module
  */
+import * as p from "@movingco/prelude";
 
 import type * as mod from "./index.js";
 import type * as payloads from "./payloads.js";
@@ -28,5 +29,5 @@ export const transfer = ({
   type: "script_function_payload",
   function: "0x1::Coin::transfer",
   type_arguments: [typeArgs.CoinType],
-  arguments: [args.to, args.amount],
+  arguments: [p.serializers.hexString(args.to), p.serializers.u64(args.amount)],
 });

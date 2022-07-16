@@ -9,7 +9,7 @@
 import type * as p from "@movingco/prelude";
 
 export type ConsensusConfigData = {
-  config: string;
+  config: p.ByteString;
 };
 
 export { idl } from "./idl.js";

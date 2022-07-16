@@ -17,7 +17,7 @@ import type * as p from "@movingco/prelude";
  */
 export type EventHandleData = {
   /** Total number of events emitted to this event stream. */
-  counter: string;
+  counter: p.U64;
 
   /** A globally unique ID for this event stream. */
   guid: {
@@ -25,10 +25,10 @@ export type EventHandleData = {
     guid: {
       id: {
         /** If creation_num is `i`, this is the `i+1`th GUID created by `addr` */
-        creation_num: string;
+        creation_num: p.U64;
 
         /** Address that created the GUID */
-        addr: string;
+        addr: p.RawAddress;
       };
     };
   };
@@ -36,8 +36,8 @@ export type EventHandleData = {
 
 /** Deprecated. Only kept around so Aptos clients know how to deserialize existing EventHandleGenerator's */
 export type EventHandleGeneratorData = {
-  counter: string;
-  addr: string;
+  counter: p.U64;
+  addr: p.RawAddress;
 };
 
 /** Wrapper for a GUID for layout compatibility with legacy EventHandle id's */
@@ -46,10 +46,10 @@ export type GUIDWrapperData = {
   guid: {
     id: {
       /** If creation_num is `i`, this is the `i+1`th GUID created by `addr` */
-      creation_num: string;
+      creation_num: p.U64;
 
       /** Address that created the GUID */
-      addr: string;
+      addr: p.RawAddress;
     };
   };
 };

@@ -6,7 +6,7 @@
 import type * as p from "@movingco/prelude";
 
 export type BitVectorData = {
-  length: string;
+  length: p.U64;
   bit_field: ReadonlyArray<boolean>;
 };
 

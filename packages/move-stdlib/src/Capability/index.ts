@@ -80,17 +80,17 @@ import type * as p from "@movingco/prelude";
 
 /** The token representing an acquired capability. Cannot be stored in memory, but copied and dropped freely. */
 export type CapData = {
-  root: string;
+  root: p.RawAddress;
 };
 
 /** An internal data structure for representing a configured delegated capability. */
 export type CapDelegateStateData = {
-  root: string;
+  root: p.RawAddress;
 };
 
 /** An internal data structure for representing a configured capability. */
 export type CapStateData = {
-  delegates: ReadonlyArray<string>;
+  delegates: ReadonlyArray<p.RawAddress>;
 };
 
 /**
@@ -98,7 +98,7 @@ export type CapStateData = {
  * to be used only once for an authorization.
  */
 export type LinearCapData = {
-  root: string;
+  root: p.RawAddress;
 };
 
 export { idl } from "./idl.js";

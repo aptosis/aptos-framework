@@ -9,9 +9,9 @@ import type * as p from "@movingco/prelude";
 export type CreateAndFundAccountArgs = {
   args: {
     /** IDL type: `Address` */
-    account: string;
+    account: p.RawAddress;
     /** IDL type: `U64` */
-    amount: string;
+    amount: p.U64;
   };
 };
 

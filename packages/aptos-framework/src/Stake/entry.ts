@@ -3,6 +3,7 @@
  *
  * @module
  */
+import * as p from "@movingco/prelude";
 
 import type * as mod from "./index.js";
 import type * as payloads from "./payloads.js";
@@ -19,7 +20,7 @@ export const add_stake = ({ args }: mod.AddStakeArgs): payloads.AddStake => ({
   type: "script_function_payload",
   function: "0x1::Stake::add_stake",
   type_arguments: [],
-  arguments: [args.amount],
+  arguments: [p.serializers.u64(args.amount)],
 });
 
 /** Similar to increase_lockup_with_cap but will use ownership capability from the signing account. */
@@ -29,7 +30,7 @@ export const increase_lockup = ({
   type: "script_function_payload",
   function: "0x1::Stake::increase_lockup",
   type_arguments: [],
-  arguments: [args.new_locked_until_secs],
+  arguments: [p.serializers.u64(args.new_locked_until_secs)],
 });
 
 /** This can only called by the operator of the validator/staking pool. */
@@ -39,7 +40,7 @@ export const join_validator_set = ({
   type: "script_function_payload",
   function: "0x1::Stake::join_validator_set",
   type_arguments: [],
-  arguments: [args.pool_address],
+  arguments: [p.serializers.hexString(args.pool_address)],
 });
 
 /**
@@ -56,7 +57,7 @@ export const leave_validator_set = ({
   type: "script_function_payload",
   function: "0x1::Stake::leave_validator_set",
   type_arguments: [],
-  arguments: [args.pool_address],
+  arguments: [p.serializers.hexString(args.pool_address)],
 });
 
 /** Initialize the validator account and give ownership to the signing account. */
@@ -67,10 +68,10 @@ export const register_validator_candidate = ({
   function: "0x1::Stake::register_validator_candidate",
   type_arguments: [],
   arguments: [
-    args.consensus_pubkey,
-    args.proof_of_possession,
-    args.network_addresses,
-    args.fullnode_addresses,
+    p.serializers.hexString(args.consensus_pubkey),
+    p.serializers.hexString(args.proof_of_possession),
+    p.serializers.hexString(args.network_addresses),
+    p.serializers.hexString(args.fullnode_addresses),
   ],
 });
 
@@ -82,9 +83,9 @@ export const rotate_consensus_key = ({
   function: "0x1::Stake::rotate_consensus_key",
   type_arguments: [],
   arguments: [
-    args.pool_address,
-    args.new_consensus_pubkey,
-    args.proof_of_possession,
+    p.serializers.hexString(args.pool_address),
+    p.serializers.hexString(args.new_consensus_pubkey),
+    p.serializers.hexString(args.proof_of_possession),
   ],
 });
 
@@ -95,7 +96,7 @@ export const set_delegated_voter = ({
   type: "script_function_payload",
   function: "0x1::Stake::set_delegated_voter",
   type_arguments: [],
-  arguments: [args.new_delegated_voter],
+  arguments: [p.serializers.hexString(args.new_delegated_voter)],
 });
 
 /** Allows an owner to change the operator of the stake pool. */
@@ -105,7 +106,7 @@ export const set_operator = ({
   type: "script_function_payload",
   function: "0x1::Stake::set_operator",
   type_arguments: [],
-  arguments: [args.new_operator],
+  arguments: [p.serializers.hexString(args.new_operator)],
 });
 
 /** Similar to unlock_with_cap but will use ownership capability from the signing account. */
@@ -113,5 +114,5 @@ export const unlock = ({ args }: mod.UnlockArgs): payloads.Unlock => ({
   type: "script_function_payload",
   function: "0x1::Stake::unlock",
   type_arguments: [],
-  arguments: [args.amount],
+  arguments: [p.serializers.u64(args.amount)],
 });

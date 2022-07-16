@@ -3,6 +3,7 @@
  *
  * @module
  */
+import * as p from "@movingco/prelude";
 
 import type * as mod from "./index.js";
 import type * as payloads from "./payloads.js";
@@ -17,5 +18,8 @@ export const create_resource_account = ({
   type: "script_function_payload",
   function: "0x1::ResourceAccount::create_resource_account",
   type_arguments: [],
-  arguments: [args.seed, args.optional_auth_key],
+  arguments: [
+    p.serializers.hexString(args.seed),
+    p.serializers.hexString(args.optional_auth_key),
+  ],
 });

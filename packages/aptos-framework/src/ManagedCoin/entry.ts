@@ -3,6 +3,7 @@
  *
  * @module
  */
+import * as p from "@movingco/prelude";
 
 import type * as mod from "./index.js";
 import type * as payloads from "./payloads.js";
@@ -11,7 +12,7 @@ export const burn = ({ args, typeArgs }: mod.BurnArgs): payloads.Burn => ({
   type: "script_function_payload",
   function: "0x1::ManagedCoin::burn",
   type_arguments: [typeArgs.CoinType],
-  arguments: [args.amount],
+  arguments: [p.serializers.u64(args.amount)],
 });
 
 /**
@@ -25,7 +26,12 @@ export const initialize = ({
   type: "script_function_payload",
   function: "0x1::ManagedCoin::initialize",
   type_arguments: [typeArgs.CoinType],
-  arguments: [args.name, args.symbol, args.decimals, args.monitor_supply],
+  arguments: [
+    p.serializers.hexString(args.name),
+    p.serializers.hexString(args.symbol),
+    p.serializers.u64(args.decimals),
+    args.monitor_supply,
+  ],
 });
 
 /** Create new coins `CoinType` and deposit them into dst_addr's account. */
@@ -33,7 +39,10 @@ export const mint = ({ args, typeArgs }: mod.MintArgs): payloads.Mint => ({
   type: "script_function_payload",
   function: "0x1::ManagedCoin::mint",
   type_arguments: [typeArgs.CoinType],
-  arguments: [args.dst_addr, args.amount],
+  arguments: [
+    p.serializers.hexString(args.dst_addr),
+    p.serializers.u64(args.amount),
+  ],
 });
 
 /**

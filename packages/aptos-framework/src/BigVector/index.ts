@@ -8,21 +8,21 @@ import type * as p from "@movingco/prelude";
 /** A Scalable vector implementation based on tables, elements are grouped into buckets with `bucket_size`. */
 export type BigVectorData<_T = unknown> = {
   buckets: {
-    handle: string;
-    length: string;
+    handle: p.U128;
+    length: p.U64;
   };
   end_index: {
-    bucket_index: string;
-    vec_index: string;
+    bucket_index: p.U64;
+    vec_index: p.U64;
   };
-  num_buckets: string;
-  bucket_size: string;
+  num_buckets: p.U64;
+  bucket_size: p.U64;
 };
 
 /** Index of the value in the buckets. */
 export type BigVectorIndexData = {
-  bucket_index: string;
-  vec_index: string;
+  bucket_index: p.U64;
+  vec_index: p.U64;
 };
 
 export { idl } from "./idl.js";

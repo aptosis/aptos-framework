@@ -10,7 +10,7 @@ import type * as p from "@movingco/prelude";
 /** Main structure representing a coin/token in an account's custody. */
 export type CoinData = {
   /** Amount of coin this address has. */
-  value: string;
+  value: p.U64;
 };
 
 /**
@@ -20,7 +20,7 @@ export type CoinData = {
 export type CoinEventsData = {
   register_events: {
     /** Total number of events emitted to this event stream. */
-    counter: string;
+    counter: p.U64;
 
     /** A globally unique ID for this event stream. */
     guid: {
@@ -28,10 +28,10 @@ export type CoinEventsData = {
       guid: {
         id: {
           /** If creation_num is `i`, this is the `i+1`th GUID created by `addr` */
-          creation_num: string;
+          creation_num: p.U64;
 
           /** Address that created the GUID */
-          addr: string;
+          addr: p.RawAddress;
         };
       };
     };
@@ -53,11 +53,11 @@ export type CoinInfoData = {
    * For example, if `decimals` equals `2`, a balance of `505` coins should
    * be displayed to a user as `5.05` (`505 / 10 ** 2`).
    */
-  decimals: string;
+  decimals: p.U64;
 
   /** Amount of this coin type in existence. */
   supply: {
-    vec: ReadonlyArray<string>;
+    vec: ReadonlyArray<p.U128>;
   };
 };
 
@@ -68,11 +68,11 @@ export type CoinInfoData = {
 export type CoinStoreData = {
   coin: {
     /** Amount of coin this address has. */
-    value: string;
+    value: p.U64;
   };
   deposit_events: {
     /** Total number of events emitted to this event stream. */
-    counter: string;
+    counter: p.U64;
 
     /** A globally unique ID for this event stream. */
     guid: {
@@ -80,17 +80,17 @@ export type CoinStoreData = {
       guid: {
         id: {
           /** If creation_num is `i`, this is the `i+1`th GUID created by `addr` */
-          creation_num: string;
+          creation_num: p.U64;
 
           /** Address that created the GUID */
-          addr: string;
+          addr: p.RawAddress;
         };
       };
     };
   };
   withdraw_events: {
     /** Total number of events emitted to this event stream. */
-    counter: string;
+    counter: p.U64;
 
     /** A globally unique ID for this event stream. */
     guid: {
@@ -98,10 +98,10 @@ export type CoinStoreData = {
       guid: {
         id: {
           /** If creation_num is `i`, this is the `i+1`th GUID created by `addr` */
-          creation_num: string;
+          creation_num: p.U64;
 
           /** Address that created the GUID */
-          addr: string;
+          addr: p.RawAddress;
         };
       };
     };
@@ -110,21 +110,21 @@ export type CoinStoreData = {
 
 /** Event emitted when some amount of a coin is deposited into an account. */
 export type DepositEventData = {
-  amount: string;
+  amount: p.U64;
 };
 
 /** Set of data sent to the event stream when a new coin store is registered. */
 export type RegisterEventData = {
   type_info: {
-    account_address: string;
-    module_name: string;
-    struct_name: string;
+    account_address: p.RawAddress;
+    module_name: p.ByteString;
+    struct_name: p.ByteString;
   };
 };
 
 /** Event emitted when some amount of a coin is withdrawn from an account. */
 export type WithdrawEventData = {
-  amount: string;
+  amount: p.U64;
 };
 
 /** Payload arguments for {@link entry.register}. */
@@ -138,9 +138,9 @@ export type RegisterArgs = {
 export type TransferArgs = {
   args: {
     /** IDL type: `Address` */
-    to: string;
+    to: p.RawAddress;
     /** IDL type: `U64` */
-    amount: string;
+    amount: p.U64;
   };
   typeArgs: {
     CoinType: string;

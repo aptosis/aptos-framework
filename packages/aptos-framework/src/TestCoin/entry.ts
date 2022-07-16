@@ -3,6 +3,7 @@
  *
  * @module
  */
+import * as p from "@movingco/prelude";
 
 import type * as mod from "./index.js";
 import type * as payloads from "./payloads.js";
@@ -11,7 +12,10 @@ export const mint = ({ args }: mod.MintArgs): payloads.Mint => ({
   type: "script_function_payload",
   function: "0x1::TestCoin::mint",
   type_arguments: [],
-  arguments: [args.dst_addr, args.amount],
+  arguments: [
+    p.serializers.hexString(args.dst_addr),
+    p.serializers.u64(args.amount),
+  ],
 });
 
 /** Claim the delegated mint capability and destroy the delegated token. */
@@ -29,5 +33,5 @@ export const delegate_mint_capability = ({
   type: "script_function_payload",
   function: "0x1::TestCoin::delegate_mint_capability",
   type_arguments: [],
-  arguments: [args.to],
+  arguments: [p.serializers.hexString(args.to)],
 });

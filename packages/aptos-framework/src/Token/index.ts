@@ -10,7 +10,7 @@ import type * as p from "@movingco/prelude";
 /** Capability required to burn tokens. */
 export type BurnCapabilityData = {
   token_id: {
-    creator: string;
+    creator: p.RawAddress;
     collection: string;
     name: string;
   };
@@ -19,17 +19,17 @@ export type BurnCapabilityData = {
 /** Set of data sent to the event stream during a receive */
 export type DepositEventData = {
   id: {
-    creator: string;
+    creator: p.RawAddress;
     collection: string;
     name: string;
   };
-  amount: string;
+  amount: p.U64;
 };
 
 /** Capability required to mint tokens. */
 export type MintCapabilityData = {
   token_id: {
-    creator: string;
+    creator: p.RawAddress;
     collection: string;
     name: string;
   };
@@ -38,21 +38,21 @@ export type MintCapabilityData = {
 /** Set of data sent to the event stream during a withdrawal */
 export type WithdrawEventData = {
   id: {
-    creator: string;
+    creator: p.RawAddress;
     collection: string;
     name: string;
   };
-  amount: string;
+  amount: p.U64;
 };
 
 /** Represents ownership of a the data associated with this Token */
 export type TokenData = {
   id: {
-    creator: string;
+    creator: p.RawAddress;
     collection: string;
     name: string;
   };
-  value: string;
+  value: p.U64;
 };
 
 /** Represent the collection metadata */
@@ -60,33 +60,33 @@ export type CollectionData = {
   description: string;
   name: string;
   uri: string;
-  count: string;
+  count: p.U64;
   maximum: {
-    vec: ReadonlyArray<string>;
+    vec: ReadonlyArray<p.U64>;
   };
 };
 
 /** Represent collection and token metadata for a creator */
 export type CollectionsData = {
   collections: {
-    handle: string;
-    length: string;
+    handle: p.U128;
+    length: p.U64;
   };
   token_data: {
-    handle: string;
-    length: string;
+    handle: p.U128;
+    length: p.U64;
   };
   burn_capabilities: {
-    handle: string;
-    length: string;
+    handle: p.U128;
+    length: p.U64;
   };
   mint_capabilities: {
-    handle: string;
-    length: string;
+    handle: p.U128;
+    length: p.U64;
   };
   create_collection_events: {
     /** Total number of events emitted to this event stream. */
-    counter: string;
+    counter: p.U64;
 
     /** A globally unique ID for this event stream. */
     guid: {
@@ -94,17 +94,17 @@ export type CollectionsData = {
       guid: {
         id: {
           /** If creation_num is `i`, this is the `i+1`th GUID created by `addr` */
-          creation_num: string;
+          creation_num: p.U64;
 
           /** Address that created the GUID */
-          addr: string;
+          addr: p.RawAddress;
         };
       };
     };
   };
   create_token_events: {
     /** Total number of events emitted to this event stream. */
-    counter: string;
+    counter: p.U64;
 
     /** A globally unique ID for this event stream. */
     guid: {
@@ -112,17 +112,17 @@ export type CollectionsData = {
       guid: {
         id: {
           /** If creation_num is `i`, this is the `i+1`th GUID created by `addr` */
-          creation_num: string;
+          creation_num: p.U64;
 
           /** Address that created the GUID */
-          addr: string;
+          addr: p.RawAddress;
         };
       };
     };
   };
   mint_token_events: {
     /** Total number of events emitted to this event stream. */
-    counter: string;
+    counter: p.U64;
 
     /** A globally unique ID for this event stream. */
     guid: {
@@ -130,10 +130,10 @@ export type CollectionsData = {
       guid: {
         id: {
           /** If creation_num is `i`, this is the `i+1`th GUID created by `addr` */
-          creation_num: string;
+          creation_num: p.U64;
 
           /** Address that created the GUID */
-          addr: string;
+          addr: p.RawAddress;
         };
       };
     };
@@ -142,19 +142,19 @@ export type CollectionsData = {
 
 /** create collection event with creator address and collection name */
 export type CreateCollectionEventData = {
-  creator: string;
+  creator: p.RawAddress;
   collection_name: string;
   uri: string;
   description: string;
   maximum: {
-    vec: ReadonlyArray<string>;
+    vec: ReadonlyArray<p.U64>;
   };
 };
 
 /** token creation event id of token created */
 export type CreateTokenEventData = {
   id: {
-    creator: string;
+    creator: p.RawAddress;
     collection: string;
     name: string;
   };
@@ -163,34 +163,34 @@ export type CreateTokenEventData = {
     description: string;
     name: string;
     maximum: {
-      vec: ReadonlyArray<string>;
+      vec: ReadonlyArray<p.U64>;
     };
     supply: {
-      vec: ReadonlyArray<string>;
+      vec: ReadonlyArray<p.U64>;
     };
     uri: string;
     royalty: {
-      royalty_points_per_million: string;
-      creator_account: string;
+      royalty_points_per_million: p.U64;
+      creator_account: p.RawAddress;
     };
   };
-  initial_balance: string;
+  initial_balance: p.U64;
 };
 
 /** mint token event. This event triggered when creator adds more supply to existing token */
 export type MintTokenEventData = {
   id: {
-    creator: string;
+    creator: p.RawAddress;
     collection: string;
     name: string;
   };
-  amount: string;
+  amount: p.U64;
 };
 
 /** The royalty of a token */
 export type RoyaltyData = {
-  royalty_points_per_million: string;
-  creator_account: string;
+  royalty_points_per_million: p.U64;
+  creator_account: p.RawAddress;
 };
 
 /** The data associated with the Tokens */
@@ -199,21 +199,21 @@ export type TokenDataData = {
   description: string;
   name: string;
   maximum: {
-    vec: ReadonlyArray<string>;
+    vec: ReadonlyArray<p.U64>;
   };
   supply: {
-    vec: ReadonlyArray<string>;
+    vec: ReadonlyArray<p.U64>;
   };
   uri: string;
   royalty: {
-    royalty_points_per_million: string;
-    creator_account: string;
+    royalty_points_per_million: p.U64;
+    creator_account: p.RawAddress;
   };
 };
 
 /** Represents a unique identity for the token */
 export type TokenIdData = {
-  creator: string;
+  creator: p.RawAddress;
   collection: string;
   name: string;
 };
@@ -221,12 +221,12 @@ export type TokenIdData = {
 /** Represents token resources owned by token owner */
 export type TokenStoreData = {
   tokens: {
-    handle: string;
-    length: string;
+    handle: p.U128;
+    length: p.U64;
   };
   deposit_events: {
     /** Total number of events emitted to this event stream. */
-    counter: string;
+    counter: p.U64;
 
     /** A globally unique ID for this event stream. */
     guid: {
@@ -234,17 +234,17 @@ export type TokenStoreData = {
       guid: {
         id: {
           /** If creation_num is `i`, this is the `i+1`th GUID created by `addr` */
-          creation_num: string;
+          creation_num: p.U64;
 
           /** Address that created the GUID */
-          addr: string;
+          addr: p.RawAddress;
         };
       };
     };
   };
   withdraw_events: {
     /** Total number of events emitted to this event stream. */
-    counter: string;
+    counter: p.U64;
 
     /** A globally unique ID for this event stream. */
     guid: {
@@ -252,10 +252,10 @@ export type TokenStoreData = {
       guid: {
         id: {
           /** If creation_num is `i`, this is the `i+1`th GUID created by `addr` */
-          creation_num: string;
+          creation_num: p.U64;
 
           /** Address that created the GUID */
-          addr: string;
+          addr: p.RawAddress;
         };
       };
     };
@@ -266,13 +266,13 @@ export type TokenStoreData = {
 export type CreateLimitedCollectionScriptArgs = {
   args: {
     /** IDL type: `Vector(U8)` */
-    name: string;
+    name: p.ByteString;
     /** IDL type: `Vector(U8)` */
-    description: string;
+    description: p.ByteString;
     /** IDL type: `Vector(U8)` */
-    uri: string;
+    uri: p.ByteString;
     /** IDL type: `U64` */
-    maximum: string;
+    maximum: p.U64;
   };
 };
 
@@ -280,21 +280,21 @@ export type CreateLimitedCollectionScriptArgs = {
 export type CreateLimitedTokenScriptArgs = {
   args: {
     /** IDL type: `Vector(U8)` */
-    collection: string;
+    collection: p.ByteString;
     /** IDL type: `Vector(U8)` */
-    name: string;
+    name: p.ByteString;
     /** IDL type: `Vector(U8)` */
-    description: string;
+    description: p.ByteString;
     /** IDL type: `Bool` */
     monitor_supply: boolean;
     /** IDL type: `U64` */
-    initial_balance: string;
+    initial_balance: p.U64;
     /** IDL type: `U64` */
-    maximum: string;
+    maximum: p.U64;
     /** IDL type: `Vector(U8)` */
-    uri: string;
+    uri: p.ByteString;
     /** IDL type: `U64` */
-    royalty_points_per_million: string;
+    royalty_points_per_million: p.U64;
   };
 };
 
@@ -302,11 +302,11 @@ export type CreateLimitedTokenScriptArgs = {
 export type CreateUnlimitedCollectionScriptArgs = {
   args: {
     /** IDL type: `Vector(U8)` */
-    name: string;
+    name: p.ByteString;
     /** IDL type: `Vector(U8)` */
-    description: string;
+    description: p.ByteString;
     /** IDL type: `Vector(U8)` */
-    uri: string;
+    uri: p.ByteString;
   };
 };
 
@@ -314,19 +314,19 @@ export type CreateUnlimitedCollectionScriptArgs = {
 export type CreateUnlimitedTokenScriptArgs = {
   args: {
     /** IDL type: `Vector(U8)` */
-    collection: string;
+    collection: p.ByteString;
     /** IDL type: `Vector(U8)` */
-    name: string;
+    name: p.ByteString;
     /** IDL type: `Vector(U8)` */
-    description: string;
+    description: p.ByteString;
     /** IDL type: `Bool` */
     monitor_supply: boolean;
     /** IDL type: `U64` */
-    initial_balance: string;
+    initial_balance: p.U64;
     /** IDL type: `Vector(U8)` */
-    uri: string;
+    uri: p.ByteString;
     /** IDL type: `U64` */
-    royalty_points_per_million: string;
+    royalty_points_per_million: p.U64;
   };
 };
 
@@ -334,13 +334,13 @@ export type CreateUnlimitedTokenScriptArgs = {
 export type DirectTransferScriptArgs = {
   args: {
     /** IDL type: `Address` */
-    creators_address: string;
+    creators_address: p.RawAddress;
     /** IDL type: `Vector(U8)` */
-    collection: string;
+    collection: p.ByteString;
     /** IDL type: `Vector(U8)` */
-    name: string;
+    name: p.ByteString;
     /** IDL type: `U64` */
-    amount: string;
+    amount: p.U64;
   };
 };
 
@@ -348,11 +348,11 @@ export type DirectTransferScriptArgs = {
 export type InitializeTokenForIdArgs = {
   args: {
     /** IDL type: `Address` */
-    creators_address: string;
+    creators_address: p.RawAddress;
     /** IDL type: `Vector(U8)` */
-    collection: string;
+    collection: p.ByteString;
     /** IDL type: `Vector(U8)` */
-    name: string;
+    name: p.ByteString;
   };
 };
 

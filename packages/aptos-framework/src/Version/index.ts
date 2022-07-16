@@ -8,14 +8,14 @@
 import type * as p from "@movingco/prelude";
 
 export type VersionData = {
-  major: string;
+  major: p.U64;
 };
 
 /** Payload arguments for {@link entry.set_version}. */
 export type SetVersionArgs = {
   args: {
     /** IDL type: `U64` */
-    major: string;
+    major: p.U64;
   };
 };
 

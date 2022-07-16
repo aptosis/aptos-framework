@@ -26,7 +26,7 @@ export type CapabilitiesData = {
 export type BurnArgs = {
   args: {
     /** IDL type: `U64` */
-    amount: string;
+    amount: p.U64;
   };
   typeArgs: {
     CoinType: string;
@@ -37,11 +37,11 @@ export type BurnArgs = {
 export type InitializeArgs = {
   args: {
     /** IDL type: `Vector(U8)` */
-    name: string;
+    name: p.ByteString;
     /** IDL type: `Vector(U8)` */
-    symbol: string;
+    symbol: p.ByteString;
     /** IDL type: `U64` */
-    decimals: string;
+    decimals: p.U64;
     /** IDL type: `Bool` */
     monitor_supply: boolean;
   };
@@ -54,9 +54,9 @@ export type InitializeArgs = {
 export type MintArgs = {
   args: {
     /** IDL type: `Address` */
-    dst_addr: string;
+    dst_addr: p.RawAddress;
     /** IDL type: `U64` */
-    amount: string;
+    amount: p.U64;
   };
   typeArgs: {
     CoinType: string;

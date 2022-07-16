@@ -9,8 +9,8 @@ import type * as p from "@movingco/prelude";
 
 export type TokenTransfersData = {
   pending_claims: {
-    handle: string;
-    length: string;
+    handle: p.U128;
+    length: p.U64;
   };
 };
 
@@ -18,13 +18,13 @@ export type TokenTransfersData = {
 export type CancelOfferScriptArgs = {
   args: {
     /** IDL type: `Address` */
-    receiver: string;
+    receiver: p.RawAddress;
     /** IDL type: `Address` */
-    creator: string;
+    creator: p.RawAddress;
     /** IDL type: `Vector(U8)` */
-    collection: string;
+    collection: p.ByteString;
     /** IDL type: `Vector(U8)` */
-    name: string;
+    name: p.ByteString;
   };
 };
 
@@ -32,13 +32,13 @@ export type CancelOfferScriptArgs = {
 export type ClaimScriptArgs = {
   args: {
     /** IDL type: `Address` */
-    sender: string;
+    sender: p.RawAddress;
     /** IDL type: `Address` */
-    creator: string;
+    creator: p.RawAddress;
     /** IDL type: `Vector(U8)` */
-    collection: string;
+    collection: p.ByteString;
     /** IDL type: `Vector(U8)` */
-    name: string;
+    name: p.ByteString;
   };
 };
 
@@ -46,15 +46,15 @@ export type ClaimScriptArgs = {
 export type OfferScriptArgs = {
   args: {
     /** IDL type: `Address` */
-    receiver: string;
+    receiver: p.RawAddress;
     /** IDL type: `Address` */
-    creator: string;
+    creator: p.RawAddress;
     /** IDL type: `Vector(U8)` */
-    collection: string;
+    collection: p.ByteString;
     /** IDL type: `Vector(U8)` */
-    name: string;
+    name: p.ByteString;
     /** IDL type: `U64` */
-    amount: string;
+    amount: p.U64;
   };
 };
 

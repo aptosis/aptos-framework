@@ -7,9 +7,9 @@ import type * as p from "@movingco/prelude";
 
 /** Resource representing an account. */
 export type AccountData = {
-  authentication_key: string;
-  sequence_number: string;
-  self_address: string;
+  authentication_key: p.ByteString;
+  sequence_number: p.U64;
+  self_address: p.RawAddress;
 };
 
 /**
@@ -17,26 +17,26 @@ export type AccountData = {
  * correct chain-specific prologue and epilogue functions
  */
 export type ChainSpecificAccountInfoData = {
-  module_addr: string;
-  module_name: string;
-  script_prologue_name: string;
-  module_prologue_name: string;
-  writeset_prologue_name: string;
-  multi_agent_prologue_name: string;
-  user_epilogue_name: string;
-  writeset_epilogue_name: string;
+  module_addr: p.RawAddress;
+  module_name: p.ByteString;
+  script_prologue_name: p.ByteString;
+  module_prologue_name: p.ByteString;
+  writeset_prologue_name: p.ByteString;
+  multi_agent_prologue_name: p.ByteString;
+  user_epilogue_name: p.ByteString;
+  writeset_epilogue_name: p.ByteString;
   currency_code_required: boolean;
 };
 
 export type SignerCapabilityData = {
-  account: string;
+  account: p.RawAddress;
 };
 
 /** Payload arguments for {@link entry.create_account}. */
 export type CreateAccountArgs = {
   args: {
     /** IDL type: `Address` */
-    auth_key: string;
+    auth_key: p.RawAddress;
   };
 };
 
@@ -44,7 +44,7 @@ export type CreateAccountArgs = {
 export type RotateAuthenticationKeyArgs = {
   args: {
     /** IDL type: `Vector(U8)` */
-    new_auth_key: string;
+    new_auth_key: p.ByteString;
   };
 };
 

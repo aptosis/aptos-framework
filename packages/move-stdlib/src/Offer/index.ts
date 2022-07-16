@@ -24,7 +24,7 @@ import type * as p from "@movingco/prelude";
 /** A wrapper around value `offered` that can be claimed by the address stored in `for`. */
 export type OfferData<_Offered = unknown> = {
   offered: _Offered;
-  for: string;
+  for: p.RawAddress;
 };
 
 export { idl } from "./idl.js";

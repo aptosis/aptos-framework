@@ -46,9 +46,9 @@ import type * as p from "@movingco/prelude";
 export type ContainerData = {
   store: {
     data: ReadonlyArray<{
-      key: string;
+      key: p.RawAddress;
       value: {
-        account: string;
+        account: p.RawAddress;
       };
     }>;
   };
@@ -58,9 +58,9 @@ export type ContainerData = {
 export type CreateResourceAccountArgs = {
   args: {
     /** IDL type: `Vector(U8)` */
-    seed: string;
+    seed: p.ByteString;
     /** IDL type: `Vector(U8)` */
-    optional_auth_key: string;
+    optional_auth_key: p.ByteString;
   };
 };
 

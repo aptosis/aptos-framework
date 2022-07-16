@@ -19,7 +19,7 @@ import type * as p from "@movingco/prelude";
 
 /** A singleton resource holding the current Unix time in microseconds */
 export type CurrentTimeMicrosecondsData = {
-  microseconds: string;
+  microseconds: p.U64;
 };
 
 export { idl } from "./idl.js";

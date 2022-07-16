@@ -9,7 +9,7 @@ import type * as p from "@movingco/prelude";
 export type AddValidatorArgs = {
   args: {
     /** IDL type: `Address` */
-    _validator_addr: string;
+    _validator_addr: p.RawAddress;
   };
 };
 
@@ -17,9 +17,9 @@ export type AddValidatorArgs = {
 export type CreateValidatorAccountArgs = {
   args: {
     /** IDL type: `Address` */
-    _new_account_address: string;
+    _new_account_address: p.RawAddress;
     /** IDL type: `Vector(U8)` */
-    _human_name: string;
+    _human_name: p.ByteString;
   };
 };
 
@@ -27,9 +27,9 @@ export type CreateValidatorAccountArgs = {
 export type CreateValidatorOperatorAccountArgs = {
   args: {
     /** IDL type: `Address` */
-    _new_account_address: string;
+    _new_account_address: p.RawAddress;
     /** IDL type: `Vector(U8)` */
-    _human_name: string;
+    _human_name: p.ByteString;
   };
 };
 
@@ -37,13 +37,13 @@ export type CreateValidatorOperatorAccountArgs = {
 export type RegisterValidatorConfigArgs = {
   args: {
     /** IDL type: `Address` */
-    _validator_address: string;
+    _validator_address: p.RawAddress;
     /** IDL type: `Vector(U8)` */
-    _consensus_pubkey: string;
+    _consensus_pubkey: p.ByteString;
     /** IDL type: `Vector(U8)` */
-    _validator_network_addresses: string;
+    _validator_network_addresses: p.ByteString;
     /** IDL type: `Vector(U8)` */
-    _fullnode_network_addresses: string;
+    _fullnode_network_addresses: p.ByteString;
   };
 };
 
@@ -51,7 +51,7 @@ export type RegisterValidatorConfigArgs = {
 export type RemoveValidatorArgs = {
   args: {
     /** IDL type: `Address` */
-    _validator_addr: string;
+    _validator_addr: p.RawAddress;
   };
 };
 
@@ -59,13 +59,13 @@ export type RemoveValidatorArgs = {
 export type SetValidatorConfigAndReconfigureArgs = {
   args: {
     /** IDL type: `Address` */
-    _validator_account: string;
+    _validator_account: p.RawAddress;
     /** IDL type: `Vector(U8)` */
-    _consensus_pubkey: string;
+    _consensus_pubkey: p.ByteString;
     /** IDL type: `Vector(U8)` */
-    _validator_network_addresses: string;
+    _validator_network_addresses: p.ByteString;
     /** IDL type: `Vector(U8)` */
-    _fullnode_network_addresses: string;
+    _fullnode_network_addresses: p.ByteString;
   };
 };
 
@@ -73,9 +73,9 @@ export type SetValidatorConfigAndReconfigureArgs = {
 export type SetValidatorOperatorArgs = {
   args: {
     /** IDL type: `Vector(U8)` */
-    _operator_name: string;
+    _operator_name: p.ByteString;
     /** IDL type: `Address` */
-    _operator_account: string;
+    _operator_account: p.RawAddress;
   };
 };
 

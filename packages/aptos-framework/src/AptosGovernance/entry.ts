@@ -3,6 +3,7 @@
  *
  * @module
  */
+import * as p from "@movingco/prelude";
 
 import type * as mod from "./index.js";
 import type * as payloads from "./payloads.js";
@@ -17,7 +18,10 @@ export const create_proposal = ({
   type: "script_function_payload",
   function: "0x1::AptosGovernance::create_proposal",
   type_arguments: [],
-  arguments: [args.stake_pool, args.execution_hash],
+  arguments: [
+    p.serializers.hexString(args.stake_pool),
+    p.serializers.hexString(args.execution_hash),
+  ],
 });
 
 /** Vote on proposal with `proposal_id` and voting power from `stake_pool`. */
@@ -25,5 +29,9 @@ export const vote = ({ args }: mod.VoteArgs): payloads.Vote => ({
   type: "script_function_payload",
   function: "0x1::AptosGovernance::vote",
   type_arguments: [],
-  arguments: [args.stake_pool, args.proposal_id, args.should_pass],
+  arguments: [
+    p.serializers.hexString(args.stake_pool),
+    p.serializers.u64(args.proposal_id),
+    args.should_pass,
+  ],
 });

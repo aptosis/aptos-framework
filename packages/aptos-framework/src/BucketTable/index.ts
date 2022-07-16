@@ -12,17 +12,17 @@ import type * as p from "@movingco/prelude";
 
 export type BucketTableData<_K = unknown, _V = unknown> = {
   buckets: {
-    handle: string;
-    length: string;
+    handle: p.U128;
+    length: p.U64;
   };
-  num_buckets: string;
+  num_buckets: p.U64;
   level: number;
-  len: string;
+  len: p.U64;
 };
 
 /** BucketTable entry contains both the key and value. */
 export type EntryData<_K = unknown, _V = unknown> = {
-  hash: string;
+  hash: p.U64;
   key: _K;
   value: _V;
 };

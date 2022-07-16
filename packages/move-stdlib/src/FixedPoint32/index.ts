@@ -20,7 +20,7 @@ import type * as p from "@movingco/prelude";
  * decimal.
  */
 export type FixedPoint32Data = {
-  value: string;
+  value: p.U64;
 };
 
 export { idl } from "./idl.js";

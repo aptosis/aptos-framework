@@ -16,13 +16,13 @@ export type CapabilitiesData = {
 
 /** Delegation token created by delegator and can be claimed by the delegatee as MintCapability. */
 export type DelegatedMintCapabilityData = {
-  to: string;
+  to: p.RawAddress;
 };
 
 /** The container stores the current pending delegations. */
 export type DelegationsData = {
   inner: ReadonlyArray<{
-    to: string;
+    to: p.RawAddress;
   }>;
 };
 
@@ -30,9 +30,9 @@ export type DelegationsData = {
 export type MintArgs = {
   args: {
     /** IDL type: `Address` */
-    dst_addr: string;
+    dst_addr: p.RawAddress;
     /** IDL type: `U64` */
-    amount: string;
+    amount: p.U64;
   };
 };
 
@@ -40,7 +40,7 @@ export type MintArgs = {
 export type DelegateMintCapabilityArgs = {
   args: {
     /** IDL type: `Address` */
-    to: string;
+    to: p.RawAddress;
   };
 };
 

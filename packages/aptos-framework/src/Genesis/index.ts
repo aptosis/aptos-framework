@@ -9,17 +9,17 @@ import type * as p from "@movingco/prelude";
 export type CreateInitializeValidatorsArgs = {
   args: {
     /** IDL type: `Vector(Address)` */
-    owners: ReadonlyArray<string>;
+    owners: ReadonlyArray<p.RawAddress>;
     /** IDL type: `Vector(Vector(U8))` */
-    consensus_pubkeys: ReadonlyArray<string>;
+    consensus_pubkeys: ReadonlyArray<p.ByteString>;
     /** IDL type: `Vector(Vector(U8))` */
-    proof_of_possession: ReadonlyArray<string>;
+    proof_of_possession: ReadonlyArray<p.ByteString>;
     /** IDL type: `Vector(Vector(U8))` */
-    validator_network_addresses: ReadonlyArray<string>;
+    validator_network_addresses: ReadonlyArray<p.ByteString>;
     /** IDL type: `Vector(Vector(U8))` */
-    full_node_network_addresses: ReadonlyArray<string>;
+    full_node_network_addresses: ReadonlyArray<p.ByteString>;
     /** IDL type: `Vector(U64)` */
-    staking_distribution: ReadonlyArray<string>;
+    staking_distribution: ReadonlyArray<p.U64>;
   };
 };
 

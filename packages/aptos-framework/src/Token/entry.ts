@@ -3,6 +3,7 @@
  *
  * @module
  */
+import * as p from "@movingco/prelude";
 
 import type * as mod from "./index.js";
 import type * as payloads from "./payloads.js";
@@ -13,7 +14,12 @@ export const create_limited_collection_script = ({
   type: "script_function_payload",
   function: "0x1::Token::create_limited_collection_script",
   type_arguments: [],
-  arguments: [args.name, args.description, args.uri, args.maximum],
+  arguments: [
+    p.serializers.hexString(args.name),
+    p.serializers.hexString(args.description),
+    p.serializers.hexString(args.uri),
+    p.serializers.u64(args.maximum),
+  ],
 });
 
 export const create_limited_token_script = ({
@@ -23,14 +29,14 @@ export const create_limited_token_script = ({
   function: "0x1::Token::create_limited_token_script",
   type_arguments: [],
   arguments: [
-    args.collection,
-    args.name,
-    args.description,
+    p.serializers.hexString(args.collection),
+    p.serializers.hexString(args.name),
+    p.serializers.hexString(args.description),
     args.monitor_supply,
-    args.initial_balance,
-    args.maximum,
-    args.uri,
-    args.royalty_points_per_million,
+    p.serializers.u64(args.initial_balance),
+    p.serializers.u64(args.maximum),
+    p.serializers.hexString(args.uri),
+    p.serializers.u64(args.royalty_points_per_million),
   ],
 });
 
@@ -40,7 +46,11 @@ export const create_unlimited_collection_script = ({
   type: "script_function_payload",
   function: "0x1::Token::create_unlimited_collection_script",
   type_arguments: [],
-  arguments: [args.name, args.description, args.uri],
+  arguments: [
+    p.serializers.hexString(args.name),
+    p.serializers.hexString(args.description),
+    p.serializers.hexString(args.uri),
+  ],
 });
 
 export const create_unlimited_token_script = ({
@@ -50,13 +60,13 @@ export const create_unlimited_token_script = ({
   function: "0x1::Token::create_unlimited_token_script",
   type_arguments: [],
   arguments: [
-    args.collection,
-    args.name,
-    args.description,
+    p.serializers.hexString(args.collection),
+    p.serializers.hexString(args.name),
+    p.serializers.hexString(args.description),
     args.monitor_supply,
-    args.initial_balance,
-    args.uri,
-    args.royalty_points_per_million,
+    p.serializers.u64(args.initial_balance),
+    p.serializers.hexString(args.uri),
+    p.serializers.u64(args.royalty_points_per_million),
   ],
 });
 
@@ -66,7 +76,12 @@ export const direct_transfer_script = ({
   type: "script_function_payload",
   function: "0x1::Token::direct_transfer_script",
   type_arguments: [],
-  arguments: [args.creators_address, args.collection, args.name, args.amount],
+  arguments: [
+    p.serializers.hexString(args.creators_address),
+    p.serializers.hexString(args.collection),
+    p.serializers.hexString(args.name),
+    p.serializers.u64(args.amount),
+  ],
 });
 
 export const initialize_token_for_id = ({
@@ -75,7 +90,11 @@ export const initialize_token_for_id = ({
   type: "script_function_payload",
   function: "0x1::Token::initialize_token_for_id",
   type_arguments: [],
-  arguments: [args.creators_address, args.collection, args.name],
+  arguments: [
+    p.serializers.hexString(args.creators_address),
+    p.serializers.hexString(args.collection),
+    p.serializers.hexString(args.name),
+  ],
 });
 
 export const initialize_token_script = (): payloads.InitializeTokenScript => ({

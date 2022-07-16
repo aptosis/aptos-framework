@@ -19,7 +19,7 @@ export type TransactionPublishingOptionData = {
    * Only script hashes in the following list can be executed by the network. If the vector is empty, no
    * limitation would be enforced.
    */
-  script_allow_list: ReadonlyArray<string>;
+  script_allow_list: ReadonlyArray<p.ByteString>;
 
   /** Anyone can publish new module if this flag is set to true. */
   module_publishing_allowed: boolean;

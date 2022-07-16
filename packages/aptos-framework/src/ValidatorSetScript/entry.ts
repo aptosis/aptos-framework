@@ -3,6 +3,7 @@
  *
  * @module
  */
+import * as p from "@movingco/prelude";
 
 import type * as mod from "./index.js";
 import type * as payloads from "./payloads.js";
@@ -13,7 +14,7 @@ export const add_validator = ({
   type: "script_function_payload",
   function: "0x1::ValidatorSetScript::add_validator",
   type_arguments: [],
-  arguments: [args._validator_addr],
+  arguments: [p.serializers.hexString(args._validator_addr)],
 });
 
 export const create_validator_account = ({
@@ -22,7 +23,10 @@ export const create_validator_account = ({
   type: "script_function_payload",
   function: "0x1::ValidatorSetScript::create_validator_account",
   type_arguments: [],
-  arguments: [args._new_account_address, args._human_name],
+  arguments: [
+    p.serializers.hexString(args._new_account_address),
+    p.serializers.hexString(args._human_name),
+  ],
 });
 
 export const create_validator_operator_account = ({
@@ -31,7 +35,10 @@ export const create_validator_operator_account = ({
   type: "script_function_payload",
   function: "0x1::ValidatorSetScript::create_validator_operator_account",
   type_arguments: [],
-  arguments: [args._new_account_address, args._human_name],
+  arguments: [
+    p.serializers.hexString(args._new_account_address),
+    p.serializers.hexString(args._human_name),
+  ],
 });
 
 export const register_validator_config = ({
@@ -41,10 +48,10 @@ export const register_validator_config = ({
   function: "0x1::ValidatorSetScript::register_validator_config",
   type_arguments: [],
   arguments: [
-    args._validator_address,
-    args._consensus_pubkey,
-    args._validator_network_addresses,
-    args._fullnode_network_addresses,
+    p.serializers.hexString(args._validator_address),
+    p.serializers.hexString(args._consensus_pubkey),
+    p.serializers.hexString(args._validator_network_addresses),
+    p.serializers.hexString(args._fullnode_network_addresses),
   ],
 });
 
@@ -54,7 +61,7 @@ export const remove_validator = ({
   type: "script_function_payload",
   function: "0x1::ValidatorSetScript::remove_validator",
   type_arguments: [],
-  arguments: [args._validator_addr],
+  arguments: [p.serializers.hexString(args._validator_addr)],
 });
 
 export const set_validator_config_and_reconfigure = ({
@@ -64,10 +71,10 @@ export const set_validator_config_and_reconfigure = ({
   function: "0x1::ValidatorSetScript::set_validator_config_and_reconfigure",
   type_arguments: [],
   arguments: [
-    args._validator_account,
-    args._consensus_pubkey,
-    args._validator_network_addresses,
-    args._fullnode_network_addresses,
+    p.serializers.hexString(args._validator_account),
+    p.serializers.hexString(args._consensus_pubkey),
+    p.serializers.hexString(args._validator_network_addresses),
+    p.serializers.hexString(args._fullnode_network_addresses),
   ],
 });
 
@@ -77,5 +84,8 @@ export const set_validator_operator = ({
   type: "script_function_payload",
   function: "0x1::ValidatorSetScript::set_validator_operator",
   type_arguments: [],
-  arguments: [args._operator_name, args._operator_account],
+  arguments: [
+    p.serializers.hexString(args._operator_name),
+    p.serializers.hexString(args._operator_account),
+  ],
 });

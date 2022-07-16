@@ -11,31 +11,31 @@ import type * as p from "@movingco/prelude";
 export type GUIDData = {
   id: {
     /** If creation_num is `i`, this is the `i+1`th GUID created by `addr` */
-    creation_num: string;
+    creation_num: p.U64;
 
     /** Address that created the GUID */
-    addr: string;
+    addr: p.RawAddress;
   };
 };
 
 /** A capability to create a privileged identifier on behalf of the given address */
 export type CreateCapabilityData = {
-  addr: string;
+  addr: p.RawAddress;
 };
 
 /** A generator for new GUIDs. */
 export type GeneratorData = {
   /** A monotonically increasing counter */
-  counter: string;
+  counter: p.U64;
 };
 
 /** A non-privileged identifier that can be freely created by anyone. Useful for looking up GUID's. */
 export type IDData = {
   /** If creation_num is `i`, this is the `i+1`th GUID created by `addr` */
-  creation_num: string;
+  creation_num: p.U64;
 
   /** Address that created the GUID */
-  addr: string;
+  addr: p.RawAddress;
 };
 
 export { idl } from "./idl.js";

@@ -3,6 +3,7 @@
  *
  * @module
  */
+import * as p from "@movingco/prelude";
 
 import type * as mod from "./index.js";
 import type * as payloads from "./payloads.js";
@@ -13,7 +14,12 @@ export const cancel_offer_script = ({
   type: "script_function_payload",
   function: "0x1::TokenTransfers::cancel_offer_script",
   type_arguments: [],
-  arguments: [args.receiver, args.creator, args.collection, args.name],
+  arguments: [
+    p.serializers.hexString(args.receiver),
+    p.serializers.hexString(args.creator),
+    p.serializers.hexString(args.collection),
+    p.serializers.hexString(args.name),
+  ],
 });
 
 export const claim_script = ({
@@ -22,7 +28,12 @@ export const claim_script = ({
   type: "script_function_payload",
   function: "0x1::TokenTransfers::claim_script",
   type_arguments: [],
-  arguments: [args.sender, args.creator, args.collection, args.name],
+  arguments: [
+    p.serializers.hexString(args.sender),
+    p.serializers.hexString(args.creator),
+    p.serializers.hexString(args.collection),
+    p.serializers.hexString(args.name),
+  ],
 });
 
 export const offer_script = ({
@@ -32,10 +43,10 @@ export const offer_script = ({
   function: "0x1::TokenTransfers::offer_script",
   type_arguments: [],
   arguments: [
-    args.receiver,
-    args.creator,
-    args.collection,
-    args.name,
-    args.amount,
+    p.serializers.hexString(args.receiver),
+    p.serializers.hexString(args.creator),
+    p.serializers.hexString(args.collection),
+    p.serializers.hexString(args.name),
+    p.serializers.u64(args.amount),
   ],
 });

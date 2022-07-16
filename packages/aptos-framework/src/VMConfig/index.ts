@@ -12,29 +12,29 @@ import type * as p from "@movingco/prelude";
 export type VMConfigData = {
   /** Cost of running the VM. */
   gas_schedule: {
-    instruction_schedule: string;
-    native_schedule: string;
+    instruction_schedule: p.ByteString;
+    native_schedule: p.ByteString;
     gas_constants: {
       /** The cost per-byte read from global storage. */
-      global_memory_per_byte_cost: string;
+      global_memory_per_byte_cost: p.U64;
 
       /** The cost per-byte written to storage. */
-      global_memory_per_byte_write_cost: string;
+      global_memory_per_byte_write_cost: p.U64;
 
       /**
        * The flat minimum amount of gas required for any transaction.
        * Charged at the start of execution.
        */
-      min_transaction_gas_units: string;
+      min_transaction_gas_units: p.U64;
 
       /** Any transaction over this size will be charged an additional amount per byte. */
-      large_transaction_cutoff: string;
+      large_transaction_cutoff: p.U64;
 
       /**
        * The units of gas to be charged per byte over the `large_transaction_cutoff` in addition to
        * `min_transaction_gas_units` for transactions whose size exceeds `large_transaction_cutoff`.
        */
-      intrinsic_gas_per_byte: string;
+      intrinsic_gas_per_byte: p.U64;
 
       /**
        * ~5 microseconds should equal one unit of computational gas. We bound the maximum
@@ -44,41 +44,41 @@ export type VMConfigData = {
        * NB: The bound is set quite high since custom scripts aren't allowed except from predefined
        * and vetted senders.
        */
-      maximum_number_of_gas_units: string;
+      maximum_number_of_gas_units: p.U64;
 
       /** The minimum gas price that a transaction can be submitted with. */
-      min_price_per_gas_unit: string;
+      min_price_per_gas_unit: p.U64;
 
       /** The maximum gas unit price that a transaction can be submitted with. */
-      max_price_per_gas_unit: string;
-      max_transaction_size_in_bytes: string;
-      gas_unit_scaling_factor: string;
-      default_account_size: string;
+      max_price_per_gas_unit: p.U64;
+      max_transaction_size_in_bytes: p.U64;
+      gas_unit_scaling_factor: p.U64;
+      default_account_size: p.U64;
     };
   };
 };
 
 export type GasConstantsData = {
   /** The cost per-byte read from global storage. */
-  global_memory_per_byte_cost: string;
+  global_memory_per_byte_cost: p.U64;
 
   /** The cost per-byte written to storage. */
-  global_memory_per_byte_write_cost: string;
+  global_memory_per_byte_write_cost: p.U64;
 
   /**
    * The flat minimum amount of gas required for any transaction.
    * Charged at the start of execution.
    */
-  min_transaction_gas_units: string;
+  min_transaction_gas_units: p.U64;
 
   /** Any transaction over this size will be charged an additional amount per byte. */
-  large_transaction_cutoff: string;
+  large_transaction_cutoff: p.U64;
 
   /**
    * The units of gas to be charged per byte over the `large_transaction_cutoff` in addition to
    * `min_transaction_gas_units` for transactions whose size exceeds `large_transaction_cutoff`.
    */
-  intrinsic_gas_per_byte: string;
+  intrinsic_gas_per_byte: p.U64;
 
   /**
    * ~5 microseconds should equal one unit of computational gas. We bound the maximum
@@ -88,16 +88,16 @@ export type GasConstantsData = {
    * NB: The bound is set quite high since custom scripts aren't allowed except from predefined
    * and vetted senders.
    */
-  maximum_number_of_gas_units: string;
+  maximum_number_of_gas_units: p.U64;
 
   /** The minimum gas price that a transaction can be submitted with. */
-  min_price_per_gas_unit: string;
+  min_price_per_gas_unit: p.U64;
 
   /** The maximum gas unit price that a transaction can be submitted with. */
-  max_price_per_gas_unit: string;
-  max_transaction_size_in_bytes: string;
-  gas_unit_scaling_factor: string;
-  default_account_size: string;
+  max_price_per_gas_unit: p.U64;
+  max_transaction_size_in_bytes: p.U64;
+  gas_unit_scaling_factor: p.U64;
+  default_account_size: p.U64;
 };
 
 /**
@@ -114,29 +114,29 @@ export type GasConstantsData = {
  *    load this into memory at the startup of each block.
  */
 export type GasScheduleData = {
-  instruction_schedule: string;
-  native_schedule: string;
+  instruction_schedule: p.ByteString;
+  native_schedule: p.ByteString;
   gas_constants: {
     /** The cost per-byte read from global storage. */
-    global_memory_per_byte_cost: string;
+    global_memory_per_byte_cost: p.U64;
 
     /** The cost per-byte written to storage. */
-    global_memory_per_byte_write_cost: string;
+    global_memory_per_byte_write_cost: p.U64;
 
     /**
      * The flat minimum amount of gas required for any transaction.
      * Charged at the start of execution.
      */
-    min_transaction_gas_units: string;
+    min_transaction_gas_units: p.U64;
 
     /** Any transaction over this size will be charged an additional amount per byte. */
-    large_transaction_cutoff: string;
+    large_transaction_cutoff: p.U64;
 
     /**
      * The units of gas to be charged per byte over the `large_transaction_cutoff` in addition to
      * `min_transaction_gas_units` for transactions whose size exceeds `large_transaction_cutoff`.
      */
-    intrinsic_gas_per_byte: string;
+    intrinsic_gas_per_byte: p.U64;
 
     /**
      * ~5 microseconds should equal one unit of computational gas. We bound the maximum
@@ -146,16 +146,16 @@ export type GasScheduleData = {
      * NB: The bound is set quite high since custom scripts aren't allowed except from predefined
      * and vetted senders.
      */
-    maximum_number_of_gas_units: string;
+    maximum_number_of_gas_units: p.U64;
 
     /** The minimum gas price that a transaction can be submitted with. */
-    min_price_per_gas_unit: string;
+    min_price_per_gas_unit: p.U64;
 
     /** The maximum gas unit price that a transaction can be submitted with. */
-    max_price_per_gas_unit: string;
-    max_transaction_size_in_bytes: string;
-    gas_unit_scaling_factor: string;
-    default_account_size: string;
+    max_price_per_gas_unit: p.U64;
+    max_transaction_size_in_bytes: p.U64;
+    gas_unit_scaling_factor: p.U64;
+    default_account_size: p.U64;
   };
 };
 
@@ -163,27 +163,27 @@ export type GasScheduleData = {
 export type SetGasConstantsArgs = {
   args: {
     /** IDL type: `U64` */
-    global_memory_per_byte_cost: string;
+    global_memory_per_byte_cost: p.U64;
     /** IDL type: `U64` */
-    global_memory_per_byte_write_cost: string;
+    global_memory_per_byte_write_cost: p.U64;
     /** IDL type: `U64` */
-    min_transaction_gas_units: string;
+    min_transaction_gas_units: p.U64;
     /** IDL type: `U64` */
-    large_transaction_cutoff: string;
+    large_transaction_cutoff: p.U64;
     /** IDL type: `U64` */
-    intrinsic_gas_per_byte: string;
+    intrinsic_gas_per_byte: p.U64;
     /** IDL type: `U64` */
-    maximum_number_of_gas_units: string;
+    maximum_number_of_gas_units: p.U64;
     /** IDL type: `U64` */
-    min_price_per_gas_unit: string;
+    min_price_per_gas_unit: p.U64;
     /** IDL type: `U64` */
-    max_price_per_gas_unit: string;
+    max_price_per_gas_unit: p.U64;
     /** IDL type: `U64` */
-    max_transaction_size_in_bytes: string;
+    max_transaction_size_in_bytes: p.U64;
     /** IDL type: `U64` */
-    gas_unit_scaling_factor: string;
+    gas_unit_scaling_factor: p.U64;
     /** IDL type: `U64` */
-    default_account_size: string;
+    default_account_size: p.U64;
   };
 };
 

@@ -14,8 +14,8 @@ import type * as p from "@movingco/prelude";
 
 /** Type of tables */
 export type TableData = {
-  handle: string;
-  length: string;
+  handle: p.U128;
+  length: p.U64;
 };
 
 /** Wrapper for values. Required for making values appear as resources in the implementation. */

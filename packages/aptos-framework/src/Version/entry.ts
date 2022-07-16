@@ -3,6 +3,7 @@
  *
  * @module
  */
+import * as p from "@movingco/prelude";
 
 import type * as mod from "./index.js";
 import type * as payloads from "./payloads.js";
@@ -13,5 +14,5 @@ export const set_version = ({
   type: "script_function_payload",
   function: "0x1::Version::set_version",
   type_arguments: [],
-  arguments: [args.major],
+  arguments: [p.serializers.u64(args.major)],
 });
