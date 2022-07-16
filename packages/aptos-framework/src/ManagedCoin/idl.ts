@@ -65,7 +65,7 @@ export const idl = {
           },
         },
       ],
-      type_params: ["CoinType"],
+      type_params: [{ name: "CoinType", is_phantom: true }],
       abilities: ["key"],
     },
   ],

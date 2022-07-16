@@ -35,7 +35,7 @@ export const idl = {
         { name: "level", ty: "u8" },
         { name: "len", ty: "u64" },
       ],
-      type_params: ["K", "V"],
+      type_params: [{ name: "K" }, { name: "V" }],
       abilities: ["store"],
     },
     {
@@ -46,7 +46,7 @@ export const idl = {
         { name: "key", ty: { type_param: 0 } },
         { name: "value", ty: { type_param: 1 } },
       ],
-      type_params: ["K", "V"],
+      type_params: [{ name: "K" }, { name: "V" }],
       abilities: ["store"],
     },
   ],

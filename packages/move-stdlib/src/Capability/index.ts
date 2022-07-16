@@ -79,26 +79,26 @@
 import type * as p from "@movingco/prelude";
 
 /** The token representing an acquired capability. Cannot be stored in memory, but copied and dropped freely. */
-export type CapData<_Feature = unknown> = {
-  root: p.RawAddress;
+export type CapData = {
+  root: string;
 };
 
 /** An internal data structure for representing a configured delegated capability. */
-export type CapDelegateStateData<_Feature = unknown> = {
-  root: p.RawAddress;
+export type CapDelegateStateData = {
+  root: string;
 };
 
 /** An internal data structure for representing a configured capability. */
-export type CapStateData<_Feature = unknown> = {
-  delegates: ReadonlyArray<p.RawAddress>;
+export type CapStateData = {
+  delegates: ReadonlyArray<string>;
 };
 
 /**
  * A linear version of a capability token. This can be used if an acquired capability should be enforced
  * to be used only once for an authorization.
  */
-export type LinearCapData<_Feature = unknown> = {
-  root: p.RawAddress;
+export type LinearCapData = {
+  root: string;
 };
 
 export { idl } from "./idl.js";

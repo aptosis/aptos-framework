@@ -24,7 +24,7 @@ export const idl = {
           ty: { struct: { name: "0x1::Event::GUIDWrapper" } },
         },
       ],
-      type_params: ["T"],
+      type_params: [{ name: "T", is_phantom: true }],
       abilities: ["store"],
     },
     {

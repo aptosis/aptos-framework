@@ -3,18 +3,15 @@
  *
  * @module
  */
-import * as p from "@movingco/prelude";
 
 import type * as mod from "./index.js";
+import type * as payloads from "./payloads.js";
 /** Withdraw an `amount` of coin `CoinType` from `account` and burn it. */
-export const burn = ({
-  args,
-  typeArgs,
-}: mod.BurnPayload): p.ScriptFunctionPayload => ({
+export const burn = ({ args, typeArgs }: mod.BurnArgs): payloads.Burn => ({
   type: "script_function_payload",
   function: "0x1::ManagedCoin::burn",
   type_arguments: [typeArgs.CoinType],
-  arguments: [p.serializers.u64(args.amount)],
+  arguments: [args.amount],
 });
 
 /**
@@ -24,30 +21,19 @@ export const burn = ({
 export const initialize = ({
   args,
   typeArgs,
-}: mod.InitializePayload): p.ScriptFunctionPayload => ({
+}: mod.InitializeArgs): payloads.Initialize => ({
   type: "script_function_payload",
   function: "0x1::ManagedCoin::initialize",
   type_arguments: [typeArgs.CoinType],
-  arguments: [
-    p.serializers.hexString(args.name),
-    p.serializers.hexString(args.symbol),
-    p.serializers.u64(args.decimals),
-    args.monitor_supply,
-  ],
+  arguments: [args.name, args.symbol, args.decimals, args.monitor_supply],
 });
 
 /** Create new coins `CoinType` and deposit them into dst_addr's account. */
-export const mint = ({
-  args,
-  typeArgs,
-}: mod.MintPayload): p.ScriptFunctionPayload => ({
+export const mint = ({ args, typeArgs }: mod.MintArgs): payloads.Mint => ({
   type: "script_function_payload",
   function: "0x1::ManagedCoin::mint",
   type_arguments: [typeArgs.CoinType],
-  arguments: [
-    p.serializers.hexString(args.dst_addr),
-    p.serializers.u64(args.amount),
-  ],
+  arguments: [args.dst_addr, args.amount],
 });
 
 /**
@@ -56,7 +42,7 @@ export const mint = ({
  */
 export const register = ({
   typeArgs,
-}: mod.RegisterPayload): p.ScriptFunctionPayload => ({
+}: mod.RegisterArgs): payloads.Register => ({
   type: "script_function_payload",
   function: "0x1::ManagedCoin::register",
   type_arguments: [typeArgs.CoinType],

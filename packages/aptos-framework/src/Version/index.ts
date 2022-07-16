@@ -8,21 +8,20 @@
 import type * as p from "@movingco/prelude";
 
 export type VersionData = {
-  major: p.U64;
+  major: string;
 };
 
-/**
- * Payload arguments for {@link entry.set_version}.
- */
-export type SetVersionPayload = {
+/** Payload arguments for {@link entry.set_version}. */
+export type SetVersionArgs = {
   args: {
     /** IDL type: `U64` */
-    major: p.U64;
+    major: string;
   };
 };
 
 export * as entry from "./entry.js";
 export { idl } from "./idl.js";
+export * as payloads from "./payloads.js";
 
 /** The address of the module. */
 export const ADDRESS = "0x1" as const;

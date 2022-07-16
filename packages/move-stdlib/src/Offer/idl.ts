@@ -16,7 +16,7 @@ export const idl = {
         { name: "offered", ty: { type_param: 0 } },
         { name: "for", ty: "address" },
       ],
-      type_params: ["Offered"],
+      type_params: [{ name: "Offered" }],
       abilities: ["key"],
     },
   ],

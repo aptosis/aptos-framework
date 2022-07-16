@@ -5,96 +5,83 @@
  */
 import type * as p from "@movingco/prelude";
 
-/**
- * Payload arguments for {@link entry.add_validator}.
- */
-export type AddValidatorPayload = {
+/** Payload arguments for {@link entry.add_validator}. */
+export type AddValidatorArgs = {
   args: {
     /** IDL type: `Address` */
-    _validator_addr: p.RawAddress;
+    _validator_addr: string;
   };
 };
 
-/**
- * Payload arguments for {@link entry.create_validator_account}.
- */
-export type CreateValidatorAccountPayload = {
+/** Payload arguments for {@link entry.create_validator_account}. */
+export type CreateValidatorAccountArgs = {
   args: {
     /** IDL type: `Address` */
-    _new_account_address: p.RawAddress;
+    _new_account_address: string;
     /** IDL type: `Vector(U8)` */
-    _human_name: p.ByteString;
+    _human_name: string;
   };
 };
 
-/**
- * Payload arguments for {@link entry.create_validator_operator_account}.
- */
-export type CreateValidatorOperatorAccountPayload = {
+/** Payload arguments for {@link entry.create_validator_operator_account}. */
+export type CreateValidatorOperatorAccountArgs = {
   args: {
     /** IDL type: `Address` */
-    _new_account_address: p.RawAddress;
+    _new_account_address: string;
     /** IDL type: `Vector(U8)` */
-    _human_name: p.ByteString;
+    _human_name: string;
   };
 };
 
-/**
- * Payload arguments for {@link entry.register_validator_config}.
- */
-export type RegisterValidatorConfigPayload = {
+/** Payload arguments for {@link entry.register_validator_config}. */
+export type RegisterValidatorConfigArgs = {
   args: {
     /** IDL type: `Address` */
-    _validator_address: p.RawAddress;
+    _validator_address: string;
     /** IDL type: `Vector(U8)` */
-    _consensus_pubkey: p.ByteString;
+    _consensus_pubkey: string;
     /** IDL type: `Vector(U8)` */
-    _validator_network_addresses: p.ByteString;
+    _validator_network_addresses: string;
     /** IDL type: `Vector(U8)` */
-    _fullnode_network_addresses: p.ByteString;
+    _fullnode_network_addresses: string;
   };
 };
 
-/**
- * Payload arguments for {@link entry.remove_validator}.
- */
-export type RemoveValidatorPayload = {
+/** Payload arguments for {@link entry.remove_validator}. */
+export type RemoveValidatorArgs = {
   args: {
     /** IDL type: `Address` */
-    _validator_addr: p.RawAddress;
+    _validator_addr: string;
   };
 };
 
-/**
- * Payload arguments for {@link entry.set_validator_config_and_reconfigure}.
- */
-export type SetValidatorConfigAndReconfigurePayload = {
+/** Payload arguments for {@link entry.set_validator_config_and_reconfigure}. */
+export type SetValidatorConfigAndReconfigureArgs = {
   args: {
     /** IDL type: `Address` */
-    _validator_account: p.RawAddress;
+    _validator_account: string;
     /** IDL type: `Vector(U8)` */
-    _consensus_pubkey: p.ByteString;
+    _consensus_pubkey: string;
     /** IDL type: `Vector(U8)` */
-    _validator_network_addresses: p.ByteString;
+    _validator_network_addresses: string;
     /** IDL type: `Vector(U8)` */
-    _fullnode_network_addresses: p.ByteString;
+    _fullnode_network_addresses: string;
   };
 };
 
-/**
- * Payload arguments for {@link entry.set_validator_operator}.
- */
-export type SetValidatorOperatorPayload = {
+/** Payload arguments for {@link entry.set_validator_operator}. */
+export type SetValidatorOperatorArgs = {
   args: {
     /** IDL type: `Vector(U8)` */
-    _operator_name: p.ByteString;
+    _operator_name: string;
     /** IDL type: `Address` */
-    _operator_account: p.RawAddress;
+    _operator_account: string;
   };
 };
 
 export * as entry from "./entry.js";
 export { idl } from "./idl.js";
+export * as payloads from "./payloads.js";
 
 /** The address of the module. */
 export const ADDRESS = "0x1" as const;

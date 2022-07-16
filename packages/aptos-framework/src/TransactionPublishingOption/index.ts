@@ -19,16 +19,14 @@ export type TransactionPublishingOptionData = {
    * Only script hashes in the following list can be executed by the network. If the vector is empty, no
    * limitation would be enforced.
    */
-  script_allow_list: ReadonlyArray<p.ByteString>;
+  script_allow_list: ReadonlyArray<string>;
 
   /** Anyone can publish new module if this flag is set to true. */
   module_publishing_allowed: boolean;
 };
 
-/**
- * Payload arguments for {@link entry.set_module_publishing_allowed}.
- */
-export type SetModulePublishingAllowedPayload = {
+/** Payload arguments for {@link entry.set_module_publishing_allowed}. */
+export type SetModulePublishingAllowedArgs = {
   args: {
     /** IDL type: `Bool` */
     is_allowed: boolean;
@@ -37,6 +35,7 @@ export type SetModulePublishingAllowedPayload = {
 
 export * as entry from "./entry.js";
 export { idl } from "./idl.js";
+export * as payloads from "./payloads.js";
 
 /** The address of the module. */
 export const ADDRESS = "0x1" as const;

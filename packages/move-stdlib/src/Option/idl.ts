@@ -13,7 +13,7 @@ export const idl = {
       name: "0x1::Option::Option",
       doc: "Abstraction of a value that may or may not be present. Implemented with a vector of size\nzero or one because Move bytecode does not have ADTs.",
       fields: [{ name: "vec", ty: { vector: { type_param: 0 } } }],
-      type_params: ["Element"],
+      type_params: [{ name: "Element" }],
       abilities: ["copy", "drop", "store"],
     },
   ],

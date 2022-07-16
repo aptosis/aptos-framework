@@ -21,7 +21,7 @@ export type CharData = {
  * defined in this module.
  */
 export type StringData = {
-  bytes: p.ByteString;
+  bytes: string;
 };
 
 export { idl } from "./idl.js";

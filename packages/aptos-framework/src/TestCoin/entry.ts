@@ -3,22 +3,19 @@
  *
  * @module
  */
-import * as p from "@movingco/prelude";
 
 import type * as mod from "./index.js";
+import type * as payloads from "./payloads.js";
 /** Create new test coins and deposit them into dst_addr's account. */
-export const mint = ({ args }: mod.MintPayload): p.ScriptFunctionPayload => ({
+export const mint = ({ args }: mod.MintArgs): payloads.Mint => ({
   type: "script_function_payload",
   function: "0x1::TestCoin::mint",
   type_arguments: [],
-  arguments: [
-    p.serializers.hexString(args.dst_addr),
-    p.serializers.u64(args.amount),
-  ],
+  arguments: [args.dst_addr, args.amount],
 });
 
 /** Claim the delegated mint capability and destroy the delegated token. */
-export const claim_mint_capability = (): p.ScriptFunctionPayload => ({
+export const claim_mint_capability = (): payloads.ClaimMintCapability => ({
   type: "script_function_payload",
   function: "0x1::TestCoin::claim_mint_capability",
   type_arguments: [],
@@ -28,9 +25,9 @@ export const claim_mint_capability = (): p.ScriptFunctionPayload => ({
 /** Create delegated token for the address so the account could claim MintCapability later. */
 export const delegate_mint_capability = ({
   args,
-}: mod.DelegateMintCapabilityPayload): p.ScriptFunctionPayload => ({
+}: mod.DelegateMintCapabilityArgs): payloads.DelegateMintCapability => ({
   type: "script_function_payload",
   function: "0x1::TestCoin::delegate_mint_capability",
   type_arguments: [],
-  arguments: [p.serializers.hexString(args.to)],
+  arguments: [args.to],
 });

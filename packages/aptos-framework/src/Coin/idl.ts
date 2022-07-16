@@ -31,14 +31,14 @@ export const idl = {
       fields: [
         { name: "value", doc: "Amount of coin this address has.", ty: "u64" },
       ],
-      type_params: ["CoinType"],
+      type_params: [{ name: "CoinType", is_phantom: true }],
       abilities: ["store"],
     },
     {
       name: "0x1::Coin::BurnCapability",
       doc: "Capability required to burn coins.",
       fields: [{ name: "dummy_field", ty: "bool" }],
-      type_params: ["CoinType"],
+      type_params: [{ name: "CoinType", is_phantom: true }],
       abilities: ["copy", "store", "key"],
     },
     {
@@ -78,7 +78,7 @@ export const idl = {
           ty: { struct: { name: "0x1::Option::Option", ty_args: ["u128"] } },
         },
       ],
-      type_params: ["CoinType"],
+      type_params: [{ name: "CoinType", is_phantom: true }],
       abilities: ["key"],
     },
     {
@@ -110,7 +110,7 @@ export const idl = {
           },
         },
       ],
-      type_params: ["CoinType"],
+      type_params: [{ name: "CoinType", is_phantom: true }],
       abilities: ["key"],
     },
     {
@@ -123,7 +123,7 @@ export const idl = {
       name: "0x1::Coin::MintCapability",
       doc: "Capability required to mint coins.",
       fields: [{ name: "dummy_field", ty: "bool" }],
-      type_params: ["CoinType"],
+      type_params: [{ name: "CoinType", is_phantom: true }],
       abilities: ["copy", "store", "key"],
     },
     {

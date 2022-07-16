@@ -3,11 +3,11 @@
  *
  * @module
  */
-import * as p from "@movingco/prelude";
 
 import type * as mod from "./index.js";
+import type * as payloads from "./payloads.js";
 /** Withdraw from `account`'s inactive stake. */
-export const withdraw = (): p.ScriptFunctionPayload => ({
+export const withdraw = (): payloads.Withdraw => ({
   type: "script_function_payload",
   function: "0x1::Stake::withdraw",
   type_arguments: [],
@@ -15,33 +15,31 @@ export const withdraw = (): p.ScriptFunctionPayload => ({
 });
 
 /** Add `amount` of coins from the `account` owning the StakePool. */
-export const add_stake = ({
-  args,
-}: mod.AddStakePayload): p.ScriptFunctionPayload => ({
+export const add_stake = ({ args }: mod.AddStakeArgs): payloads.AddStake => ({
   type: "script_function_payload",
   function: "0x1::Stake::add_stake",
   type_arguments: [],
-  arguments: [p.serializers.u64(args.amount)],
+  arguments: [args.amount],
 });
 
 /** Similar to increase_lockup_with_cap but will use ownership capability from the signing account. */
 export const increase_lockup = ({
   args,
-}: mod.IncreaseLockupPayload): p.ScriptFunctionPayload => ({
+}: mod.IncreaseLockupArgs): payloads.IncreaseLockup => ({
   type: "script_function_payload",
   function: "0x1::Stake::increase_lockup",
   type_arguments: [],
-  arguments: [p.serializers.u64(args.new_locked_until_secs)],
+  arguments: [args.new_locked_until_secs],
 });
 
 /** This can only called by the operator of the validator/staking pool. */
 export const join_validator_set = ({
   args,
-}: mod.JoinValidatorSetPayload): p.ScriptFunctionPayload => ({
+}: mod.JoinValidatorSetArgs): payloads.JoinValidatorSet => ({
   type: "script_function_payload",
   function: "0x1::Stake::join_validator_set",
   type_arguments: [],
-  arguments: [p.serializers.hexString(args.pool_address)],
+  arguments: [args.pool_address],
 });
 
 /**
@@ -54,68 +52,66 @@ export const join_validator_set = ({
  */
 export const leave_validator_set = ({
   args,
-}: mod.LeaveValidatorSetPayload): p.ScriptFunctionPayload => ({
+}: mod.LeaveValidatorSetArgs): payloads.LeaveValidatorSet => ({
   type: "script_function_payload",
   function: "0x1::Stake::leave_validator_set",
   type_arguments: [],
-  arguments: [p.serializers.hexString(args.pool_address)],
+  arguments: [args.pool_address],
 });
 
 /** Initialize the validator account and give ownership to the signing account. */
 export const register_validator_candidate = ({
   args,
-}: mod.RegisterValidatorCandidatePayload): p.ScriptFunctionPayload => ({
+}: mod.RegisterValidatorCandidateArgs): payloads.RegisterValidatorCandidate => ({
   type: "script_function_payload",
   function: "0x1::Stake::register_validator_candidate",
   type_arguments: [],
   arguments: [
-    p.serializers.hexString(args.consensus_pubkey),
-    p.serializers.hexString(args.proof_of_possession),
-    p.serializers.hexString(args.network_addresses),
-    p.serializers.hexString(args.fullnode_addresses),
+    args.consensus_pubkey,
+    args.proof_of_possession,
+    args.network_addresses,
+    args.fullnode_addresses,
   ],
 });
 
 /** Rotate the consensus key of the validator, it'll take effect in next epoch. */
 export const rotate_consensus_key = ({
   args,
-}: mod.RotateConsensusKeyPayload): p.ScriptFunctionPayload => ({
+}: mod.RotateConsensusKeyArgs): payloads.RotateConsensusKey => ({
   type: "script_function_payload",
   function: "0x1::Stake::rotate_consensus_key",
   type_arguments: [],
   arguments: [
-    p.serializers.hexString(args.pool_address),
-    p.serializers.hexString(args.new_consensus_pubkey),
-    p.serializers.hexString(args.proof_of_possession),
+    args.pool_address,
+    args.new_consensus_pubkey,
+    args.proof_of_possession,
   ],
 });
 
 /** Allows an owner to change the delegated voter of the stake pool. */
 export const set_delegated_voter = ({
   args,
-}: mod.SetDelegatedVoterPayload): p.ScriptFunctionPayload => ({
+}: mod.SetDelegatedVoterArgs): payloads.SetDelegatedVoter => ({
   type: "script_function_payload",
   function: "0x1::Stake::set_delegated_voter",
   type_arguments: [],
-  arguments: [p.serializers.hexString(args.new_delegated_voter)],
+  arguments: [args.new_delegated_voter],
 });
 
 /** Allows an owner to change the operator of the stake pool. */
 export const set_operator = ({
   args,
-}: mod.SetOperatorPayload): p.ScriptFunctionPayload => ({
+}: mod.SetOperatorArgs): payloads.SetOperator => ({
   type: "script_function_payload",
   function: "0x1::Stake::set_operator",
   type_arguments: [],
-  arguments: [p.serializers.hexString(args.new_operator)],
+  arguments: [args.new_operator],
 });
 
 /** Similar to unlock_with_cap but will use ownership capability from the signing account. */
-export const unlock = ({
-  args,
-}: mod.UnlockPayload): p.ScriptFunctionPayload => ({
+export const unlock = ({ args }: mod.UnlockArgs): payloads.Unlock => ({
   type: "script_function_payload",
   function: "0x1::Stake::unlock",
   type_arguments: [],
-  arguments: [p.serializers.u64(args.amount)],
+  arguments: [args.amount],
 });

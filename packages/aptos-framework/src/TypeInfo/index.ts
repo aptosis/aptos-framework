@@ -6,9 +6,9 @@
 import type * as p from "@movingco/prelude";
 
 export type TypeInfoData = {
-  account_address: p.RawAddress;
-  module_name: p.ByteString;
-  struct_name: p.ByteString;
+  account_address: string;
+  module_name: string;
+  struct_name: string;
 };
 
 export { idl } from "./idl.js";

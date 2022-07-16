@@ -8,8 +8,8 @@ import type * as p from "@movingco/prelude";
 /** An iterable table implementation based on double linked list. */
 export type IterableTableData<_K = unknown, _V = unknown> = {
   inner: {
-    handle: p.U128;
-    length: p.U64;
+    handle: string;
+    length: string;
   };
   head: {
     vec: ReadonlyArray<_K>;

@@ -15,9 +15,9 @@ import type * as p from "@movingco/prelude";
  * 1. Other modules can emit events to this handle.
  * 2. Storage can use this handle to prove the total number of events that happened in the past.
  */
-export type EventHandleData<_T = unknown> = {
+export type EventHandleData = {
   /** Total number of events emitted to this event stream. */
-  counter: p.U64;
+  counter: string;
 
   /** A globally unique ID for this event stream. */
   guid: {
@@ -25,10 +25,10 @@ export type EventHandleData<_T = unknown> = {
     guid: {
       id: {
         /** If creation_num is `i`, this is the `i+1`th GUID created by `addr` */
-        creation_num: p.U64;
+        creation_num: string;
 
         /** Address that created the GUID */
-        addr: p.RawAddress;
+        addr: string;
       };
     };
   };
@@ -36,8 +36,8 @@ export type EventHandleData<_T = unknown> = {
 
 /** Deprecated. Only kept around so Aptos clients know how to deserialize existing EventHandleGenerator's */
 export type EventHandleGeneratorData = {
-  counter: p.U64;
-  addr: p.RawAddress;
+  counter: string;
+  addr: string;
 };
 
 /** Wrapper for a GUID for layout compatibility with legacy EventHandle id's */
@@ -46,10 +46,10 @@ export type GUIDWrapperData = {
   guid: {
     id: {
       /** If creation_num is `i`, this is the `i+1`th GUID created by `addr` */
-      creation_num: p.U64;
+      creation_num: string;
 
       /** Address that created the GUID */
-      addr: p.RawAddress;
+      addr: string;
     };
   };
 };

@@ -13,7 +13,7 @@ import type * as p from "@movingco/prelude";
  * Capabilities resource storing mint and burn capabilities.
  * The resource is stored on the account that initialized coin `CoinType`.
  */
-export type CapabilitiesData<_CoinType = unknown> = {
+export type CapabilitiesData = {
   mint_cap: {
     dummy_field: boolean;
   };
@@ -22,30 +22,26 @@ export type CapabilitiesData<_CoinType = unknown> = {
   };
 };
 
-/**
- * Payload arguments for {@link entry.burn}.
- */
-export type BurnPayload = {
+/** Payload arguments for {@link entry.burn}. */
+export type BurnArgs = {
   args: {
     /** IDL type: `U64` */
-    amount: p.U64;
+    amount: string;
   };
   typeArgs: {
     CoinType: string;
   };
 };
 
-/**
- * Payload arguments for {@link entry.initialize}.
- */
-export type InitializePayload = {
+/** Payload arguments for {@link entry.initialize}. */
+export type InitializeArgs = {
   args: {
     /** IDL type: `Vector(U8)` */
-    name: p.ByteString;
+    name: string;
     /** IDL type: `Vector(U8)` */
-    symbol: p.ByteString;
+    symbol: string;
     /** IDL type: `U64` */
-    decimals: p.U64;
+    decimals: string;
     /** IDL type: `Bool` */
     monitor_supply: boolean;
   };
@@ -54,25 +50,21 @@ export type InitializePayload = {
   };
 };
 
-/**
- * Payload arguments for {@link entry.mint}.
- */
-export type MintPayload = {
+/** Payload arguments for {@link entry.mint}. */
+export type MintArgs = {
   args: {
     /** IDL type: `Address` */
-    dst_addr: p.RawAddress;
+    dst_addr: string;
     /** IDL type: `U64` */
-    amount: p.U64;
+    amount: string;
   };
   typeArgs: {
     CoinType: string;
   };
 };
 
-/**
- * Payload arguments for {@link entry.register}.
- */
-export type RegisterPayload = {
+/** Payload arguments for {@link entry.register}. */
+export type RegisterArgs = {
   typeArgs: {
     CoinType: string;
   };
@@ -80,6 +72,7 @@ export type RegisterPayload = {
 
 export * as entry from "./entry.js";
 export { idl } from "./idl.js";
+export * as payloads from "./payloads.js";
 
 /** The address of the module. */
 export const ADDRESS = "0x1" as const;

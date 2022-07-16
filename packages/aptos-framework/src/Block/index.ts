@@ -9,15 +9,15 @@ import type * as p from "@movingco/prelude";
 
 export type BlockMetadataData = {
   /** Height of the current block */
-  height: p.U64;
+  height: string;
 
   /** Time period between epochs. */
-  epoch_internal: p.U64;
+  epoch_internal: string;
 
   /** Handle where events with the time of new blocks are emitted */
   new_block_events: {
     /** Total number of events emitted to this event stream. */
-    counter: p.U64;
+    counter: string;
 
     /** A globally unique ID for this event stream. */
     guid: {
@@ -25,10 +25,10 @@ export type BlockMetadataData = {
       guid: {
         id: {
           /** If creation_num is `i`, this is the `i+1`th GUID created by `addr` */
-          creation_num: p.U64;
+          creation_num: string;
 
           /** Address that created the GUID */
-          addr: p.RawAddress;
+          addr: string;
         };
       };
     };
@@ -36,14 +36,14 @@ export type BlockMetadataData = {
 };
 
 export type NewBlockEventData = {
-  epoch: p.U64;
-  round: p.U64;
+  epoch: string;
+  round: string;
   previous_block_votes: ReadonlyArray<boolean>;
-  proposer: p.RawAddress;
-  failed_proposer_indices: ReadonlyArray<p.U64>;
+  proposer: string;
+  failed_proposer_indices: ReadonlyArray<string>;
 
   /** On-chain time during  he block at the given height */
-  time_microseconds: p.U64;
+  time_microseconds: string;
 };
 
 export { idl } from "./idl.js";

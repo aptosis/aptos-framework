@@ -11,15 +11,15 @@ import type * as p from "@movingco/prelude";
 /** Holds information about state of reconfiguration */
 export type ConfigurationData = {
   /** Epoch number */
-  epoch: p.U64;
+  epoch: string;
 
   /** Time of last reconfiguration. Only changes on reconfiguration events. */
-  last_reconfiguration_time: p.U64;
+  last_reconfiguration_time: string;
 
   /** Event handle for reconfiguration events */
   events: {
     /** Total number of events emitted to this event stream. */
-    counter: p.U64;
+    counter: string;
 
     /** A globally unique ID for this event stream. */
     guid: {
@@ -27,10 +27,10 @@ export type ConfigurationData = {
       guid: {
         id: {
           /** If creation_num is `i`, this is the `i+1`th GUID created by `addr` */
-          creation_num: p.U64;
+          creation_num: string;
 
           /** Address that created the GUID */
-          addr: p.RawAddress;
+          addr: string;
         };
       };
     };
@@ -43,11 +43,12 @@ export type ConfigurationData = {
  * "reconfiguration event"
  */
 export type NewEpochEventData = {
-  epoch: p.U64;
+  epoch: string;
 };
 
 export * as entry from "./entry.js";
 export { idl } from "./idl.js";
+export * as payloads from "./payloads.js";
 
 /** The address of the module. */
 export const ADDRESS = "0x1" as const;

@@ -9,63 +9,58 @@ import type * as p from "@movingco/prelude";
 
 export type TokenTransfersData = {
   pending_claims: {
-    handle: p.U128;
-    length: p.U64;
+    handle: string;
+    length: string;
   };
 };
 
-/**
- * Payload arguments for {@link entry.cancel_offer_script}.
- */
-export type CancelOfferScriptPayload = {
+/** Payload arguments for {@link entry.cancel_offer_script}. */
+export type CancelOfferScriptArgs = {
   args: {
     /** IDL type: `Address` */
-    receiver: p.RawAddress;
+    receiver: string;
     /** IDL type: `Address` */
-    creator: p.RawAddress;
+    creator: string;
     /** IDL type: `Vector(U8)` */
-    collection: p.ByteString;
+    collection: string;
     /** IDL type: `Vector(U8)` */
-    name: p.ByteString;
+    name: string;
   };
 };
 
-/**
- * Payload arguments for {@link entry.claim_script}.
- */
-export type ClaimScriptPayload = {
+/** Payload arguments for {@link entry.claim_script}. */
+export type ClaimScriptArgs = {
   args: {
     /** IDL type: `Address` */
-    sender: p.RawAddress;
+    sender: string;
     /** IDL type: `Address` */
-    creator: p.RawAddress;
+    creator: string;
     /** IDL type: `Vector(U8)` */
-    collection: p.ByteString;
+    collection: string;
     /** IDL type: `Vector(U8)` */
-    name: p.ByteString;
+    name: string;
   };
 };
 
-/**
- * Payload arguments for {@link entry.offer_script}.
- */
-export type OfferScriptPayload = {
+/** Payload arguments for {@link entry.offer_script}. */
+export type OfferScriptArgs = {
   args: {
     /** IDL type: `Address` */
-    receiver: p.RawAddress;
+    receiver: string;
     /** IDL type: `Address` */
-    creator: p.RawAddress;
+    creator: string;
     /** IDL type: `Vector(U8)` */
-    collection: p.ByteString;
+    collection: string;
     /** IDL type: `Vector(U8)` */
-    name: p.ByteString;
+    name: string;
     /** IDL type: `U64` */
-    amount: p.U64;
+    amount: string;
   };
 };
 
 export * as entry from "./entry.js";
 export { idl } from "./idl.js";
+export * as payloads from "./payloads.js";
 
 /** The address of the module. */
 export const ADDRESS = "0x1" as const;

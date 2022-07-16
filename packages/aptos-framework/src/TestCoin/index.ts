@@ -16,40 +16,37 @@ export type CapabilitiesData = {
 
 /** Delegation token created by delegator and can be claimed by the delegatee as MintCapability. */
 export type DelegatedMintCapabilityData = {
-  to: p.RawAddress;
+  to: string;
 };
 
 /** The container stores the current pending delegations. */
 export type DelegationsData = {
   inner: ReadonlyArray<{
-    to: p.RawAddress;
+    to: string;
   }>;
 };
 
-/**
- * Payload arguments for {@link entry.mint}.
- */
-export type MintPayload = {
+/** Payload arguments for {@link entry.mint}. */
+export type MintArgs = {
   args: {
     /** IDL type: `Address` */
-    dst_addr: p.RawAddress;
+    dst_addr: string;
     /** IDL type: `U64` */
-    amount: p.U64;
+    amount: string;
   };
 };
 
-/**
- * Payload arguments for {@link entry.delegate_mint_capability}.
- */
-export type DelegateMintCapabilityPayload = {
+/** Payload arguments for {@link entry.delegate_mint_capability}. */
+export type DelegateMintCapabilityArgs = {
   args: {
     /** IDL type: `Address` */
-    to: p.RawAddress;
+    to: string;
   };
 };
 
 export * as entry from "./entry.js";
 export { idl } from "./idl.js";
+export * as payloads from "./payloads.js";
 
 /** The address of the module. */
 export const ADDRESS = "0x1" as const;

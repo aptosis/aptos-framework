@@ -29,13 +29,13 @@
 import type * as p from "@movingco/prelude";
 
 export type CreateProposalEventData = {
-  proposal_id: p.U64;
+  proposal_id: string;
   early_resolution_vote_threshold: {
-    vec: ReadonlyArray<p.U128>;
+    vec: ReadonlyArray<string>;
   };
-  execution_hash: p.ByteString;
-  expiration_secs: p.U64;
-  min_vote_threshold: p.U128;
+  execution_hash: string;
+  expiration_secs: string;
+  min_vote_threshold: string;
 };
 
 export type ProposalData<_ProposalType = unknown> = {
@@ -51,11 +51,11 @@ export type ProposalData<_ProposalType = unknown> = {
    * Required. The hash for the execution script module. Only the same exact script module can resolve this
    * proposal.
    */
-  execution_hash: p.ByteString;
+  execution_hash: string;
 
   /** A proposal is only resolved if expiration has passed and the number of votes is above threshold. */
-  min_vote_threshold: p.U128;
-  expiration_secs: p.U64;
+  min_vote_threshold: string;
+  expiration_secs: string;
 
   /**
    * Optional. Early resolution threshold. If specified, the proposal can be resolved early if the total
@@ -64,42 +64,42 @@ export type ProposalData<_ProposalType = unknown> = {
    * the proposal can be resolved before expiration.
    */
   early_resolution_vote_threshold: {
-    vec: ReadonlyArray<p.U128>;
+    vec: ReadonlyArray<string>;
   };
 
   /**
    * Number of votes for each outcome.
    * u128 since the voting power is already u64 and can add up to more than u64 can hold.
    */
-  yes_votes: p.U128;
-  no_votes: p.U128;
+  yes_votes: string;
+  no_votes: string;
 };
 
 export type RegisterForumEventData = {
-  hosting_account: p.RawAddress;
+  hosting_account: string;
   proposal_type_info: {
-    account_address: p.RawAddress;
-    module_name: p.ByteString;
-    struct_name: p.ByteString;
+    account_address: string;
+    module_name: string;
+    struct_name: string;
   };
 };
 
 export type ResolveProposalData = {
-  proposal_id: p.U64;
-  yes_votes: p.U128;
-  no_votes: p.U128;
+  proposal_id: string;
+  yes_votes: string;
+  no_votes: string;
   resolved_early: boolean;
 };
 
 export type VoteEventData = {
-  proposal_id: p.U64;
-  num_votes: p.U64;
+  proposal_id: string;
+  num_votes: string;
 };
 
 export type VotingEventsData = {
   create_proposal_events: {
     /** Total number of events emitted to this event stream. */
-    counter: p.U64;
+    counter: string;
 
     /** A globally unique ID for this event stream. */
     guid: {
@@ -107,17 +107,17 @@ export type VotingEventsData = {
       guid: {
         id: {
           /** If creation_num is `i`, this is the `i+1`th GUID created by `addr` */
-          creation_num: p.U64;
+          creation_num: string;
 
           /** Address that created the GUID */
-          addr: p.RawAddress;
+          addr: string;
         };
       };
     };
   };
   register_forum_events: {
     /** Total number of events emitted to this event stream. */
-    counter: p.U64;
+    counter: string;
 
     /** A globally unique ID for this event stream. */
     guid: {
@@ -125,17 +125,17 @@ export type VotingEventsData = {
       guid: {
         id: {
           /** If creation_num is `i`, this is the `i+1`th GUID created by `addr` */
-          creation_num: p.U64;
+          creation_num: string;
 
           /** Address that created the GUID */
-          addr: p.RawAddress;
+          addr: string;
         };
       };
     };
   };
   resolve_proposal_events: {
     /** Total number of events emitted to this event stream. */
-    counter: p.U64;
+    counter: string;
 
     /** A globally unique ID for this event stream. */
     guid: {
@@ -143,17 +143,17 @@ export type VotingEventsData = {
       guid: {
         id: {
           /** If creation_num is `i`, this is the `i+1`th GUID created by `addr` */
-          creation_num: p.U64;
+          creation_num: string;
 
           /** Address that created the GUID */
-          addr: p.RawAddress;
+          addr: string;
         };
       };
     };
   };
   vote_events: {
     /** Total number of events emitted to this event stream. */
-    counter: p.U64;
+    counter: string;
 
     /** A globally unique ID for this event stream. */
     guid: {
@@ -161,10 +161,10 @@ export type VotingEventsData = {
       guid: {
         id: {
           /** If creation_num is `i`, this is the `i+1`th GUID created by `addr` */
-          creation_num: p.U64;
+          creation_num: string;
 
           /** Address that created the GUID */
-          addr: p.RawAddress;
+          addr: string;
         };
       };
     };
@@ -177,13 +177,13 @@ export type VotingForumData<_ProposalType = unknown> = {
    * during execution while only relevant Table entries are.
    */
   proposals: {
-    handle: p.U128;
-    length: p.U64;
+    handle: string;
+    length: string;
   };
   events: {
     create_proposal_events: {
       /** Total number of events emitted to this event stream. */
-      counter: p.U64;
+      counter: string;
 
       /** A globally unique ID for this event stream. */
       guid: {
@@ -191,17 +191,17 @@ export type VotingForumData<_ProposalType = unknown> = {
         guid: {
           id: {
             /** If creation_num is `i`, this is the `i+1`th GUID created by `addr` */
-            creation_num: p.U64;
+            creation_num: string;
 
             /** Address that created the GUID */
-            addr: p.RawAddress;
+            addr: string;
           };
         };
       };
     };
     register_forum_events: {
       /** Total number of events emitted to this event stream. */
-      counter: p.U64;
+      counter: string;
 
       /** A globally unique ID for this event stream. */
       guid: {
@@ -209,17 +209,17 @@ export type VotingForumData<_ProposalType = unknown> = {
         guid: {
           id: {
             /** If creation_num is `i`, this is the `i+1`th GUID created by `addr` */
-            creation_num: p.U64;
+            creation_num: string;
 
             /** Address that created the GUID */
-            addr: p.RawAddress;
+            addr: string;
           };
         };
       };
     };
     resolve_proposal_events: {
       /** Total number of events emitted to this event stream. */
-      counter: p.U64;
+      counter: string;
 
       /** A globally unique ID for this event stream. */
       guid: {
@@ -227,17 +227,17 @@ export type VotingForumData<_ProposalType = unknown> = {
         guid: {
           id: {
             /** If creation_num is `i`, this is the `i+1`th GUID created by `addr` */
-            creation_num: p.U64;
+            creation_num: string;
 
             /** Address that created the GUID */
-            addr: p.RawAddress;
+            addr: string;
           };
         };
       };
     };
     vote_events: {
       /** Total number of events emitted to this event stream. */
-      counter: p.U64;
+      counter: string;
 
       /** A globally unique ID for this event stream. */
       guid: {
@@ -245,10 +245,10 @@ export type VotingForumData<_ProposalType = unknown> = {
         guid: {
           id: {
             /** If creation_num is `i`, this is the `i+1`th GUID created by `addr` */
-            creation_num: p.U64;
+            creation_num: string;
 
             /** Address that created the GUID */
-            addr: p.RawAddress;
+            addr: string;
           };
         };
       };
@@ -256,7 +256,7 @@ export type VotingForumData<_ProposalType = unknown> = {
   };
 
   /** Unique identifier for a proposal. This allows for 2 * 10**19 proposals. */
-  next_proposal_id: p.U64;
+  next_proposal_id: string;
 };
 
 export { idl } from "./idl.js";

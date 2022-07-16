@@ -3,9 +3,9 @@
  *
  * @module
  */
-import type * as p from "@movingco/prelude";
 
 import type * as mod from "./index.js";
+import type * as payloads from "./payloads.js";
 /**
  * Sets up the initial validator set for the network.
  * The validator "owner" accounts, and their authentication
@@ -20,7 +20,7 @@ import type * as mod from "./index.js";
  */
 export const create_initialize_validators = ({
   args,
-}: mod.CreateInitializeValidatorsPayload): p.ScriptFunctionPayload => ({
+}: mod.CreateInitializeValidatorsArgs): payloads.CreateInitializeValidators => ({
   type: "script_function_payload",
   function: "0x1::Genesis::create_initialize_validators",
   type_arguments: [],

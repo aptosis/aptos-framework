@@ -24,7 +24,7 @@ export const idl = {
           },
         },
       ],
-      type_params: ["Content"],
+      type_params: [{ name: "Content" }],
       abilities: ["key"],
     },
     {
@@ -40,7 +40,7 @@ export const idl = {
         { name: "vault_address", ty: "address" },
         { name: "authority", ty: "address" },
       ],
-      type_params: ["Content"],
+      type_params: [{ name: "Content", is_phantom: true }],
       abilities: ["copy", "drop"],
     },
     {
@@ -50,7 +50,7 @@ export const idl = {
         { name: "content", ty: { type_param: 0 } },
         { name: "vault_address", ty: "address" },
       ],
-      type_params: ["Content"],
+      type_params: [{ name: "Content" }],
       abilities: [],
     },
     {
@@ -60,7 +60,7 @@ export const idl = {
         { name: "vault_address", ty: "address" },
         { name: "authority", ty: "address" },
       ],
-      type_params: ["Content"],
+      type_params: [{ name: "Content", is_phantom: true }],
       abilities: ["copy", "drop"],
     },
     {
@@ -70,7 +70,7 @@ export const idl = {
         { name: "content", ty: { type_param: 0 } },
         { name: "vault_address", ty: "address" },
       ],
-      type_params: ["Content"],
+      type_params: [{ name: "Content" }],
       abilities: [],
     },
     {
@@ -80,7 +80,7 @@ export const idl = {
         { name: "vault_address", ty: "address" },
         { name: "authority", ty: "address" },
       ],
-      type_params: ["Content"],
+      type_params: [{ name: "Content", is_phantom: true }],
       abilities: ["copy", "drop"],
     },
     {
@@ -90,7 +90,7 @@ export const idl = {
         { name: "vault_address", ty: "address" },
         { name: "authority", ty: "address" },
       ],
-      type_params: ["Content"],
+      type_params: [{ name: "Content", is_phantom: true }],
       abilities: ["copy", "drop"],
     },
     {
@@ -103,7 +103,7 @@ export const idl = {
           ty: { vector: { struct: { name: "0x1::Vault::CapType" } } },
         },
       ],
-      type_params: ["Content"],
+      type_params: [{ name: "Content", is_phantom: true }],
       abilities: ["key"],
     },
     {
@@ -129,7 +129,7 @@ export const idl = {
           ty: { vector: "address" },
         },
       ],
-      type_params: ["Content"],
+      type_params: [{ name: "Content", is_phantom: true }],
       abilities: ["key"],
     },
     {
@@ -162,7 +162,7 @@ export const idl = {
           },
         },
       ],
-      type_params: ["Content"],
+      type_params: [{ name: "Content", is_phantom: true }],
       abilities: ["key"],
     },
     {

@@ -8,9 +8,9 @@
 import type * as p from "@movingco/prelude";
 
 /** Main structure representing a coin/token in an account's custody. */
-export type CoinData<_CoinType = unknown> = {
+export type CoinData = {
   /** Amount of coin this address has. */
-  value: p.U64;
+  value: string;
 };
 
 /**
@@ -20,7 +20,7 @@ export type CoinData<_CoinType = unknown> = {
 export type CoinEventsData = {
   register_events: {
     /** Total number of events emitted to this event stream. */
-    counter: p.U64;
+    counter: string;
 
     /** A globally unique ID for this event stream. */
     guid: {
@@ -28,10 +28,10 @@ export type CoinEventsData = {
       guid: {
         id: {
           /** If creation_num is `i`, this is the `i+1`th GUID created by `addr` */
-          creation_num: p.U64;
+          creation_num: string;
 
           /** Address that created the GUID */
-          addr: p.RawAddress;
+          addr: string;
         };
       };
     };
@@ -39,7 +39,7 @@ export type CoinEventsData = {
 };
 
 /** Information about a specific coin type. Stored on the creator of the coin's account. */
-export type CoinInfoData<_CoinType = unknown> = {
+export type CoinInfoData = {
   name: string;
 
   /**
@@ -53,11 +53,11 @@ export type CoinInfoData<_CoinType = unknown> = {
    * For example, if `decimals` equals `2`, a balance of `505` coins should
    * be displayed to a user as `5.05` (`505 / 10 ** 2`).
    */
-  decimals: p.U64;
+  decimals: string;
 
   /** Amount of this coin type in existence. */
   supply: {
-    vec: ReadonlyArray<p.U128>;
+    vec: ReadonlyArray<string>;
   };
 };
 
@@ -65,14 +65,14 @@ export type CoinInfoData<_CoinType = unknown> = {
  * A holder of a specific coin types and associated event handles.
  * These are kept in a single resource to ensure locality of data.
  */
-export type CoinStoreData<_CoinType = unknown> = {
+export type CoinStoreData = {
   coin: {
     /** Amount of coin this address has. */
-    value: p.U64;
+    value: string;
   };
   deposit_events: {
     /** Total number of events emitted to this event stream. */
-    counter: p.U64;
+    counter: string;
 
     /** A globally unique ID for this event stream. */
     guid: {
@@ -80,17 +80,17 @@ export type CoinStoreData<_CoinType = unknown> = {
       guid: {
         id: {
           /** If creation_num is `i`, this is the `i+1`th GUID created by `addr` */
-          creation_num: p.U64;
+          creation_num: string;
 
           /** Address that created the GUID */
-          addr: p.RawAddress;
+          addr: string;
         };
       };
     };
   };
   withdraw_events: {
     /** Total number of events emitted to this event stream. */
-    counter: p.U64;
+    counter: string;
 
     /** A globally unique ID for this event stream. */
     guid: {
@@ -98,10 +98,10 @@ export type CoinStoreData<_CoinType = unknown> = {
       guid: {
         id: {
           /** If creation_num is `i`, this is the `i+1`th GUID created by `addr` */
-          creation_num: p.U64;
+          creation_num: string;
 
           /** Address that created the GUID */
-          addr: p.RawAddress;
+          addr: string;
         };
       };
     };
@@ -110,41 +110,37 @@ export type CoinStoreData<_CoinType = unknown> = {
 
 /** Event emitted when some amount of a coin is deposited into an account. */
 export type DepositEventData = {
-  amount: p.U64;
+  amount: string;
 };
 
 /** Set of data sent to the event stream when a new coin store is registered. */
 export type RegisterEventData = {
   type_info: {
-    account_address: p.RawAddress;
-    module_name: p.ByteString;
-    struct_name: p.ByteString;
+    account_address: string;
+    module_name: string;
+    struct_name: string;
   };
 };
 
 /** Event emitted when some amount of a coin is withdrawn from an account. */
 export type WithdrawEventData = {
-  amount: p.U64;
+  amount: string;
 };
 
-/**
- * Payload arguments for {@link entry.register}.
- */
-export type RegisterPayload = {
+/** Payload arguments for {@link entry.register}. */
+export type RegisterArgs = {
   typeArgs: {
     CoinType: string;
   };
 };
 
-/**
- * Payload arguments for {@link entry.transfer}.
- */
-export type TransferPayload = {
+/** Payload arguments for {@link entry.transfer}. */
+export type TransferArgs = {
   args: {
     /** IDL type: `Address` */
-    to: p.RawAddress;
+    to: string;
     /** IDL type: `U64` */
-    amount: p.U64;
+    amount: string;
   };
   typeArgs: {
     CoinType: string;
@@ -153,6 +149,7 @@ export type TransferPayload = {
 
 export * as entry from "./entry.js";
 export { idl } from "./idl.js";
+export * as payloads from "./payloads.js";
 
 /** The address of the module. */
 export const ADDRESS = "0x1" as const;

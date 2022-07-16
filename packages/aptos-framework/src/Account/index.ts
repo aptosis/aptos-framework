@@ -7,9 +7,9 @@ import type * as p from "@movingco/prelude";
 
 /** Resource representing an account. */
 export type AccountData = {
-  authentication_key: p.ByteString;
-  sequence_number: p.U64;
-  self_address: p.RawAddress;
+  authentication_key: string;
+  sequence_number: string;
+  self_address: string;
 };
 
 /**
@@ -17,43 +17,40 @@ export type AccountData = {
  * correct chain-specific prologue and epilogue functions
  */
 export type ChainSpecificAccountInfoData = {
-  module_addr: p.RawAddress;
-  module_name: p.ByteString;
-  script_prologue_name: p.ByteString;
-  module_prologue_name: p.ByteString;
-  writeset_prologue_name: p.ByteString;
-  multi_agent_prologue_name: p.ByteString;
-  user_epilogue_name: p.ByteString;
-  writeset_epilogue_name: p.ByteString;
+  module_addr: string;
+  module_name: string;
+  script_prologue_name: string;
+  module_prologue_name: string;
+  writeset_prologue_name: string;
+  multi_agent_prologue_name: string;
+  user_epilogue_name: string;
+  writeset_epilogue_name: string;
   currency_code_required: boolean;
 };
 
 export type SignerCapabilityData = {
-  account: p.RawAddress;
+  account: string;
 };
 
-/**
- * Payload arguments for {@link entry.create_account}.
- */
-export type CreateAccountPayload = {
+/** Payload arguments for {@link entry.create_account}. */
+export type CreateAccountArgs = {
   args: {
     /** IDL type: `Address` */
-    auth_key: p.RawAddress;
+    auth_key: string;
   };
 };
 
-/**
- * Payload arguments for {@link entry.rotate_authentication_key}.
- */
-export type RotateAuthenticationKeyPayload = {
+/** Payload arguments for {@link entry.rotate_authentication_key}. */
+export type RotateAuthenticationKeyArgs = {
   args: {
     /** IDL type: `Vector(U8)` */
-    new_auth_key: p.ByteString;
+    new_auth_key: string;
   };
 };
 
 export * as entry from "./entry.js";
 export { idl } from "./idl.js";
+export * as payloads from "./payloads.js";
 
 /** The address of the module. */
 export const ADDRESS = "0x1" as const;

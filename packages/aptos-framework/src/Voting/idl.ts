@@ -59,7 +59,7 @@ export const idl = {
         },
         { name: "no_votes", ty: "u128" },
       ],
-      type_params: ["ProposalType"],
+      type_params: [{ name: "ProposalType" }],
       abilities: ["store"],
     },
     {
@@ -168,7 +168,7 @@ export const idl = {
           ty: "u64",
         },
       ],
-      type_params: ["ProposalType"],
+      type_params: [{ name: "ProposalType" }],
       abilities: ["key"],
     },
   ],

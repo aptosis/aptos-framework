@@ -12,7 +12,7 @@ export const idl = {
     {
       name: "0x1::Role::Role",
       fields: [{ name: "dummy_field", ty: "bool" }],
-      type_params: ["Type"],
+      type_params: [{ name: "Type", is_phantom: true }],
       abilities: ["key"],
     },
   ],

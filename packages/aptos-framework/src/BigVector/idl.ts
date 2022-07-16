@@ -28,7 +28,7 @@ export const idl = {
         { name: "num_buckets", ty: "u64" },
         { name: "bucket_size", ty: "u64" },
       ],
-      type_params: ["T"],
+      type_params: [{ name: "T" }],
       abilities: ["store"],
     },
     {

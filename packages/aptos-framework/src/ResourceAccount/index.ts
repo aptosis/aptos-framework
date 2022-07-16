@@ -46,28 +46,27 @@ import type * as p from "@movingco/prelude";
 export type ContainerData = {
   store: {
     data: ReadonlyArray<{
-      key: p.RawAddress;
+      key: string;
       value: {
-        account: p.RawAddress;
+        account: string;
       };
     }>;
   };
 };
 
-/**
- * Payload arguments for {@link entry.create_resource_account}.
- */
-export type CreateResourceAccountPayload = {
+/** Payload arguments for {@link entry.create_resource_account}. */
+export type CreateResourceAccountArgs = {
   args: {
     /** IDL type: `Vector(U8)` */
-    seed: p.ByteString;
+    seed: string;
     /** IDL type: `Vector(U8)` */
-    optional_auth_key: p.ByteString;
+    optional_auth_key: string;
   };
 };
 
 export * as entry from "./entry.js";
 export { idl } from "./idl.js";
+export * as payloads from "./payloads.js";
 
 /** The address of the module. */
 export const ADDRESS = "0x1" as const;

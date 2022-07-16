@@ -5,20 +5,19 @@
  */
 import type * as p from "@movingco/prelude";
 
-/**
- * Payload arguments for {@link entry.create_and_fund_account}.
- */
-export type CreateAndFundAccountPayload = {
+/** Payload arguments for {@link entry.create_and_fund_account}. */
+export type CreateAndFundAccountArgs = {
   args: {
     /** IDL type: `Address` */
-    account: p.RawAddress;
+    account: string;
     /** IDL type: `U64` */
-    amount: p.U64;
+    amount: string;
   };
 };
 
 export * as entry from "./entry.js";
 export { idl } from "./idl.js";
+export * as payloads from "./payloads.js";
 
 /** The address of the module. */
 export const ADDRESS = "0x1" as const;

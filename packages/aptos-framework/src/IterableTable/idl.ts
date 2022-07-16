@@ -48,7 +48,7 @@ export const idl = {
           },
         },
       ],
-      type_params: ["K", "V"],
+      type_params: [{ name: "K" }, { name: "V" }],
       abilities: ["store"],
     },
     {
@@ -75,7 +75,7 @@ export const idl = {
           },
         },
       ],
-      type_params: ["K", "V"],
+      type_params: [{ name: "K" }, { name: "V" }],
       abilities: ["store"],
     },
   ],
