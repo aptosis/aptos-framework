@@ -33,15 +33,14 @@
     "url": "https://github.com/aptosis/aptos-framework/issues"
   },
   "dependencies": {
-    "@movingco/prelude": "^0.1.54",
+    "@movingco/prelude": "^0.2.0",
     "tslib": "^2.4.0"
   },
   "devDependencies": {
-    "@saberhq/tsconfig": "^2.0.2",
-    "jsbi": "^4.3.0",
+    "@saberhq/tsconfig": "^2.0.3",
     "typescript": "^4.7.4"
   },
-  "peerDependencies": {
-    "jsbi": "^4.3.0"
+  "typedoc": {
+    "readmeFile": "./README.md"
   }
 }

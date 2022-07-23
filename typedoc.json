@@ -1,0 +1,12 @@
+{
+  "$schema": "https://typedoc.org/schema.json",
+  "excludePrivate": true,
+  "includeVersion": true,
+  "out": "docs/",
+  "entryPointStrategy": "packages",
+  "includes": "packages/",
+  "readme": "./README.md",
+  "name": "Aptos Framework TypeScript SDK",
+  "gaID": "G-CE3H38DR6R",
+  "cname": "aptos-framework.aptos.is"
+}

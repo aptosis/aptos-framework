@@ -1,7 +1,7 @@
-# `@aptosis/faucet-sdk`
+# @aptosis/aptos-framework
 
-TypeScript SDK for the Aptosis faucet.
+TypeScript SDK for `AptosFramework`.
 
 ## License
 
-The Aptosis Faucet SDK is licensed under the Apache License, Version 2.0.
+The Aptos Framework SDK is licensed under the Apache License, Version 2.0.

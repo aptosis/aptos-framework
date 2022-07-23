@@ -6,66 +6,9 @@
 
 /** All errors in this package. */
 export const errmap = {
-  error_categories: {
-    "1": {
-      name: "INVALID_STATE",
-      doc: "The system is in a state where the performed operation is not allowed. Example: call to a function only allowed\nin genesis.",
-    },
-    "2": {
-      name: "REQUIRES_ADDRESS",
-      doc: "The signer of a transaction does not have the expected address for this operation. Example: a call to a function\nwhich publishes a resource under a particular address.",
-    },
-    "3": {
-      name: "REQUIRES_ROLE",
-      doc: "The signer of a transaction does not have the expected  role for this operation. Example: a call to a function\nwhich requires the signer to have the role of treasury compliance.",
-    },
-    "4": {
-      name: "REQUIRES_CAPABILITY",
-      doc: "The signer of a transaction does not have a required capability.",
-    },
-    "5": {
-      name: "NOT_PUBLISHED",
-      doc: "A resource is required but not published. Example: access to non-existing AccountLimits resource.",
-    },
-    "6": {
-      name: "ALREADY_PUBLISHED",
-      doc: "Attempting to publish a resource that is already published. Example: calling an initialization function\ntwice.",
-    },
-    "7": {
-      name: "INVALID_ARGUMENT",
-      doc: "An argument provided to an operation is invalid. Example: a signing key has the wrong format.",
-    },
-    "8": {
-      name: "LIMIT_EXCEEDED",
-      doc: "A limit on an amount, e.g. a currency, is exceeded. Example: withdrawal of money after account limits window\nis exhausted.",
-    },
-    "10": {
-      name: "INTERNAL",
-      doc: "An internal error (bug) has occurred.",
-    },
-    "255": {
-      name: "CUSTOM",
-      doc: "A custom error category for extension points.",
-    },
-  },
+  error_categories: {},
   module_error_maps: {
-    "0x1::ACL": {
-      "0": {
-        name: "ECONTAIN",
-        doc: "The ACL already contains the address.",
-      },
-      "1": {
-        name: "ENOT_CONTAIN",
-        doc: "The ACL does not contain the address.",
-      },
-    },
-    "0x1::ASCII": {
-      "0": {
-        name: "EINVALID_ASCII_CHARACTER",
-        doc: "An invalid ASCII character was encountered when creating an ASCII string.",
-      },
-    },
-    "0x1::Account": {
+    "0x1::account": {
       "0": {
         name: "EACCOUNT",
         doc: "Account already existed",
@@ -76,7 +19,7 @@ export const errmap = {
       },
       "2": {
         name: "ENOT_APTOS_FRAMEWORK",
-        doc: "The address provided didn't match the `AptosFramework` address.",
+        doc: "The address provided didn't match the `aptos_framework` address.",
       },
       "3": {
         name: "EMALFORMED_AUTHENTICATION_KEY",
@@ -107,7 +50,17 @@ export const errmap = {
         name: "ESCRIPT_NOT_ALLOWED",
       },
     },
-    "0x1::AptosGovernance": {
+    "0x1::acl": {
+      "0": {
+        name: "ECONTAIN",
+        doc: "The ACL already contains the address.",
+      },
+      "1": {
+        name: "ENOT_CONTAIN",
+        doc: "The ACL does not contain the address.",
+      },
+    },
+    "0x1::aptos_governance": {
       "1": {
         name: "EINSUFFICIENT_PROPOSER_STAKE",
         doc: "Error codes.",
@@ -121,8 +74,11 @@ export const errmap = {
       "4": {
         name: "EALREADY_VOTED",
       },
+      "5": {
+        name: "ENO_VOTING_POWER",
+      },
     },
-    "0x1::BigVector": {
+    "0x1::big_vector": {
       "0": {
         name: "EINDEX_OUT_OF_BOUNDS",
         doc: "The index into the vector is out of bounds",
@@ -136,17 +92,17 @@ export const errmap = {
         doc: "Destory a non-empty vector.",
       },
     },
-    "0x1::BitVector": {
-      "0": {
+    "0x1::bit_vector": {
+      "131072": {
         name: "EINDEX",
         doc: "The provided index is out of bounds",
       },
-      "1": {
+      "131073": {
         name: "ELENGTH",
         doc: "An invalid length of bitvector was given",
       },
     },
-    "0x1::Block": {
+    "0x1::block": {
       "0": {
         name: "EBLOCK_METADATA",
         doc: "The `BlockMetadata` resource is in an invalid state",
@@ -156,7 +112,7 @@ export const errmap = {
         doc: "An invalid signer was provided. Expected the signer to be the VM or a Validator.",
       },
     },
-    "0x1::BucketTable": {
+    "0x1::bucket_table": {
       "0": {
         name: "ENOT_FOUND",
         doc: "Not found in the table;",
@@ -174,7 +130,7 @@ export const errmap = {
         doc: "Key already exists",
       },
     },
-    "0x1::Capability": {
+    "0x1::capability": {
       "0": {
         name: "ECAP",
       },
@@ -182,13 +138,13 @@ export const errmap = {
         name: "EDELEGATE",
       },
     },
-    "0x1::ChainId": {
+    "0x1::chain_id": {
       "0": {
         name: "ECHAIN_ID",
         doc: "The `ChainId` resource was not in the required state",
       },
     },
-    "0x1::Coin": {
+    "0x1::coin": {
       "0": {
         name: "ECOIN_INFO_ADDRESS_MISMATCH",
         doc: "When address of account which is used to initilize a coin `CoinType`\ndoesn't match the deployer of module containining `CoinType`.",
@@ -221,53 +177,78 @@ export const errmap = {
         name: "ETOTAL_SUPPLY_OVERFLOW",
         doc: "Total supply of the coin overflows. No additional coins can be minted.",
       },
+      "8": {
+        name: "EINVALID_COIN_AMOUNT",
+      },
     },
-    "0x1::Comparator": {
+    "0x1::comparator": {
       "0": {
         name: "EQUAL",
       },
     },
-    "0x1::ConsensusConfig": {
+    "0x1::compare": {
+      "0": {
+        name: "EQUAL",
+      },
+    },
+    "0x1::consensus_config": {
       "0": {
         name: "ECONFIG",
         doc: "Error with config",
       },
     },
-    "0x1::FixedPoint32": {
-      "0": {
+    "0x1::fixed_point32": {
+      "65537": {
         name: "EDENOMINATOR",
         doc: "The denominator provided was zero",
       },
-      "1": {
-        name: "EDIVISION",
-        doc: "The quotient value would be too large to be held in a `u64`",
-      },
-      "2": {
-        name: "EMULTIPLICATION",
-        doc: "The multiplied value would be too large to be held in a `u64`",
-      },
-      "3": {
+      "65540": {
         name: "EDIVISION_BY_ZERO",
         doc: "A division by zero was encountered",
       },
-      "4": {
+      "131074": {
+        name: "EDIVISION",
+        doc: "The quotient value would be too large to be held in a `u64`",
+      },
+      "131075": {
+        name: "EMULTIPLICATION",
+        doc: "The multiplied value would be too large to be held in a `u64`",
+      },
+      "131077": {
         name: "ERATIO_OUT_OF_RANGE",
         doc: "The computed ratio when converting to a `FixedPoint32` would be unrepresentable",
       },
     },
-    "0x1::GUID": {
+    "0x1::genesis": {
+      "1": {
+        name: "EINVALID_EPOCH_DURATION",
+        doc: "Invalid epoch duration.",
+      },
+    },
+    "0x1::governance_proposal": {
+      "1": {
+        name: "ECODE_LOCATION_TOO_LONG",
+      },
+      "2": {
+        name: "ETITLE_TOO_LONG",
+      },
+      "3": {
+        name: "EDESCRIPTION_TOO_LONG",
+      },
+    },
+    "0x1::guid": {
       "0": {
         name: "EGUID_GENERATOR_NOT_PUBLISHED",
         doc: "GUID generator must be published ahead of first usage of `create_with_capability` function.",
       },
     },
-    "0x1::ManagedCoin": {
+    "0x1::managed_coin": {
       "0": {
         name: "ENO_CAPABILITIES",
         doc: "When no capabilities (burn/mint) found on an account.",
       },
     },
-    "0x1::Offer": {
+    "0x1::offer": {
       "0": {
         name: "EOFFER_DNE_FOR_ACCOUNT",
         doc: "An offer of the specified type for the account does not exist",
@@ -281,17 +262,17 @@ export const errmap = {
         doc: "Address does not have an offer of this type to redeem.",
       },
     },
-    "0x1::Option": {
-      "0": {
+    "0x1::option": {
+      "262144": {
         name: "EOPTION_IS_SET",
         doc: "The `Option` is in an invalid state for the operation attempted.\nThe `Option` is `Some` while it should be `None`.",
       },
-      "1": {
+      "262145": {
         name: "EOPTION_NOT_SET",
         doc: "The `Option` is in an invalid state for the operation attempted.\nThe `Option` is `None` while it should be `Some`.",
       },
     },
-    "0x1::Reconfiguration": {
+    "0x1::reconfiguration": {
       "0": {
         name: "ECONFIGURATION",
         doc: "The `Configuration` resource is in an invalid state",
@@ -313,12 +294,17 @@ export const errmap = {
         doc: "An invalid block time was encountered.",
       },
     },
-    "0x1::ResourceAccount": {
+    "0x1::resource_account": {
       "0": {
         name: "ECONTAINER_NOT_PUBLISHED",
       },
     },
-    "0x1::SimpleMap": {
+    "0x1::role": {
+      "0": {
+        name: "EROLE",
+      },
+    },
+    "0x1::simple_map": {
       "0": {
         name: "EKEY_ALREADY_EXISTS",
       },
@@ -326,7 +312,7 @@ export const errmap = {
         name: "EKEY_NOT_FOUND",
       },
     },
-    "0x1::Stake": {
+    "0x1::stake": {
       "1": {
         name: "ELOCK_TIME_TOO_SHORT",
         doc: "Lockup period is shorter than required.",
@@ -390,8 +376,34 @@ export const errmap = {
         name: "EINVALID_PUBLIC_KEY",
         doc: "Invalid consensus public key",
       },
+      "17": {
+        name: "EINVALID_STAKE_RANGE",
+        doc: "Invalid required stake range, usually happens if min > max.",
+      },
+      "18": {
+        name: "EINVALID_LOCKUP_RANGE",
+        doc: "Invalid required stake lockup, usually happens if min > max.",
+      },
+      "19": {
+        name: "EINVALID_REWARDS_RATE",
+        doc: "Invalid rewards rate.",
+      },
+      "20": {
+        name: "EINVALID_STAKE_AMOUNT",
+        doc: "Invalid stake amount (usuaully 0).",
+      },
     },
-    "0x1::SystemAddresses": {
+    "0x1::string": {
+      "1": {
+        name: "EINVALID_UTF8",
+        doc: "An invalid UTF8 encoding.",
+      },
+      "2": {
+        name: "EINVALID_INDEX",
+        doc: "Index out of range.",
+      },
+    },
+    "0x1::system_addresses": {
       "0": {
         name: "ENOT_CORE_RESOURCE_ADDRESS",
         doc: "The address/account did not correspond to the core resource address",
@@ -405,7 +417,7 @@ export const errmap = {
         doc: "The address/account did not correspond to the core framework address",
       },
     },
-    "0x1::Table": {
+    "0x1::table": {
       "100": {
         name: "EALREADY_EXISTS",
       },
@@ -416,7 +428,7 @@ export const errmap = {
         name: "ENOT_EMPTY",
       },
     },
-    "0x1::TestCoin": {
+    "0x1::test_coin": {
       "1": {
         name: "ENO_CAPABILITIES",
         doc: "Error codes",
@@ -428,7 +440,7 @@ export const errmap = {
         name: "EDELEGATION_NOT_FOUND",
       },
     },
-    "0x1::Timestamp": {
+    "0x1::timestamp": {
       "0": {
         name: "ENOT_GENESIS",
         doc: "The blockchain is not in the genesis state anymore",
@@ -442,7 +454,7 @@ export const errmap = {
         doc: "An invalid timestamp was provided",
       },
     },
-    "0x1::Token": {
+    "0x1::token": {
       "0": {
         name: "EALREADY_HAS_BALANCE",
       },
@@ -488,29 +500,45 @@ export const errmap = {
       "14": {
         name: "ETOKEN_STORE_NOT_PUBLISHED",
       },
+      "15": {
+        name: "ETOKEN_SPLIT_AMOUNT_LARGER_THEN_TOKEN_AMOUNT",
+      },
     },
-    "0x1::TransactionPublishingOption": {
+    "0x1::transaction_publishing_option": {
       "1": {
         name: "ECONFIG",
       },
     },
-    "0x1::VMConfig": {
+    "0x1::vault": {
       "0": {
-        name: "ECONFIG",
-        doc: "Error with config",
+        name: "EVAULT",
       },
       "1": {
-        name: "EGAS_CONSTANT_INCONSISTENCY",
-        doc: "The provided gas constants were inconsistent.",
+        name: "EDELEGATE",
+      },
+      "2": {
+        name: "EACCESSOR_IN_USE",
+      },
+      "3": {
+        name: "EACCESSOR_INCONSISTENCY",
+      },
+      "4": {
+        name: "EDELEGATE_TO_SELF",
+      },
+      "5": {
+        name: "EDELEGATION_NOT_ENABLED",
+      },
+      "6": {
+        name: "EEVENT",
       },
     },
-    "0x1::Vector": {
-      "0": {
+    "0x1::vector": {
+      "131072": {
         name: "EINDEX_OUT_OF_BOUNDS",
         doc: "The index into the vector is out of bounds",
       },
     },
-    "0x1::Version": {
+    "0x1::version": {
       "0": {
         name: "ECONFIG",
         doc: "Error with config",
@@ -520,13 +548,26 @@ export const errmap = {
         doc: "Tried to set an invalid major version for the VM. Major versions must be strictly increasing",
       },
     },
-    "0x1::Voting": {
+    "0x1::vm_config": {
+      "0": {
+        name: "ECONFIG",
+        doc: "Error with config",
+      },
+      "1": {
+        name: "EGAS_CONSTANT_INCONSISTENCY",
+        doc: "The provided gas constants were inconsistent.",
+      },
+    },
+    "0x1::voting": {
       "1": {
         name: "EPROPOSAL_EXECUTION_HASH_NOT_MATCHING",
         doc: "Error codes.",
       },
       "2": {
         name: "EPROPOSAL_CANNOT_BE_RESOLVED",
+      },
+      "3": {
+        name: "EPROPOSAL_ALREADY_RESOLVED",
       },
     },
   },

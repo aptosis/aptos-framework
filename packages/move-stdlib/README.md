@@ -1,7 +1,7 @@
-# `@aptosis/faucet-sdk`
+# @aptosis/move-stdlib
 
-TypeScript SDK for the Aptosis faucet.
+TypeScript SDK for `MoveStdlib`.
 
 ## License
 
-The Aptosis Faucet SDK is licensed under the Apache License, Version 2.0.
+The MoveStdlib SDK is licensed under the Apache License, Version 2.0.
