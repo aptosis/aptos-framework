@@ -15,12 +15,8 @@ import type * as p from "@movingco/prelude";
 export interface IBurnCapability {
   token_id: {
     creator: p.RawAddress;
-    collection: {
-      bytes: p.ByteString;
-    };
-    name: {
-      bytes: p.ByteString;
-    };
+    collection: string;
+    name: string;
   };
 }
 
@@ -32,12 +28,8 @@ export interface IBurnCapability {
 export interface IDepositEvent {
   id: {
     creator: p.RawAddress;
-    collection: {
-      bytes: p.ByteString;
-    };
-    name: {
-      bytes: p.ByteString;
-    };
+    collection: string;
+    name: string;
   };
   amount: p.U64;
 }
@@ -50,12 +42,8 @@ export interface IDepositEvent {
 export interface IMintCapability {
   token_id: {
     creator: p.RawAddress;
-    collection: {
-      bytes: p.ByteString;
-    };
-    name: {
-      bytes: p.ByteString;
-    };
+    collection: string;
+    name: string;
   };
 }
 
@@ -67,12 +55,8 @@ export interface IMintCapability {
 export interface IWithdrawEvent {
   id: {
     creator: p.RawAddress;
-    collection: {
-      bytes: p.ByteString;
-    };
-    name: {
-      bytes: p.ByteString;
-    };
+    collection: string;
+    name: string;
   };
   amount: p.U64;
 }
@@ -83,15 +67,9 @@ export interface IWithdrawEvent {
  * Type name: `0x1::token::Collection`
  */
 export interface ICollection {
-  description: {
-    bytes: p.ByteString;
-  };
-  name: {
-    bytes: p.ByteString;
-  };
-  uri: {
-    bytes: p.ByteString;
-  };
+  description: string;
+  name: string;
+  uri: string;
   count: p.U64;
   maximum: {
     vec: ReadonlyArray<p.U64>;
@@ -174,15 +152,9 @@ export interface ICollections {
  */
 export interface ICreateCollectionEvent {
   creator: p.RawAddress;
-  collection_name: {
-    bytes: p.ByteString;
-  };
-  uri: {
-    bytes: p.ByteString;
-  };
-  description: {
-    bytes: p.ByteString;
-  };
+  collection_name: string;
+  uri: string;
+  description: string;
   maximum: {
     vec: ReadonlyArray<p.U64>;
   };
@@ -196,32 +168,20 @@ export interface ICreateCollectionEvent {
 export interface ICreateTokenEvent {
   id: {
     creator: p.RawAddress;
-    collection: {
-      bytes: p.ByteString;
-    };
-    name: {
-      bytes: p.ByteString;
-    };
+    collection: string;
+    name: string;
   };
   token_data: {
-    collection: {
-      bytes: p.ByteString;
-    };
-    description: {
-      bytes: p.ByteString;
-    };
-    name: {
-      bytes: p.ByteString;
-    };
+    collection: string;
+    description: string;
+    name: string;
     maximum: {
       vec: ReadonlyArray<p.U64>;
     };
     supply: {
       vec: ReadonlyArray<p.U64>;
     };
-    uri: {
-      bytes: p.ByteString;
-    };
+    uri: string;
     royalty: {
       royalty_points_per_million: p.U64;
       creator_account: p.RawAddress;
@@ -238,12 +198,8 @@ export interface ICreateTokenEvent {
 export interface IMintTokenEvent {
   id: {
     creator: p.RawAddress;
-    collection: {
-      bytes: p.ByteString;
-    };
-    name: {
-      bytes: p.ByteString;
-    };
+    collection: string;
+    name: string;
   };
   amount: p.U64;
 }
@@ -266,12 +222,8 @@ export interface IRoyalty {
 export interface IToken {
   id: {
     creator: p.RawAddress;
-    collection: {
-      bytes: p.ByteString;
-    };
-    name: {
-      bytes: p.ByteString;
-    };
+    collection: string;
+    name: string;
   };
   value: p.U64;
 }
@@ -282,24 +234,16 @@ export interface IToken {
  * Type name: `0x1::token::TokenData`
  */
 export interface ITokenData {
-  collection: {
-    bytes: p.ByteString;
-  };
-  description: {
-    bytes: p.ByteString;
-  };
-  name: {
-    bytes: p.ByteString;
-  };
+  collection: string;
+  description: string;
+  name: string;
   maximum: {
     vec: ReadonlyArray<p.U64>;
   };
   supply: {
     vec: ReadonlyArray<p.U64>;
   };
-  uri: {
-    bytes: p.ByteString;
-  };
+  uri: string;
   royalty: {
     royalty_points_per_million: p.U64;
     creator_account: p.RawAddress;
@@ -313,12 +257,8 @@ export interface ITokenData {
  */
 export interface ITokenId {
   creator: p.RawAddress;
-  collection: {
-    bytes: p.ByteString;
-  };
-  name: {
-    bytes: p.ByteString;
-  };
+  collection: string;
+  name: string;
 }
 
 /**

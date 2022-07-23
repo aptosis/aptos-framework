@@ -47,17 +47,13 @@ export interface ICoinEvents {
  * Type name: `0x1::coin::CoinInfo`
  */
 export interface ICoinInfo {
-  name: {
-    bytes: p.ByteString;
-  };
+  name: string;
 
   /**
    * Symbol of the coin, usually a shorter version of the name.
    * For example, Singapore Dollar is SGD.
    */
-  symbol: {
-    bytes: p.ByteString;
-  };
+  symbol: string;
 
   /**
    * Number of decimals used to get its user representation.

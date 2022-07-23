@@ -12,12 +12,8 @@ export interface IBurnCapability {
   token_id: {
     token_data_id: {
       creator: p.RawAddress;
-      collection: {
-        bytes: p.ByteString;
-      };
-      name: {
-        bytes: p.ByteString;
-      };
+      collection: string;
+      name: string;
     };
     serial_number: p.U64;
   };
@@ -32,12 +28,8 @@ export interface IDepositEvent {
   id: {
     token_data_id: {
       creator: p.RawAddress;
-      collection: {
-        bytes: p.ByteString;
-      };
-      name: {
-        bytes: p.ByteString;
-      };
+      collection: string;
+      name: string;
     };
     serial_number: p.U64;
   };
@@ -53,12 +45,8 @@ export interface IMintCapability {
   token_id: {
     token_data_id: {
       creator: p.RawAddress;
-      collection: {
-        bytes: p.ByteString;
-      };
-      name: {
-        bytes: p.ByteString;
-      };
+      collection: string;
+      name: string;
     };
     serial_number: p.U64;
   };
@@ -73,12 +61,8 @@ export interface IWithdrawEvent {
   id: {
     token_data_id: {
       creator: p.RawAddress;
-      collection: {
-        bytes: p.ByteString;
-      };
-      name: {
-        bytes: p.ByteString;
-      };
+      collection: string;
+      name: string;
     };
     serial_number: p.U64;
   };
@@ -91,15 +75,9 @@ export interface IWithdrawEvent {
  * Type name: `0x2::token_v1::Collection`
  */
 export interface ICollection {
-  description: {
-    bytes: p.ByteString;
-  };
-  name: {
-    bytes: p.ByteString;
-  };
-  uri: {
-    bytes: p.ByteString;
-  };
+  description: string;
+  name: string;
+  uri: string;
   count: p.U64;
   maximum: p.U64;
   mutability_config: {
@@ -181,15 +159,9 @@ export interface ICollections {
  */
 export interface ICreateCollectionEvent {
   creator: p.RawAddress;
-  collection_name: {
-    bytes: p.ByteString;
-  };
-  uri: {
-    bytes: p.ByteString;
-  };
-  description: {
-    bytes: p.ByteString;
-  };
+  collection_name: string;
+  uri: string;
+  description: string;
   maximum: p.U64;
 }
 
@@ -202,12 +174,8 @@ export interface ICreateTokenEvent {
   id: {
     token_data_id: {
       creator: p.RawAddress;
-      collection: {
-        bytes: p.ByteString;
-      };
-      name: {
-        bytes: p.ByteString;
-      };
+      collection: string;
+      name: string;
     };
     serial_number: p.U64;
   };
@@ -223,12 +191,8 @@ export interface IMintTokenEvent {
   id: {
     token_data_id: {
       creator: p.RawAddress;
-      collection: {
-        bytes: p.ByteString;
-      };
-      name: {
-        bytes: p.ByteString;
-      };
+      collection: string;
+      name: string;
     };
     serial_number: p.U64;
   };
@@ -251,12 +215,8 @@ export interface IToken {
   id: {
     token_data_id: {
       creator: p.RawAddress;
-      collection: {
-        bytes: p.ByteString;
-      };
-      name: {
-        bytes: p.ByteString;
-      };
+      collection: string;
+      name: string;
     };
     serial_number: p.U64;
   };
@@ -271,41 +231,27 @@ export interface IToken {
 export interface ITokenData {
   id: {
     creator: p.RawAddress;
-    collection: {
-      bytes: p.ByteString;
-    };
-    name: {
-      bytes: p.ByteString;
-    };
+    collection: string;
+    name: string;
   };
   maximum: p.U64;
   largest_serial_number: p.U64;
   supply: p.U64;
-  uri: {
-    bytes: p.ByteString;
-  };
+  uri: string;
   royalty: {
     royalty_points_nominator: p.U64;
     royalty_points_denominator: p.U64;
     payee_address: p.RawAddress;
   };
-  name: {
-    bytes: p.ByteString;
-  };
-  description: {
-    bytes: p.ByteString;
-  };
+  name: string;
+  description: string;
   properties: {
     map: {
       data: ReadonlyArray<{
-        key: {
-          bytes: p.ByteString;
-        };
+        key: string;
         value: {
           value: p.ByteString;
-          type: {
-            bytes: p.ByteString;
-          };
+          type: string;
         };
       }>;
     };
@@ -327,12 +273,8 @@ export interface ITokenData {
 export interface ITokenId {
   token_data_id: {
     creator: p.RawAddress;
-    collection: {
-      bytes: p.ByteString;
-    };
-    name: {
-      bytes: p.ByteString;
-    };
+    collection: string;
+    name: string;
   };
   serial_number: p.U64;
 }
@@ -414,12 +356,8 @@ export interface ITokenAuthorityStore {
  */
 export interface ITokenDataId {
   creator: p.RawAddress;
-  collection: {
-    bytes: p.ByteString;
-  };
-  name: {
-    bytes: p.ByteString;
-  };
+  collection: string;
+  name: string;
 }
 
 /**

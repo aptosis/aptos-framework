@@ -30,12 +30,8 @@ export interface ITokenEscrow {
     id: {
       token_data_id: {
         creator: p.RawAddress;
-        collection: {
-          bytes: p.ByteString;
-        };
-        name: {
-          bytes: p.ByteString;
-        };
+        collection: string;
+        name: string;
       };
       serial_number: p.U64;
     };
@@ -49,12 +45,8 @@ export interface ITokenListingEvent {
   token_id: {
     token_data_id: {
       creator: p.RawAddress;
-      collection: {
-        bytes: p.ByteString;
-      };
-      name: {
-        bytes: p.ByteString;
-      };
+      collection: string;
+      name: string;
     };
     serial_number: p.U64;
   };
@@ -127,12 +119,8 @@ export interface ITokenSwapEvent {
   token_id: {
     token_data_id: {
       creator: p.RawAddress;
-      collection: {
-        bytes: p.ByteString;
-      };
-      name: {
-        bytes: p.ByteString;
-      };
+      collection: string;
+      name: string;
     };
     serial_number: p.U64;
   };

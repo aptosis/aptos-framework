@@ -12,14 +12,10 @@ import type * as p from "@movingco/prelude";
 export interface IPropertyMap {
   map: {
     data: ReadonlyArray<{
-      key: {
-        bytes: p.ByteString;
-      };
+      key: string;
       value: {
         value: p.ByteString;
-        type: {
-          bytes: p.ByteString;
-        };
+        type: string;
       };
     }>;
   };
@@ -28,9 +24,7 @@ export interface IPropertyMap {
 /** Type name: `0x2::property_map::PropertyValue` */
 export interface IPropertyValue {
   value: p.ByteString;
-  type: {
-    bytes: p.ByteString;
-  };
+  type: string;
 }
 
 export { idl } from "./idl.js";

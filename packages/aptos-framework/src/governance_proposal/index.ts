@@ -15,25 +15,19 @@ export interface IGovernanceProposal {
    * The location (e.g. url) where the proposal resolution script's code can be accessed.
    * Maximum length allowed is 256 chars.
    */
-  code_location: {
-    bytes: p.ByteString;
-  };
+  code_location: string;
 
   /**
    * Title of the proposal.
    * Maximum length allowed is 256 chars.
    */
-  title: {
-    bytes: p.ByteString;
-  };
+  title: string;
 
   /**
    * Description of the proposal.
    * Maximum length allowed is 256 chars.
    */
-  description: {
-    bytes: p.ByteString;
-  };
+  description: string;
 }
 
 export { idl } from "./idl.js";
