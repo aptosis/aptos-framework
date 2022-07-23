@@ -5,6 +5,7 @@ Generated TypeScript interfaces for Aptos Move.
 This contains types for:
 
 - `AptosFramework`
+- `AptosToken`
 - `MoveNursery`
 - `MoveStdlib`
 
