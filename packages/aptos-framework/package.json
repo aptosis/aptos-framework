@@ -1,6 +1,6 @@
 {
   "name": "@aptosis/aptos-framework",
-  "version": "0.1.10",
+  "version": "0.2.0",
   "description": "TypeScript SDK for AptosFramework",
   "author": "Ian Macalinao <ian@aptos.is>",
   "homepage": "https://github.com/aptosis/aptos-framework#readme",
