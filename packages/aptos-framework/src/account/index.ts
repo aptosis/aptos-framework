@@ -118,6 +118,43 @@ export const errorCodes = {
   "11": {
     name: "ESCRIPT_NOT_ALLOWED",
   },
+  "1001": {
+    name: "PROLOGUE_EINVALID_ACCOUNT_AUTH_KEY",
+    doc: "Prologue errors. These are separated out from the other errors in this\nmodule since they are mapped separately to major VM statuses, and are\nimportant to the semantics of the system.",
+  },
+  "1002": {
+    name: "PROLOGUE_ESEQUENCE_NUMBER_TOO_OLD",
+  },
+  "1003": {
+    name: "PROLOGUE_ESEQUENCE_NUMBER_TOO_NEW",
+  },
+  "1004": {
+    name: "PROLOGUE_EACCOUNT_DNE",
+  },
+  "1005": {
+    name: "PROLOGUE_ECANT_PAY_GAS_DEPOSIT",
+  },
+  "1006": {
+    name: "PROLOGUE_ETRANSACTION_EXPIRED",
+  },
+  "1007": {
+    name: "PROLOGUE_EBAD_CHAIN_ID",
+  },
+  "1008": {
+    name: "PROLOGUE_ESCRIPT_NOT_ALLOWED",
+  },
+  "1009": {
+    name: "PROLOGUE_EMODULE_NOT_ALLOWED",
+  },
+  "1010": {
+    name: "PROLOGUE_EINVALID_WRITESET_SENDER",
+  },
+  "1011": {
+    name: "PROLOGUE_ESEQUENCE_NUMBER_TOO_BIG",
+  },
+  "1012": {
+    name: "PROLOGUE_ESECONDARY_KEYS_ADDRESSES_COUNT_MISMATCH",
+  },
 } as const;
 
 /** All module function IDLs. */
