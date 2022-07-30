@@ -15,9 +15,8 @@ export const idl = {
       args: [
         { name: "stake_pool", ty: "address" },
         { name: "execution_hash", ty: { vector: "u8" } },
-        { name: "code_location", ty: { vector: "u8" } },
-        { name: "title", ty: { vector: "u8" } },
-        { name: "description", ty: { vector: "u8" } },
+        { name: "metadata_location", ty: { vector: "u8" } },
+        { name: "metadata_hash", ty: { vector: "u8" } },
       ],
     },
     {
@@ -40,6 +39,8 @@ export const idl = {
         { name: "stake_pool", ty: "address" },
         { name: "proposal_id", ty: "u64" },
         { name: "execution_hash", ty: { vector: "u8" } },
+        { name: "metadata_location", ty: { vector: "u8" } },
+        { name: "metadata_hash", ty: { vector: "u8" } },
       ],
       abilities: ["drop", "store"],
     },

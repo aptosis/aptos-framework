@@ -285,6 +285,9 @@ export const errorCodes = {
   "3": {
     name: "EPROPOSAL_ALREADY_RESOLVED",
   },
+  "4": {
+    name: "EPROPOSAL_EMPTY_EXECUTION_HASH",
+  },
 } as const;
 
 /** All module function IDLs. */

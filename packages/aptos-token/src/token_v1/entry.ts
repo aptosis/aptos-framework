@@ -10,7 +10,7 @@ import type * as payloads from "./payloads.js";
 /** Mint more token from an existing token_data. Mint only adds more token to serial_number 0 */
 export const mint = ({ args }: mod.MintArgs): payloads.Mint => ({
   type: "script_function_payload",
-  function: "0x2::token_v1::mint",
+  function: "0x1::token_v1::mint",
   type_arguments: [],
   arguments: [
     p.serializers.hexString(args.token_data_address),
@@ -24,7 +24,7 @@ export const direct_transfer_script = ({
   args,
 }: mod.DirectTransferScriptArgs): payloads.DirectTransferScript => ({
   type: "script_function_payload",
-  function: "0x2::token_v1::direct_transfer_script",
+  function: "0x1::token_v1::direct_transfer_script",
   type_arguments: [],
   arguments: [
     p.serializers.hexString(args.creators_address),
@@ -37,7 +37,7 @@ export const direct_transfer_script = ({
 
 export const initialize_token_script = (): payloads.InitializeTokenScript => ({
   type: "script_function_payload",
-  function: "0x2::token_v1::initialize_token_script",
+  function: "0x1::token_v1::initialize_token_script",
   type_arguments: [],
   arguments: [],
 });
@@ -47,7 +47,7 @@ export const create_collection_script = ({
   args,
 }: mod.CreateCollectionScriptArgs): payloads.CreateCollectionScript => ({
   type: "script_function_payload",
-  function: "0x2::token_v1::create_collection_script",
+  function: "0x1::token_v1::create_collection_script",
   type_arguments: [],
   arguments: [
     p.serializers.hexString(args.name),
@@ -65,7 +65,7 @@ export const create_token_script = ({
   args,
 }: mod.CreateTokenScriptArgs): payloads.CreateTokenScript => ({
   type: "script_function_payload",
-  function: "0x2::token_v1::create_token_script",
+  function: "0x1::token_v1::create_token_script",
   type_arguments: [],
   arguments: [
     p.serializers.hexString(args.collection),
@@ -91,15 +91,3 @@ export const create_token_script = ({
     ),
   ],
 });
-
-/**
- * initialize capability store for storing all token capabilities
- * this function should be called by any account that plan to own tokens
- */
-export const initialize_token_authority_store_script =
-  (): payloads.InitializeTokenAuthorityStoreScript => ({
-    type: "script_function_payload",
-    function: "0x2::token_v1::initialize_token_authority_store_script",
-    type_arguments: [],
-    arguments: [],
-  });

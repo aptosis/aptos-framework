@@ -8,11 +8,11 @@ import * as p from "@movingco/prelude";
 import type * as mod from "./index.js";
 import type * as payloads from "./payloads.js";
 /** Withdraw from `account`'s inactive stake. */
-export const withdraw = (): payloads.Withdraw => ({
+export const withdraw = ({ args }: mod.WithdrawArgs): payloads.Withdraw => ({
   type: "script_function_payload",
   function: "0x1::stake::withdraw",
   type_arguments: [],
-  arguments: [],
+  arguments: [p.serializers.u64(args.withdraw_amount)],
 });
 
 /** Add `amount` of coins from the `account` owning the StakePool. */

@@ -4,6 +4,14 @@
  * @module
  */
 
+/** Script function payload for `0x1::account::transfer`. */
+export type Transfer = {
+  readonly type: "script_function_payload";
+  readonly function: "0x1::account::transfer";
+  readonly arguments: [to: string, amount: string];
+  readonly type_arguments: [];
+};
+
 /**
  * Script function payload for `0x1::account::create_account`.
  *

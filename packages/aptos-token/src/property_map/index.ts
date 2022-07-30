@@ -2,13 +2,13 @@
  * PropertyMap is a specialization of SimpleMap for Tokens.
  * It maps a String key to a PropertyValue that consists of type (string) and value (vecotr<u8>)
  *
- * **Module ID:** `0x2::property_map`
+ * **Module ID:** `0x1::property_map`
  *
  * @module
  */
 import type * as p from "@movingco/prelude";
 
-/** Type name: `0x2::property_map::PropertyMap` */
+/** Type name: `0x1::property_map::PropertyMap` */
 export interface IPropertyMap {
   map: {
     data: ReadonlyArray<{
@@ -21,7 +21,7 @@ export interface IPropertyMap {
   };
 }
 
-/** Type name: `0x2::property_map::PropertyValue` */
+/** Type name: `0x1::property_map::PropertyValue` */
 export interface IPropertyValue {
   value: p.ByteString;
   type: string;
@@ -30,9 +30,9 @@ export interface IPropertyValue {
 export { idl } from "./idl.js";
 
 /** The address of the module. */
-export const ADDRESS = "0x2" as const;
+export const ADDRESS = "0x1" as const;
 /** The full module name. */
-export const FULL_NAME = "0x2::property_map" as const;
+export const FULL_NAME = "0x1::property_map" as const;
 /** The name of the module. */
 export const NAME = "property_map" as const;
 
@@ -72,11 +72,11 @@ export const resources = {} as const;
 
 /** All struct types. */
 export const structs = {
-  PropertyMap: "0x2::property_map::PropertyMap",
-  PropertyValue: "0x2::property_map::PropertyValue",
+  PropertyMap: "0x1::property_map::PropertyMap",
+  PropertyValue: "0x1::property_map::PropertyValue",
 } as const;
 
-/** Payload generators for module `0x2::property_map`. */
+/** Payload generators for module `0x1::property_map`. */
 const moduleImpl = {
   ...id,
   errorCodes,
@@ -90,6 +90,6 @@ const moduleImpl = {
  * It maps a String key to a PropertyValue that consists of type (string) and value (vecotr<u8>)
  */
 export const moduleDefinition = moduleImpl as p.MoveModuleDefinition<
-  "0x2",
+  "0x1",
   "property_map"
 > as typeof moduleImpl;

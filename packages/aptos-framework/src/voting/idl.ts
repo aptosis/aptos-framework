@@ -192,5 +192,6 @@ export const idl = {
     "1": { name: "EPROPOSAL_EXECUTION_HASH_NOT_MATCHING", doc: "Error codes." },
     "2": { name: "EPROPOSAL_CANNOT_BE_RESOLVED" },
     "3": { name: "EPROPOSAL_ALREADY_RESOLVED" },
+    "4": { name: "EPROPOSAL_EMPTY_EXECUTION_HASH" },
   },
 } as const;

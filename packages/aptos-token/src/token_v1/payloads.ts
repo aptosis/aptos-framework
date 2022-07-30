@@ -5,13 +5,13 @@
  */
 
 /**
- * Script function payload for `0x2::token_v1::mint`.
+ * Script function payload for `0x1::token_v1::mint`.
  *
  * Mint more token from an existing token_data. Mint only adds more token to serial_number 0
  */
 export type Mint = {
   readonly type: "script_function_payload";
-  readonly function: "0x2::token_v1::mint";
+  readonly function: "0x1::token_v1::mint";
   readonly arguments: [
     token_data_address: string,
     collection: string,
@@ -21,10 +21,10 @@ export type Mint = {
   readonly type_arguments: [];
 };
 
-/** Script function payload for `0x2::token_v1::direct_transfer_script`. */
+/** Script function payload for `0x1::token_v1::direct_transfer_script`. */
 export type DirectTransferScript = {
   readonly type: "script_function_payload";
-  readonly function: "0x2::token_v1::direct_transfer_script";
+  readonly function: "0x1::token_v1::direct_transfer_script";
   readonly arguments: [
     creators_address: string,
     collection: string,
@@ -35,22 +35,22 @@ export type DirectTransferScript = {
   readonly type_arguments: [];
 };
 
-/** Script function payload for `0x2::token_v1::initialize_token_script`. */
+/** Script function payload for `0x1::token_v1::initialize_token_script`. */
 export type InitializeTokenScript = {
   readonly type: "script_function_payload";
-  readonly function: "0x2::token_v1::initialize_token_script";
+  readonly function: "0x1::token_v1::initialize_token_script";
   readonly arguments: [];
   readonly type_arguments: [];
 };
 
 /**
- * Script function payload for `0x2::token_v1::create_collection_script`.
+ * Script function payload for `0x1::token_v1::create_collection_script`.
  *
  * create a empty token collection with parameters
  */
 export type CreateCollectionScript = {
   readonly type: "script_function_payload";
-  readonly function: "0x2::token_v1::create_collection_script";
+  readonly function: "0x1::token_v1::create_collection_script";
   readonly arguments: [
     name: string,
     description: string,
@@ -62,13 +62,13 @@ export type CreateCollectionScript = {
 };
 
 /**
- * Script function payload for `0x2::token_v1::create_token_script`.
+ * Script function payload for `0x1::token_v1::create_token_script`.
  *
  * create token with raw inputs
  */
 export type CreateTokenScript = {
   readonly type: "script_function_payload";
-  readonly function: "0x2::token_v1::create_token_script";
+  readonly function: "0x1::token_v1::create_token_script";
   readonly arguments: [
     collection: string,
     name: string,
@@ -84,18 +84,5 @@ export type CreateTokenScript = {
     property_values: ReadonlyArray<string>,
     property_types: ReadonlyArray<string>
   ];
-  readonly type_arguments: [];
-};
-
-/**
- * Script function payload for `0x2::token_v1::initialize_token_authority_store_script`.
- *
- * initialize capability store for storing all token capabilities
- * this function should be called by any account that plan to own tokens
- */
-export type InitializeTokenAuthorityStoreScript = {
-  readonly type: "script_function_payload";
-  readonly function: "0x2::token_v1::initialize_token_authority_store_script";
-  readonly arguments: [];
   readonly type_arguments: [];
 };

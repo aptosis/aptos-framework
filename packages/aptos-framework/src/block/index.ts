@@ -37,11 +37,12 @@ export interface IBlockMetadata {
 export interface INewBlockEvent {
   epoch: p.U64;
   round: p.U64;
+  height: p.U64;
   previous_block_votes: ReadonlyArray<boolean>;
   proposer: p.RawAddress;
   failed_proposer_indices: ReadonlyArray<p.U64>;
 
-  /** On-chain time during  he block at the given height */
+  /** On-chain time during the block at the given height */
   time_microseconds: p.U64;
 }
 

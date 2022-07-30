@@ -17,9 +17,8 @@ export type CreateProposal = {
   readonly arguments: [
     stake_pool: string,
     execution_hash: string,
-    code_location: string,
-    title: string,
-    description: string
+    metadata_location: string,
+    metadata_hash: string
   ];
   readonly type_arguments: [];
 };

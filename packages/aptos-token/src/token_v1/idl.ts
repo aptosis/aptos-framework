@@ -5,7 +5,7 @@
  */
 /** The IDL of the module. */
 export const idl = {
-  module_id: "0x2::token_v1",
+  module_id: "0x1::token_v1",
   doc: "This module provides the foundation for Tokens.",
   functions: [
     {
@@ -63,55 +63,50 @@ export const idl = {
         { name: "property_types", ty: { vector: { vector: "u8" } } },
       ],
     },
-    {
-      name: "initialize_token_authority_store_script",
-      doc: "initialize capability store for storing all token capabilities\nthis function should be called by any account that plan to own tokens",
-      ty_args: [],
-      args: [],
-    },
   ],
   structs: [
     {
-      name: "0x2::token_v1::BurnCapability",
+      name: "0x1::token_v1::BurnCapability",
       fields: [
         {
           name: "token_id",
-          ty: { struct: { name: "0x2::token_v1::TokenId" } },
+          ty: { struct: { name: "0x1::token_v1::TokenId" } },
         },
+        { name: "owner", ty: "address" },
       ],
       abilities: ["drop"],
     },
     {
-      name: "0x2::token_v1::DepositEvent",
+      name: "0x1::token_v1::DepositEvent",
       doc: "Set of data sent to the event stream during a receive",
       fields: [
-        { name: "id", ty: { struct: { name: "0x2::token_v1::TokenId" } } },
+        { name: "id", ty: { struct: { name: "0x1::token_v1::TokenId" } } },
         { name: "amount", ty: "u64" },
       ],
       abilities: ["drop", "store"],
     },
     {
-      name: "0x2::token_v1::MintCapability",
+      name: "0x1::token_v1::MintCapability",
       doc: "Capability required to mint tokens.",
       fields: [
         {
           name: "token_id",
-          ty: { struct: { name: "0x2::token_v1::TokenId" } },
+          ty: { struct: { name: "0x1::token_v1::TokenId" } },
         },
       ],
       abilities: ["store"],
     },
     {
-      name: "0x2::token_v1::WithdrawEvent",
+      name: "0x1::token_v1::WithdrawEvent",
       doc: "Set of data sent to the event stream during a withdrawal",
       fields: [
-        { name: "id", ty: { struct: { name: "0x2::token_v1::TokenId" } } },
+        { name: "id", ty: { struct: { name: "0x1::token_v1::TokenId" } } },
         { name: "amount", ty: "u64" },
       ],
       abilities: ["drop", "store"],
     },
     {
-      name: "0x2::token_v1::Collection",
+      name: "0x1::token_v1::Collection",
       doc: "Represent the collection metadata",
       fields: [
         {
@@ -124,13 +119,13 @@ export const idl = {
         { name: "maximum", ty: "u64" },
         {
           name: "mutability_config",
-          ty: { struct: { name: "0x2::token_v1::CollectionMutabilityConfig" } },
+          ty: { struct: { name: "0x1::token_v1::CollectionMutabilityConfig" } },
         },
       ],
       abilities: ["store"],
     },
     {
-      name: "0x2::token_v1::Collections",
+      name: "0x1::token_v1::Collections",
       doc: "Represent collection and token metadata for a creator",
       fields: [
         {
@@ -140,7 +135,7 @@ export const idl = {
               name: "0x1::table::Table",
               ty_args: [
                 { struct: { name: "0x1::string::String" } },
-                { struct: { name: "0x2::token_v1::Collection" } },
+                { struct: { name: "0x1::token_v1::Collection" } },
               ],
             },
           },
@@ -151,8 +146,8 @@ export const idl = {
             struct: {
               name: "0x1::table::Table",
               ty_args: [
-                { struct: { name: "0x2::token_v1::TokenDataId" } },
-                { struct: { name: "0x2::token_v1::TokenData" } },
+                { struct: { name: "0x1::token_v1::TokenDataId" } },
+                { struct: { name: "0x1::token_v1::TokenData" } },
               ],
             },
           },
@@ -163,8 +158,8 @@ export const idl = {
             struct: {
               name: "0x1::table::Table",
               ty_args: [
-                { struct: { name: "0x2::token_v1::TokenId" } },
-                { struct: { name: "0x2::token_v1::MintCapability" } },
+                { struct: { name: "0x1::token_v1::TokenId" } },
+                { struct: { name: "0x1::token_v1::MintCapability" } },
               ],
             },
           },
@@ -175,7 +170,7 @@ export const idl = {
             struct: {
               name: "0x1::event::EventHandle",
               ty_args: [
-                { struct: { name: "0x2::token_v1::CreateCollectionEvent" } },
+                { struct: { name: "0x1::token_v1::CreateCollectionEvent" } },
               ],
             },
           },
@@ -186,7 +181,7 @@ export const idl = {
             struct: {
               name: "0x1::event::EventHandle",
               ty_args: [
-                { struct: { name: "0x2::token_v1::CreateTokenEvent" } },
+                { struct: { name: "0x1::token_v1::CreateTokenEvent" } },
               ],
             },
           },
@@ -196,7 +191,7 @@ export const idl = {
           ty: {
             struct: {
               name: "0x1::event::EventHandle",
-              ty_args: [{ struct: { name: "0x2::token_v1::MintTokenEvent" } }],
+              ty_args: [{ struct: { name: "0x1::token_v1::MintTokenEvent" } }],
             },
           },
         },
@@ -204,7 +199,7 @@ export const idl = {
       abilities: ["key"],
     },
     {
-      name: "0x2::token_v1::CreateCollectionEvent",
+      name: "0x1::token_v1::CreateCollectionEvent",
       doc: "create collection event with creator address and collection name",
       fields: [
         { name: "creator", ty: "address" },
@@ -222,25 +217,25 @@ export const idl = {
       abilities: ["drop", "store"],
     },
     {
-      name: "0x2::token_v1::CreateTokenEvent",
+      name: "0x1::token_v1::CreateTokenEvent",
       doc: "token creation event id of token created",
       fields: [
-        { name: "id", ty: { struct: { name: "0x2::token_v1::TokenId" } } },
+        { name: "id", ty: { struct: { name: "0x1::token_v1::TokenId" } } },
         { name: "initial_balance", ty: "u64" },
       ],
       abilities: ["drop", "store"],
     },
     {
-      name: "0x2::token_v1::MintTokenEvent",
+      name: "0x1::token_v1::MintTokenEvent",
       doc: "mint token event. This event triggered when creator adds more supply to existing token",
       fields: [
-        { name: "id", ty: { struct: { name: "0x2::token_v1::TokenId" } } },
+        { name: "id", ty: { struct: { name: "0x1::token_v1::TokenId" } } },
         { name: "amount", ty: "u64" },
       ],
       abilities: ["drop", "store"],
     },
     {
-      name: "0x2::token_v1::Royalty",
+      name: "0x1::token_v1::Royalty",
       doc: "The royalty of a token",
       fields: [
         { name: "royalty_points_nominator", ty: "u64" },
@@ -250,23 +245,23 @@ export const idl = {
       abilities: ["copy", "drop", "store"],
     },
     {
-      name: "0x2::token_v1::Token",
+      name: "0x1::token_v1::Token",
       fields: [
-        { name: "id", ty: { struct: { name: "0x2::token_v1::TokenId" } } },
+        { name: "id", ty: { struct: { name: "0x1::token_v1::TokenId" } } },
         { name: "value", ty: "u64" },
       ],
       abilities: ["store"],
     },
     {
-      name: "0x2::token_v1::TokenData",
+      name: "0x1::token_v1::TokenData",
       doc: "The shared TokenData by tokens with different serial_number",
       fields: [
-        { name: "id", ty: { struct: { name: "0x2::token_v1::TokenDataId" } } },
+        { name: "id", ty: { struct: { name: "0x1::token_v1::TokenDataId" } } },
         { name: "maximum", ty: "u64" },
         { name: "largest_serial_number", ty: "u64" },
         { name: "supply", ty: "u64" },
         { name: "uri", ty: { struct: { name: "0x1::string::String" } } },
-        { name: "royalty", ty: { struct: { name: "0x2::token_v1::Royalty" } } },
+        { name: "royalty", ty: { struct: { name: "0x1::token_v1::Royalty" } } },
         { name: "name", ty: { struct: { name: "0x1::string::String" } } },
         {
           name: "description",
@@ -274,29 +269,29 @@ export const idl = {
         },
         {
           name: "properties",
-          ty: { struct: { name: "0x2::property_map::PropertyMap" } },
+          ty: { struct: { name: "0x1::property_map::PropertyMap" } },
         },
         {
           name: "mutability_config",
-          ty: { struct: { name: "0x2::token_v1::TokenMutabilityConfig" } },
+          ty: { struct: { name: "0x1::token_v1::TokenMutabilityConfig" } },
         },
       ],
       abilities: ["store"],
     },
     {
-      name: "0x2::token_v1::TokenId",
+      name: "0x1::token_v1::TokenId",
       doc: "global unique identifier of a token",
       fields: [
         {
           name: "token_data_id",
-          ty: { struct: { name: "0x2::token_v1::TokenDataId" } },
+          ty: { struct: { name: "0x1::token_v1::TokenDataId" } },
         },
         { name: "serial_number", ty: "u64" },
       ],
       abilities: ["copy", "drop", "store"],
     },
     {
-      name: "0x2::token_v1::TokenStore",
+      name: "0x1::token_v1::TokenStore",
       doc: "Represents token resources owned by token owner",
       fields: [
         {
@@ -305,8 +300,8 @@ export const idl = {
             struct: {
               name: "0x1::table::Table",
               ty_args: [
-                { struct: { name: "0x2::token_v1::TokenId" } },
-                { struct: { name: "0x2::token_v1::Token" } },
+                { struct: { name: "0x1::token_v1::TokenId" } },
+                { struct: { name: "0x1::token_v1::Token" } },
               ],
             },
           },
@@ -317,8 +312,20 @@ export const idl = {
             struct: {
               name: "0x1::table::Table",
               ty_args: [
-                { struct: { name: "0x2::token_v1::TokenId" } },
-                { struct: { name: "0x2::property_map::PropertyMap" } },
+                { struct: { name: "0x1::token_v1::TokenId" } },
+                { struct: { name: "0x1::property_map::PropertyMap" } },
+              ],
+            },
+          },
+        },
+        {
+          name: "token_auths",
+          ty: {
+            struct: {
+              name: "0x1::table::Table",
+              ty_args: [
+                { struct: { name: "0x1::token_v1::TokenId" } },
+                { struct: { name: "0x1::token_v1::TokenAuthority" } },
               ],
             },
           },
@@ -328,7 +335,7 @@ export const idl = {
           ty: {
             struct: {
               name: "0x1::event::EventHandle",
-              ty_args: [{ struct: { name: "0x2::token_v1::DepositEvent" } }],
+              ty_args: [{ struct: { name: "0x1::token_v1::DepositEvent" } }],
             },
           },
         },
@@ -337,7 +344,16 @@ export const idl = {
           ty: {
             struct: {
               name: "0x1::event::EventHandle",
-              ty_args: [{ struct: { name: "0x2::token_v1::WithdrawEvent" } }],
+              ty_args: [{ struct: { name: "0x1::token_v1::WithdrawEvent" } }],
+            },
+          },
+        },
+        {
+          name: "burn_events",
+          ty: {
+            struct: {
+              name: "0x1::event::EventHandle",
+              ty_args: [{ struct: { name: "0x1::token_v1::BurnTokenEvent" } }],
             },
           },
         },
@@ -345,7 +361,15 @@ export const idl = {
       abilities: ["key"],
     },
     {
-      name: "0x2::token_v1::CollectionMutabilityConfig",
+      name: "0x1::token_v1::BurnTokenEvent",
+      fields: [
+        { name: "id", ty: { struct: { name: "0x1::token_v1::TokenId" } } },
+        { name: "amount", ty: "u64" },
+      ],
+      abilities: ["drop", "store"],
+    },
+    {
+      name: "0x1::token_v1::CollectionMutabilityConfig",
       doc: "This config specifies which fields in the Collection are mutable",
       fields: [
         { name: "description", ty: "bool" },
@@ -355,30 +379,19 @@ export const idl = {
       abilities: ["copy", "drop", "store"],
     },
     {
-      name: "0x2::token_v1::TokenAuthority",
-      fields: [{ name: "burn", ty: "bool" }],
+      name: "0x1::token_v1::TokenAuthority",
+      fields: [
+        { name: "burn", ty: { struct: { name: "0x1::acl::ACL" } } },
+        { name: "transfer", ty: { struct: { name: "0x1::acl::ACL" } } },
+        {
+          name: "mutate_properties",
+          ty: { struct: { name: "0x1::acl::ACL" } },
+        },
+      ],
       abilities: ["store"],
     },
     {
-      name: "0x2::token_v1::TokenAuthorityStore",
-      fields: [
-        {
-          name: "token_auths",
-          ty: {
-            struct: {
-              name: "0x1::table::Table",
-              ty_args: [
-                { struct: { name: "0x2::token_v1::TokenId" } },
-                { struct: { name: "0x2::token_v1::TokenAuthority" } },
-              ],
-            },
-          },
-        },
-      ],
-      abilities: ["key"],
-    },
-    {
-      name: "0x2::token_v1::TokenDataId",
+      name: "0x1::token_v1::TokenDataId",
       doc: "globally unique identifier of tokendata",
       fields: [
         { name: "creator", ty: "address" },
@@ -388,7 +401,7 @@ export const idl = {
       abilities: ["copy", "drop", "store"],
     },
     {
-      name: "0x2::token_v1::TokenMutabilityConfig",
+      name: "0x1::token_v1::TokenMutabilityConfig",
       doc: "This config specifies which fields in the TokenData are mutable",
       fields: [
         { name: "maximum", ty: "bool" },

@@ -9,14 +9,14 @@ export const idl = {
   functions: [],
   structs: [
     {
-      name: "0x1::transaction_fee::TestCoinCapabilities",
+      name: "0x1::transaction_fee::AptosCoinCapabilities",
       fields: [
         {
           name: "burn_cap",
           ty: {
             struct: {
               name: "0x1::coin::BurnCapability",
-              ty_args: [{ struct: { name: "0x1::test_coin::TestCoin" } }],
+              ty_args: [{ struct: { name: "0x1::aptos_coin::AptosCoin" } }],
             },
           },
         },

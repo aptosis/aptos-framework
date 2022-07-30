@@ -8,6 +8,16 @@
 export const errmap = {
   error_categories: {},
   module_error_maps: {
+    "0x1::acl": {
+      "0": {
+        name: "ECONTAIN",
+        doc: "The ACL already contains the address.",
+      },
+      "1": {
+        name: "ENOT_CONTAIN",
+        doc: "The ACL does not contain the address.",
+      },
+    },
     "0x1::bit_vector": {
       "131072": {
         name: "EINDEX",

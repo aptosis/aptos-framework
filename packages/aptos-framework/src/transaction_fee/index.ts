@@ -5,8 +5,8 @@
  */
 import type * as p from "@movingco/prelude";
 
-/** Type name: `0x1::transaction_fee::TestCoinCapabilities` */
-export interface ITestCoinCapabilities {
+/** Type name: `0x1::transaction_fee::AptosCoinCapabilities` */
+export interface IAptosCoinCapabilities {
   burn_cap: {
     dummy_field: boolean;
   };
@@ -36,12 +36,12 @@ export const functions = {} as const;
 
 /** All struct types with ability `key`. */
 export const resources = {
-  TestCoinCapabilities: "0x1::transaction_fee::TestCoinCapabilities",
+  AptosCoinCapabilities: "0x1::transaction_fee::AptosCoinCapabilities",
 } as const;
 
 /** All struct types. */
 export const structs = {
-  TestCoinCapabilities: "0x1::transaction_fee::TestCoinCapabilities",
+  AptosCoinCapabilities: "0x1::transaction_fee::AptosCoinCapabilities",
 } as const;
 
 /** Payload generators for module `0x1::transaction_fee`. */

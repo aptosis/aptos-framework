@@ -4,6 +4,7 @@
  * @module
  */
 
+export * as move_stdlib_acl from "./acl/index.js";
 export * as move_stdlib_bcs from "./bcs/index.js";
 export * as move_stdlib_bit_vector from "./bit_vector/index.js";
 export { errmap as move_stdlib_errmap } from "./errmap.js";

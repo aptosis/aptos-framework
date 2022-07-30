@@ -11,23 +11,8 @@ import type * as p from "@movingco/prelude";
 
 /** Type name: `0x1::governance_proposal::GovernanceProposal` */
 export interface IGovernanceProposal {
-  /**
-   * The location (e.g. url) where the proposal resolution script's code can be accessed.
-   * Maximum length allowed is 256 chars.
-   */
-  code_location: string;
-
-  /**
-   * Title of the proposal.
-   * Maximum length allowed is 256 chars.
-   */
-  title: string;
-
-  /**
-   * Description of the proposal.
-   * Maximum length allowed is 256 chars.
-   */
-  description: string;
+  metadata_location: string;
+  metadata_hash: string;
 }
 
 export { idl } from "./idl.js";
@@ -51,13 +36,7 @@ export * as errors from "./errors.js";
 /** Module error codes. */
 export const errorCodes = {
   "1": {
-    name: "ECODE_LOCATION_TOO_LONG",
-  },
-  "2": {
-    name: "ETITLE_TOO_LONG",
-  },
-  "3": {
-    name: "EDESCRIPTION_TOO_LONG",
+    name: "ETOO_LONG",
   },
 } as const;
 

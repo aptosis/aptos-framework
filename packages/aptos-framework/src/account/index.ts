@@ -39,6 +39,16 @@ export interface ISignerCapability {
   account: p.RawAddress;
 }
 
+/** Payload arguments for {@link entry.transfer}. */
+export type TransferArgs = {
+  args: {
+    /** IDL type: `Address` */
+    to: p.RawAddress;
+    /** IDL type: `U64` */
+    amount: p.U64;
+  };
+};
+
 /** Payload arguments for {@link entry.create_account}. */
 export type CreateAccountArgs = {
   args: {
@@ -179,6 +189,20 @@ export const functions = {
         ty: {
           vector: "u8",
         },
+      },
+    ],
+  },
+  transfer: {
+    name: "transfer",
+    ty_args: [],
+    args: [
+      {
+        name: "to",
+        ty: "address",
+      },
+      {
+        name: "amount",
+        ty: "u64",
       },
     ],
   },

@@ -29,6 +29,18 @@ export interface IAddStakeEvent {
   amount_added: p.U64;
 }
 
+/**
+ * AptosCoin capabilities, set during genesis and stored in @CoreResource account.
+ * This allows the Stake module to mint rewards to stakers.
+ *
+ * Type name: `0x1::stake::AptosCoinCapabilities`
+ */
+export interface IAptosCoinCapabilities {
+  mint_cap: {
+    dummy_field: boolean;
+  };
+}
+
 /** Type name: `0x1::stake::DistributeRewardsEvent` */
 export interface IDistributeRewardsEvent {
   pool_address: p.RawAddress;
@@ -292,18 +304,6 @@ export interface IStakePoolEvents {
   };
 }
 
-/**
- * TestCoin capabilities, set during genesis and stored in @CoreResource account.
- * This allows the Stake module to mint rewards to stakers.
- *
- * Type name: `0x1::stake::TestCoinCapabilities`
- */
-export interface ITestCoinCapabilities {
-  mint_cap: {
-    dummy_field: boolean;
-  };
-}
-
 /** Type name: `0x1::stake::UnlockStakeEvent` */
 export interface IUnlockStakeEvent {
   pool_address: p.RawAddress;
@@ -415,6 +415,14 @@ export interface IWithdrawStakeEvent {
   pool_address: p.RawAddress;
   amount_withdrawn: p.U64;
 }
+
+/** Payload arguments for {@link entry.withdraw}. */
+export type WithdrawArgs = {
+  args: {
+    /** IDL type: `U64` */
+    withdraw_amount: p.U64;
+  };
+};
 
 /** Payload arguments for {@link entry.add_stake}. */
 export type AddStakeArgs = {
@@ -774,16 +782,21 @@ export const functions = {
     name: "withdraw",
     doc: "Withdraw from `account`'s inactive stake.",
     ty_args: [],
-    args: [],
+    args: [
+      {
+        name: "withdraw_amount",
+        ty: "u64",
+      },
+    ],
   },
 } as const;
 
 /** All struct types with ability `key`. */
 export const resources = {
+  AptosCoinCapabilities: "0x1::stake::AptosCoinCapabilities",
   OwnerCapability: "0x1::stake::OwnerCapability",
   StakePool: "0x1::stake::StakePool",
   StakePoolEvents: "0x1::stake::StakePoolEvents",
-  TestCoinCapabilities: "0x1::stake::TestCoinCapabilities",
   ValidatorConfig: "0x1::stake::ValidatorConfig",
   ValidatorPerformance: "0x1::stake::ValidatorPerformance",
   ValidatorSet: "0x1::stake::ValidatorSet",
@@ -793,6 +806,7 @@ export const resources = {
 /** All struct types. */
 export const structs = {
   AddStakeEvent: "0x1::stake::AddStakeEvent",
+  AptosCoinCapabilities: "0x1::stake::AptosCoinCapabilities",
   DistributeRewardsEvent: "0x1::stake::DistributeRewardsEvent",
   IncreaseLockupEvent: "0x1::stake::IncreaseLockupEvent",
   JoinValidatorSetEvent: "0x1::stake::JoinValidatorSetEvent",
@@ -804,7 +818,6 @@ export const structs = {
   SetOperatorEvent: "0x1::stake::SetOperatorEvent",
   StakePool: "0x1::stake::StakePool",
   StakePoolEvents: "0x1::stake::StakePoolEvents",
-  TestCoinCapabilities: "0x1::stake::TestCoinCapabilities",
   UnlockStakeEvent: "0x1::stake::UnlockStakeEvent",
   UpdateNetworkAndFullnodeAddressesEvent:
     "0x1::stake::UpdateNetworkAndFullnodeAddressesEvent",

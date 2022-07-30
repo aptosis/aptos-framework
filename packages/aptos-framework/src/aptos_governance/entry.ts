@@ -21,9 +21,8 @@ export const create_proposal = ({
   arguments: [
     p.serializers.hexString(args.stake_pool),
     p.serializers.hexString(args.execution_hash),
-    p.serializers.hexString(args.code_location),
-    p.serializers.hexString(args.title),
-    p.serializers.hexString(args.description),
+    p.serializers.hexString(args.metadata_location),
+    p.serializers.hexString(args.metadata_hash),
   ],
 });
 

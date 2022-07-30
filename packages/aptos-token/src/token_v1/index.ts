@@ -1,13 +1,13 @@
 /**
  * This module provides the foundation for Tokens.
  *
- * **Module ID:** `0x2::token_v1`
+ * **Module ID:** `0x1::token_v1`
  *
  * @module
  */
 import type * as p from "@movingco/prelude";
 
-/** Type name: `0x2::token_v1::BurnCapability` */
+/** Type name: `0x1::token_v1::BurnCapability` */
 export interface IBurnCapability {
   token_id: {
     token_data_id: {
@@ -17,12 +17,13 @@ export interface IBurnCapability {
     };
     serial_number: p.U64;
   };
+  owner: p.RawAddress;
 }
 
 /**
  * Set of data sent to the event stream during a receive
  *
- * Type name: `0x2::token_v1::DepositEvent`
+ * Type name: `0x1::token_v1::DepositEvent`
  */
 export interface IDepositEvent {
   id: {
@@ -39,7 +40,7 @@ export interface IDepositEvent {
 /**
  * Capability required to mint tokens.
  *
- * Type name: `0x2::token_v1::MintCapability`
+ * Type name: `0x1::token_v1::MintCapability`
  */
 export interface IMintCapability {
   token_id: {
@@ -55,7 +56,7 @@ export interface IMintCapability {
 /**
  * Set of data sent to the event stream during a withdrawal
  *
- * Type name: `0x2::token_v1::WithdrawEvent`
+ * Type name: `0x1::token_v1::WithdrawEvent`
  */
 export interface IWithdrawEvent {
   id: {
@@ -72,7 +73,7 @@ export interface IWithdrawEvent {
 /**
  * Represent the collection metadata
  *
- * Type name: `0x2::token_v1::Collection`
+ * Type name: `0x1::token_v1::Collection`
  */
 export interface ICollection {
   description: string;
@@ -90,7 +91,7 @@ export interface ICollection {
 /**
  * Represent collection and token metadata for a creator
  *
- * Type name: `0x2::token_v1::Collections`
+ * Type name: `0x1::token_v1::Collections`
  */
 export interface ICollections {
   collections: {
@@ -155,7 +156,7 @@ export interface ICollections {
 /**
  * create collection event with creator address and collection name
  *
- * Type name: `0x2::token_v1::CreateCollectionEvent`
+ * Type name: `0x1::token_v1::CreateCollectionEvent`
  */
 export interface ICreateCollectionEvent {
   creator: p.RawAddress;
@@ -168,7 +169,7 @@ export interface ICreateCollectionEvent {
 /**
  * token creation event id of token created
  *
- * Type name: `0x2::token_v1::CreateTokenEvent`
+ * Type name: `0x1::token_v1::CreateTokenEvent`
  */
 export interface ICreateTokenEvent {
   id: {
@@ -185,7 +186,7 @@ export interface ICreateTokenEvent {
 /**
  * mint token event. This event triggered when creator adds more supply to existing token
  *
- * Type name: `0x2::token_v1::MintTokenEvent`
+ * Type name: `0x1::token_v1::MintTokenEvent`
  */
 export interface IMintTokenEvent {
   id: {
@@ -202,7 +203,7 @@ export interface IMintTokenEvent {
 /**
  * The royalty of a token
  *
- * Type name: `0x2::token_v1::Royalty`
+ * Type name: `0x1::token_v1::Royalty`
  */
 export interface IRoyalty {
   royalty_points_nominator: p.U64;
@@ -210,7 +211,7 @@ export interface IRoyalty {
   payee_address: p.RawAddress;
 }
 
-/** Type name: `0x2::token_v1::Token` */
+/** Type name: `0x1::token_v1::Token` */
 export interface IToken {
   id: {
     token_data_id: {
@@ -226,7 +227,7 @@ export interface IToken {
 /**
  * The shared TokenData by tokens with different serial_number
  *
- * Type name: `0x2::token_v1::TokenData`
+ * Type name: `0x1::token_v1::TokenData`
  */
 export interface ITokenData {
   id: {
@@ -268,7 +269,7 @@ export interface ITokenData {
 /**
  * global unique identifier of a token
  *
- * Type name: `0x2::token_v1::TokenId`
+ * Type name: `0x1::token_v1::TokenId`
  */
 export interface ITokenId {
   token_data_id: {
@@ -282,7 +283,7 @@ export interface ITokenId {
 /**
  * Represents token resources owned by token owner
  *
- * Type name: `0x2::token_v1::TokenStore`
+ * Type name: `0x1::token_v1::TokenStore`
  */
 export interface ITokenStore {
   tokens: {
@@ -290,6 +291,10 @@ export interface ITokenStore {
     length: p.U64;
   };
   token_properties: {
+    handle: p.U128;
+    length: p.U64;
+  };
+  token_auths: {
     handle: p.U128;
     length: p.U64;
   };
@@ -323,12 +328,40 @@ export interface ITokenStore {
       };
     };
   };
+  burn_events: {
+    /** Total number of events emitted to this event stream. */
+    counter: p.U64;
+
+    /** A globally unique ID for this event stream. */
+    guid: {
+      id: {
+        /** If creation_num is `i`, this is the `i+1`th GUID created by `addr` */
+        creation_num: p.U64;
+
+        /** Address that created the GUID */
+        addr: p.RawAddress;
+      };
+    };
+  };
+}
+
+/** Type name: `0x1::token_v1::BurnTokenEvent` */
+export interface IBurnTokenEvent {
+  id: {
+    token_data_id: {
+      creator: p.RawAddress;
+      collection: string;
+      name: string;
+    };
+    serial_number: p.U64;
+  };
+  amount: p.U64;
 }
 
 /**
  * This config specifies which fields in the Collection are mutable
  *
- * Type name: `0x2::token_v1::CollectionMutabilityConfig`
+ * Type name: `0x1::token_v1::CollectionMutabilityConfig`
  */
 export interface ICollectionMutabilityConfig {
   description: boolean;
@@ -336,23 +369,23 @@ export interface ICollectionMutabilityConfig {
   maximum: boolean;
 }
 
-/** Type name: `0x2::token_v1::TokenAuthority` */
+/** Type name: `0x1::token_v1::TokenAuthority` */
 export interface ITokenAuthority {
-  burn: boolean;
-}
-
-/** Type name: `0x2::token_v1::TokenAuthorityStore` */
-export interface ITokenAuthorityStore {
-  token_auths: {
-    handle: p.U128;
-    length: p.U64;
+  burn: {
+    list: ReadonlyArray<p.RawAddress>;
+  };
+  transfer: {
+    list: ReadonlyArray<p.RawAddress>;
+  };
+  mutate_properties: {
+    list: ReadonlyArray<p.RawAddress>;
   };
 }
 
 /**
  * globally unique identifier of tokendata
  *
- * Type name: `0x2::token_v1::TokenDataId`
+ * Type name: `0x1::token_v1::TokenDataId`
  */
 export interface ITokenDataId {
   creator: p.RawAddress;
@@ -363,7 +396,7 @@ export interface ITokenDataId {
 /**
  * This config specifies which fields in the TokenData are mutable
  *
- * Type name: `0x2::token_v1::TokenMutabilityConfig`
+ * Type name: `0x1::token_v1::TokenMutabilityConfig`
  */
 export interface ITokenMutabilityConfig {
   maximum: boolean;
@@ -457,9 +490,9 @@ export { idl } from "./idl.js";
 export * as payloads from "./payloads.js";
 
 /** The address of the module. */
-export const ADDRESS = "0x2" as const;
+export const ADDRESS = "0x1" as const;
 /** The full module name. */
-export const FULL_NAME = "0x2::token_v1" as const;
+export const FULL_NAME = "0x1::token_v1" as const;
 /** The name of the module. */
 export const NAME = "token_v1" as const;
 
@@ -702,12 +735,6 @@ export const functions = {
       },
     ],
   },
-  initialize_token_authority_store_script: {
-    name: "initialize_token_authority_store_script",
-    doc: "initialize capability store for storing all token capabilities\nthis function should be called by any account that plan to own tokens",
-    ty_args: [],
-    args: [],
-  },
   initialize_token_script: {
     name: "initialize_token_script",
     ty_args: [],
@@ -744,35 +771,34 @@ export const functions = {
 
 /** All struct types with ability `key`. */
 export const resources = {
-  Collections: "0x2::token_v1::Collections",
-  TokenAuthorityStore: "0x2::token_v1::TokenAuthorityStore",
-  TokenStore: "0x2::token_v1::TokenStore",
+  Collections: "0x1::token_v1::Collections",
+  TokenStore: "0x1::token_v1::TokenStore",
 } as const;
 
 /** All struct types. */
 export const structs = {
-  BurnCapability: "0x2::token_v1::BurnCapability",
-  Collection: "0x2::token_v1::Collection",
-  CollectionMutabilityConfig: "0x2::token_v1::CollectionMutabilityConfig",
-  Collections: "0x2::token_v1::Collections",
-  CreateCollectionEvent: "0x2::token_v1::CreateCollectionEvent",
-  CreateTokenEvent: "0x2::token_v1::CreateTokenEvent",
-  DepositEvent: "0x2::token_v1::DepositEvent",
-  MintCapability: "0x2::token_v1::MintCapability",
-  MintTokenEvent: "0x2::token_v1::MintTokenEvent",
-  Royalty: "0x2::token_v1::Royalty",
-  Token: "0x2::token_v1::Token",
-  TokenAuthority: "0x2::token_v1::TokenAuthority",
-  TokenAuthorityStore: "0x2::token_v1::TokenAuthorityStore",
-  TokenData: "0x2::token_v1::TokenData",
-  TokenDataId: "0x2::token_v1::TokenDataId",
-  TokenId: "0x2::token_v1::TokenId",
-  TokenMutabilityConfig: "0x2::token_v1::TokenMutabilityConfig",
-  TokenStore: "0x2::token_v1::TokenStore",
-  WithdrawEvent: "0x2::token_v1::WithdrawEvent",
+  BurnCapability: "0x1::token_v1::BurnCapability",
+  BurnTokenEvent: "0x1::token_v1::BurnTokenEvent",
+  Collection: "0x1::token_v1::Collection",
+  CollectionMutabilityConfig: "0x1::token_v1::CollectionMutabilityConfig",
+  Collections: "0x1::token_v1::Collections",
+  CreateCollectionEvent: "0x1::token_v1::CreateCollectionEvent",
+  CreateTokenEvent: "0x1::token_v1::CreateTokenEvent",
+  DepositEvent: "0x1::token_v1::DepositEvent",
+  MintCapability: "0x1::token_v1::MintCapability",
+  MintTokenEvent: "0x1::token_v1::MintTokenEvent",
+  Royalty: "0x1::token_v1::Royalty",
+  Token: "0x1::token_v1::Token",
+  TokenAuthority: "0x1::token_v1::TokenAuthority",
+  TokenData: "0x1::token_v1::TokenData",
+  TokenDataId: "0x1::token_v1::TokenDataId",
+  TokenId: "0x1::token_v1::TokenId",
+  TokenMutabilityConfig: "0x1::token_v1::TokenMutabilityConfig",
+  TokenStore: "0x1::token_v1::TokenStore",
+  WithdrawEvent: "0x1::token_v1::WithdrawEvent",
 } as const;
 
-/** Payload generators for module `0x2::token_v1`. */
+/** Payload generators for module `0x1::token_v1`. */
 const moduleImpl = {
   ...id,
   errorCodes,
@@ -783,6 +809,6 @@ const moduleImpl = {
 
 /** This module provides the foundation for Tokens. */
 export const moduleDefinition = moduleImpl as p.MoveModuleDefinition<
-  "0x2",
+  "0x1",
   "token_v1"
 > as typeof moduleImpl;

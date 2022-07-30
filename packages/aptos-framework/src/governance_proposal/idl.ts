@@ -13,27 +13,16 @@ export const idl = {
       name: "0x1::governance_proposal::GovernanceProposal",
       fields: [
         {
-          name: "code_location",
-          doc: "The location (e.g. url) where the proposal resolution script's code can be accessed.\nMaximum length allowed is 256 chars.",
+          name: "metadata_location",
           ty: { struct: { name: "0x1::string::String" } },
         },
         {
-          name: "title",
-          doc: "Title of the proposal.\nMaximum length allowed is 256 chars.",
-          ty: { struct: { name: "0x1::string::String" } },
-        },
-        {
-          name: "description",
-          doc: "Description of the proposal.\nMaximum length allowed is 256 chars.",
+          name: "metadata_hash",
           ty: { struct: { name: "0x1::string::String" } },
         },
       ],
       abilities: ["drop", "store"],
     },
   ],
-  errors: {
-    "1": { name: "ECODE_LOCATION_TOO_LONG" },
-    "2": { name: "ETITLE_TOO_LONG" },
-    "3": { name: "EDESCRIPTION_TOO_LONG" },
-  },
+  errors: { "1": { name: "ETOO_LONG" } },
 } as const;

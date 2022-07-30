@@ -29,6 +29,8 @@ export interface ICreateProposalEvent {
   stake_pool: p.RawAddress;
   proposal_id: p.U64;
   execution_hash: p.ByteString;
+  metadata_location: p.ByteString;
+  metadata_hash: p.ByteString;
 }
 
 /**
@@ -157,11 +159,9 @@ export type CreateProposalArgs = {
     /** IDL type: `Vector(U8)` */
     execution_hash: p.ByteString;
     /** IDL type: `Vector(U8)` */
-    code_location: p.ByteString;
+    metadata_location: p.ByteString;
     /** IDL type: `Vector(U8)` */
-    title: p.ByteString;
-    /** IDL type: `Vector(U8)` */
-    description: p.ByteString;
+    metadata_hash: p.ByteString;
   };
 };
 
@@ -236,19 +236,13 @@ export const functions = {
         },
       },
       {
-        name: "code_location",
+        name: "metadata_location",
         ty: {
           vector: "u8",
         },
       },
       {
-        name: "title",
-        ty: {
-          vector: "u8",
-        },
-      },
-      {
-        name: "description",
+        name: "metadata_hash",
         ty: {
           vector: "u8",
         },

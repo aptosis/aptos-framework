@@ -4,6 +4,9 @@
  * @module
  */
 
+/** Script function type for `0x1::account::transfer`. */
+export const transfer = "0x1::account::transfer" as const;
+
 /** Script function type for `0x1::account::create_account`. */
 export const create_account = "0x1::account::create_account" as const;
 

@@ -19,3 +19,8 @@ export const EPROPOSAL_ALREADY_RESOLVED = {
   code: 3,
   name: "EPROPOSAL_ALREADY_RESOLVED",
 } as const;
+
+export const EPROPOSAL_EMPTY_EXECUTION_HASH = {
+  code: 4,
+  name: "EPROPOSAL_EMPTY_EXECUTION_HASH",
+} as const;

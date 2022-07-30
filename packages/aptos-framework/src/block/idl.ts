@@ -36,12 +36,13 @@ export const idl = {
       fields: [
         { name: "epoch", ty: "u64" },
         { name: "round", ty: "u64" },
+        { name: "height", ty: "u64" },
         { name: "previous_block_votes", ty: { vector: "bool" } },
         { name: "proposer", ty: "address" },
         { name: "failed_proposer_indices", ty: { vector: "u64" } },
         {
           name: "time_microseconds",
-          doc: "On-chain time during  he block at the given height",
+          doc: "On-chain time during the block at the given height",
           ty: "u64",
         },
       ],

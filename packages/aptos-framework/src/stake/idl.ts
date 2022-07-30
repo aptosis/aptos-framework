@@ -12,7 +12,7 @@ export const idl = {
       name: "withdraw",
       doc: "Withdraw from `account`'s inactive stake.",
       ty_args: [],
-      args: [],
+      args: [{ name: "withdraw_amount", ty: "u64" }],
     },
     {
       name: "add_stake",
@@ -98,6 +98,22 @@ export const idl = {
       abilities: ["drop", "store"],
     },
     {
+      name: "0x1::stake::AptosCoinCapabilities",
+      doc: "AptosCoin capabilities, set during genesis and stored in @CoreResource account.\nThis allows the Stake module to mint rewards to stakers.",
+      fields: [
+        {
+          name: "mint_cap",
+          ty: {
+            struct: {
+              name: "0x1::coin::MintCapability",
+              ty_args: [{ struct: { name: "0x1::aptos_coin::AptosCoin" } }],
+            },
+          },
+        },
+      ],
+      abilities: ["key"],
+    },
+    {
       name: "0x1::stake::DistributeRewardsEvent",
       fields: [
         { name: "pool_address", ty: "address" },
@@ -162,7 +178,7 @@ export const idl = {
           ty: {
             struct: {
               name: "0x1::coin::Coin",
-              ty_args: [{ struct: { name: "0x1::test_coin::TestCoin" } }],
+              ty_args: [{ struct: { name: "0x1::aptos_coin::AptosCoin" } }],
             },
           },
         },
@@ -171,7 +187,7 @@ export const idl = {
           ty: {
             struct: {
               name: "0x1::coin::Coin",
-              ty_args: [{ struct: { name: "0x1::test_coin::TestCoin" } }],
+              ty_args: [{ struct: { name: "0x1::aptos_coin::AptosCoin" } }],
             },
           },
         },
@@ -180,7 +196,7 @@ export const idl = {
           ty: {
             struct: {
               name: "0x1::coin::Coin",
-              ty_args: [{ struct: { name: "0x1::test_coin::TestCoin" } }],
+              ty_args: [{ struct: { name: "0x1::aptos_coin::AptosCoin" } }],
             },
           },
         },
@@ -189,7 +205,7 @@ export const idl = {
           ty: {
             struct: {
               name: "0x1::coin::Coin",
-              ty_args: [{ struct: { name: "0x1::test_coin::TestCoin" } }],
+              ty_args: [{ struct: { name: "0x1::aptos_coin::AptosCoin" } }],
             },
           },
         },
@@ -321,22 +337,6 @@ export const idl = {
               ty_args: [
                 { struct: { name: "0x1::stake::LeaveValidatorSetEvent" } },
               ],
-            },
-          },
-        },
-      ],
-      abilities: ["key"],
-    },
-    {
-      name: "0x1::stake::TestCoinCapabilities",
-      doc: "TestCoin capabilities, set during genesis and stored in @CoreResource account.\nThis allows the Stake module to mint rewards to stakers.",
-      fields: [
-        {
-          name: "mint_cap",
-          ty: {
-            struct: {
-              name: "0x1::coin::MintCapability",
-              ty_args: [{ struct: { name: "0x1::test_coin::TestCoin" } }],
             },
           },
         },

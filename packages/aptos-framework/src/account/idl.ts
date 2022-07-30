@@ -8,6 +8,14 @@ export const idl = {
   module_id: "0x1::account",
   functions: [
     {
+      name: "transfer",
+      ty_args: [],
+      args: [
+        { name: "to", ty: "address" },
+        { name: "amount", ty: "u64" },
+      ],
+    },
+    {
       name: "create_account",
       doc: "Basic account creation methods.",
       ty_args: [],

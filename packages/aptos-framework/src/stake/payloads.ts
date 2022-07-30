@@ -12,7 +12,7 @@
 export type Withdraw = {
   readonly type: "script_function_payload";
   readonly function: "0x1::stake::withdraw";
-  readonly arguments: [];
+  readonly arguments: [withdraw_amount: string];
   readonly type_arguments: [];
 };
 
