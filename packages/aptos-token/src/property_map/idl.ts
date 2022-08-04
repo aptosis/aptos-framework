@@ -5,12 +5,12 @@
  */
 /** The IDL of the module. */
 export const idl = {
-  module_id: "0x1::property_map",
+  module_id: "0x3::property_map",
   doc: "PropertyMap is a specialization of SimpleMap for Tokens.\nIt maps a String key to a PropertyValue that consists of type (string) and value (vecotr<u8>)",
   functions: [],
   structs: [
     {
-      name: "0x1::property_map::PropertyMap",
+      name: "0x3::property_map::PropertyMap",
       fields: [
         {
           name: "map",
@@ -19,16 +19,16 @@ export const idl = {
               name: "0x1::simple_map::SimpleMap",
               ty_args: [
                 { struct: { name: "0x1::string::String" } },
-                { struct: { name: "0x1::property_map::PropertyValue" } },
+                { struct: { name: "0x3::property_map::PropertyValue" } },
               ],
             },
           },
         },
       ],
-      abilities: ["store"],
+      abilities: ["drop", "store"],
     },
     {
-      name: "0x1::property_map::PropertyValue",
+      name: "0x3::property_map::PropertyValue",
       fields: [
         { name: "value", ty: { vector: "u8" } },
         { name: "type", ty: { struct: { name: "0x1::string::String" } } },

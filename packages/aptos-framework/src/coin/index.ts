@@ -8,6 +8,7 @@
 import type * as p from "@movingco/prelude";
 
 /**
+ * Core data structures
  * Main structure representing a coin/token in an account's custody.
  *
  * Type name: `0x1::coin::Coin`
@@ -15,30 +16,6 @@ import type * as p from "@movingco/prelude";
 export interface ICoin {
   /** Amount of coin this address has. */
   value: p.U64;
-}
-
-/**
- * Core data structures
- * Central coin events that are emitted for all coin stores.
- *
- * Type name: `0x1::coin::CoinEvents`
- */
-export interface ICoinEvents {
-  register_events: {
-    /** Total number of events emitted to this event stream. */
-    counter: p.U64;
-
-    /** A globally unique ID for this event stream. */
-    guid: {
-      id: {
-        /** If creation_num is `i`, this is the `i+1`th GUID created by `addr` */
-        creation_num: p.U64;
-
-        /** Address that created the GUID */
-        addr: p.RawAddress;
-      };
-    };
-  };
 }
 
 /**
@@ -121,19 +98,6 @@ export interface IDepositEvent {
 }
 
 /**
- * Set of data sent to the event stream when a new coin store is registered.
- *
- * Type name: `0x1::coin::RegisterEvent`
- */
-export interface IRegisterEvent {
-  type_info: {
-    account_address: p.RawAddress;
-    module_name: p.ByteString;
-    struct_name: p.ByteString;
-  };
-}
-
-/**
  * Event emitted when some amount of a coin is withdrawn from an account.
  *
  * Type name: `0x1::coin::WithdrawEvent`
@@ -141,13 +105,6 @@ export interface IRegisterEvent {
 export interface IWithdrawEvent {
   amount: p.U64;
 }
-
-/** Payload arguments for {@link entry.register}. */
-export type RegisterArgs = {
-  typeArgs: {
-    CoinType: string;
-  };
-};
 
 /** Payload arguments for {@link entry.transfer}. */
 export type TransferArgs = {
@@ -224,12 +181,6 @@ export const errorCodes = {
 
 /** All module function IDLs. */
 export const functions = {
-  register: {
-    name: "register",
-    doc: "Script function to register to receive a specific `CoinType`. An account that wants to hold a coin type\nhas to explicitly registers to do so. The register creates a special `CoinStore`\nto hold the specified `CoinType`.",
-    ty_args: ["CoinType"],
-    args: [],
-  },
   transfer: {
     name: "transfer",
     doc: "Transfers `amount` of coins `CoinType` from `from` to `to`.",
@@ -250,7 +201,6 @@ export const functions = {
 /** All struct types with ability `key`. */
 export const resources = {
   BurnCapability: "0x1::coin::BurnCapability",
-  CoinEvents: "0x1::coin::CoinEvents",
   CoinInfo: "0x1::coin::CoinInfo",
   CoinStore: "0x1::coin::CoinStore",
   MintCapability: "0x1::coin::MintCapability",
@@ -260,12 +210,10 @@ export const resources = {
 export const structs = {
   BurnCapability: "0x1::coin::BurnCapability",
   Coin: "0x1::coin::Coin",
-  CoinEvents: "0x1::coin::CoinEvents",
   CoinInfo: "0x1::coin::CoinInfo",
   CoinStore: "0x1::coin::CoinStore",
   DepositEvent: "0x1::coin::DepositEvent",
   MintCapability: "0x1::coin::MintCapability",
-  RegisterEvent: "0x1::coin::RegisterEvent",
   WithdrawEvent: "0x1::coin::WithdrawEvent",
 } as const;
 

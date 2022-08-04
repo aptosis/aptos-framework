@@ -14,7 +14,7 @@ export const idl = {
       fields: [
         { name: "height", doc: "Height of the current block", ty: "u64" },
         {
-          name: "epoch_internal",
+          name: "epoch_interval",
           doc: "Time period between epochs.",
           ty: "u64",
         },

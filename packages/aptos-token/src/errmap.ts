@@ -310,23 +310,6 @@ export const errmap = {
         doc: "The `Option` is in an invalid state for the operation attempted.\nThe `Option` is `None` while it should be `Some`.",
       },
     },
-    "0x1::property_map": {
-      "1": {
-        name: "EKEY_AREADY_EXIST_IN_PROPERTY_MAP",
-      },
-      "2": {
-        name: "EPROPERTY_NUMBER_EXCEED_LIMIT",
-      },
-      "3": {
-        name: "EPROPERTY_NOT_EXIST",
-      },
-      "4": {
-        name: "EKEY_COUNT_NOT_MATCH_VALUE_COUNT",
-      },
-      "5": {
-        name: "EKEY_COUNT_NOT_MATCH_TYPE_COUNT",
-      },
-    },
     "0x1::reconfiguration": {
       "0": {
         name: "ECONFIGURATION",
@@ -431,8 +414,8 @@ export const errmap = {
         doc: "Invalid required stake range, usually happens if min > max.",
       },
       "18": {
-        name: "EINVALID_LOCKUP_RANGE",
-        doc: "Invalid required stake lockup, usually happens if min > max.",
+        name: "EINVALID_LOCKUP_VALUE",
+        doc: "Invalid required stake lockup value.",
       },
       "19": {
         name: "EINVALID_REWARDS_RATE",
@@ -474,6 +457,14 @@ export const errmap = {
       "101": {
         name: "ENOT_FOUND",
       },
+    },
+    "0x1::table_with_length": {
+      "100": {
+        name: "EALREADY_EXISTS",
+      },
+      "101": {
+        name: "ENOT_FOUND",
+      },
       "102": {
         name: "ENOT_EMPTY",
       },
@@ -490,164 +481,6 @@ export const errmap = {
       "2": {
         name: "ETIMESTAMP",
         doc: "An invalid timestamp was provided",
-      },
-    },
-    "0x1::token": {
-      "0": {
-        name: "EALREADY_HAS_BALANCE",
-      },
-      "1": {
-        name: "EBALANCE_NOT_PUBLISHED",
-      },
-      "2": {
-        name: "ECOLLECTIONS_NOT_PUBLISHED",
-      },
-      "3": {
-        name: "ECOLLECTION_NOT_PUBLISHED",
-      },
-      "4": {
-        name: "ECOLLECTION_ALREADY_EXISTS",
-      },
-      "5": {
-        name: "ECREATE_WOULD_EXCEED_MAXIMUM",
-      },
-      "6": {
-        name: "EINSUFFICIENT_BALANCE",
-      },
-      "7": {
-        name: "EINVALID_COLLECTION_NAME",
-      },
-      "8": {
-        name: "EINVALID_TOKEN_MERGE",
-      },
-      "9": {
-        name: "EMINT_WOULD_EXCEED_MAXIMUM",
-      },
-      "10": {
-        name: "ENO_BURN_CAPABILITY",
-      },
-      "11": {
-        name: "ENO_MINT_CAPABILITY",
-      },
-      "12": {
-        name: "ETOKEN_ALREADY_EXISTS",
-      },
-      "13": {
-        name: "ETOKEN_NOT_PUBLISHED",
-      },
-      "14": {
-        name: "ETOKEN_STORE_NOT_PUBLISHED",
-      },
-      "15": {
-        name: "ETOKEN_SPLIT_AMOUNT_LARGER_THEN_TOKEN_AMOUNT",
-      },
-    },
-    "0x1::token_coin_swap": {
-      "1": {
-        name: "ETOKEN_ALREADY_LISTED",
-      },
-      "2": {
-        name: "ETOKEN_LISTING_NOT_EXIST",
-      },
-      "3": {
-        name: "ETOKEN_NOT_IN_ESCROW",
-      },
-      "4": {
-        name: "ETOKEN_CANNOT_MOVE_OUT_OF_ESCROW_BEFORE_LOCKUP_TIME",
-      },
-      "5": {
-        name: "ETOKEN_MIN_PRICE_NOT_MATCH",
-      },
-      "6": {
-        name: "ETOKEN_AMOUNT_NOT_MATCH",
-      },
-      "7": {
-        name: "ENOT_ENOUGH_COIN",
-      },
-    },
-    "0x1::token_v1": {
-      "0": {
-        name: "EALREADY_HAS_BALANCE",
-      },
-      "1": {
-        name: "EBALANCE_NOT_PUBLISHED",
-      },
-      "2": {
-        name: "ECOLLECTIONS_NOT_PUBLISHED",
-      },
-      "3": {
-        name: "ECOLLECTION_NOT_PUBLISHED",
-      },
-      "4": {
-        name: "ECOLLECTION_ALREADY_EXISTS",
-      },
-      "5": {
-        name: "ECREATE_WOULD_EXCEED_MAXIMUM",
-      },
-      "6": {
-        name: "EINSUFFICIENT_BALANCE",
-      },
-      "7": {
-        name: "EINVALID_COLLECTION_NAME",
-      },
-      "8": {
-        name: "EINVALID_TOKEN_MERGE",
-      },
-      "9": {
-        name: "EMINT_WOULD_EXCEED_MAXIMUM",
-      },
-      "10": {
-        name: "ENO_BURN_CAPABILITY",
-      },
-      "11": {
-        name: "ENO_MINT_CAPABILITY",
-      },
-      "12": {
-        name: "ETOKEN_ALREADY_EXISTS",
-      },
-      "13": {
-        name: "ETOKEN_NOT_PUBLISHED",
-      },
-      "14": {
-        name: "ETOKEN_STORE_NOT_PUBLISHED",
-      },
-      "15": {
-        name: "ETOKEN_SPLIT_AMOUNT_LARGER_THEN_TOKEN_AMOUNT",
-      },
-      "16": {
-        name: "EFIELD_NOT_MUTABLE",
-      },
-      "17": {
-        name: "EBURNCAP_EXISTS_OR_CREATED_FOR_TOKEN",
-      },
-      "18": {
-        name: "EONLY_CREATOR_CAN_CREATE_BURN_CAP",
-      },
-      "19": {
-        name: "EONLY_CREATOR_CAN_DELEGATE_BURN_CAP",
-      },
-      "20": {
-        name: "ETOKEN_CAPABILITY_STORE_NOT_EXISTS",
-      },
-      "21": {
-        name: "ETOKEN_NOT_EXISTS_IN_CAPABILITY_STORE",
-      },
-      "22": {
-        name: "EONLY_TOKEN_OWNER_CAN_HAVE_BURN_CAP",
-      },
-      "23": {
-        name: "ENOT_OWN_THE_CAPABILITY",
-      },
-      "24": {
-        name: "ENO_MUTATE_CAPABILITY",
-      },
-      "25": {
-        name: "ETOKEN_SHOULDNOT_EXIST_IN_TOKEN_STORE",
-      },
-    },
-    "0x1::transaction_publishing_option": {
-      "1": {
-        name: "ECONFIG",
       },
     },
     "0x1::vector": {
@@ -689,6 +522,108 @@ export const errmap = {
       },
       "4": {
         name: "EPROPOSAL_EMPTY_EXECUTION_HASH",
+      },
+    },
+    "0x3::property_map": {
+      "1": {
+        name: "EKEY_AREADY_EXIST_IN_PROPERTY_MAP",
+      },
+      "2": {
+        name: "EPROPERTY_NUMBER_EXCEED_LIMIT",
+      },
+      "3": {
+        name: "EPROPERTY_NOT_EXIST",
+      },
+      "4": {
+        name: "EKEY_COUNT_NOT_MATCH_VALUE_COUNT",
+      },
+      "5": {
+        name: "EKEY_COUNT_NOT_MATCH_TYPE_COUNT",
+      },
+    },
+    "0x3::token": {
+      "0": {
+        name: "EALREADY_HAS_BALANCE",
+      },
+      "1": {
+        name: "EBALANCE_NOT_PUBLISHED",
+      },
+      "2": {
+        name: "ECOLLECTIONS_NOT_PUBLISHED",
+      },
+      "3": {
+        name: "ECOLLECTION_NOT_PUBLISHED",
+      },
+      "4": {
+        name: "ECOLLECTION_ALREADY_EXISTS",
+      },
+      "5": {
+        name: "ECREATE_WOULD_EXCEED_COLLECTION_MAXIMUM",
+      },
+      "6": {
+        name: "EINSUFFICIENT_BALANCE",
+      },
+      "7": {
+        name: "EINVALID_COLLECTION_NAME",
+      },
+      "8": {
+        name: "EINVALID_TOKEN_MERGE",
+      },
+      "9": {
+        name: "EMINT_WOULD_EXCEED_TOKEN_MAXIMUM",
+      },
+      "10": {
+        name: "ENO_BURN_CAPABILITY",
+      },
+      "11": {
+        name: "ENO_MINT_CAPABILITY",
+      },
+      "12": {
+        name: "ETOKEN_ALREADY_EXISTS",
+      },
+      "13": {
+        name: "ETOKEN_NOT_PUBLISHED",
+      },
+      "14": {
+        name: "ETOKEN_STORE_NOT_PUBLISHED",
+      },
+      "15": {
+        name: "ETOKEN_SPLIT_AMOUNT_LARGER_THEN_TOKEN_AMOUNT",
+      },
+      "16": {
+        name: "EFIELD_NOT_MUTABLE",
+      },
+      "17": {
+        name: "ENO_MUTATE_CAPABILITY",
+      },
+      "18": {
+        name: "ETOEKN_PROPERTY_EXISTED",
+      },
+      "19": {
+        name: "ENO_TOKEN_IN_TOKEN_STORE",
+      },
+    },
+    "0x3::token_coin_swap": {
+      "1": {
+        name: "ETOKEN_ALREADY_LISTED",
+      },
+      "2": {
+        name: "ETOKEN_LISTING_NOT_EXIST",
+      },
+      "3": {
+        name: "ETOKEN_NOT_IN_ESCROW",
+      },
+      "4": {
+        name: "ETOKEN_CANNOT_MOVE_OUT_OF_ESCROW_BEFORE_LOCKUP_TIME",
+      },
+      "5": {
+        name: "ETOKEN_MIN_PRICE_NOT_MATCH",
+      },
+      "6": {
+        name: "ETOKEN_AMOUNT_NOT_MATCH",
+      },
+      "7": {
+        name: "ENOT_ENOUGH_COIN",
       },
     },
   },

@@ -8,16 +8,6 @@
 import type * as p from "@movingco/prelude";
 
 /**
- * An address alias.
- *
- * Type name: `0x1::code::AddressAlias`
- */
-export interface IAddressAlias {
-  alias: string;
-  addr: p.RawAddress;
-}
-
-/**
  * Metadata about a module in a package.
  *
  * Type name: `0x1::code::ModuleMetadata`
@@ -26,22 +16,14 @@ export interface IModuleMetadata {
   /** Name of the module. */
   name: string;
 
+  /** Source text. */
+  source: string;
+
   /** Source map, in internal encoding */
   source_map: p.ByteString;
 
-  /** Source text. */
-  source: string;
-}
-
-/**
- * A package dependency. This consists of an address and the name of a package
- * at this address.
- *
- * Type name: `0x1::code::PackageDep`
- */
-export interface IPackageDep {
-  addr: p.RawAddress;
-  name: string;
+  /** ABI, in JSON byte encoding. */
+  abi: p.ByteString;
 }
 
 /**
@@ -58,28 +40,22 @@ export interface IPackageMetadata {
     policy: number;
   };
 
+  /** The package manifest, in the Move.toml format. */
+  manifest: string;
+
   /** The list of modules installed by this package. */
   modules: ReadonlyArray<{
     /** Name of the module. */
     name: string;
 
+    /** Source text. */
+    source: string;
+
     /** Source map, in internal encoding */
     source_map: p.ByteString;
 
-    /** Source text. */
-    source: string;
-  }>;
-
-  /** Address aliases which where used when the modules above were compiled. */
-  address_aliases: ReadonlyArray<{
-    alias: string;
-    addr: p.RawAddress;
-  }>;
-
-  /** Dependencies which were used when this package was compiled. */
-  deps: ReadonlyArray<{
-    addr: p.RawAddress;
-    name: string;
+    /** ABI, in JSON byte encoding. */
+    abi: p.ByteString;
   }>;
 }
 
@@ -99,28 +75,22 @@ export interface IPackageRegistry {
       policy: number;
     };
 
+    /** The package manifest, in the Move.toml format. */
+    manifest: string;
+
     /** The list of modules installed by this package. */
     modules: ReadonlyArray<{
       /** Name of the module. */
       name: string;
 
+      /** Source text. */
+      source: string;
+
       /** Source map, in internal encoding */
       source_map: p.ByteString;
 
-      /** Source text. */
-      source: string;
-    }>;
-
-    /** Address aliases which where used when the modules above were compiled. */
-    address_aliases: ReadonlyArray<{
-      alias: string;
-      addr: p.RawAddress;
-    }>;
-
-    /** Dependencies which were used when this package was compiled. */
-    deps: ReadonlyArray<{
-      addr: p.RawAddress;
-      name: string;
+      /** ABI, in JSON byte encoding. */
+      abi: p.ByteString;
     }>;
   }>;
 }
@@ -213,9 +183,7 @@ export const resources = {
 
 /** All struct types. */
 export const structs = {
-  AddressAlias: "0x1::code::AddressAlias",
   ModuleMetadata: "0x1::code::ModuleMetadata",
-  PackageDep: "0x1::code::PackageDep",
   PackageMetadata: "0x1::code::PackageMetadata",
   PackageRegistry: "0x1::code::PackageRegistry",
   UpgradePolicy: "0x1::code::UpgradePolicy",

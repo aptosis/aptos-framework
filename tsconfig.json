@@ -13,10 +13,10 @@
   "references": [
     { "path": "packages/aptos-framework/" },
     { "path": "packages/aptos-framework/tsconfig.cjs.json" },
+    { "path": "packages/aptos-stdlib/" },
+    { "path": "packages/aptos-stdlib/tsconfig.cjs.json" },
     { "path": "packages/aptos-token/" },
     { "path": "packages/aptos-token/tsconfig.cjs.json" },
-    { "path": "packages/move-nursery/" },
-    { "path": "packages/move-nursery/tsconfig.cjs.json" },
     { "path": "packages/move-stdlib/" },
     { "path": "packages/move-stdlib/tsconfig.cjs.json" }
   ]

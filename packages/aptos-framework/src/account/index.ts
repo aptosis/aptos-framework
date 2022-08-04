@@ -14,6 +14,21 @@ export interface IAccount {
   authentication_key: p.ByteString;
   sequence_number: p.U64;
   self_address: p.RawAddress;
+  coin_register_events: {
+    /** Total number of events emitted to this event stream. */
+    counter: p.U64;
+
+    /** A globally unique ID for this event stream. */
+    guid: {
+      id: {
+        /** If creation_num is `i`, this is the `i+1`th GUID created by `addr` */
+        creation_num: p.U64;
+
+        /** Address that created the GUID */
+        addr: p.RawAddress;
+      };
+    };
+  };
 }
 
 /**
@@ -31,7 +46,15 @@ export interface IChainSpecificAccountInfo {
   multi_agent_prologue_name: p.ByteString;
   user_epilogue_name: p.ByteString;
   writeset_epilogue_name: p.ByteString;
-  currency_code_required: boolean;
+}
+
+/** Type name: `0x1::account::CoinRegisterEvent` */
+export interface ICoinRegisterEvent {
+  type_info: {
+    account_address: p.RawAddress;
+    module_name: p.ByteString;
+    struct_name: p.ByteString;
+  };
 }
 
 /** Type name: `0x1::account::SignerCapability` */
@@ -218,6 +241,7 @@ export const resources = {
 export const structs = {
   Account: "0x1::account::Account",
   ChainSpecificAccountInfo: "0x1::account::ChainSpecificAccountInfo",
+  CoinRegisterEvent: "0x1::account::CoinRegisterEvent",
   SignerCapability: "0x1::account::SignerCapability",
 } as const;
 

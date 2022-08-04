@@ -186,7 +186,6 @@ export interface IVotingForum<_ProposalType = unknown> {
    */
   proposals: {
     handle: p.U128;
-    length: p.U64;
   };
   events: {
     create_proposal_events: {

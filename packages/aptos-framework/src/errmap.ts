@@ -414,8 +414,8 @@ export const errmap = {
         doc: "Invalid required stake range, usually happens if min > max.",
       },
       "18": {
-        name: "EINVALID_LOCKUP_RANGE",
-        doc: "Invalid required stake lockup, usually happens if min > max.",
+        name: "EINVALID_LOCKUP_VALUE",
+        doc: "Invalid required stake lockup value.",
       },
       "19": {
         name: "EINVALID_REWARDS_RATE",
@@ -457,6 +457,14 @@ export const errmap = {
       "101": {
         name: "ENOT_FOUND",
       },
+    },
+    "0x1::table_with_length": {
+      "100": {
+        name: "EALREADY_EXISTS",
+      },
+      "101": {
+        name: "ENOT_FOUND",
+      },
       "102": {
         name: "ENOT_EMPTY",
       },
@@ -473,61 +481,6 @@ export const errmap = {
       "2": {
         name: "ETIMESTAMP",
         doc: "An invalid timestamp was provided",
-      },
-    },
-    "0x1::token": {
-      "0": {
-        name: "EALREADY_HAS_BALANCE",
-      },
-      "1": {
-        name: "EBALANCE_NOT_PUBLISHED",
-      },
-      "2": {
-        name: "ECOLLECTIONS_NOT_PUBLISHED",
-      },
-      "3": {
-        name: "ECOLLECTION_NOT_PUBLISHED",
-      },
-      "4": {
-        name: "ECOLLECTION_ALREADY_EXISTS",
-      },
-      "5": {
-        name: "ECREATE_WOULD_EXCEED_MAXIMUM",
-      },
-      "6": {
-        name: "EINSUFFICIENT_BALANCE",
-      },
-      "7": {
-        name: "EINVALID_COLLECTION_NAME",
-      },
-      "8": {
-        name: "EINVALID_TOKEN_MERGE",
-      },
-      "9": {
-        name: "EMINT_WOULD_EXCEED_MAXIMUM",
-      },
-      "10": {
-        name: "ENO_BURN_CAPABILITY",
-      },
-      "11": {
-        name: "ENO_MINT_CAPABILITY",
-      },
-      "12": {
-        name: "ETOKEN_ALREADY_EXISTS",
-      },
-      "13": {
-        name: "ETOKEN_NOT_PUBLISHED",
-      },
-      "14": {
-        name: "ETOKEN_STORE_NOT_PUBLISHED",
-      },
-      "15": {
-        name: "ETOKEN_SPLIT_AMOUNT_LARGER_THEN_TOKEN_AMOUNT",
-      },
-    },
-    "0x1::transaction_publishing_option": {
-      "1": {
-        name: "ECONFIG",
       },
     },
     "0x1::vector": {

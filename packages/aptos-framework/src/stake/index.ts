@@ -1,33 +1,29 @@
 /**
  *
  * Validator lifecycle:
- * 1. Prepare a validator node set up and call Stake::register_validator_candidate
+ * 1. Prepare a validator node set up and call stake::register_validator_candidate
  * 2. Once ready to deposit stake (or have funds assigned by a staking service in exchange for ownership capability),
- * call Stake::add_stake and Stake::increase_lockup (or *_with_cap versions if called from the staking service)
- * 3. Call Stake::join_validator_set (or _with_cap version) to join the active validator set. Changes are effective in
+ * call stake::add_stake (or *_with_cap versions if called from the staking service)
+ * 3. Call stake::join_validator_set (or _with_cap version) to join the active validator set. Changes are effective in
  * the next epoch.
- * 4. Validate and gain rewards.
- * 5. At any point, if the validator operator wants to switch validator node operator, they can call
- * Stake::rotate_consensus_key.
- * 6. When lockup has expired, validator (or the owner of owner capability) can choose to either (1) increase the lockup
- * to keep validating and receiving rewards, or (2) call Stake::unlock to unlock their stake and Stake::withdraw to
- * withdraw in the next epoch.
- * 7. After exiting, the validator can either explicitly leave the validator set by calling Stake::leave_validator_set
+ * 4. Validate and gain rewards. The stake will automatically be locked up for a fixed duration (set by governance) and
+ * automatically renewed at expiration.
+ * 5. At any point, if the validator operator wants to update the consensus key or network/fullnode addresses, they can
+ * call stake::rotate_consensus_key and stake::update_network_and_fullnode_addresses. Similar to changes to stake, the
+ * changes to consensus key/network/fullnode addresses are only effective in the next epoch.
+ * 6. Validator can request to unlock their stake at any time. However, their stake will only become withdrawable when
+ * their current lockup expires. This can be at most as long as the fixed lockup duration.
+ * 7. After exiting, the validator can either explicitly leave the validator set by calling stake::leave_validator_set
  * or if their stake drops below the min required, they would get removed at the end of the epoch.
  * 8. Validator can always rejoin the validator set by going through steps 2-3 again.
- * 9. Owner can always switch operators by calling Stake::set_operator.
+ * 9. An owner can always switch operators by calling stake::set_operator.
+ * 10. An owner can always switch designated voter by calling stake::set_designated_voter.
  *
  * **Module ID:** `0x1::stake`
  *
  * @module
  */
 import type * as p from "@movingco/prelude";
-
-/** Type name: `0x1::stake::AddStakeEvent` */
-export interface IAddStakeEvent {
-  pool_address: p.RawAddress;
-  amount_added: p.U64;
-}
 
 /**
  * AptosCoin capabilities, set during genesis and stored in @CoreResource account.
@@ -39,6 +35,12 @@ export interface IAptosCoinCapabilities {
   mint_cap: {
     dummy_field: boolean;
   };
+}
+
+/** Type name: `0x1::stake::AddStakeEvent` */
+export interface IAddStakeEvent {
+  pool_address: p.RawAddress;
+  amount_added: p.U64;
 }
 
 /** Type name: `0x1::stake::DistributeRewardsEvent` */
@@ -403,8 +405,7 @@ export interface IValidatorSet {
 export interface IValidatorSetConfiguration {
   minimum_stake: p.U64;
   maximum_stake: p.U64;
-  min_lockup_duration_secs: p.U64;
-  max_lockup_duration_secs: p.U64;
+  recurring_lockup_duration_secs: p.U64;
   allow_validator_set_change: boolean;
   rewards_rate: p.U64;
   rewards_rate_denominator: p.U64;
@@ -429,14 +430,6 @@ export type AddStakeArgs = {
   args: {
     /** IDL type: `U64` */
     amount: p.U64;
-  };
-};
-
-/** Payload arguments for {@link entry.increase_lockup}. */
-export type IncreaseLockupArgs = {
-  args: {
-    /** IDL type: `U64` */
-    new_locked_until_secs: p.U64;
   };
 };
 
@@ -609,8 +602,8 @@ export const errorCodes = {
     doc: "Invalid required stake range, usually happens if min > max.",
   },
   "18": {
-    name: "EINVALID_LOCKUP_RANGE",
-    doc: "Invalid required stake lockup, usually happens if min > max.",
+    name: "EINVALID_LOCKUP_VALUE",
+    doc: "Invalid required stake lockup value.",
   },
   "19": {
     name: "EINVALID_REWARDS_RATE",
@@ -639,12 +632,7 @@ export const functions = {
     name: "increase_lockup",
     doc: "Similar to increase_lockup_with_cap but will use ownership capability from the signing account.",
     ty_args: [],
-    args: [
-      {
-        name: "new_locked_until_secs",
-        ty: "u64",
-      },
-    ],
+    args: [],
   },
   join_validator_set: {
     name: "join_validator_set",
@@ -841,21 +829,23 @@ const moduleImpl = {
 /**
  *
  * Validator lifecycle:
- * 1. Prepare a validator node set up and call Stake::register_validator_candidate
+ * 1. Prepare a validator node set up and call stake::register_validator_candidate
  * 2. Once ready to deposit stake (or have funds assigned by a staking service in exchange for ownership capability),
- * call Stake::add_stake and Stake::increase_lockup (or *_with_cap versions if called from the staking service)
- * 3. Call Stake::join_validator_set (or _with_cap version) to join the active validator set. Changes are effective in
+ * call stake::add_stake (or *_with_cap versions if called from the staking service)
+ * 3. Call stake::join_validator_set (or _with_cap version) to join the active validator set. Changes are effective in
  * the next epoch.
- * 4. Validate and gain rewards.
- * 5. At any point, if the validator operator wants to switch validator node operator, they can call
- * Stake::rotate_consensus_key.
- * 6. When lockup has expired, validator (or the owner of owner capability) can choose to either (1) increase the lockup
- * to keep validating and receiving rewards, or (2) call Stake::unlock to unlock their stake and Stake::withdraw to
- * withdraw in the next epoch.
- * 7. After exiting, the validator can either explicitly leave the validator set by calling Stake::leave_validator_set
+ * 4. Validate and gain rewards. The stake will automatically be locked up for a fixed duration (set by governance) and
+ * automatically renewed at expiration.
+ * 5. At any point, if the validator operator wants to update the consensus key or network/fullnode addresses, they can
+ * call stake::rotate_consensus_key and stake::update_network_and_fullnode_addresses. Similar to changes to stake, the
+ * changes to consensus key/network/fullnode addresses are only effective in the next epoch.
+ * 6. Validator can request to unlock their stake at any time. However, their stake will only become withdrawable when
+ * their current lockup expires. This can be at most as long as the fixed lockup duration.
+ * 7. After exiting, the validator can either explicitly leave the validator set by calling stake::leave_validator_set
  * or if their stake drops below the min required, they would get removed at the end of the epoch.
  * 8. Validator can always rejoin the validator set by going through steps 2-3 again.
- * 9. Owner can always switch operators by calling Stake::set_operator.
+ * 9. An owner can always switch operators by calling stake::set_operator.
+ * 10. An owner can always switch designated voter by calling stake::set_designated_voter.
  */
 export const moduleDefinition = moduleImpl as p.MoveModuleDefinition<
   "0x1",

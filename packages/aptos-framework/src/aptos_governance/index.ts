@@ -147,7 +147,6 @@ export interface IUpdateConfigEvent {
 export interface IVotingRecords {
   votes: {
     handle: p.U128;
-    length: p.U64;
   };
 }
 

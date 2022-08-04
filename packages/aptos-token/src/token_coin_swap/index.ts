@@ -4,7 +4,7 @@
  * 2. List token for swapping with a targeted CoinType.
  * 3. Execute the swapping
  *
- * **Module ID:** `0x1::token_coin_swap`
+ * **Module ID:** `0x3::token_coin_swap`
  *
  * @module
  */
@@ -13,7 +13,7 @@ import type * as p from "@movingco/prelude";
 /**
  * TokenCoinSwap records a swap ask for swapping token_amount with CoinType with a minimal price per token
  *
- * Type name: `0x1::token_coin_swap::TokenCoinSwap`
+ * Type name: `0x3::token_coin_swap::TokenCoinSwap`
  */
 export interface ITokenCoinSwap {
   token_amount: p.U64;
@@ -23,7 +23,7 @@ export interface ITokenCoinSwap {
 /**
  * TokenEscrow holds the tokens that cannot be withdrawn or transferred
  *
- * Type name: `0x1::token_coin_swap::TokenEscrow`
+ * Type name: `0x3::token_coin_swap::TokenEscrow`
  */
 export interface ITokenEscrow {
   token: {
@@ -33,14 +33,25 @@ export interface ITokenEscrow {
         collection: string;
         name: string;
       };
-      serial_number: p.U64;
+      property_version: p.U64;
     };
-    value: p.U64;
+    amount: p.U64;
+    token_properties: {
+      map: {
+        data: ReadonlyArray<{
+          key: string;
+          value: {
+            value: p.ByteString;
+            type: string;
+          };
+        }>;
+      };
+    };
   };
   locked_until_secs: p.U64;
 }
 
-/** Type name: `0x1::token_coin_swap::TokenListingEvent` */
+/** Type name: `0x3::token_coin_swap::TokenListingEvent` */
 export interface ITokenListingEvent {
   token_id: {
     token_data_id: {
@@ -48,7 +59,7 @@ export interface ITokenListingEvent {
       collection: string;
       name: string;
     };
-    serial_number: p.U64;
+    property_version: p.U64;
   };
   amount: p.U64;
   min_price: p.U64;
@@ -63,12 +74,11 @@ export interface ITokenListingEvent {
 /**
  * The listing of all tokens for swapping stored at token owner's account
  *
- * Type name: `0x1::token_coin_swap::TokenListings`
+ * Type name: `0x3::token_coin_swap::TokenListings`
  */
 export interface ITokenListings {
   listings: {
     handle: p.U128;
-    length: p.U64;
   };
   listing_events: {
     /** Total number of events emitted to this event stream. */
@@ -105,16 +115,15 @@ export interface ITokenListings {
 /**
  * TokenStoreEscrow holds a map of token id to their tokenEscrow
  *
- * Type name: `0x1::token_coin_swap::TokenStoreEscrow`
+ * Type name: `0x3::token_coin_swap::TokenStoreEscrow`
  */
 export interface ITokenStoreEscrow {
   token_escrows: {
     handle: p.U128;
-    length: p.U64;
   };
 }
 
-/** Type name: `0x1::token_coin_swap::TokenSwapEvent` */
+/** Type name: `0x3::token_coin_swap::TokenSwapEvent` */
 export interface ITokenSwapEvent {
   token_id: {
     token_data_id: {
@@ -122,7 +131,7 @@ export interface ITokenSwapEvent {
       collection: string;
       name: string;
     };
-    serial_number: p.U64;
+    property_version: p.U64;
   };
   token_buyer: p.RawAddress;
   token_amount: p.U64;
@@ -137,9 +146,9 @@ export interface ITokenSwapEvent {
 export { idl } from "./idl.js";
 
 /** The address of the module. */
-export const ADDRESS = "0x1" as const;
+export const ADDRESS = "0x3" as const;
 /** The full module name. */
-export const FULL_NAME = "0x1::token_coin_swap" as const;
+export const FULL_NAME = "0x3::token_coin_swap" as const;
 /** The name of the module. */
 export const NAME = "token_coin_swap" as const;
 
@@ -182,21 +191,21 @@ export const functions = {} as const;
 
 /** All struct types with ability `key`. */
 export const resources = {
-  TokenListings: "0x1::token_coin_swap::TokenListings",
-  TokenStoreEscrow: "0x1::token_coin_swap::TokenStoreEscrow",
+  TokenListings: "0x3::token_coin_swap::TokenListings",
+  TokenStoreEscrow: "0x3::token_coin_swap::TokenStoreEscrow",
 } as const;
 
 /** All struct types. */
 export const structs = {
-  TokenCoinSwap: "0x1::token_coin_swap::TokenCoinSwap",
-  TokenEscrow: "0x1::token_coin_swap::TokenEscrow",
-  TokenListingEvent: "0x1::token_coin_swap::TokenListingEvent",
-  TokenListings: "0x1::token_coin_swap::TokenListings",
-  TokenStoreEscrow: "0x1::token_coin_swap::TokenStoreEscrow",
-  TokenSwapEvent: "0x1::token_coin_swap::TokenSwapEvent",
+  TokenCoinSwap: "0x3::token_coin_swap::TokenCoinSwap",
+  TokenEscrow: "0x3::token_coin_swap::TokenEscrow",
+  TokenListingEvent: "0x3::token_coin_swap::TokenListingEvent",
+  TokenListings: "0x3::token_coin_swap::TokenListings",
+  TokenStoreEscrow: "0x3::token_coin_swap::TokenStoreEscrow",
+  TokenSwapEvent: "0x3::token_coin_swap::TokenSwapEvent",
 } as const;
 
-/** Payload generators for module `0x1::token_coin_swap`. */
+/** Payload generators for module `0x3::token_coin_swap`. */
 const moduleImpl = {
   ...id,
   errorCodes,
@@ -212,6 +221,6 @@ const moduleImpl = {
  * 3. Execute the swapping
  */
 export const moduleDefinition = moduleImpl as p.MoveModuleDefinition<
-  "0x1",
+  "0x3",
   "token_coin_swap"
 > as typeof moduleImpl;

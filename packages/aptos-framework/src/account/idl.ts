@@ -35,6 +35,17 @@ export const idl = {
         { name: "authentication_key", ty: { vector: "u8" } },
         { name: "sequence_number", ty: "u64" },
         { name: "self_address", ty: "address" },
+        {
+          name: "coin_register_events",
+          ty: {
+            struct: {
+              name: "0x1::event::EventHandle",
+              ty_args: [
+                { struct: { name: "0x1::account::CoinRegisterEvent" } },
+              ],
+            },
+          },
+        },
       ],
       abilities: ["store", "key"],
     },
@@ -50,9 +61,18 @@ export const idl = {
         { name: "multi_agent_prologue_name", ty: { vector: "u8" } },
         { name: "user_epilogue_name", ty: { vector: "u8" } },
         { name: "writeset_epilogue_name", ty: { vector: "u8" } },
-        { name: "currency_code_required", ty: "bool" },
       ],
       abilities: ["key"],
+    },
+    {
+      name: "0x1::account::CoinRegisterEvent",
+      fields: [
+        {
+          name: "type_info",
+          ty: { struct: { name: "0x1::type_info::TypeInfo" } },
+        },
+      ],
+      abilities: ["drop", "store"],
     },
     {
       name: "0x1::account::SignerCapability",

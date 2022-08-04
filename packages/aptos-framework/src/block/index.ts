@@ -13,7 +13,7 @@ export interface IBlockMetadata {
   height: p.U64;
 
   /** Time period between epochs. */
-  epoch_internal: p.U64;
+  epoch_interval: p.U64;
 
   /** Handle where events with the time of new blocks are emitted */
   new_block_events: {

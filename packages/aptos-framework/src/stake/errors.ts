@@ -120,11 +120,11 @@ export const EINVALID_STAKE_RANGE = {
   doc: "Invalid required stake range, usually happens if min > max.",
 } as const;
 
-/** Invalid required stake lockup, usually happens if min > max. */
-export const EINVALID_LOCKUP_RANGE = {
+/** Invalid required stake lockup value. */
+export const EINVALID_LOCKUP_VALUE = {
   code: 18,
-  name: "EINVALID_LOCKUP_RANGE",
-  doc: "Invalid required stake lockup, usually happens if min > max.",
+  name: "EINVALID_LOCKUP_VALUE",
+  doc: "Invalid required stake lockup value.",
 } as const;
 
 /** Invalid rewards rate. */

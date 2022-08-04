@@ -36,7 +36,7 @@ export type AddStake = {
 export type IncreaseLockup = {
   readonly type: "script_function_payload";
   readonly function: "0x1::stake::increase_lockup";
-  readonly arguments: [new_locked_until_secs: string];
+  readonly arguments: [];
   readonly type_arguments: [];
 };
 

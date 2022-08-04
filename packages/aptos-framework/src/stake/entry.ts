@@ -24,13 +24,11 @@ export const add_stake = ({ args }: mod.AddStakeArgs): payloads.AddStake => ({
 });
 
 /** Similar to increase_lockup_with_cap but will use ownership capability from the signing account. */
-export const increase_lockup = ({
-  args,
-}: mod.IncreaseLockupArgs): payloads.IncreaseLockup => ({
+export const increase_lockup = (): payloads.IncreaseLockup => ({
   type: "script_function_payload",
   function: "0x1::stake::increase_lockup",
   type_arguments: [],
-  arguments: [p.serializers.u64(args.new_locked_until_secs)],
+  arguments: [],
 });
 
 /** This can only called by the operator of the validator/staking pool. */

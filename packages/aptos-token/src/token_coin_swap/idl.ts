@@ -5,12 +5,12 @@
  */
 /** The IDL of the module. */
 export const idl = {
-  module_id: "0x1::token_coin_swap",
+  module_id: "0x3::token_coin_swap",
   doc: "A module for\n1. Hold tokens escrow to prevent token been transferred\n2. List token for swapping with a targeted CoinType.\n3. Execute the swapping",
   functions: [],
   structs: [
     {
-      name: "0x1::token_coin_swap::TokenCoinSwap",
+      name: "0x3::token_coin_swap::TokenCoinSwap",
       doc: "TokenCoinSwap records a swap ask for swapping token_amount with CoinType with a minimal price per token",
       fields: [
         { name: "token_amount", ty: "u64" },
@@ -20,21 +20,18 @@ export const idl = {
       abilities: ["drop", "store"],
     },
     {
-      name: "0x1::token_coin_swap::TokenEscrow",
+      name: "0x3::token_coin_swap::TokenEscrow",
       doc: "TokenEscrow holds the tokens that cannot be withdrawn or transferred",
       fields: [
-        { name: "token", ty: { struct: { name: "0x1::token_v1::Token" } } },
+        { name: "token", ty: { struct: { name: "0x3::token::Token" } } },
         { name: "locked_until_secs", ty: "u64" },
       ],
       abilities: ["store"],
     },
     {
-      name: "0x1::token_coin_swap::TokenListingEvent",
+      name: "0x3::token_coin_swap::TokenListingEvent",
       fields: [
-        {
-          name: "token_id",
-          ty: { struct: { name: "0x1::token_v1::TokenId" } },
-        },
+        { name: "token_id", ty: { struct: { name: "0x3::token::TokenId" } } },
         { name: "amount", ty: "u64" },
         { name: "min_price", ty: "u64" },
         { name: "locked_until_secs", ty: "u64" },
@@ -46,7 +43,7 @@ export const idl = {
       abilities: ["drop", "store"],
     },
     {
-      name: "0x1::token_coin_swap::TokenListings",
+      name: "0x3::token_coin_swap::TokenListings",
       doc: "The listing of all tokens for swapping stored at token owner's account",
       fields: [
         {
@@ -55,10 +52,10 @@ export const idl = {
             struct: {
               name: "0x1::table::Table",
               ty_args: [
-                { struct: { name: "0x1::token_v1::TokenId" } },
+                { struct: { name: "0x3::token::TokenId" } },
                 {
                   struct: {
-                    name: "0x1::token_coin_swap::TokenCoinSwap",
+                    name: "0x3::token_coin_swap::TokenCoinSwap",
                     ty_args: [{ type_param: 0 }],
                   },
                 },
@@ -72,7 +69,7 @@ export const idl = {
             struct: {
               name: "0x1::event::EventHandle",
               ty_args: [
-                { struct: { name: "0x1::token_coin_swap::TokenListingEvent" } },
+                { struct: { name: "0x3::token_coin_swap::TokenListingEvent" } },
               ],
             },
           },
@@ -83,7 +80,7 @@ export const idl = {
             struct: {
               name: "0x1::event::EventHandle",
               ty_args: [
-                { struct: { name: "0x1::token_coin_swap::TokenSwapEvent" } },
+                { struct: { name: "0x3::token_coin_swap::TokenSwapEvent" } },
               ],
             },
           },
@@ -93,7 +90,7 @@ export const idl = {
       abilities: ["key"],
     },
     {
-      name: "0x1::token_coin_swap::TokenStoreEscrow",
+      name: "0x3::token_coin_swap::TokenStoreEscrow",
       doc: "TokenStoreEscrow holds a map of token id to their tokenEscrow",
       fields: [
         {
@@ -102,8 +99,8 @@ export const idl = {
             struct: {
               name: "0x1::table::Table",
               ty_args: [
-                { struct: { name: "0x1::token_v1::TokenId" } },
-                { struct: { name: "0x1::token_coin_swap::TokenEscrow" } },
+                { struct: { name: "0x3::token::TokenId" } },
+                { struct: { name: "0x3::token_coin_swap::TokenEscrow" } },
               ],
             },
           },
@@ -112,12 +109,9 @@ export const idl = {
       abilities: ["key"],
     },
     {
-      name: "0x1::token_coin_swap::TokenSwapEvent",
+      name: "0x3::token_coin_swap::TokenSwapEvent",
       fields: [
-        {
-          name: "token_id",
-          ty: { struct: { name: "0x1::token_v1::TokenId" } },
-        },
+        { name: "token_id", ty: { struct: { name: "0x3::token::TokenId" } } },
         { name: "token_buyer", ty: "address" },
         { name: "token_amount", ty: "u64" },
         { name: "coin_amount", ty: "u64" },

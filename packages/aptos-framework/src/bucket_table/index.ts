@@ -13,7 +13,9 @@ import type * as p from "@movingco/prelude";
 /** Type name: `0x1::bucket_table::BucketTable` */
 export interface IBucketTable<_K = unknown, _V = unknown> {
   buckets: {
-    handle: p.U128;
+    inner: {
+      handle: p.U128;
+    };
     length: p.U64;
   };
   num_buckets: p.U64;

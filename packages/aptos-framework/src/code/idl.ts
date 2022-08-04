@@ -20,15 +20,6 @@ export const idl = {
   ],
   structs: [
     {
-      name: "0x1::code::AddressAlias",
-      doc: "An address alias.",
-      fields: [
-        { name: "alias", ty: { struct: { name: "0x1::string::String" } } },
-        { name: "addr", ty: "address" },
-      ],
-      abilities: ["copy", "drop", "store"],
-    },
-    {
       name: "0x1::code::ModuleMetadata",
       doc: "Metadata about a module in a package.",
       fields: [
@@ -38,24 +29,20 @@ export const idl = {
           ty: { struct: { name: "0x1::string::String" } },
         },
         {
+          name: "source",
+          doc: "Source text.",
+          ty: { struct: { name: "0x1::string::String" } },
+        },
+        {
           name: "source_map",
           doc: "Source map, in internal encoding",
           ty: { vector: "u8" },
         },
         {
-          name: "source",
-          doc: "Source text.",
-          ty: { struct: { name: "0x1::string::String" } },
+          name: "abi",
+          doc: "ABI, in JSON byte encoding.",
+          ty: { vector: "u8" },
         },
-      ],
-      abilities: ["copy", "drop", "store"],
-    },
-    {
-      name: "0x1::code::PackageDep",
-      doc: "A package dependency. This consists of an address and the name of a package\nat this address.",
-      fields: [
-        { name: "addr", ty: "address" },
-        { name: "name", ty: { struct: { name: "0x1::string::String" } } },
       ],
       abilities: ["copy", "drop", "store"],
     },
@@ -74,19 +61,14 @@ export const idl = {
           ty: { struct: { name: "0x1::code::UpgradePolicy" } },
         },
         {
+          name: "manifest",
+          doc: "The package manifest, in the Move.toml format.",
+          ty: { struct: { name: "0x1::string::String" } },
+        },
+        {
           name: "modules",
           doc: "The list of modules installed by this package.",
           ty: { vector: { struct: { name: "0x1::code::ModuleMetadata" } } },
-        },
-        {
-          name: "address_aliases",
-          doc: "Address aliases which where used when the modules above were compiled.",
-          ty: { vector: { struct: { name: "0x1::code::AddressAlias" } } },
-        },
-        {
-          name: "deps",
-          doc: "Dependencies which were used when this package was compiled.",
-          ty: { vector: { struct: { name: "0x1::code::PackageDep" } } },
         },
       ],
       abilities: ["copy", "drop", "store"],

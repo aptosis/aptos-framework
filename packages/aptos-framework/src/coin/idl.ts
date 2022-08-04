@@ -9,12 +9,6 @@ export const idl = {
   doc: "This module provides the foundation for typesafe Coins.",
   functions: [
     {
-      name: "register",
-      doc: "Script function to register to receive a specific `CoinType`. An account that wants to hold a coin type\nhas to explicitly registers to do so. The register creates a special `CoinStore`\nto hold the specified `CoinType`.",
-      ty_args: ["CoinType"],
-      args: [],
-    },
-    {
       name: "transfer",
       doc: "Transfers `amount` of coins `CoinType` from `from` to `to`.",
       ty_args: ["CoinType"],
@@ -34,28 +28,12 @@ export const idl = {
     },
     {
       name: "0x1::coin::Coin",
-      doc: "Main structure representing a coin/token in an account's custody.",
+      doc: "Core data structures\nMain structure representing a coin/token in an account's custody.",
       fields: [
         { name: "value", doc: "Amount of coin this address has.", ty: "u64" },
       ],
       type_params: [{ name: "CoinType", is_phantom: true }],
       abilities: ["store"],
-    },
-    {
-      name: "0x1::coin::CoinEvents",
-      doc: "Core data structures\nCentral coin events that are emitted for all coin stores.",
-      fields: [
-        {
-          name: "register_events",
-          ty: {
-            struct: {
-              name: "0x1::event::EventHandle",
-              ty_args: [{ struct: { name: "0x1::coin::RegisterEvent" } }],
-            },
-          },
-        },
-      ],
-      abilities: ["key"],
     },
     {
       name: "0x1::coin::CoinInfo",
@@ -125,17 +103,6 @@ export const idl = {
       fields: [{ name: "dummy_field", ty: "bool" }],
       type_params: [{ name: "CoinType", is_phantom: true }],
       abilities: ["copy", "store", "key"],
-    },
-    {
-      name: "0x1::coin::RegisterEvent",
-      doc: "Set of data sent to the event stream when a new coin store is registered.",
-      fields: [
-        {
-          name: "type_info",
-          ty: { struct: { name: "0x1::type_info::TypeInfo" } },
-        },
-      ],
-      abilities: ["drop", "store"],
     },
     {
       name: "0x1::coin::WithdrawEvent",

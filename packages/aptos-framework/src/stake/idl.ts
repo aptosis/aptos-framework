@@ -6,7 +6,7 @@
 /** The IDL of the module. */
 export const idl = {
   module_id: "0x1::stake",
-  doc: "\nValidator lifecycle:\n1. Prepare a validator node set up and call Stake::register_validator_candidate\n2. Once ready to deposit stake (or have funds assigned by a staking service in exchange for ownership capability),\ncall Stake::add_stake and Stake::increase_lockup (or *_with_cap versions if called from the staking service)\n3. Call Stake::join_validator_set (or _with_cap version) to join the active validator set. Changes are effective in\nthe next epoch.\n4. Validate and gain rewards.\n5. At any point, if the validator operator wants to switch validator node operator, they can call\nStake::rotate_consensus_key.\n6. When lockup has expired, validator (or the owner of owner capability) can choose to either (1) increase the lockup\nto keep validating and receiving rewards, or (2) call Stake::unlock to unlock their stake and Stake::withdraw to\nwithdraw in the next epoch.\n7. After exiting, the validator can either explicitly leave the validator set by calling Stake::leave_validator_set\nor if their stake drops below the min required, they would get removed at the end of the epoch.\n8. Validator can always rejoin the validator set by going through steps 2-3 again.\n9. Owner can always switch operators by calling Stake::set_operator.",
+  doc: "\nValidator lifecycle:\n1. Prepare a validator node set up and call stake::register_validator_candidate\n2. Once ready to deposit stake (or have funds assigned by a staking service in exchange for ownership capability),\ncall stake::add_stake (or *_with_cap versions if called from the staking service)\n3. Call stake::join_validator_set (or _with_cap version) to join the active validator set. Changes are effective in\nthe next epoch.\n4. Validate and gain rewards. The stake will automatically be locked up for a fixed duration (set by governance) and\nautomatically renewed at expiration.\n5. At any point, if the validator operator wants to update the consensus key or network/fullnode addresses, they can\ncall stake::rotate_consensus_key and stake::update_network_and_fullnode_addresses. Similar to changes to stake, the\nchanges to consensus key/network/fullnode addresses are only effective in the next epoch.\n6. Validator can request to unlock their stake at any time. However, their stake will only become withdrawable when\ntheir current lockup expires. This can be at most as long as the fixed lockup duration.\n7. After exiting, the validator can either explicitly leave the validator set by calling stake::leave_validator_set\nor if their stake drops below the min required, they would get removed at the end of the epoch.\n8. Validator can always rejoin the validator set by going through steps 2-3 again.\n9. An owner can always switch operators by calling stake::set_operator.\n10. An owner can always switch designated voter by calling stake::set_designated_voter.",
   functions: [
     {
       name: "withdraw",
@@ -24,7 +24,7 @@ export const idl = {
       name: "increase_lockup",
       doc: "Similar to increase_lockup_with_cap but will use ownership capability from the signing account.",
       ty_args: [],
-      args: [{ name: "new_locked_until_secs", ty: "u64" }],
+      args: [],
     },
     {
       name: "join_validator_set",
@@ -90,14 +90,6 @@ export const idl = {
   ],
   structs: [
     {
-      name: "0x1::stake::AddStakeEvent",
-      fields: [
-        { name: "pool_address", ty: "address" },
-        { name: "amount_added", ty: "u64" },
-      ],
-      abilities: ["drop", "store"],
-    },
-    {
       name: "0x1::stake::AptosCoinCapabilities",
       doc: "AptosCoin capabilities, set during genesis and stored in @CoreResource account.\nThis allows the Stake module to mint rewards to stakers.",
       fields: [
@@ -112,6 +104,14 @@ export const idl = {
         },
       ],
       abilities: ["key"],
+    },
+    {
+      name: "0x1::stake::AddStakeEvent",
+      fields: [
+        { name: "pool_address", ty: "address" },
+        { name: "amount_added", ty: "u64" },
+      ],
+      abilities: ["drop", "store"],
     },
     {
       name: "0x1::stake::DistributeRewardsEvent",
@@ -420,8 +420,7 @@ export const idl = {
       fields: [
         { name: "minimum_stake", ty: "u64" },
         { name: "maximum_stake", ty: "u64" },
-        { name: "min_lockup_duration_secs", ty: "u64" },
-        { name: "max_lockup_duration_secs", ty: "u64" },
+        { name: "recurring_lockup_duration_secs", ty: "u64" },
         { name: "allow_validator_set_change", ty: "bool" },
         { name: "rewards_rate", ty: "u64" },
         { name: "rewards_rate_denominator", ty: "u64" },
@@ -492,8 +491,8 @@ export const idl = {
       doc: "Invalid required stake range, usually happens if min > max.",
     },
     "18": {
-      name: "EINVALID_LOCKUP_RANGE",
-      doc: "Invalid required stake lockup, usually happens if min > max.",
+      name: "EINVALID_LOCKUP_VALUE",
+      doc: "Invalid required stake lockup value.",
     },
     "19": { name: "EINVALID_REWARDS_RATE", doc: "Invalid rewards rate." },
     "20": {

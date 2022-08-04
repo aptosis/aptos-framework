@@ -16,7 +16,7 @@ export const idl = {
           name: "buckets",
           ty: {
             struct: {
-              name: "0x1::table::Table",
+              name: "0x1::table_with_length::TableWithLength",
               ty_args: [
                 "u64",
                 {
