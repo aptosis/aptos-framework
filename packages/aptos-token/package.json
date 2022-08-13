@@ -1,6 +1,6 @@
 {
   "name": "@aptosis/aptos-token",
-  "version": "0.2.5",
+  "version": "0.2.6",
   "description": "TypeScript SDK for Aptos Token",
   "author": "Ian Macalinao <ian@aptos.is>",
   "homepage": "https://github.com/aptosis/aptos-framework#readme",
