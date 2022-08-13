@@ -7,8 +7,12 @@
  */
 import type * as p from "@movingco/prelude";
 
-/** Type name: `0x1::block::BlockMetadata` */
-export interface IBlockMetadata {
+/**
+ * Should be in-sync with BlockResource rust struct in new_block.rs
+ *
+ * Type name: `0x1::block::BlockResource`
+ */
+export interface IBlockResource {
   /** Height of the current block */
   height: p.U64;
 
@@ -33,7 +37,11 @@ export interface IBlockMetadata {
   };
 }
 
-/** Type name: `0x1::block::NewBlockEvent` */
+/**
+ * Should be in-sync with NewBlockEvent rust struct in new_block.rs
+ *
+ * Type name: `0x1::block::NewBlockEvent`
+ */
 export interface INewBlockEvent {
   epoch: p.U64;
   round: p.U64;
@@ -68,7 +76,7 @@ export * as errors from "./errors.js";
 export const errorCodes = {
   "0": {
     name: "EBLOCK_METADATA",
-    doc: "The `BlockMetadata` resource is in an invalid state",
+    doc: "The `BlockResource` resource is in an invalid state",
   },
   "1": {
     name: "EVM_OR_VALIDATOR",
@@ -81,12 +89,12 @@ export const functions = {} as const;
 
 /** All struct types with ability `key`. */
 export const resources = {
-  BlockMetadata: "0x1::block::BlockMetadata",
+  BlockResource: "0x1::block::BlockResource",
 } as const;
 
 /** All struct types. */
 export const structs = {
-  BlockMetadata: "0x1::block::BlockMetadata",
+  BlockResource: "0x1::block::BlockResource",
   NewBlockEvent: "0x1::block::NewBlockEvent",
 } as const;
 

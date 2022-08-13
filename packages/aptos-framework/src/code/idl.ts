@@ -61,6 +61,11 @@ export const idl = {
           ty: { struct: { name: "0x1::code::UpgradePolicy" } },
         },
         {
+          name: "build_info",
+          doc: "The BuildInfo, in the BuildInfo.yaml format.",
+          ty: { struct: { name: "0x1::string::String" } },
+        },
+        {
           name: "manifest",
           doc: "The package manifest, in the Move.toml format.",
           ty: { struct: { name: "0x1::string::String" } },
@@ -69,6 +74,11 @@ export const idl = {
           name: "modules",
           doc: "The list of modules installed by this package.",
           ty: { vector: { struct: { name: "0x1::code::ModuleMetadata" } } },
+        },
+        {
+          name: "error_map",
+          doc: "Error map, in internal encoding.",
+          ty: { vector: "u8" },
         },
       ],
       abilities: ["copy", "drop", "store"],

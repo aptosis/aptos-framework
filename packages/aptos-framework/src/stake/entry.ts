@@ -31,6 +31,40 @@ export const increase_lockup = (): payloads.IncreaseLockup => ({
   arguments: [],
 });
 
+/**
+ * Initialize the validator account and give ownership to the signing account
+ * except it leaves the ValidatorConfig to be set by another entity.
+ * Note: this triggers setting the operator and owner, set it to the account's address
+ * to set later.
+ */
+export const initialize_owner_only = ({
+  args,
+}: mod.InitializeOwnerOnlyArgs): payloads.InitializeOwnerOnly => ({
+  type: "script_function_payload",
+  function: "0x1::stake::initialize_owner_only",
+  type_arguments: [],
+  arguments: [
+    p.serializers.u64(args.initial_stake_amount),
+    p.serializers.hexString(args.operator),
+    p.serializers.hexString(args.voter),
+  ],
+});
+
+/** Initialize the validator account and give ownership to the signing account. */
+export const initialize_validator = ({
+  args,
+}: mod.InitializeValidatorArgs): payloads.InitializeValidator => ({
+  type: "script_function_payload",
+  function: "0x1::stake::initialize_validator",
+  type_arguments: [],
+  arguments: [
+    p.serializers.hexString(args.consensus_pubkey),
+    p.serializers.hexString(args.proof_of_possession),
+    p.serializers.hexString(args.network_addresses),
+    p.serializers.hexString(args.fullnode_addresses),
+  ],
+});
+
 /** This can only called by the operator of the validator/staking pool. */
 export const join_validator_set = ({
   args,
@@ -56,21 +90,6 @@ export const leave_validator_set = ({
   function: "0x1::stake::leave_validator_set",
   type_arguments: [],
   arguments: [p.serializers.hexString(args.pool_address)],
-});
-
-/** Initialize the validator account and give ownership to the signing account. */
-export const register_validator_candidate = ({
-  args,
-}: mod.RegisterValidatorCandidateArgs): payloads.RegisterValidatorCandidate => ({
-  type: "script_function_payload",
-  function: "0x1::stake::register_validator_candidate",
-  type_arguments: [],
-  arguments: [
-    p.serializers.hexString(args.consensus_pubkey),
-    p.serializers.hexString(args.proof_of_possession),
-    p.serializers.hexString(args.network_addresses),
-    p.serializers.hexString(args.fullnode_addresses),
-  ],
 });
 
 /** Rotate the consensus key of the validator, it'll take effect in next epoch. */

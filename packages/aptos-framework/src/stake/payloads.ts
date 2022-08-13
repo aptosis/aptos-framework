@@ -41,6 +41,42 @@ export type IncreaseLockup = {
 };
 
 /**
+ * Script function payload for `0x1::stake::initialize_owner_only`.
+ *
+ * Initialize the validator account and give ownership to the signing account
+ * except it leaves the ValidatorConfig to be set by another entity.
+ * Note: this triggers setting the operator and owner, set it to the account's address
+ * to set later.
+ */
+export type InitializeOwnerOnly = {
+  readonly type: "script_function_payload";
+  readonly function: "0x1::stake::initialize_owner_only";
+  readonly arguments: [
+    initial_stake_amount: string,
+    operator: string,
+    voter: string
+  ];
+  readonly type_arguments: [];
+};
+
+/**
+ * Script function payload for `0x1::stake::initialize_validator`.
+ *
+ * Initialize the validator account and give ownership to the signing account.
+ */
+export type InitializeValidator = {
+  readonly type: "script_function_payload";
+  readonly function: "0x1::stake::initialize_validator";
+  readonly arguments: [
+    consensus_pubkey: string,
+    proof_of_possession: string,
+    network_addresses: string,
+    fullnode_addresses: string
+  ];
+  readonly type_arguments: [];
+};
+
+/**
  * Script function payload for `0x1::stake::join_validator_set`.
  *
  * This can only called by the operator of the validator/staking pool.
@@ -66,23 +102,6 @@ export type LeaveValidatorSet = {
   readonly type: "script_function_payload";
   readonly function: "0x1::stake::leave_validator_set";
   readonly arguments: [pool_address: string];
-  readonly type_arguments: [];
-};
-
-/**
- * Script function payload for `0x1::stake::register_validator_candidate`.
- *
- * Initialize the validator account and give ownership to the signing account.
- */
-export type RegisterValidatorCandidate = {
-  readonly type: "script_function_payload";
-  readonly function: "0x1::stake::register_validator_candidate";
-  readonly arguments: [
-    consensus_pubkey: string,
-    proof_of_possession: string,
-    network_addresses: string,
-    fullnode_addresses: string
-  ];
   readonly type_arguments: [];
 };
 

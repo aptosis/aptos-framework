@@ -5,7 +5,7 @@
  */
 /** Error with config */
 export const ECONFIG = {
-  code: 0,
+  code: 1,
   name: "ECONFIG",
   doc: "Error with config",
 } as const;

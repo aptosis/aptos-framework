@@ -62,7 +62,7 @@ export const idl = {
       fields: [
         { name: "min_voting_threshold", ty: "u128" },
         { name: "required_proposer_stake", ty: "u64" },
-        { name: "voting_period_secs", ty: "u64" },
+        { name: "voting_duration_secs", ty: "u64" },
       ],
       abilities: ["key"],
     },
@@ -114,11 +114,19 @@ export const idl = {
     },
     {
       name: "0x1::aptos_governance::GovernanceResponsbility",
-      doc: "Store the SignerCapability of the framework account (0x1) so AptosGovernance can have control over it.",
+      doc: "Store the SignerCapabilities of accounts under the on-chain governance's control.",
       fields: [
         {
-          name: "signer_cap",
-          ty: { struct: { name: "0x1::account::SignerCapability" } },
+          name: "signer_caps",
+          ty: {
+            struct: {
+              name: "0x1::simple_map::SimpleMap",
+              ty_args: [
+                "address",
+                { struct: { name: "0x1::account::SignerCapability" } },
+              ],
+            },
+          },
         },
       ],
       abilities: ["key"],
@@ -137,7 +145,7 @@ export const idl = {
       fields: [
         { name: "min_voting_threshold", ty: "u128" },
         { name: "required_proposer_stake", ty: "u64" },
-        { name: "voting_period_secs", ty: "u64" },
+        { name: "voting_duration_secs", ty: "u64" },
       ],
       abilities: ["drop", "store"],
     },

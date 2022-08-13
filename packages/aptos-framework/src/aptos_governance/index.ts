@@ -55,7 +55,7 @@ export interface IVoteEvent {
 export interface IGovernanceConfig {
   min_voting_threshold: p.U128;
   required_proposer_stake: p.U64;
-  voting_period_secs: p.U64;
+  voting_duration_secs: p.U64;
 }
 
 /**
@@ -112,13 +112,18 @@ export interface IGovernanceEvents {
 }
 
 /**
- * Store the SignerCapability of the framework account (0x1) so AptosGovernance can have control over it.
+ * Store the SignerCapabilities of accounts under the on-chain governance's control.
  *
  * Type name: `0x1::aptos_governance::GovernanceResponsbility`
  */
 export interface IGovernanceResponsbility {
-  signer_cap: {
-    account: p.RawAddress;
+  signer_caps: {
+    data: ReadonlyArray<{
+      key: p.RawAddress;
+      value: {
+        account: p.RawAddress;
+      };
+    }>;
   };
 }
 
@@ -136,7 +141,7 @@ export interface IRecordKey {
 export interface IUpdateConfigEvent {
   min_voting_threshold: p.U128;
   required_proposer_stake: p.U64;
-  voting_period_secs: p.U64;
+  voting_duration_secs: p.U64;
 }
 
 /**

@@ -113,30 +113,9 @@ export const EINVALID_PUBLIC_KEY = {
   doc: "Invalid consensus public key",
 } as const;
 
-/** Invalid required stake range, usually happens if min > max. */
-export const EINVALID_STAKE_RANGE = {
-  code: 17,
-  name: "EINVALID_STAKE_RANGE",
-  doc: "Invalid required stake range, usually happens if min > max.",
-} as const;
-
-/** Invalid required stake lockup value. */
-export const EINVALID_LOCKUP_VALUE = {
-  code: 18,
-  name: "EINVALID_LOCKUP_VALUE",
-  doc: "Invalid required stake lockup value.",
-} as const;
-
-/** Invalid rewards rate. */
-export const EINVALID_REWARDS_RATE = {
-  code: 19,
-  name: "EINVALID_REWARDS_RATE",
-  doc: "Invalid rewards rate.",
-} as const;
-
 /** Invalid stake amount (usuaully 0). */
 export const EINVALID_STAKE_AMOUNT = {
-  code: 20,
+  code: 17,
   name: "EINVALID_STAKE_AMOUNT",
   doc: "Invalid stake amount (usuaully 0).",
 } as const;

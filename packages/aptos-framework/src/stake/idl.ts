@@ -6,7 +6,7 @@
 /** The IDL of the module. */
 export const idl = {
   module_id: "0x1::stake",
-  doc: "\nValidator lifecycle:\n1. Prepare a validator node set up and call stake::register_validator_candidate\n2. Once ready to deposit stake (or have funds assigned by a staking service in exchange for ownership capability),\ncall stake::add_stake (or *_with_cap versions if called from the staking service)\n3. Call stake::join_validator_set (or _with_cap version) to join the active validator set. Changes are effective in\nthe next epoch.\n4. Validate and gain rewards. The stake will automatically be locked up for a fixed duration (set by governance) and\nautomatically renewed at expiration.\n5. At any point, if the validator operator wants to update the consensus key or network/fullnode addresses, they can\ncall stake::rotate_consensus_key and stake::update_network_and_fullnode_addresses. Similar to changes to stake, the\nchanges to consensus key/network/fullnode addresses are only effective in the next epoch.\n6. Validator can request to unlock their stake at any time. However, their stake will only become withdrawable when\ntheir current lockup expires. This can be at most as long as the fixed lockup duration.\n7. After exiting, the validator can either explicitly leave the validator set by calling stake::leave_validator_set\nor if their stake drops below the min required, they would get removed at the end of the epoch.\n8. Validator can always rejoin the validator set by going through steps 2-3 again.\n9. An owner can always switch operators by calling stake::set_operator.\n10. An owner can always switch designated voter by calling stake::set_designated_voter.",
+  doc: "\nValidator lifecycle:\n1. Prepare a validator node set up and call stake::initialize_validator\n2. Once ready to deposit stake (or have funds assigned by a staking service in exchange for ownership capability),\ncall stake::add_stake (or *_with_cap versions if called from the staking service)\n3. Call stake::join_validator_set (or _with_cap version) to join the active validator set. Changes are effective in\nthe next epoch.\n4. Validate and gain rewards. The stake will automatically be locked up for a fixed duration (set by governance) and\nautomatically renewed at expiration.\n5. At any point, if the validator operator wants to update the consensus key or network/fullnode addresses, they can\ncall stake::rotate_consensus_key and stake::update_network_and_fullnode_addresses. Similar to changes to stake, the\nchanges to consensus key/network/fullnode addresses are only effective in the next epoch.\n6. Validator can request to unlock their stake at any time. However, their stake will only become withdrawable when\ntheir current lockup expires. This can be at most as long as the fixed lockup duration.\n7. After exiting, the validator can either explicitly leave the validator set by calling stake::leave_validator_set\nor if their stake drops below the min required, they would get removed at the end of the epoch.\n8. Validator can always rejoin the validator set by going through steps 2-3 again.\n9. An owner can always switch operators by calling stake::set_operator.\n10. An owner can always switch designated voter by calling stake::set_designated_voter.",
   functions: [
     {
       name: "withdraw",
@@ -27,6 +27,27 @@ export const idl = {
       args: [],
     },
     {
+      name: "initialize_owner_only",
+      doc: "Initialize the validator account and give ownership to the signing account\nexcept it leaves the ValidatorConfig to be set by another entity.\nNote: this triggers setting the operator and owner, set it to the account's address\nto set later.",
+      ty_args: [],
+      args: [
+        { name: "initial_stake_amount", ty: "u64" },
+        { name: "operator", ty: "address" },
+        { name: "voter", ty: "address" },
+      ],
+    },
+    {
+      name: "initialize_validator",
+      doc: "Initialize the validator account and give ownership to the signing account.",
+      ty_args: [],
+      args: [
+        { name: "consensus_pubkey", ty: { vector: "u8" } },
+        { name: "proof_of_possession", ty: { vector: "u8" } },
+        { name: "network_addresses", ty: { vector: "u8" } },
+        { name: "fullnode_addresses", ty: { vector: "u8" } },
+      ],
+    },
+    {
       name: "join_validator_set",
       doc: "This can only called by the operator of the validator/staking pool.",
       ty_args: [],
@@ -37,17 +58,6 @@ export const idl = {
       doc: "Request to have `pool_address` leave the validator set. The validator is only actually removed from the set when\nthe next epoch starts.\nThe last validator in the set cannot leave. This is an edge case that should never happen as long as the network\nis still operational.\n\nCan only be called by the operator of the validator/staking pool.",
       ty_args: [],
       args: [{ name: "pool_address", ty: "address" }],
-    },
-    {
-      name: "register_validator_candidate",
-      doc: "Initialize the validator account and give ownership to the signing account.",
-      ty_args: [],
-      args: [
-        { name: "consensus_pubkey", ty: { vector: "u8" } },
-        { name: "proof_of_possession", ty: { vector: "u8" } },
-        { name: "network_addresses", ty: { vector: "u8" } },
-        { name: "fullnode_addresses", ty: { vector: "u8" } },
-      ],
     },
     {
       name: "rotate_consensus_key",
@@ -127,6 +137,14 @@ export const idl = {
         { name: "pool_address", ty: "address" },
         { name: "old_locked_until_secs", ty: "u64" },
         { name: "new_locked_until_secs", ty: "u64" },
+      ],
+      abilities: ["drop", "store"],
+    },
+    {
+      name: "0x1::stake::IndividualValidatorPerformance",
+      fields: [
+        { name: "successful_proposals", ty: "u64" },
+        { name: "failed_proposals", ty: "u64" },
       ],
       abilities: ["drop", "store"],
     },
@@ -212,15 +230,8 @@ export const idl = {
         { name: "locked_until_secs", ty: "u64" },
         { name: "operator_address", ty: "address" },
         { name: "delegated_voter", ty: "address" },
-      ],
-      abilities: ["key"],
-    },
-    {
-      name: "0x1::stake::StakePoolEvents",
-      doc: "The events emitted for the entire StakePool's lifecycle.",
-      fields: [
         {
-          name: "register_validator_candidate_events",
+          name: "initialize_validator_events",
           ty: {
             struct: {
               name: "0x1::event::EventHandle",
@@ -389,8 +400,14 @@ export const idl = {
     {
       name: "0x1::stake::ValidatorPerformance",
       fields: [
-        { name: "num_blocks", ty: "u64" },
-        { name: "missed_votes", ty: { vector: "u64" } },
+        {
+          name: "validators",
+          ty: {
+            vector: {
+              struct: { name: "0x1::stake::IndividualValidatorPerformance" },
+            },
+          },
+        },
       ],
       abilities: ["key"],
     },
@@ -411,19 +428,6 @@ export const idl = {
           name: "pending_active",
           ty: { vector: { struct: { name: "0x1::stake::ValidatorInfo" } } },
         },
-      ],
-      abilities: ["key"],
-    },
-    {
-      name: "0x1::stake::ValidatorSetConfiguration",
-      doc: "Validator set configurations that will be stored with the @aptos_framework account.",
-      fields: [
-        { name: "minimum_stake", ty: "u64" },
-        { name: "maximum_stake", ty: "u64" },
-        { name: "recurring_lockup_duration_secs", ty: "u64" },
-        { name: "allow_validator_set_change", ty: "bool" },
-        { name: "rewards_rate", ty: "u64" },
-        { name: "rewards_rate_denominator", ty: "u64" },
       ],
       abilities: ["key"],
     },
@@ -487,15 +491,6 @@ export const idl = {
     "15": { name: "ENO_POST_GENESIS_VALIDATOR_SET_CHANGE_ALLOWED" },
     "16": { name: "EINVALID_PUBLIC_KEY", doc: "Invalid consensus public key" },
     "17": {
-      name: "EINVALID_STAKE_RANGE",
-      doc: "Invalid required stake range, usually happens if min > max.",
-    },
-    "18": {
-      name: "EINVALID_LOCKUP_VALUE",
-      doc: "Invalid required stake lockup value.",
-    },
-    "19": { name: "EINVALID_REWARDS_RATE", doc: "Invalid rewards rate." },
-    "20": {
       name: "EINVALID_STAKE_AMOUNT",
       doc: "Invalid stake amount (usuaully 0).",
     },

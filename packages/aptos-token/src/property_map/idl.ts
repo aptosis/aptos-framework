@@ -25,7 +25,7 @@ export const idl = {
           },
         },
       ],
-      abilities: ["drop", "store"],
+      abilities: ["copy", "drop", "store"],
     },
     {
       name: "0x3::property_map::PropertyValue",

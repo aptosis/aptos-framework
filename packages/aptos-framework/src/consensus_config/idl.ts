@@ -15,5 +15,5 @@ export const idl = {
       abilities: ["key"],
     },
   ],
-  errors: { "0": { name: "ECONFIG", doc: "Error with config" } },
+  errors: { "1": { name: "ECONFIG", doc: "Error with config" } },
 } as const;

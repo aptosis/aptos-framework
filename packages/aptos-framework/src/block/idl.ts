@@ -10,7 +10,8 @@ export const idl = {
   functions: [],
   structs: [
     {
-      name: "0x1::block::BlockMetadata",
+      name: "0x1::block::BlockResource",
+      doc: "Should be in-sync with BlockResource rust struct in new_block.rs",
       fields: [
         { name: "height", doc: "Height of the current block", ty: "u64" },
         {
@@ -33,6 +34,7 @@ export const idl = {
     },
     {
       name: "0x1::block::NewBlockEvent",
+      doc: "Should be in-sync with NewBlockEvent rust struct in new_block.rs",
       fields: [
         { name: "epoch", ty: "u64" },
         { name: "round", ty: "u64" },
@@ -52,7 +54,7 @@ export const idl = {
   errors: {
     "0": {
       name: "EBLOCK_METADATA",
-      doc: "The `BlockMetadata` resource is in an invalid state",
+      doc: "The `BlockResource` resource is in an invalid state",
     },
     "1": {
       name: "EVM_OR_VALIDATOR",

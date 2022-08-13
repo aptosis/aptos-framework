@@ -33,7 +33,7 @@ export * as errors from "./errors.js";
 
 /** Module error codes. */
 export const errorCodes = {
-  "0": {
+  "1": {
     name: "ECONFIG",
     doc: "Error with config",
   },

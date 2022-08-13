@@ -16,7 +16,7 @@ export const idl = {
         { name: "value", ty: { type_param: 1 } },
       ],
       type_params: [{ name: "Key" }, { name: "Value" }],
-      abilities: ["drop", "store"],
+      abilities: ["copy", "drop", "store"],
     },
     {
       name: "0x1::simple_map::SimpleMap",
@@ -34,7 +34,7 @@ export const idl = {
         },
       ],
       type_params: [{ name: "Key" }, { name: "Value" }],
-      abilities: ["drop", "store"],
+      abilities: ["copy", "drop", "store"],
     },
   ],
   errors: {

@@ -40,6 +40,9 @@ export interface IPackageMetadata {
     policy: number;
   };
 
+  /** The BuildInfo, in the BuildInfo.yaml format. */
+  build_info: string;
+
   /** The package manifest, in the Move.toml format. */
   manifest: string;
 
@@ -57,6 +60,9 @@ export interface IPackageMetadata {
     /** ABI, in JSON byte encoding. */
     abi: p.ByteString;
   }>;
+
+  /** Error map, in internal encoding. */
+  error_map: p.ByteString;
 }
 
 /**
@@ -75,6 +81,9 @@ export interface IPackageRegistry {
       policy: number;
     };
 
+    /** The BuildInfo, in the BuildInfo.yaml format. */
+    build_info: string;
+
     /** The package manifest, in the Move.toml format. */
     manifest: string;
 
@@ -92,6 +101,9 @@ export interface IPackageRegistry {
       /** ABI, in JSON byte encoding. */
       abi: p.ByteString;
     }>;
+
+    /** Error map, in internal encoding. */
+    error_map: p.ByteString;
   }>;
 }
 

@@ -13,7 +13,6 @@ import type * as p from "@movingco/prelude";
 export interface IAccount {
   authentication_key: p.ByteString;
   sequence_number: p.U64;
-  self_address: p.RawAddress;
   coin_register_events: {
     /** Total number of events emitted to this event stream. */
     counter: p.U64;

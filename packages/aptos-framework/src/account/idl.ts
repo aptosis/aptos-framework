@@ -34,7 +34,6 @@ export const idl = {
       fields: [
         { name: "authentication_key", ty: { vector: "u8" } },
         { name: "sequence_number", ty: "u64" },
-        { name: "self_address", ty: "address" },
         {
           name: "coin_register_events",
           ty: {

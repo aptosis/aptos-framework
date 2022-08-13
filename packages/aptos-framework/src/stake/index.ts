@@ -1,7 +1,7 @@
 /**
  *
  * Validator lifecycle:
- * 1. Prepare a validator node set up and call stake::register_validator_candidate
+ * 1. Prepare a validator node set up and call stake::initialize_validator
  * 2. Once ready to deposit stake (or have funds assigned by a staking service in exchange for ownership capability),
  * call stake::add_stake (or *_with_cap versions if called from the staking service)
  * 3. Call stake::join_validator_set (or _with_cap version) to join the active validator set. Changes are effective in
@@ -54,6 +54,12 @@ export interface IIncreaseLockupEvent {
   pool_address: p.RawAddress;
   old_locked_until_secs: p.U64;
   new_locked_until_secs: p.U64;
+}
+
+/** Type name: `0x1::stake::IndividualValidatorPerformance` */
+export interface IIndividualValidatorPerformance {
+  successful_proposals: p.U64;
+  failed_proposals: p.U64;
 }
 
 /** Type name: `0x1::stake::JoinValidatorSetEvent` */
@@ -131,15 +137,7 @@ export interface IStakePool {
   locked_until_secs: p.U64;
   operator_address: p.RawAddress;
   delegated_voter: p.RawAddress;
-}
-
-/**
- * The events emitted for the entire StakePool's lifecycle.
- *
- * Type name: `0x1::stake::StakePoolEvents`
- */
-export interface IStakePoolEvents {
-  register_validator_candidate_events: {
+  initialize_validator_events: {
     /** Total number of events emitted to this event stream. */
     counter: p.U64;
 
@@ -351,8 +349,10 @@ export interface IValidatorInfo {
 
 /** Type name: `0x1::stake::ValidatorPerformance` */
 export interface IValidatorPerformance {
-  num_blocks: p.U64;
-  missed_votes: ReadonlyArray<p.U64>;
+  validators: ReadonlyArray<{
+    successful_proposals: p.U64;
+    failed_proposals: p.U64;
+  }>;
 }
 
 /**
@@ -397,20 +397,6 @@ export interface IValidatorSet {
   }>;
 }
 
-/**
- * Validator set configurations that will be stored with the @aptos_framework account.
- *
- * Type name: `0x1::stake::ValidatorSetConfiguration`
- */
-export interface IValidatorSetConfiguration {
-  minimum_stake: p.U64;
-  maximum_stake: p.U64;
-  recurring_lockup_duration_secs: p.U64;
-  allow_validator_set_change: boolean;
-  rewards_rate: p.U64;
-  rewards_rate_denominator: p.U64;
-}
-
 /** Type name: `0x1::stake::WithdrawStakeEvent` */
 export interface IWithdrawStakeEvent {
   pool_address: p.RawAddress;
@@ -433,6 +419,32 @@ export type AddStakeArgs = {
   };
 };
 
+/** Payload arguments for {@link entry.initialize_owner_only}. */
+export type InitializeOwnerOnlyArgs = {
+  args: {
+    /** IDL type: `U64` */
+    initial_stake_amount: p.U64;
+    /** IDL type: `Address` */
+    operator: p.RawAddress;
+    /** IDL type: `Address` */
+    voter: p.RawAddress;
+  };
+};
+
+/** Payload arguments for {@link entry.initialize_validator}. */
+export type InitializeValidatorArgs = {
+  args: {
+    /** IDL type: `Vector(U8)` */
+    consensus_pubkey: p.ByteString;
+    /** IDL type: `Vector(U8)` */
+    proof_of_possession: p.ByteString;
+    /** IDL type: `Vector(U8)` */
+    network_addresses: p.ByteString;
+    /** IDL type: `Vector(U8)` */
+    fullnode_addresses: p.ByteString;
+  };
+};
+
 /** Payload arguments for {@link entry.join_validator_set}. */
 export type JoinValidatorSetArgs = {
   args: {
@@ -446,20 +458,6 @@ export type LeaveValidatorSetArgs = {
   args: {
     /** IDL type: `Address` */
     pool_address: p.RawAddress;
-  };
-};
-
-/** Payload arguments for {@link entry.register_validator_candidate}. */
-export type RegisterValidatorCandidateArgs = {
-  args: {
-    /** IDL type: `Vector(U8)` */
-    consensus_pubkey: p.ByteString;
-    /** IDL type: `Vector(U8)` */
-    proof_of_possession: p.ByteString;
-    /** IDL type: `Vector(U8)` */
-    network_addresses: p.ByteString;
-    /** IDL type: `Vector(U8)` */
-    fullnode_addresses: p.ByteString;
   };
 };
 
@@ -598,18 +596,6 @@ export const errorCodes = {
     doc: "Invalid consensus public key",
   },
   "17": {
-    name: "EINVALID_STAKE_RANGE",
-    doc: "Invalid required stake range, usually happens if min > max.",
-  },
-  "18": {
-    name: "EINVALID_LOCKUP_VALUE",
-    doc: "Invalid required stake lockup value.",
-  },
-  "19": {
-    name: "EINVALID_REWARDS_RATE",
-    doc: "Invalid rewards rate.",
-  },
-  "20": {
     name: "EINVALID_STAKE_AMOUNT",
     doc: "Invalid stake amount (usuaully 0).",
   },
@@ -634,30 +620,27 @@ export const functions = {
     ty_args: [],
     args: [],
   },
-  join_validator_set: {
-    name: "join_validator_set",
-    doc: "This can only called by the operator of the validator/staking pool.",
+  initialize_owner_only: {
+    name: "initialize_owner_only",
+    doc: "Initialize the validator account and give ownership to the signing account\nexcept it leaves the ValidatorConfig to be set by another entity.\nNote: this triggers setting the operator and owner, set it to the account's address\nto set later.",
     ty_args: [],
     args: [
       {
-        name: "pool_address",
+        name: "initial_stake_amount",
+        ty: "u64",
+      },
+      {
+        name: "operator",
+        ty: "address",
+      },
+      {
+        name: "voter",
         ty: "address",
       },
     ],
   },
-  leave_validator_set: {
-    name: "leave_validator_set",
-    doc: "Request to have `pool_address` leave the validator set. The validator is only actually removed from the set when\nthe next epoch starts.\nThe last validator in the set cannot leave. This is an edge case that should never happen as long as the network\nis still operational.\n\nCan only be called by the operator of the validator/staking pool.",
-    ty_args: [],
-    args: [
-      {
-        name: "pool_address",
-        ty: "address",
-      },
-    ],
-  },
-  register_validator_candidate: {
-    name: "register_validator_candidate",
+  initialize_validator: {
+    name: "initialize_validator",
     doc: "Initialize the validator account and give ownership to the signing account.",
     ty_args: [],
     args: [
@@ -684,6 +667,28 @@ export const functions = {
         ty: {
           vector: "u8",
         },
+      },
+    ],
+  },
+  join_validator_set: {
+    name: "join_validator_set",
+    doc: "This can only called by the operator of the validator/staking pool.",
+    ty_args: [],
+    args: [
+      {
+        name: "pool_address",
+        ty: "address",
+      },
+    ],
+  },
+  leave_validator_set: {
+    name: "leave_validator_set",
+    doc: "Request to have `pool_address` leave the validator set. The validator is only actually removed from the set when\nthe next epoch starts.\nThe last validator in the set cannot leave. This is an edge case that should never happen as long as the network\nis still operational.\n\nCan only be called by the operator of the validator/staking pool.",
+    ty_args: [],
+    args: [
+      {
+        name: "pool_address",
+        ty: "address",
       },
     ],
   },
@@ -784,11 +789,9 @@ export const resources = {
   AptosCoinCapabilities: "0x1::stake::AptosCoinCapabilities",
   OwnerCapability: "0x1::stake::OwnerCapability",
   StakePool: "0x1::stake::StakePool",
-  StakePoolEvents: "0x1::stake::StakePoolEvents",
   ValidatorConfig: "0x1::stake::ValidatorConfig",
   ValidatorPerformance: "0x1::stake::ValidatorPerformance",
   ValidatorSet: "0x1::stake::ValidatorSet",
-  ValidatorSetConfiguration: "0x1::stake::ValidatorSetConfiguration",
 } as const;
 
 /** All struct types. */
@@ -797,6 +800,7 @@ export const structs = {
   AptosCoinCapabilities: "0x1::stake::AptosCoinCapabilities",
   DistributeRewardsEvent: "0x1::stake::DistributeRewardsEvent",
   IncreaseLockupEvent: "0x1::stake::IncreaseLockupEvent",
+  IndividualValidatorPerformance: "0x1::stake::IndividualValidatorPerformance",
   JoinValidatorSetEvent: "0x1::stake::JoinValidatorSetEvent",
   LeaveValidatorSetEvent: "0x1::stake::LeaveValidatorSetEvent",
   OwnerCapability: "0x1::stake::OwnerCapability",
@@ -805,7 +809,6 @@ export const structs = {
   RotateConsensusKeyEvent: "0x1::stake::RotateConsensusKeyEvent",
   SetOperatorEvent: "0x1::stake::SetOperatorEvent",
   StakePool: "0x1::stake::StakePool",
-  StakePoolEvents: "0x1::stake::StakePoolEvents",
   UnlockStakeEvent: "0x1::stake::UnlockStakeEvent",
   UpdateNetworkAndFullnodeAddressesEvent:
     "0x1::stake::UpdateNetworkAndFullnodeAddressesEvent",
@@ -813,7 +816,6 @@ export const structs = {
   ValidatorInfo: "0x1::stake::ValidatorInfo",
   ValidatorPerformance: "0x1::stake::ValidatorPerformance",
   ValidatorSet: "0x1::stake::ValidatorSet",
-  ValidatorSetConfiguration: "0x1::stake::ValidatorSetConfiguration",
   WithdrawStakeEvent: "0x1::stake::WithdrawStakeEvent",
 } as const;
 
@@ -829,7 +831,7 @@ const moduleImpl = {
 /**
  *
  * Validator lifecycle:
- * 1. Prepare a validator node set up and call stake::register_validator_candidate
+ * 1. Prepare a validator node set up and call stake::initialize_validator
  * 2. Once ready to deposit stake (or have funds assigned by a staking service in exchange for ownership capability),
  * call stake::add_stake (or *_with_cap versions if called from the staking service)
  * 3. Call stake::join_validator_set (or _with_cap version) to join the active validator set. Changes are effective in

@@ -97,6 +97,34 @@ export const errmap = {
         doc: "The ACL does not contain the address.",
       },
     },
+    "0x1::aggregator": {
+      "1": {
+        name: "EAGGREGATOR_OVERFLOW",
+        doc: "When the value of aggregator (actual or accumulated) overflows (raised\nby native code).",
+      },
+      "2": {
+        name: "EAGGREGATOR_UNDERFLOW",
+        doc: "When the value of aggregator (actual or accumulated) underflows, i.e goes\nbelow zero (raised by native code).",
+      },
+      "3": {
+        name: "ENOT_SUPPORTED",
+        doc: "When aggregator feature is not supported (raised by native code).",
+      },
+    },
+    "0x1::aggregator_factory": {
+      "1": {
+        name: "EAGGREGATOR_FACTORY_EXISTS",
+        doc: "When aggregator factory has already been published.",
+      },
+      "2": {
+        name: "ENOT_CORE_FRAMEWORK_ADDRESS",
+        doc: "When aggregator factory is published to not core framework address.",
+      },
+      "3": {
+        name: "ENOT_SUPPORTED",
+        doc: "When aggregator feature is not supported (raised by native code).",
+      },
+    },
     "0x1::aptos_coin": {
       "1": {
         name: "ENO_CAPABILITIES",
@@ -154,7 +182,7 @@ export const errmap = {
     "0x1::block": {
       "0": {
         name: "EBLOCK_METADATA",
-        doc: "The `BlockMetadata` resource is in an invalid state",
+        doc: "The `BlockResource` resource is in an invalid state",
       },
       "1": {
         name: "EVM_OR_VALIDATOR",
@@ -250,7 +278,7 @@ export const errmap = {
       },
     },
     "0x1::consensus_config": {
-      "0": {
+      "1": {
         name: "ECONFIG",
         doc: "Error with config",
       },
@@ -275,6 +303,16 @@ export const errmap = {
       "131077": {
         name: "ERATIO_OUT_OF_RANGE",
         doc: "The computed ratio when converting to a `FixedPoint32` would be unrepresentable",
+      },
+    },
+    "0x1::gas_schedule": {
+      "1": {
+        name: "ECONFIG",
+        doc: "Error with config",
+      },
+      "2": {
+        name: "EGAS_CONSTANT_INCONSISTENCY",
+        doc: "The provided gas constants were inconsistent.",
       },
     },
     "0x1::genesis": {
@@ -410,20 +448,22 @@ export const errmap = {
         doc: "Invalid consensus public key",
       },
       "17": {
-        name: "EINVALID_STAKE_RANGE",
-        doc: "Invalid required stake range, usually happens if min > max.",
+        name: "EINVALID_STAKE_AMOUNT",
+        doc: "Invalid stake amount (usuaully 0).",
       },
-      "18": {
+    },
+    "0x1::staking_config": {
+      "1": {
         name: "EINVALID_LOCKUP_VALUE",
         doc: "Invalid required stake lockup value.",
       },
-      "19": {
+      "2": {
         name: "EINVALID_REWARDS_RATE",
         doc: "Invalid rewards rate.",
       },
-      "20": {
-        name: "EINVALID_STAKE_AMOUNT",
-        doc: "Invalid stake amount (usuaully 0).",
+      "3": {
+        name: "EINVALID_STAKE_RANGE",
+        doc: "Invalid required stake range, usually happens if min > max.",
       },
     },
     "0x1::string": {
@@ -497,16 +537,6 @@ export const errmap = {
       "1": {
         name: "EINVALID_MAJOR_VERSION_NUMBER",
         doc: "Tried to set an invalid major version for the VM. Major versions must be strictly increasing",
-      },
-    },
-    "0x1::vm_config": {
-      "0": {
-        name: "ECONFIG",
-        doc: "Error with config",
-      },
-      "1": {
-        name: "EGAS_CONSTANT_INCONSISTENCY",
-        doc: "The provided gas constants were inconsistent.",
       },
     },
     "0x1::voting": {
