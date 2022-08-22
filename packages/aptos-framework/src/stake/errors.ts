@@ -73,49 +73,56 @@ export const EALREADY_REGISTERED = {
   doc: "Account is already registered as a validator candidate.",
 } as const;
 
-/** Account does not have the right ownership capability. */
-export const ENOT_OWNER = {
-  code: 11,
-  name: "ENOT_OWNER",
-  doc: "Account does not have the right ownership capability.",
-} as const;
-
 /** No coins in inactive state to withdraw from specified pool. */
 export const ENO_COINS_TO_WITHDRAW = {
-  code: 12,
+  code: 11,
   name: "ENO_COINS_TO_WITHDRAW",
   doc: "No coins in inactive state to withdraw from specified pool.",
 } as const;
 
 /** Account does not have the right operator capability. */
 export const ENOT_OPERATOR = {
-  code: 13,
+  code: 12,
   name: "ENOT_OPERATOR",
   doc: "Account does not have the right operator capability.",
 } as const;
 
 /** Lockup period is longer than allowed. */
 export const ELOCK_TIME_TOO_LONG = {
-  code: 14,
+  code: 13,
   name: "ELOCK_TIME_TOO_LONG",
   doc: "Lockup period is longer than allowed.",
 } as const;
 
 export const ENO_POST_GENESIS_VALIDATOR_SET_CHANGE_ALLOWED = {
-  code: 15,
+  code: 14,
   name: "ENO_POST_GENESIS_VALIDATOR_SET_CHANGE_ALLOWED",
 } as const;
 
 /** Invalid consensus public key */
 export const EINVALID_PUBLIC_KEY = {
-  code: 16,
+  code: 15,
   name: "EINVALID_PUBLIC_KEY",
   doc: "Invalid consensus public key",
 } as const;
 
 /** Invalid stake amount (usuaully 0). */
 export const EINVALID_STAKE_AMOUNT = {
-  code: 17,
+  code: 16,
   name: "EINVALID_STAKE_AMOUNT",
   doc: "Invalid stake amount (usuaully 0).",
+} as const;
+
+/** Validator set exceeds the limit */
+export const EVALIDATOR_SET_TOO_LARGE = {
+  code: 18,
+  name: "EVALIDATOR_SET_TOO_LARGE",
+  doc: "Validator set exceeds the limit",
+} as const;
+
+/** Voting power increase has exceeded the limit for this current epoch. */
+export const EVOTING_POWER_INCREASE_EXCEEDS_LIMIT = {
+  code: 19,
+  name: "EVOTING_POWER_INCREASE_EXCEEDS_LIMIT",
+  doc: "Voting power increase has exceeded the limit for this current epoch.",
 } as const;

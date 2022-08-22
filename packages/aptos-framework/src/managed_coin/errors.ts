@@ -3,9 +3,9 @@
  *
  * @module
  */
-/** When no capabilities (burn/mint) found on an account. */
+/** Account has no capabilities (burn/mint). */
 export const ENO_CAPABILITIES = {
-  code: 0,
+  code: 1,
   name: "ENO_CAPABILITIES",
-  doc: "When no capabilities (burn/mint) found on an account.",
+  doc: "Account has no capabilities (burn/mint).",
 } as const;

@@ -21,7 +21,7 @@ export const idl = {
       args: [
         { name: "name", ty: { vector: "u8" } },
         { name: "symbol", ty: { vector: "u8" } },
-        { name: "decimals", ty: "u64" },
+        { name: "decimals", ty: "u8" },
         { name: "monitor_supply", ty: "bool" },
       ],
     },
@@ -47,19 +47,28 @@ export const idl = {
       doc: "Capabilities resource storing mint and burn capabilities.\nThe resource is stored on the account that initialized coin `CoinType`.",
       fields: [
         {
-          name: "mint_cap",
+          name: "burn_cap",
           ty: {
             struct: {
-              name: "0x1::coin::MintCapability",
+              name: "0x1::coin::BurnCapability",
               ty_args: [{ type_param: 0 }],
             },
           },
         },
         {
-          name: "burn_cap",
+          name: "freeze_cap",
           ty: {
             struct: {
-              name: "0x1::coin::BurnCapability",
+              name: "0x1::coin::FreezeCapability",
+              ty_args: [{ type_param: 0 }],
+            },
+          },
+        },
+        {
+          name: "mint_cap",
+          ty: {
+            struct: {
+              name: "0x1::coin::MintCapability",
               ty_args: [{ type_param: 0 }],
             },
           },
@@ -70,9 +79,9 @@ export const idl = {
     },
   ],
   errors: {
-    "0": {
+    "1": {
       name: "ENO_CAPABILITIES",
-      doc: "When no capabilities (burn/mint) found on an account.",
+      doc: "Account has no capabilities (burn/mint).",
     },
   },
 } as const;

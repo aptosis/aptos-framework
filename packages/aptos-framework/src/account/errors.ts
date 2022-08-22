@@ -3,72 +3,74 @@
  *
  * @module
  */
-/** Account already existed */
-export const EACCOUNT = {
-  code: 0,
-  name: "EACCOUNT",
-  doc: "Account already existed",
-} as const;
-
-/** Sequence number exceeded the maximum value for a u64 */
-export const ESEQUENCE_NUMBER_TOO_BIG = {
+/** Account already exists */
+export const EACCOUNT_ALREADY_EXISTS = {
   code: 1,
-  name: "ESEQUENCE_NUMBER_TOO_BIG",
-  doc: "Sequence number exceeded the maximum value for a u64",
+  name: "EACCOUNT_ALREADY_EXISTS",
+  doc: "Account already exists",
 } as const;
 
-/** The address provided didn't match the `aptos_framework` address. */
-export const ENOT_APTOS_FRAMEWORK = {
+/** Account does not exist */
+export const EACCOUNT_DOES_NOT_EXIST = {
   code: 2,
-  name: "ENOT_APTOS_FRAMEWORK",
-  doc: "The address provided didn't match the `aptos_framework` address.",
+  name: "EACCOUNT_DOES_NOT_EXIST",
+  doc: "Account does not exist",
 } as const;
 
-/** The provided authentication had an invalid length */
-export const EMALFORMED_AUTHENTICATION_KEY = {
+/** Sequence number exceeds the maximum value for a u64 */
+export const ESEQUENCE_NUMBER_TOO_BIG = {
   code: 3,
-  name: "EMALFORMED_AUTHENTICATION_KEY",
-  doc: "The provided authentication had an invalid length",
+  name: "ESEQUENCE_NUMBER_TOO_BIG",
+  doc: "Sequence number exceeds the maximum value for a u64",
 } as const;
 
-export const ECANNOT_CREATE_AT_VM_RESERVED = {
+/** The provided authentication key has an invalid length */
+export const EMALFORMED_AUTHENTICATION_KEY = {
   code: 4,
-  name: "ECANNOT_CREATE_AT_VM_RESERVED",
+  name: "EMALFORMED_AUTHENTICATION_KEY",
+  doc: "The provided authentication key has an invalid length",
 } as const;
 
-export const EGAS = {
+/** Cannot create account because address is reserved */
+export const ECANNOT_RESERVED_ADDRESS = {
   code: 5,
-  name: "EGAS",
+  name: "ECANNOT_RESERVED_ADDRESS",
+  doc: "Cannot create account because address is reserved",
 } as const;
 
-export const ECANNOT_CREATE_AT_CORE_CODE = {
+/** Transaction exceeded its allocated max gas */
+export const EOUT_OF_GAS = {
   code: 6,
-  name: "ECANNOT_CREATE_AT_CORE_CODE",
+  name: "EOUT_OF_GAS",
+  doc: "Transaction exceeded its allocated max gas",
 } as const;
 
-export const EADDR_NOT_MATCH_PREIMAGE = {
-  code: 7,
-  name: "EADDR_NOT_MATCH_PREIMAGE",
-} as const;
-
+/** Writesets are not allowed */
 export const EWRITESET_NOT_ALLOWED = {
-  code: 8,
+  code: 7,
   name: "EWRITESET_NOT_ALLOWED",
+  doc: "Writesets are not allowed",
 } as const;
 
-export const EMULTI_AGENT_NOT_SUPPORTED = {
+/** Specified current public key is not correct */
+export const EWRONG_CURRENT_PUBLIC_KEY = {
+  code: 8,
+  name: "EWRONG_CURRENT_PUBLIC_KEY",
+  doc: "Specified current public key is not correct",
+} as const;
+
+/** Specified proof of knowledge required to prove ownership of a public key is invalid */
+export const EINVALID_PROOF_OF_KNOWLEDGE = {
   code: 9,
-  name: "EMULTI_AGENT_NOT_SUPPORTED",
+  name: "EINVALID_PROOF_OF_KNOWLEDGE",
+  doc: "Specified proof of knowledge required to prove ownership of a public key is invalid",
 } as const;
 
-export const EMODULE_NOT_ALLOWED = {
+/** The caller does not have a digital-signature-based capability to call this function */
+export const ENO_CAPABILITY = {
   code: 10,
-  name: "EMODULE_NOT_ALLOWED",
-} as const;
-
-export const ESCRIPT_NOT_ALLOWED = {
-  code: 11,
-  name: "ESCRIPT_NOT_ALLOWED",
+  name: "ENO_CAPABILITY",
+  doc: "The caller does not have a digital-signature-based capability to call this function",
 } as const;
 
 /**
@@ -92,9 +94,9 @@ export const PROLOGUE_ESEQUENCE_NUMBER_TOO_NEW = {
   name: "PROLOGUE_ESEQUENCE_NUMBER_TOO_NEW",
 } as const;
 
-export const PROLOGUE_EACCOUNT_DNE = {
+export const PROLOGUE_EACCOUNT_DOES_NOT_EXIST = {
   code: 1004,
-  name: "PROLOGUE_EACCOUNT_DNE",
+  name: "PROLOGUE_EACCOUNT_DOES_NOT_EXIST",
 } as const;
 
 export const PROLOGUE_ECANT_PAY_GAS_DEPOSIT = {
@@ -112,27 +114,17 @@ export const PROLOGUE_EBAD_CHAIN_ID = {
   name: "PROLOGUE_EBAD_CHAIN_ID",
 } as const;
 
-export const PROLOGUE_ESCRIPT_NOT_ALLOWED = {
-  code: 1008,
-  name: "PROLOGUE_ESCRIPT_NOT_ALLOWED",
-} as const;
-
-export const PROLOGUE_EMODULE_NOT_ALLOWED = {
-  code: 1009,
-  name: "PROLOGUE_EMODULE_NOT_ALLOWED",
-} as const;
-
 export const PROLOGUE_EINVALID_WRITESET_SENDER = {
-  code: 1010,
+  code: 1008,
   name: "PROLOGUE_EINVALID_WRITESET_SENDER",
 } as const;
 
 export const PROLOGUE_ESEQUENCE_NUMBER_TOO_BIG = {
-  code: 1011,
+  code: 1009,
   name: "PROLOGUE_ESEQUENCE_NUMBER_TOO_BIG",
 } as const;
 
 export const PROLOGUE_ESECONDARY_KEYS_ADDRESSES_COUNT_MISMATCH = {
-  code: 1012,
+  code: 1010,
   name: "PROLOGUE_ESECONDARY_KEYS_ADDRESSES_COUNT_MISMATCH",
 } as const;

@@ -7,14 +7,7 @@
 export const idl = {
   module_id: "0x1::reconfiguration",
   doc: "Publishes configuration information for validators, and issues reconfiguration events\nto synchronize configuration changes for the validators.",
-  functions: [
-    {
-      name: "force_reconfigure",
-      doc: "Force an epoch change.",
-      ty_args: [],
-      args: [],
-    },
-  ],
+  functions: [],
   structs: [
     {
       name: "0x1::reconfiguration::Configuration",
@@ -55,23 +48,23 @@ export const idl = {
     },
   ],
   errors: {
-    "0": {
+    "1": {
       name: "ECONFIGURATION",
       doc: "The `Configuration` resource is in an invalid state",
     },
-    "1": {
+    "2": {
       name: "ECONFIG",
       doc: "A `Reconfiguration` resource is in an invalid state",
     },
-    "2": {
+    "3": {
       name: "EMODIFY_CAPABILITY",
       doc: "A `ModifyConfigCapability` is in a different state than was expected",
     },
-    "3": {
+    "4": {
       name: "EINVALID_BLOCK_TIME",
       doc: "An invalid block time was encountered.",
     },
-    "4": {
+    "5": {
       name: "EINVALID_GUID_FOR_EVENT",
       doc: "An invalid block time was encountered.",
     },

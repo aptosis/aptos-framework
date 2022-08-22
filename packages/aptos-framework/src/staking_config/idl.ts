@@ -19,19 +19,27 @@ export const idl = {
         { name: "allow_validator_set_change", ty: "bool" },
         { name: "rewards_rate", ty: "u64" },
         { name: "rewards_rate_denominator", ty: "u64" },
+        { name: "voting_power_increase_limit", ty: "u64" },
       ],
       abilities: ["copy", "drop", "key"],
     },
   ],
   errors: {
     "1": {
-      name: "EINVALID_LOCKUP_VALUE",
-      doc: "Invalid required stake lockup value.",
+      name: "EZERO_LOCKUP_DURATION",
+      doc: "Stake lockup duration cannot be zero",
     },
-    "2": { name: "EINVALID_REWARDS_RATE", doc: "Invalid rewards rate." },
+    "2": {
+      name: "EZERO_REWARDS_RATE_DENOMINATOR",
+      doc: "Reward rate denominator cannot be zero",
+    },
     "3": {
       name: "EINVALID_STAKE_RANGE",
-      doc: "Invalid required stake range, usually happens if min > max.",
+      doc: "Specified stake range is invalid. Max must be greater than min",
+    },
+    "4": {
+      name: "EINVALID_VOTING_POWER_INCREASE_LIMIT",
+      doc: "The voting power increase limit percentage must be within (0, 50]",
     },
   },
 } as const;

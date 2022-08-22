@@ -27,7 +27,7 @@ export const idl = {
       args: [],
     },
     {
-      name: "initialize_owner_only",
+      name: "initialize_stake_owner",
       doc: "Initialize the validator account and give ownership to the signing account\nexcept it leaves the ValidatorConfig to be set by another entity.\nNote: this triggers setting the operator and owner, set it to the account's address\nto set later.",
       ty_args: [],
       args: [
@@ -58,6 +58,12 @@ export const idl = {
       doc: "Request to have `pool_address` leave the validator set. The validator is only actually removed from the set when\nthe next epoch starts.\nThe last validator in the set cannot leave. This is an edge case that should never happen as long as the network\nis still operational.\n\nCan only be called by the operator of the validator/staking pool.",
       ty_args: [],
       args: [{ name: "pool_address", ty: "address" }],
+    },
+    {
+      name: "reactivate_stake",
+      doc: "Move `amount` of coins from pending_inactive to active.",
+      ty_args: [],
+      args: [{ name: "amount", ty: "u64" }],
     },
     {
       name: "rotate_consensus_key",
@@ -165,6 +171,14 @@ export const idl = {
       abilities: ["store", "key"],
     },
     {
+      name: "0x1::stake::ReactivateStakeEvent",
+      fields: [
+        { name: "pool_address", ty: "address" },
+        { name: "amount", ty: "u64" },
+      ],
+      abilities: ["drop", "store"],
+    },
+    {
       name: "0x1::stake::RegisterValidatorCandidateEvent",
       fields: [{ name: "pool_address", ty: "address" }],
       abilities: ["drop", "store"],
@@ -260,6 +274,17 @@ export const idl = {
             struct: {
               name: "0x1::event::EventHandle",
               ty_args: [{ struct: { name: "0x1::stake::AddStakeEvent" } }],
+            },
+          },
+        },
+        {
+          name: "reactivate_stake_events",
+          ty: {
+            struct: {
+              name: "0x1::event::EventHandle",
+              ty_args: [
+                { struct: { name: "0x1::stake::ReactivateStakeEvent" } },
+              ],
             },
           },
         },
@@ -428,6 +453,8 @@ export const idl = {
           name: "pending_active",
           ty: { vector: { struct: { name: "0x1::stake::ValidatorInfo" } } },
         },
+        { name: "total_voting_power", ty: "u128" },
+        { name: "total_joining_power", ty: "u128" },
       ],
       abilities: ["key"],
     },
@@ -473,26 +500,30 @@ export const idl = {
       doc: "Account is already registered as a validator candidate.",
     },
     "11": {
-      name: "ENOT_OWNER",
-      doc: "Account does not have the right ownership capability.",
-    },
-    "12": {
       name: "ENO_COINS_TO_WITHDRAW",
       doc: "No coins in inactive state to withdraw from specified pool.",
     },
-    "13": {
+    "12": {
       name: "ENOT_OPERATOR",
       doc: "Account does not have the right operator capability.",
     },
-    "14": {
+    "13": {
       name: "ELOCK_TIME_TOO_LONG",
       doc: "Lockup period is longer than allowed.",
     },
-    "15": { name: "ENO_POST_GENESIS_VALIDATOR_SET_CHANGE_ALLOWED" },
-    "16": { name: "EINVALID_PUBLIC_KEY", doc: "Invalid consensus public key" },
-    "17": {
+    "14": { name: "ENO_POST_GENESIS_VALIDATOR_SET_CHANGE_ALLOWED" },
+    "15": { name: "EINVALID_PUBLIC_KEY", doc: "Invalid consensus public key" },
+    "16": {
       name: "EINVALID_STAKE_AMOUNT",
       doc: "Invalid stake amount (usuaully 0).",
+    },
+    "18": {
+      name: "EVALIDATOR_SET_TOO_LARGE",
+      doc: "Validator set exceeds the limit",
+    },
+    "19": {
+      name: "EVOTING_POWER_INCREASE_EXCEEDS_LIMIT",
+      doc: "Voting power increase has exceeded the limit for this current epoch.",
     },
   },
 } as const;

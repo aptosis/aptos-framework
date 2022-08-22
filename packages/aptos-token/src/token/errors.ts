@@ -102,3 +102,13 @@ export const ENO_TOKEN_IN_TOKEN_STORE = {
   code: 19,
   name: "ENO_TOKEN_IN_TOKEN_STORE",
 } as const;
+
+export const ENON_ZERO_PROPERTY_VERSION_ONLY_ONE_INSTANCE = {
+  code: 20,
+  name: "ENON_ZERO_PROPERTY_VERSION_ONLY_ONE_INSTANCE",
+} as const;
+
+export const EUSER_NOT_OPT_IN_DIRECT_TRANSFER = {
+  code: 21,
+  name: "EUSER_NOT_OPT_IN_DIRECT_TRANSFER",
+} as const;

@@ -5,6 +5,8 @@
  */
 
 export * as aptos_framework_account from "./account/index.js";
+export * as aptos_framework_aggregator from "./aggregator/index.js";
+export * as aptos_framework_aggregator_factory from "./aggregator_factory/index.js";
 export * as aptos_framework_aptos_coin from "./aptos_coin/index.js";
 export * as aptos_framework_aptos_governance from "./aptos_governance/index.js";
 export * as aptos_framework_block from "./block/index.js";
@@ -19,6 +21,7 @@ export * as aptos_framework_gas_schedule from "./gas_schedule/index.js";
 export * as aptos_framework_genesis from "./genesis/index.js";
 export * as aptos_framework_governance_proposal from "./governance_proposal/index.js";
 export * as aptos_framework_managed_coin from "./managed_coin/index.js";
+export * as aptos_framework_optional_aggregator from "./optional_aggregator/index.js";
 export * as aptos_framework_reconfiguration from "./reconfiguration/index.js";
 export * as aptos_framework_resource_account from "./resource_account/index.js";
 export * as aptos_framework_stake from "./stake/index.js";

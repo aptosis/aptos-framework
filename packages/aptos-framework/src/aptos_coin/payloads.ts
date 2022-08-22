@@ -7,7 +7,8 @@
 /**
  * Script function payload for `0x1::aptos_coin::mint`.
  *
- * Create new test coins and deposit them into dst_addr's account.
+ * Only callable in tests and testnets where the core resources account exists.
+ * Create new coins and deposit them into dst_addr's account.
  */
 export type Mint = {
   readonly type: "script_function_payload";
@@ -19,6 +20,7 @@ export type Mint = {
 /**
  * Script function payload for `0x1::aptos_coin::claim_mint_capability`.
  *
+ * Only callable in tests and testnets where the core resources account exists.
  * Claim the delegated mint capability and destroy the delegated token.
  */
 export type ClaimMintCapability = {
@@ -31,6 +33,7 @@ export type ClaimMintCapability = {
 /**
  * Script function payload for `0x1::aptos_coin::delegate_mint_capability`.
  *
+ * Only callable in tests and testnets where the core resources account exists.
  * Create delegated token for the address so the account could claim MintCapability later.
  */
 export type DelegateMintCapability = {

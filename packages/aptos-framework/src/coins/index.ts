@@ -41,7 +41,7 @@ export const errorCodes = {} as const;
 export const functions = {
   register: {
     name: "register",
-    doc: "Script function to register to receive a specific `CoinType`. An account that wants to hold a coin type\nhas to explicitly registers to do so. The register creates a special `CoinStore`\nto hold the specified `CoinType`.",
+    doc: "Entry function to register to receive a specific `CoinType`. An account that wants to hold a coin type\nhas to explicitly registers to do so. The register creates a special `CoinStore`\nto hold the specified `CoinType`.",
     ty_args: ["CoinType"],
     args: [],
   },

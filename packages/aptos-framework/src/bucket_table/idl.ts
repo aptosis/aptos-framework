@@ -51,9 +51,12 @@ export const idl = {
     },
   ],
   errors: {
-    "0": { name: "ENOT_FOUND", doc: "Not found in the table;" },
-    "1": { name: "EZERO_CAPACITY", doc: "Capacity should be larger than 0." },
-    "2": { name: "ENOT_EMPTY", doc: "Destroy non-empty hashmap." },
-    "3": { name: "EALREADY_EXIST", doc: "Key already exists" },
+    "1": { name: "ENOT_FOUND", doc: "Key not found in the bucket table" },
+    "2": {
+      name: "EZERO_CAPACITY",
+      doc: "Bucket table capacity must be larger than 0",
+    },
+    "3": { name: "ENOT_EMPTY", doc: "Cannot destroy non-empty hashmap" },
+    "4": { name: "EALREADY_EXIST", doc: "Key already exists" },
   },
 } as const;

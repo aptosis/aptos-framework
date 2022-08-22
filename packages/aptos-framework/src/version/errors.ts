@@ -3,16 +3,16 @@
  *
  * @module
  */
-/** Error with config */
-export const ECONFIG = {
-  code: 0,
-  name: "ECONFIG",
-  doc: "Error with config",
-} as const;
-
-/** Tried to set an invalid major version for the VM. Major versions must be strictly increasing */
+/** Specified major version number must be greater than current version number. */
 export const EINVALID_MAJOR_VERSION_NUMBER = {
   code: 1,
   name: "EINVALID_MAJOR_VERSION_NUMBER",
-  doc: "Tried to set an invalid major version for the VM. Major versions must be strictly increasing",
+  doc: "Specified major version number must be greater than current version number.",
+} as const;
+
+/** Account is not authorized to make this change. */
+export const ENOT_AUTHORIZED = {
+  code: 2,
+  name: "ENOT_AUTHORIZED",
+  doc: "Account is not authorized to make this change.",
 } as const;

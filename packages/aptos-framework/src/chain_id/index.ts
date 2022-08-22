@@ -30,15 +30,8 @@ export const id = {
   NAME,
 } as const;
 
-export * as errors from "./errors.js";
-
 /** Module error codes. */
-export const errorCodes = {
-  "0": {
-    name: "ECHAIN_ID",
-    doc: "The `ChainId` resource was not in the required state",
-  },
-} as const;
+export const errorCodes = {} as const;
 
 /** All module function IDLs. */
 export const functions = {} as const;

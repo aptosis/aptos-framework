@@ -3,23 +3,23 @@
  *
  * @module
  */
-/** The index into the vector is out of bounds */
+/** Vector index is out of bounds */
 export const EINDEX_OUT_OF_BOUNDS = {
-  code: 0,
-  name: "EINDEX_OUT_OF_BOUNDS",
-  doc: "The index into the vector is out of bounds",
-} as const;
-
-/** Need to reserve more buckets for push_back_no_grow. */
-export const EOUT_OF_CAPACITY = {
   code: 1,
-  name: "EOUT_OF_CAPACITY",
-  doc: "Need to reserve more buckets for push_back_no_grow.",
+  name: "EINDEX_OUT_OF_BOUNDS",
+  doc: "Vector index is out of bounds",
 } as const;
 
-/** Destory a non-empty vector. */
-export const ENOT_EMPTY = {
+/** Vector is full */
+export const EOUT_OF_CAPACITY = {
   code: 2,
-  name: "ENOT_EMPTY",
-  doc: "Destory a non-empty vector.",
+  name: "EOUT_OF_CAPACITY",
+  doc: "Vector is full",
+} as const;
+
+/** Cannot destroy a non-empty vector */
+export const EVECTOR_NOT_EMPTY = {
+  code: 3,
+  name: "EVECTOR_NOT_EMPTY",
+  doc: "Cannot destroy a non-empty vector",
 } as const;

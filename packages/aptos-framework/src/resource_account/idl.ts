@@ -38,5 +38,10 @@ export const idl = {
       abilities: ["key"],
     },
   ],
-  errors: { "0": { name: "ECONTAINER_NOT_PUBLISHED" } },
+  errors: {
+    "1": {
+      name: "ECONTAINER_NOT_PUBLISHED",
+      doc: "Container resource not found in account",
+    },
+  },
 } as const;

@@ -49,10 +49,7 @@ export interface INewEpochEvent {
   epoch: p.U64;
 }
 
-export * as entry from "./entry.js";
-export * as entryNames from "./entryNames.js";
 export { idl } from "./idl.js";
-export * as payloads from "./payloads.js";
 
 /** The address of the module. */
 export const ADDRESS = "0x1" as const;
@@ -72,37 +69,30 @@ export * as errors from "./errors.js";
 
 /** Module error codes. */
 export const errorCodes = {
-  "0": {
+  "1": {
     name: "ECONFIGURATION",
     doc: "The `Configuration` resource is in an invalid state",
   },
-  "1": {
+  "2": {
     name: "ECONFIG",
     doc: "A `Reconfiguration` resource is in an invalid state",
   },
-  "2": {
+  "3": {
     name: "EMODIFY_CAPABILITY",
     doc: "A `ModifyConfigCapability` is in a different state than was expected",
   },
-  "3": {
+  "4": {
     name: "EINVALID_BLOCK_TIME",
     doc: "An invalid block time was encountered.",
   },
-  "4": {
+  "5": {
     name: "EINVALID_GUID_FOR_EVENT",
     doc: "An invalid block time was encountered.",
   },
 } as const;
 
 /** All module function IDLs. */
-export const functions = {
-  force_reconfigure: {
-    name: "force_reconfigure",
-    doc: "Force an epoch change.",
-    ty_args: [],
-    args: [],
-  },
-} as const;
+export const functions = {} as const;
 
 /** All struct types with ability `key`. */
 export const resources = {

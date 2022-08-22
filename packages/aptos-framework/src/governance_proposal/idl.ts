@@ -11,18 +11,9 @@ export const idl = {
   structs: [
     {
       name: "0x1::governance_proposal::GovernanceProposal",
-      fields: [
-        {
-          name: "metadata_location",
-          ty: { struct: { name: "0x1::string::String" } },
-        },
-        {
-          name: "metadata_hash",
-          ty: { struct: { name: "0x1::string::String" } },
-        },
-      ],
+      fields: [{ name: "dummy_field", ty: "bool" }],
       abilities: ["drop", "store"],
     },
   ],
-  errors: { "1": { name: "ETOO_LONG" } },
+  errors: {},
 } as const;

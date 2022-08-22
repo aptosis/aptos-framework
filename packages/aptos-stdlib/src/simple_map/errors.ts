@@ -3,12 +3,16 @@
  *
  * @module
  */
+/** Map key already exists */
 export const EKEY_ALREADY_EXISTS = {
-  code: 0,
+  code: 1,
   name: "EKEY_ALREADY_EXISTS",
+  doc: "Map key already exists",
 } as const;
 
+/** Map key is not found */
 export const EKEY_NOT_FOUND = {
-  code: 1,
+  code: 2,
   name: "EKEY_NOT_FOUND",
+  doc: "Map key is not found",
 } as const;

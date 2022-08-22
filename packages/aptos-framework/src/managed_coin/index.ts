@@ -16,10 +16,13 @@ import type * as p from "@movingco/prelude";
  * Type name: `0x1::managed_coin::Capabilities`
  */
 export interface ICapabilities {
-  mint_cap: {
+  burn_cap: {
     dummy_field: boolean;
   };
-  burn_cap: {
+  freeze_cap: {
+    dummy_field: boolean;
+  };
+  mint_cap: {
     dummy_field: boolean;
   };
 }
@@ -42,8 +45,8 @@ export type InitializeArgs = {
     name: p.ByteString;
     /** IDL type: `Vector(U8)` */
     symbol: p.ByteString;
-    /** IDL type: `U64` */
-    decimals: p.U64;
+    /** IDL type: `U8` */
+    decimals: number;
     /** IDL type: `Bool` */
     monitor_supply: boolean;
   };
@@ -95,9 +98,9 @@ export * as errors from "./errors.js";
 
 /** Module error codes. */
 export const errorCodes = {
-  "0": {
+  "1": {
     name: "ENO_CAPABILITIES",
-    doc: "When no capabilities (burn/mint) found on an account.",
+    doc: "Account has no capabilities (burn/mint).",
   },
 } as const;
 
@@ -133,7 +136,7 @@ export const functions = {
       },
       {
         name: "decimals",
-        ty: "u64",
+        ty: "u8",
       },
       {
         name: "monitor_supply",

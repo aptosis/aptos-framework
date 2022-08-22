@@ -15,10 +15,5 @@ export const idl = {
       abilities: ["key"],
     },
   ],
-  errors: {
-    "0": {
-      name: "ECHAIN_ID",
-      doc: "The `ChainId` resource was not in the required state",
-    },
-  },
+  errors: {},
 } as const;

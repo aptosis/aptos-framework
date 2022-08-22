@@ -3,66 +3,72 @@
  *
  * @module
  */
-/**
- * When address of account which is used to initilize a coin `CoinType`
- * doesn't match the deployer of module containining `CoinType`.
- */
+/** Address of account which is used to initialize a coin `CoinType` doesn't match the deployer of module */
 export const ECOIN_INFO_ADDRESS_MISMATCH = {
-  code: 0,
-  name: "ECOIN_INFO_ADDRESS_MISMATCH",
-  doc: "When address of account which is used to initilize a coin `CoinType`\ndoesn't match the deployer of module containining `CoinType`.",
-} as const;
-
-/** When `CoinType` is already initilized as a coin. */
-export const ECOIN_INFO_ALREADY_PUBLISHED = {
   code: 1,
-  name: "ECOIN_INFO_ALREADY_PUBLISHED",
-  doc: "When `CoinType` is already initilized as a coin.",
+  name: "ECOIN_INFO_ADDRESS_MISMATCH",
+  doc: "Address of account which is used to initialize a coin `CoinType` doesn't match the deployer of module",
 } as const;
 
-/** When `CoinType` hasn't been initialized as a coin. */
-export const ECOIN_INFO_NOT_PUBLISHED = {
+/** `CoinType` is already initialized as a coin */
+export const ECOIN_INFO_ALREADY_PUBLISHED = {
   code: 2,
-  name: "ECOIN_INFO_NOT_PUBLISHED",
-  doc: "When `CoinType` hasn't been initialized as a coin.",
+  name: "ECOIN_INFO_ALREADY_PUBLISHED",
+  doc: "`CoinType` is already initialized as a coin",
 } as const;
 
-/** When an account already has `CoinStore` registered for `CoinType`. */
-export const ECOIN_STORE_ALREADY_PUBLISHED = {
+/** `CoinType` hasn't been initialized as a coin */
+export const ECOIN_INFO_NOT_PUBLISHED = {
   code: 3,
-  name: "ECOIN_STORE_ALREADY_PUBLISHED",
-  doc: "When an account already has `CoinStore` registered for `CoinType`.",
+  name: "ECOIN_INFO_NOT_PUBLISHED",
+  doc: "`CoinType` hasn't been initialized as a coin",
 } as const;
 
-/** When an account hasn't registered `CoinStore` for `CoinType`. */
-export const ECOIN_STORE_NOT_PUBLISHED = {
+/** Account already has `CoinStore` registered for `CoinType` */
+export const ECOIN_STORE_ALREADY_PUBLISHED = {
   code: 4,
-  name: "ECOIN_STORE_NOT_PUBLISHED",
-  doc: "When an account hasn't registered `CoinStore` for `CoinType`.",
+  name: "ECOIN_STORE_ALREADY_PUBLISHED",
+  doc: "Account already has `CoinStore` registered for `CoinType`",
 } as const;
 
-/** When there's not enough funds to withdraw from an account or from `Coin` resource. */
-export const EINSUFFICIENT_BALANCE = {
+/** Account hasn't registered `CoinStore` for `CoinType` */
+export const ECOIN_STORE_NOT_PUBLISHED = {
   code: 5,
-  name: "EINSUFFICIENT_BALANCE",
-  doc: "When there's not enough funds to withdraw from an account or from `Coin` resource.",
+  name: "ECOIN_STORE_NOT_PUBLISHED",
+  doc: "Account hasn't registered `CoinStore` for `CoinType`",
 } as const;
 
-/** When destruction of `Coin` resource contains non-zero value attempted. */
-export const EDESTRUCTION_OF_NONZERO_TOKEN = {
+/** Not enough coins to complete transaction */
+export const EINSUFFICIENT_BALANCE = {
   code: 6,
-  name: "EDESTRUCTION_OF_NONZERO_TOKEN",
-  doc: "When destruction of `Coin` resource contains non-zero value attempted.",
+  name: "EINSUFFICIENT_BALANCE",
+  doc: "Not enough coins to complete transaction",
 } as const;
 
-/** Total supply of the coin overflows. No additional coins can be minted. */
-export const ETOTAL_SUPPLY_OVERFLOW = {
+/** Cannot destroy non-zero coins */
+export const EDESTRUCTION_OF_NONZERO_TOKEN = {
   code: 7,
-  name: "ETOTAL_SUPPLY_OVERFLOW",
-  doc: "Total supply of the coin overflows. No additional coins can be minted.",
+  name: "EDESTRUCTION_OF_NONZERO_TOKEN",
+  doc: "Cannot destroy non-zero coins",
 } as const;
 
-export const EINVALID_COIN_AMOUNT = {
+/** Total supply of the coin has overflown. No additional coins can be minted */
+export const ETOTAL_SUPPLY_OVERFLOW = {
   code: 8,
-  name: "EINVALID_COIN_AMOUNT",
+  name: "ETOTAL_SUPPLY_OVERFLOW",
+  doc: "Total supply of the coin has overflown. No additional coins can be minted",
+} as const;
+
+/** Coin amount cannot be zero */
+export const EZERO_COIN_AMOUNT = {
+  code: 9,
+  name: "EZERO_COIN_AMOUNT",
+  doc: "Coin amount cannot be zero",
+} as const;
+
+/** CoinStore is frozen. Coins cannot be deposited or withdrawn */
+export const EFROZEN = {
+  code: 10,
+  name: "EFROZEN",
+  doc: "CoinStore is frozen. Coins cannot be deposited or withdrawn",
 } as const;

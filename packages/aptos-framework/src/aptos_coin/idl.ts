@@ -10,7 +10,7 @@ export const idl = {
   functions: [
     {
       name: "mint",
-      doc: "Create new test coins and deposit them into dst_addr's account.",
+      doc: "Only callable in tests and testnets where the core resources account exists.\nCreate new coins and deposit them into dst_addr's account.",
       ty_args: [],
       args: [
         { name: "dst_addr", ty: "address" },
@@ -19,13 +19,13 @@ export const idl = {
     },
     {
       name: "claim_mint_capability",
-      doc: "Claim the delegated mint capability and destroy the delegated token.",
+      doc: "Only callable in tests and testnets where the core resources account exists.\nClaim the delegated mint capability and destroy the delegated token.",
       ty_args: [],
       args: [],
     },
     {
       name: "delegate_mint_capability",
-      doc: "Create delegated token for the address so the account could claim MintCapability later.",
+      doc: "Only callable in tests and testnets where the core resources account exists.\nCreate delegated token for the address so the account could claim MintCapability later.",
       ty_args: [],
       args: [{ name: "to", ty: "address" }],
     },
@@ -34,21 +34,6 @@ export const idl = {
     {
       name: "0x1::aptos_coin::AptosCoin",
       fields: [{ name: "dummy_field", ty: "bool" }],
-      abilities: ["key"],
-    },
-    {
-      name: "0x1::aptos_coin::Capabilities",
-      fields: [
-        {
-          name: "mint_cap",
-          ty: {
-            struct: {
-              name: "0x1::coin::MintCapability",
-              ty_args: [{ struct: { name: "0x1::aptos_coin::AptosCoin" } }],
-            },
-          },
-        },
-      ],
       abilities: ["key"],
     },
     {
@@ -72,10 +57,34 @@ export const idl = {
       ],
       abilities: ["key"],
     },
+    {
+      name: "0x1::aptos_coin::MintCapStore",
+      fields: [
+        {
+          name: "mint_cap",
+          ty: {
+            struct: {
+              name: "0x1::coin::MintCapability",
+              ty_args: [{ struct: { name: "0x1::aptos_coin::AptosCoin" } }],
+            },
+          },
+        },
+      ],
+      abilities: ["key"],
+    },
   ],
   errors: {
-    "1": { name: "ENO_CAPABILITIES", doc: "Error codes" },
-    "2": { name: "EALREADY_DELEGATED" },
-    "3": { name: "EDELEGATION_NOT_FOUND" },
+    "1": {
+      name: "ENO_CAPABILITIES",
+      doc: "Account does not have mint capability",
+    },
+    "2": {
+      name: "EALREADY_DELEGATED",
+      doc: "Mint capability has already been delegated to this specified address",
+    },
+    "3": {
+      name: "EDELEGATION_NOT_FOUND",
+      doc: "Cannot find delegation of mint capability to this account",
+    },
   },
 } as const;

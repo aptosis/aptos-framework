@@ -28,7 +28,7 @@ export type Initialize = {
   readonly arguments: [
     name: string,
     symbol: string,
-    decimals: string,
+    decimals: number,
     monitor_supply: boolean
   ];
   readonly type_arguments: [CoinType: string];

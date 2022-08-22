@@ -54,12 +54,8 @@ export * as errors from "./errors.js";
 /** Module error codes. */
 export const errorCodes = {
   "1": {
-    name: "ECONFIG",
-    doc: "Error with config",
-  },
-  "2": {
-    name: "EGAS_CONSTANT_INCONSISTENCY",
-    doc: "The provided gas constants were inconsistent.",
+    name: "EINVALID_GAS_SCHEDULE",
+    doc: "The provided gas schedule bytes are empty or invalid",
   },
 } as const;
 
@@ -67,6 +63,7 @@ export const errorCodes = {
 export const functions = {
   set_gas_schedule: {
     name: "set_gas_schedule",
+    doc: "This can be called by on-chain governance to update gas schedule.",
     ty_args: [],
     args: [
       {

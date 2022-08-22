@@ -9,12 +9,6 @@
  */
 import type * as p from "@movingco/prelude";
 
-/** Type name: `0x1::governance_proposal::GovernanceProposal` */
-export interface IGovernanceProposal {
-  metadata_location: string;
-  metadata_hash: string;
-}
-
 export { idl } from "./idl.js";
 
 /** The address of the module. */
@@ -31,14 +25,8 @@ export const id = {
   NAME,
 } as const;
 
-export * as errors from "./errors.js";
-
 /** Module error codes. */
-export const errorCodes = {
-  "1": {
-    name: "ETOO_LONG",
-  },
-} as const;
+export const errorCodes = {} as const;
 
 /** All module function IDLs. */
 export const functions = {} as const;

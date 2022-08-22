@@ -8,13 +8,6 @@
  */
 import type * as p from "@movingco/prelude";
 
-/** Type name: `0x1::aptos_coin::Capabilities` */
-export interface ICapabilities {
-  mint_cap: {
-    dummy_field: boolean;
-  };
-}
-
 /**
  * Delegation token created by delegator and can be claimed by the delegatee as MintCapability.
  *
@@ -33,6 +26,13 @@ export interface IDelegations {
   inner: ReadonlyArray<{
     to: p.RawAddress;
   }>;
+}
+
+/** Type name: `0x1::aptos_coin::MintCapStore` */
+export interface IMintCapStore {
+  mint_cap: {
+    dummy_field: boolean;
+  };
 }
 
 /** Payload arguments for {@link entry.mint}. */
@@ -78,13 +78,15 @@ export * as errors from "./errors.js";
 export const errorCodes = {
   "1": {
     name: "ENO_CAPABILITIES",
-    doc: "Error codes",
+    doc: "Account does not have mint capability",
   },
   "2": {
     name: "EALREADY_DELEGATED",
+    doc: "Mint capability has already been delegated to this specified address",
   },
   "3": {
     name: "EDELEGATION_NOT_FOUND",
+    doc: "Cannot find delegation of mint capability to this account",
   },
 } as const;
 
@@ -92,13 +94,13 @@ export const errorCodes = {
 export const functions = {
   claim_mint_capability: {
     name: "claim_mint_capability",
-    doc: "Claim the delegated mint capability and destroy the delegated token.",
+    doc: "Only callable in tests and testnets where the core resources account exists.\nClaim the delegated mint capability and destroy the delegated token.",
     ty_args: [],
     args: [],
   },
   delegate_mint_capability: {
     name: "delegate_mint_capability",
-    doc: "Create delegated token for the address so the account could claim MintCapability later.",
+    doc: "Only callable in tests and testnets where the core resources account exists.\nCreate delegated token for the address so the account could claim MintCapability later.",
     ty_args: [],
     args: [
       {
@@ -109,7 +111,7 @@ export const functions = {
   },
   mint: {
     name: "mint",
-    doc: "Create new test coins and deposit them into dst_addr's account.",
+    doc: "Only callable in tests and testnets where the core resources account exists.\nCreate new coins and deposit them into dst_addr's account.",
     ty_args: [],
     args: [
       {
@@ -127,16 +129,16 @@ export const functions = {
 /** All struct types with ability `key`. */
 export const resources = {
   AptosCoin: "0x1::aptos_coin::AptosCoin",
-  Capabilities: "0x1::aptos_coin::Capabilities",
   Delegations: "0x1::aptos_coin::Delegations",
+  MintCapStore: "0x1::aptos_coin::MintCapStore",
 } as const;
 
 /** All struct types. */
 export const structs = {
   AptosCoin: "0x1::aptos_coin::AptosCoin",
-  Capabilities: "0x1::aptos_coin::Capabilities",
   DelegatedMintCapability: "0x1::aptos_coin::DelegatedMintCapability",
   Delegations: "0x1::aptos_coin::Delegations",
+  MintCapStore: "0x1::aptos_coin::MintCapStore",
 } as const;
 
 /** Payload generators for module `0x1::aptos_coin`. */

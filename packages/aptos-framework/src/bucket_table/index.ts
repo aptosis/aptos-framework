@@ -54,19 +54,19 @@ export * as errors from "./errors.js";
 
 /** Module error codes. */
 export const errorCodes = {
-  "0": {
-    name: "ENOT_FOUND",
-    doc: "Not found in the table;",
-  },
   "1": {
-    name: "EZERO_CAPACITY",
-    doc: "Capacity should be larger than 0.",
+    name: "ENOT_FOUND",
+    doc: "Key not found in the bucket table",
   },
   "2": {
-    name: "ENOT_EMPTY",
-    doc: "Destroy non-empty hashmap.",
+    name: "EZERO_CAPACITY",
+    doc: "Bucket table capacity must be larger than 0",
   },
   "3": {
+    name: "ENOT_EMPTY",
+    doc: "Cannot destroy non-empty hashmap",
+  },
+  "4": {
     name: "EALREADY_EXIST",
     doc: "Key already exists",
   },

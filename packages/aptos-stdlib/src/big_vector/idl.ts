@@ -42,14 +42,11 @@ export const idl = {
     },
   ],
   errors: {
-    "0": {
-      name: "EINDEX_OUT_OF_BOUNDS",
-      doc: "The index into the vector is out of bounds",
+    "1": { name: "EINDEX_OUT_OF_BOUNDS", doc: "Vector index is out of bounds" },
+    "2": { name: "EOUT_OF_CAPACITY", doc: "Vector is full" },
+    "3": {
+      name: "EVECTOR_NOT_EMPTY",
+      doc: "Cannot destroy a non-empty vector",
     },
-    "1": {
-      name: "EOUT_OF_CAPACITY",
-      doc: "Need to reserve more buckets for push_back_no_grow.",
-    },
-    "2": { name: "ENOT_EMPTY", doc: "Destory a non-empty vector." },
   },
 } as const;

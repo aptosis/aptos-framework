@@ -27,5 +27,5 @@ export const idl = {
       abilities: ["store"],
     },
   ],
-  errors: { "100": { name: "EALREADY_EXISTS" }, "101": { name: "ENOT_FOUND" } },
+  errors: {},
 } as const;

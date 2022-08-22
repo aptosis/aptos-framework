@@ -16,18 +16,15 @@ export interface IModuleMetadata {
   /** Name of the module. */
   name: string;
 
-  /** Source text. */
+  /** Source text, in compressed ascii. */
   source: string;
 
-  /** Source map, in internal encoding */
-  source_map: p.ByteString;
-
-  /** ABI, in JSON byte encoding. */
-  abi: p.ByteString;
+  /** Source map, in compressed BCS. */
+  source_map: string;
 }
 
 /**
- * Metadata for a package.
+ * Metadata for a package. All byte blobs are represented as base64-of-gzipped-bytes
  *
  * Type name: `0x1::code::PackageMetadata`
  */
@@ -40,6 +37,12 @@ export interface IPackageMetadata {
     policy: number;
   };
 
+  /**
+   * The numbers of times this module has been upgraded. Also serves as the on-chain version.
+   * This field will be automatically assigned on successful upgrade.
+   */
+  upgrade_number: p.U64;
+
   /** The BuildInfo, in the BuildInfo.yaml format. */
   build_info: string;
 
@@ -51,18 +54,18 @@ export interface IPackageMetadata {
     /** Name of the module. */
     name: string;
 
-    /** Source text. */
+    /** Source text, in compressed ascii. */
     source: string;
 
-    /** Source map, in internal encoding */
-    source_map: p.ByteString;
-
-    /** ABI, in JSON byte encoding. */
-    abi: p.ByteString;
+    /** Source map, in compressed BCS. */
+    source_map: string;
   }>;
 
-  /** Error map, in internal encoding. */
-  error_map: p.ByteString;
+  /** Error map, in compressed BCS */
+  error_map: string;
+
+  /** ABIs, in compressed BCS */
+  abis: ReadonlyArray<string>;
 }
 
 /**
@@ -81,6 +84,12 @@ export interface IPackageRegistry {
       policy: number;
     };
 
+    /**
+     * The numbers of times this module has been upgraded. Also serves as the on-chain version.
+     * This field will be automatically assigned on successful upgrade.
+     */
+    upgrade_number: p.U64;
+
     /** The BuildInfo, in the BuildInfo.yaml format. */
     build_info: string;
 
@@ -92,18 +101,18 @@ export interface IPackageRegistry {
       /** Name of the module. */
       name: string;
 
-      /** Source text. */
+      /** Source text, in compressed ascii. */
       source: string;
 
-      /** Source map, in internal encoding */
-      source_map: p.ByteString;
-
-      /** ABI, in JSON byte encoding. */
-      abi: p.ByteString;
+      /** Source map, in compressed BCS. */
+      source_map: string;
     }>;
 
-    /** Error map, in internal encoding. */
-    error_map: p.ByteString;
+    /** Error map, in compressed BCS */
+    error_map: string;
+
+    /** ABIs, in compressed BCS */
+    abis: ReadonlyArray<string>;
   }>;
 }
 
@@ -151,15 +160,19 @@ export * as errors from "./errors.js";
 export const errorCodes = {
   "1": {
     name: "EMODULE_NAME_CLASH",
-    doc: "A package is attempted to publish with module names clashing with modules published by other packages on this\naddress.",
+    doc: "Package contains duplicate module names with existing modules publised in other packages on this address",
   },
   "2": {
     name: "EUPGRADE_IMMUTABLE",
-    doc: "A package is attempted to upgrade which is marked as immutable.",
+    doc: "Cannot upgrade an immutable package",
   },
   "3": {
     name: "EUPGRADE_WEAKER_POLICY",
-    doc: "A package is attempted to upgrade with a weaker policy than previously.",
+    doc: "Cannot downgrade a package's upgradability policy",
+  },
+  "4": {
+    name: "EMODULE_MISSING",
+    doc: "Cannot delete a module that was published in the same package",
   },
 } as const;
 

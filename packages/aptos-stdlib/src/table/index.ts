@@ -46,17 +46,8 @@ export const id = {
   NAME,
 } as const;
 
-export * as errors from "./errors.js";
-
 /** Module error codes. */
-export const errorCodes = {
-  "100": {
-    name: "EALREADY_EXISTS",
-  },
-  "101": {
-    name: "ENOT_FOUND",
-  },
-} as const;
+export const errorCodes = {} as const;
 
 /** All module function IDLs. */
 export const functions = {} as const;

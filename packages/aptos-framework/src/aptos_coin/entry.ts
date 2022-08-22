@@ -7,7 +7,10 @@ import * as p from "@movingco/prelude";
 
 import type * as mod from "./index.js";
 import type * as payloads from "./payloads.js";
-/** Create new test coins and deposit them into dst_addr's account. */
+/**
+ * Only callable in tests and testnets where the core resources account exists.
+ * Create new coins and deposit them into dst_addr's account.
+ */
 export const mint = ({ args }: mod.MintArgs): payloads.Mint => ({
   type: "script_function_payload",
   function: "0x1::aptos_coin::mint",
@@ -18,7 +21,10 @@ export const mint = ({ args }: mod.MintArgs): payloads.Mint => ({
   ],
 });
 
-/** Claim the delegated mint capability and destroy the delegated token. */
+/**
+ * Only callable in tests and testnets where the core resources account exists.
+ * Claim the delegated mint capability and destroy the delegated token.
+ */
 export const claim_mint_capability = (): payloads.ClaimMintCapability => ({
   type: "script_function_payload",
   function: "0x1::aptos_coin::claim_mint_capability",
@@ -26,7 +32,10 @@ export const claim_mint_capability = (): payloads.ClaimMintCapability => ({
   arguments: [],
 });
 
-/** Create delegated token for the address so the account could claim MintCapability later. */
+/**
+ * Only callable in tests and testnets where the core resources account exists.
+ * Create delegated token for the address so the account could claim MintCapability later.
+ */
 export const delegate_mint_capability = ({
   args,
 }: mod.DelegateMintCapabilityArgs): payloads.DelegateMintCapability => ({

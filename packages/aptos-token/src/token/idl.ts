@@ -7,7 +7,14 @@
 export const idl = {
   module_id: "0x3::token",
   doc: "This module provides the foundation for Tokens.",
-  functions: [{ name: "initialize_token_script", ty_args: [], args: [] }],
+  functions: [
+    { name: "initialize_token_script", ty_args: [], args: [] },
+    {
+      name: "opt_in_direct_transfer",
+      ty_args: [],
+      args: [{ name: "opt_in", ty: "bool" }],
+    },
+  ],
   structs: [
     {
       name: "0x3::token::DepositEvent",
@@ -298,6 +305,7 @@ export const idl = {
             },
           },
         },
+        { name: "direct_transfer", ty: "bool" },
         {
           name: "deposit_events",
           ty: {
@@ -361,5 +369,7 @@ export const idl = {
     "17": { name: "ENO_MUTATE_CAPABILITY" },
     "18": { name: "ETOEKN_PROPERTY_EXISTED" },
     "19": { name: "ENO_TOKEN_IN_TOKEN_STORE" },
+    "20": { name: "ENON_ZERO_PROPERTY_VERSION_ONLY_ONE_INSTANCE" },
+    "21": { name: "EUSER_NOT_OPT_IN_DIRECT_TRANSFER" },
   },
 } as const;

@@ -9,45 +9,45 @@ export const errmap = {
   error_categories: {},
   module_error_maps: {
     "0x1::account": {
-      "0": {
-        name: "EACCOUNT",
-        doc: "Account already existed",
-      },
       "1": {
-        name: "ESEQUENCE_NUMBER_TOO_BIG",
-        doc: "Sequence number exceeded the maximum value for a u64",
+        name: "EACCOUNT_ALREADY_EXISTS",
+        doc: "Account already exists",
       },
       "2": {
-        name: "ENOT_APTOS_FRAMEWORK",
-        doc: "The address provided didn't match the `aptos_framework` address.",
+        name: "EACCOUNT_DOES_NOT_EXIST",
+        doc: "Account does not exist",
       },
       "3": {
-        name: "EMALFORMED_AUTHENTICATION_KEY",
-        doc: "The provided authentication had an invalid length",
+        name: "ESEQUENCE_NUMBER_TOO_BIG",
+        doc: "Sequence number exceeds the maximum value for a u64",
       },
       "4": {
-        name: "ECANNOT_CREATE_AT_VM_RESERVED",
+        name: "EMALFORMED_AUTHENTICATION_KEY",
+        doc: "The provided authentication key has an invalid length",
       },
       "5": {
-        name: "EGAS",
+        name: "ECANNOT_RESERVED_ADDRESS",
+        doc: "Cannot create account because address is reserved",
       },
       "6": {
-        name: "ECANNOT_CREATE_AT_CORE_CODE",
+        name: "EOUT_OF_GAS",
+        doc: "Transaction exceeded its allocated max gas",
       },
       "7": {
-        name: "EADDR_NOT_MATCH_PREIMAGE",
+        name: "EWRITESET_NOT_ALLOWED",
+        doc: "Writesets are not allowed",
       },
       "8": {
-        name: "EWRITESET_NOT_ALLOWED",
+        name: "EWRONG_CURRENT_PUBLIC_KEY",
+        doc: "Specified current public key is not correct",
       },
       "9": {
-        name: "EMULTI_AGENT_NOT_SUPPORTED",
+        name: "EINVALID_PROOF_OF_KNOWLEDGE",
+        doc: "Specified proof of knowledge required to prove ownership of a public key is invalid",
       },
       "10": {
-        name: "EMODULE_NOT_ALLOWED",
-      },
-      "11": {
-        name: "ESCRIPT_NOT_ALLOWED",
+        name: "ENO_CAPABILITY",
+        doc: "The caller does not have a digital-signature-based capability to call this function",
       },
       "1001": {
         name: "PROLOGUE_EINVALID_ACCOUNT_AUTH_KEY",
@@ -60,7 +60,7 @@ export const errmap = {
         name: "PROLOGUE_ESEQUENCE_NUMBER_TOO_NEW",
       },
       "1004": {
-        name: "PROLOGUE_EACCOUNT_DNE",
+        name: "PROLOGUE_EACCOUNT_DOES_NOT_EXIST",
       },
       "1005": {
         name: "PROLOGUE_ECANT_PAY_GAS_DEPOSIT",
@@ -72,18 +72,12 @@ export const errmap = {
         name: "PROLOGUE_EBAD_CHAIN_ID",
       },
       "1008": {
-        name: "PROLOGUE_ESCRIPT_NOT_ALLOWED",
-      },
-      "1009": {
-        name: "PROLOGUE_EMODULE_NOT_ALLOWED",
-      },
-      "1010": {
         name: "PROLOGUE_EINVALID_WRITESET_SENDER",
       },
-      "1011": {
+      "1009": {
         name: "PROLOGUE_ESEQUENCE_NUMBER_TOO_BIG",
       },
-      "1012": {
+      "1010": {
         name: "PROLOGUE_ESECONDARY_KEYS_ADDRESSES_COUNT_MISMATCH",
       },
     },
@@ -128,45 +122,71 @@ export const errmap = {
     "0x1::aptos_coin": {
       "1": {
         name: "ENO_CAPABILITIES",
-        doc: "Error codes",
+        doc: "Account does not have mint capability",
       },
       "2": {
         name: "EALREADY_DELEGATED",
+        doc: "Mint capability has already been delegated to this specified address",
       },
       "3": {
         name: "EDELEGATION_NOT_FOUND",
+        doc: "Cannot find delegation of mint capability to this account",
       },
     },
     "0x1::aptos_governance": {
       "1": {
         name: "EINSUFFICIENT_PROPOSER_STAKE",
-        doc: "Error codes.",
+        doc: "The specified stake pool does not have sufficient stake to create a proposal",
       },
       "2": {
         name: "ENOT_DELEGATED_VOTER",
+        doc: "This account is not the designated voter of the specified stake pool",
       },
       "3": {
         name: "EINSUFFICIENT_STAKE_LOCKUP",
+        doc: "The specified stake pool does not have long enough remaining lockup to create a proposal or vote",
       },
       "4": {
         name: "EALREADY_VOTED",
+        doc: "The specified stake pool has already been used to vote on the same proposal",
       },
       "5": {
         name: "ENO_VOTING_POWER",
+        doc: "The specified stake pool must be part of the validator set",
+      },
+      "6": {
+        name: "EPROPOSAL_NOT_RESOLVABLE_YET",
+        doc: "Proposal is not ready to be resolved. Waiting on time or votes",
+      },
+      "7": {
+        name: "ESCRIPT_HASH_ALREADY_ADDED",
+        doc: "Proposal's script hash has already been added to the approved list",
+      },
+      "8": {
+        name: "EPROPOSAL_NOT_RESOLVED_YET",
+        doc: "The proposal has not been resolved yet",
+      },
+      "9": {
+        name: "EMETADATA_LOCATION_TOO_LONG",
+        doc: "Metadata location cannot be longer than 256 chars",
+      },
+      "10": {
+        name: "EMETADATA_HASH_TOO_LONG",
+        doc: "Metadata hash cannot be longer than 256 chars",
       },
     },
     "0x1::big_vector": {
-      "0": {
-        name: "EINDEX_OUT_OF_BOUNDS",
-        doc: "The index into the vector is out of bounds",
-      },
       "1": {
-        name: "EOUT_OF_CAPACITY",
-        doc: "Need to reserve more buckets for push_back_no_grow.",
+        name: "EINDEX_OUT_OF_BOUNDS",
+        doc: "Vector index is out of bounds",
       },
       "2": {
-        name: "ENOT_EMPTY",
-        doc: "Destory a non-empty vector.",
+        name: "EOUT_OF_CAPACITY",
+        doc: "Vector is full",
+      },
+      "3": {
+        name: "EVECTOR_NOT_EMPTY",
+        doc: "Cannot destroy a non-empty vector",
       },
     },
     "0x1::bit_vector": {
@@ -180,96 +200,115 @@ export const errmap = {
       },
     },
     "0x1::block": {
-      "0": {
-        name: "EBLOCK_METADATA",
-        doc: "The `BlockResource` resource is in an invalid state",
-      },
       "1": {
-        name: "EVM_OR_VALIDATOR",
-        doc: "An invalid signer was provided. Expected the signer to be the VM or a Validator.",
+        name: "ENUM_NEW_BLOCK_EVENTS_DOES_NOT_MATCH_BLOCK_HEIGHT",
+        doc: "The number of new block events does not equal the current block height.",
+      },
+      "2": {
+        name: "EINVALID_PROPOSER",
+        doc: "An invalid proposer was provided. Expected the proposer to be the VM or an active validator.",
+      },
+      "3": {
+        name: "EZERO_EPOCH_INTERVAL",
+        doc: "Epoch interval cannot be 0.",
+      },
+    },
+    "0x1::bls12381": {
+      "1": {
+        name: "EZERO_PUBKEYS",
+        doc: "The caller was supposed to input one or more public keys.",
       },
     },
     "0x1::bucket_table": {
-      "0": {
-        name: "ENOT_FOUND",
-        doc: "Not found in the table;",
-      },
       "1": {
-        name: "EZERO_CAPACITY",
-        doc: "Capacity should be larger than 0.",
+        name: "ENOT_FOUND",
+        doc: "Key not found in the bucket table",
       },
       "2": {
-        name: "ENOT_EMPTY",
-        doc: "Destroy non-empty hashmap.",
+        name: "EZERO_CAPACITY",
+        doc: "Bucket table capacity must be larger than 0",
       },
       "3": {
+        name: "ENOT_EMPTY",
+        doc: "Cannot destroy non-empty hashmap",
+      },
+      "4": {
         name: "EALREADY_EXIST",
         doc: "Key already exists",
       },
     },
     "0x1::capability": {
-      "0": {
-        name: "ECAP",
-      },
       "1": {
-        name: "EDELEGATE",
+        name: "ECAPABILITY_ALREADY_EXISTS",
+        doc: "Capability resource already exists on the specified account",
       },
-    },
-    "0x1::chain_id": {
-      "0": {
-        name: "ECHAIN_ID",
-        doc: "The `ChainId` resource was not in the required state",
+      "2": {
+        name: "ECAPABILITY_NOT_FOUND",
+        doc: "Capability resource not found",
+      },
+      "3": {
+        name: "EDELEGATE",
+        doc: "Account does not have delegated permissions",
       },
     },
     "0x1::code": {
       "1": {
         name: "EMODULE_NAME_CLASH",
-        doc: "A package is attempted to publish with module names clashing with modules published by other packages on this\naddress.",
+        doc: "Package contains duplicate module names with existing modules publised in other packages on this address",
       },
       "2": {
         name: "EUPGRADE_IMMUTABLE",
-        doc: "A package is attempted to upgrade which is marked as immutable.",
+        doc: "Cannot upgrade an immutable package",
       },
       "3": {
         name: "EUPGRADE_WEAKER_POLICY",
-        doc: "A package is attempted to upgrade with a weaker policy than previously.",
+        doc: "Cannot downgrade a package's upgradability policy",
+      },
+      "4": {
+        name: "EMODULE_MISSING",
+        doc: "Cannot delete a module that was published in the same package",
       },
     },
     "0x1::coin": {
-      "0": {
-        name: "ECOIN_INFO_ADDRESS_MISMATCH",
-        doc: "When address of account which is used to initilize a coin `CoinType`\ndoesn't match the deployer of module containining `CoinType`.",
-      },
       "1": {
-        name: "ECOIN_INFO_ALREADY_PUBLISHED",
-        doc: "When `CoinType` is already initilized as a coin.",
+        name: "ECOIN_INFO_ADDRESS_MISMATCH",
+        doc: "Address of account which is used to initialize a coin `CoinType` doesn't match the deployer of module",
       },
       "2": {
-        name: "ECOIN_INFO_NOT_PUBLISHED",
-        doc: "When `CoinType` hasn't been initialized as a coin.",
+        name: "ECOIN_INFO_ALREADY_PUBLISHED",
+        doc: "`CoinType` is already initialized as a coin",
       },
       "3": {
-        name: "ECOIN_STORE_ALREADY_PUBLISHED",
-        doc: "When an account already has `CoinStore` registered for `CoinType`.",
+        name: "ECOIN_INFO_NOT_PUBLISHED",
+        doc: "`CoinType` hasn't been initialized as a coin",
       },
       "4": {
-        name: "ECOIN_STORE_NOT_PUBLISHED",
-        doc: "When an account hasn't registered `CoinStore` for `CoinType`.",
+        name: "ECOIN_STORE_ALREADY_PUBLISHED",
+        doc: "Account already has `CoinStore` registered for `CoinType`",
       },
       "5": {
-        name: "EINSUFFICIENT_BALANCE",
-        doc: "When there's not enough funds to withdraw from an account or from `Coin` resource.",
+        name: "ECOIN_STORE_NOT_PUBLISHED",
+        doc: "Account hasn't registered `CoinStore` for `CoinType`",
       },
       "6": {
-        name: "EDESTRUCTION_OF_NONZERO_TOKEN",
-        doc: "When destruction of `Coin` resource contains non-zero value attempted.",
+        name: "EINSUFFICIENT_BALANCE",
+        doc: "Not enough coins to complete transaction",
       },
       "7": {
-        name: "ETOTAL_SUPPLY_OVERFLOW",
-        doc: "Total supply of the coin overflows. No additional coins can be minted.",
+        name: "EDESTRUCTION_OF_NONZERO_TOKEN",
+        doc: "Cannot destroy non-zero coins",
       },
       "8": {
-        name: "EINVALID_COIN_AMOUNT",
+        name: "ETOTAL_SUPPLY_OVERFLOW",
+        doc: "Total supply of the coin has overflown. No additional coins can be minted",
+      },
+      "9": {
+        name: "EZERO_COIN_AMOUNT",
+        doc: "Coin amount cannot be zero",
+      },
+      "10": {
+        name: "EFROZEN",
+        doc: "CoinStore is frozen. Coins cannot be deposited or withdrawn",
       },
     },
     "0x1::comparator": {
@@ -279,8 +318,18 @@ export const errmap = {
     },
     "0x1::consensus_config": {
       "1": {
-        name: "ECONFIG",
-        doc: "Error with config",
+        name: "EINVALID_CONFIG",
+        doc: "The provided on chain config bytes are empty or invalid",
+      },
+    },
+    "0x1::ed25519": {
+      "1": {
+        name: "E_WRONG_PUBKEY_SIZE",
+        doc: "Wrong number of bytes were given as input when deserializing an Ed25519 public key.",
+      },
+      "2": {
+        name: "E_WRONG_SIGNATURE_SIZE",
+        doc: "Wrong number of bytes were given as input when deserializing an Ed25519 signature.",
       },
     },
     "0x1::fixed_point32": {
@@ -307,23 +356,8 @@ export const errmap = {
     },
     "0x1::gas_schedule": {
       "1": {
-        name: "ECONFIG",
-        doc: "Error with config",
-      },
-      "2": {
-        name: "EGAS_CONSTANT_INCONSISTENCY",
-        doc: "The provided gas constants were inconsistent.",
-      },
-    },
-    "0x1::genesis": {
-      "1": {
-        name: "EINVALID_EPOCH_DURATION",
-        doc: "Invalid epoch duration.",
-      },
-    },
-    "0x1::governance_proposal": {
-      "1": {
-        name: "ETOO_LONG",
+        name: "EINVALID_GAS_SCHEDULE",
+        doc: "The provided gas schedule bytes are empty or invalid",
       },
     },
     "0x1::guid": {
@@ -333,9 +367,9 @@ export const errmap = {
       },
     },
     "0x1::managed_coin": {
-      "0": {
+      "1": {
         name: "ENO_CAPABILITIES",
-        doc: "When no capabilities (burn/mint) found on an account.",
+        doc: "Account has no capabilities (burn/mint).",
       },
     },
     "0x1::option": {
@@ -348,39 +382,56 @@ export const errmap = {
         doc: "The `Option` is in an invalid state for the operation attempted.\nThe `Option` is `None` while it should be `Some`.",
       },
     },
+    "0x1::optional_aggregator": {
+      "1": {
+        name: "EAGGREGATOR_OVERFLOW",
+      },
+      "2": {
+        name: "EAGGREGATOR_UNDERFLOW",
+      },
+    },
     "0x1::reconfiguration": {
-      "0": {
+      "1": {
         name: "ECONFIGURATION",
         doc: "The `Configuration` resource is in an invalid state",
       },
-      "1": {
+      "2": {
         name: "ECONFIG",
         doc: "A `Reconfiguration` resource is in an invalid state",
       },
-      "2": {
+      "3": {
         name: "EMODIFY_CAPABILITY",
         doc: "A `ModifyConfigCapability` is in a different state than was expected",
       },
-      "3": {
+      "4": {
         name: "EINVALID_BLOCK_TIME",
         doc: "An invalid block time was encountered.",
       },
-      "4": {
+      "5": {
         name: "EINVALID_GUID_FOR_EVENT",
         doc: "An invalid block time was encountered.",
       },
     },
     "0x1::resource_account": {
-      "0": {
+      "1": {
         name: "ECONTAINER_NOT_PUBLISHED",
+        doc: "Container resource not found in account",
+      },
+    },
+    "0x1::secp256k1": {
+      "1": {
+        name: "E_DESERIALIZE",
+        doc: "An error occurred while deserializing, for example due to wrong input size.",
       },
     },
     "0x1::simple_map": {
-      "0": {
-        name: "EKEY_ALREADY_EXISTS",
-      },
       "1": {
+        name: "EKEY_ALREADY_EXISTS",
+        doc: "Map key already exists",
+      },
+      "2": {
         name: "EKEY_NOT_FOUND",
+        doc: "Map key is not found",
       },
     },
     "0x1::stake": {
@@ -425,45 +476,53 @@ export const errmap = {
         doc: "Account is already registered as a validator candidate.",
       },
       "11": {
-        name: "ENOT_OWNER",
-        doc: "Account does not have the right ownership capability.",
-      },
-      "12": {
         name: "ENO_COINS_TO_WITHDRAW",
         doc: "No coins in inactive state to withdraw from specified pool.",
       },
-      "13": {
+      "12": {
         name: "ENOT_OPERATOR",
         doc: "Account does not have the right operator capability.",
       },
-      "14": {
+      "13": {
         name: "ELOCK_TIME_TOO_LONG",
         doc: "Lockup period is longer than allowed.",
       },
-      "15": {
+      "14": {
         name: "ENO_POST_GENESIS_VALIDATOR_SET_CHANGE_ALLOWED",
       },
-      "16": {
+      "15": {
         name: "EINVALID_PUBLIC_KEY",
         doc: "Invalid consensus public key",
       },
-      "17": {
+      "16": {
         name: "EINVALID_STAKE_AMOUNT",
         doc: "Invalid stake amount (usuaully 0).",
+      },
+      "18": {
+        name: "EVALIDATOR_SET_TOO_LARGE",
+        doc: "Validator set exceeds the limit",
+      },
+      "19": {
+        name: "EVOTING_POWER_INCREASE_EXCEEDS_LIMIT",
+        doc: "Voting power increase has exceeded the limit for this current epoch.",
       },
     },
     "0x1::staking_config": {
       "1": {
-        name: "EINVALID_LOCKUP_VALUE",
-        doc: "Invalid required stake lockup value.",
+        name: "EZERO_LOCKUP_DURATION",
+        doc: "Stake lockup duration cannot be zero",
       },
       "2": {
-        name: "EINVALID_REWARDS_RATE",
-        doc: "Invalid rewards rate.",
+        name: "EZERO_REWARDS_RATE_DENOMINATOR",
+        doc: "Reward rate denominator cannot be zero",
       },
       "3": {
         name: "EINVALID_STAKE_RANGE",
-        doc: "Invalid required stake range, usually happens if min > max.",
+        doc: "Specified stake range is invalid. Max must be greater than min",
+      },
+      "4": {
+        name: "EINVALID_VOTING_POWER_INCREASE_LIMIT",
+        doc: "The voting power increase limit percentage must be within (0, 50]",
       },
     },
     "0x1::string": {
@@ -477,25 +536,17 @@ export const errmap = {
       },
     },
     "0x1::system_addresses": {
-      "0": {
+      "1": {
         name: "ENOT_CORE_RESOURCE_ADDRESS",
         doc: "The address/account did not correspond to the core resource address",
       },
-      "1": {
+      "2": {
         name: "EVM",
         doc: "The operation can only be performed by the VM",
       },
-      "2": {
-        name: "ENOT_CORE_FRAMEWORK_ADDRESS",
+      "3": {
+        name: "ENOT_APTOS_FRAMEWORK_ADDRESS",
         doc: "The address/account did not correspond to the core framework address",
-      },
-    },
-    "0x1::table": {
-      "100": {
-        name: "EALREADY_EXISTS",
-      },
-      "101": {
-        name: "ENOT_FOUND",
       },
     },
     "0x1::table_with_length": {
@@ -510,16 +561,12 @@ export const errmap = {
       },
     },
     "0x1::timestamp": {
-      "0": {
-        name: "ENOT_GENESIS",
-        doc: "The blockchain is not in the genesis state anymore",
-      },
       "1": {
         name: "ENOT_OPERATING",
         doc: "The blockchain is not in an operating state yet",
       },
       "2": {
-        name: "ETIMESTAMP",
+        name: "EINVALID_TIMESTAMP",
         doc: "An invalid timestamp was provided",
       },
     },
@@ -530,28 +577,31 @@ export const errmap = {
       },
     },
     "0x1::version": {
-      "0": {
-        name: "ECONFIG",
-        doc: "Error with config",
-      },
       "1": {
         name: "EINVALID_MAJOR_VERSION_NUMBER",
-        doc: "Tried to set an invalid major version for the VM. Major versions must be strictly increasing",
+        doc: "Specified major version number must be greater than current version number.",
+      },
+      "2": {
+        name: "ENOT_AUTHORIZED",
+        doc: "Account is not authorized to make this change.",
       },
     },
     "0x1::voting": {
       "1": {
         name: "EPROPOSAL_EXECUTION_HASH_NOT_MATCHING",
-        doc: "Error codes.",
+        doc: "Current script's execution hash does not match the specified proposal's",
       },
       "2": {
         name: "EPROPOSAL_CANNOT_BE_RESOLVED",
+        doc: "Proposal cannot be resolved. Either voting duration has not passed, not enough votes, or fewer yes than no votes",
       },
       "3": {
         name: "EPROPOSAL_ALREADY_RESOLVED",
+        doc: "Proposal cannot be resolved more than once",
       },
       "4": {
         name: "EPROPOSAL_EMPTY_EXECUTION_HASH",
+        doc: "Proposal cannot contain an empty execution script hash",
       },
     },
   },

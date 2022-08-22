@@ -34,8 +34,8 @@ export * as errors from "./errors.js";
 /** Module error codes. */
 export const errorCodes = {
   "1": {
-    name: "ECONFIG",
-    doc: "Error with config",
+    name: "EINVALID_CONFIG",
+    doc: "The provided on chain config bytes are empty or invalid",
   },
 } as const;
 

@@ -41,16 +41,16 @@ export type IncreaseLockup = {
 };
 
 /**
- * Script function payload for `0x1::stake::initialize_owner_only`.
+ * Script function payload for `0x1::stake::initialize_stake_owner`.
  *
  * Initialize the validator account and give ownership to the signing account
  * except it leaves the ValidatorConfig to be set by another entity.
  * Note: this triggers setting the operator and owner, set it to the account's address
  * to set later.
  */
-export type InitializeOwnerOnly = {
+export type InitializeStakeOwner = {
   readonly type: "script_function_payload";
-  readonly function: "0x1::stake::initialize_owner_only";
+  readonly function: "0x1::stake::initialize_stake_owner";
   readonly arguments: [
     initial_stake_amount: string,
     operator: string,
@@ -102,6 +102,18 @@ export type LeaveValidatorSet = {
   readonly type: "script_function_payload";
   readonly function: "0x1::stake::leave_validator_set";
   readonly arguments: [pool_address: string];
+  readonly type_arguments: [];
+};
+
+/**
+ * Script function payload for `0x1::stake::reactivate_stake`.
+ *
+ * Move `amount` of coins from pending_inactive to active.
+ */
+export type ReactivateStake = {
+  readonly type: "script_function_payload";
+  readonly function: "0x1::stake::reactivate_stake";
+  readonly arguments: [amount: string];
   readonly type_arguments: [];
 };
 

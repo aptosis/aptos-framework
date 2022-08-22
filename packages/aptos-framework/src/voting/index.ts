@@ -36,6 +36,12 @@ export interface ICreateProposalEvent {
   };
   execution_hash: p.ByteString;
   expiration_secs: p.U64;
+  metadata: {
+    data: ReadonlyArray<{
+      key: string;
+      value: p.ByteString;
+    }>;
+  };
   min_vote_threshold: p.U128;
 }
 
@@ -54,6 +60,17 @@ export interface IProposal<_ProposalType = unknown> {
    */
   execution_content: {
     vec: ReadonlyArray<_ProposalType>;
+  };
+
+  /**
+   * Optional. Extra metadata about the proposal and can be empty.
+   * Value is serialized value of an attribute.
+   */
+  metadata: {
+    data: ReadonlyArray<{
+      key: string;
+      value: p.ByteString;
+    }>;
   };
 
   /** Timestamp when the proposal was created. */
@@ -276,16 +293,19 @@ export * as errors from "./errors.js";
 export const errorCodes = {
   "1": {
     name: "EPROPOSAL_EXECUTION_HASH_NOT_MATCHING",
-    doc: "Error codes.",
+    doc: "Current script's execution hash does not match the specified proposal's",
   },
   "2": {
     name: "EPROPOSAL_CANNOT_BE_RESOLVED",
+    doc: "Proposal cannot be resolved. Either voting duration has not passed, not enough votes, or fewer yes than no votes",
   },
   "3": {
     name: "EPROPOSAL_ALREADY_RESOLVED",
+    doc: "Proposal cannot be resolved more than once",
   },
   "4": {
     name: "EPROPOSAL_EMPTY_EXECUTION_HASH",
+    doc: "Proposal cannot contain an empty execution script hash",
   },
 } as const;
 

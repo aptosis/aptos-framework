@@ -5,6 +5,18 @@
  */
 import type * as p from "@movingco/prelude";
 
+/** Type name: `0x1::genesis::ValidatorConfiguration` */
+export interface IValidatorConfiguration {
+  owner_address: p.RawAddress;
+  operator_address: p.RawAddress;
+  voter_address: p.RawAddress;
+  stake_amount: p.U64;
+  consensus_pubkey: p.ByteString;
+  proof_of_possession: p.ByteString;
+  network_addresses: p.ByteString;
+  full_node_network_addresses: p.ByteString;
+}
+
 export { idl } from "./idl.js";
 
 /** The address of the module. */
@@ -21,15 +33,8 @@ export const id = {
   NAME,
 } as const;
 
-export * as errors from "./errors.js";
-
 /** Module error codes. */
-export const errorCodes = {
-  "1": {
-    name: "EINVALID_EPOCH_DURATION",
-    doc: "Invalid epoch duration.",
-  },
-} as const;
+export const errorCodes = {} as const;
 
 /** All module function IDLs. */
 export const functions = {} as const;
@@ -38,7 +43,9 @@ export const functions = {} as const;
 export const resources = {} as const;
 
 /** All struct types. */
-export const structs = {} as const;
+export const structs = {
+  ValidatorConfiguration: "0x1::genesis::ValidatorConfiguration",
+} as const;
 
 /** Payload generators for module `0x1::genesis`. */
 const moduleImpl = {

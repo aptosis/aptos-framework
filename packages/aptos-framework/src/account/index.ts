@@ -28,6 +28,23 @@ export interface IAccount {
       };
     };
   };
+  rotation_capability_offer: {
+    for: {
+      vec: ReadonlyArray<p.RawAddress>;
+    };
+  };
+  signer_capability_offer: {
+    for: {
+      vec: ReadonlyArray<p.RawAddress>;
+    };
+  };
+}
+
+/** Type name: `0x1::account::CapabilityOffer` */
+export interface ICapabilityOffer {
+  for: {
+    vec: ReadonlyArray<p.RawAddress>;
+  };
 }
 
 /**
@@ -54,6 +71,34 @@ export interface ICoinRegisterEvent {
     module_name: p.ByteString;
     struct_name: p.ByteString;
   };
+}
+
+/** Type name: `0x1::account::OriginatingAddress` */
+export interface IOriginatingAddress {
+  address_map: {
+    handle: p.U128;
+  };
+}
+
+/** Type name: `0x1::account::RotationCapability` */
+export interface IRotationCapability {
+  account: p.RawAddress;
+}
+
+/**
+ * This structs stores the challenge message that should be signed during key rotation. First, this struct is
+ * signed by the account owner's current public key, which proves possession of a capability to rotate the key.
+ * Second, this struct is signed by the new public key that the account owner wants to rotate to, which proves
+ * knowledge of this new public key's associated secret key. These two signatures cannot be replayed in another
+ * context because they include the TXN's unique sequence number.
+ *
+ * Type name: `0x1::account::RotationProofChallenge`
+ */
+export interface IRotationProofChallenge {
+  sequence_number: p.U64;
+  originator: p.RawAddress;
+  current_auth_key: p.RawAddress;
+  new_public_key: p.ByteString;
 }
 
 /** Type name: `0x1::account::SignerCapability` */
@@ -87,6 +132,20 @@ export type RotateAuthenticationKeyArgs = {
   };
 };
 
+/** Payload arguments for {@link entry.rotate_authentication_key_ed25519}. */
+export type RotateAuthenticationKeyEd25519Args = {
+  args: {
+    /** IDL type: `Vector(U8)` */
+    curr_sig_bytes: p.ByteString;
+    /** IDL type: `Vector(U8)` */
+    new_sig_bytes: p.ByteString;
+    /** IDL type: `Vector(U8)` */
+    curr_pk_bytes: p.ByteString;
+    /** IDL type: `Vector(U8)` */
+    new_pk_bytes: p.ByteString;
+  };
+};
+
 export * as entry from "./entry.js";
 export * as entryNames from "./entryNames.js";
 export { idl } from "./idl.js";
@@ -110,45 +169,45 @@ export * as errors from "./errors.js";
 
 /** Module error codes. */
 export const errorCodes = {
-  "0": {
-    name: "EACCOUNT",
-    doc: "Account already existed",
-  },
   "1": {
-    name: "ESEQUENCE_NUMBER_TOO_BIG",
-    doc: "Sequence number exceeded the maximum value for a u64",
+    name: "EACCOUNT_ALREADY_EXISTS",
+    doc: "Account already exists",
   },
   "2": {
-    name: "ENOT_APTOS_FRAMEWORK",
-    doc: "The address provided didn't match the `aptos_framework` address.",
+    name: "EACCOUNT_DOES_NOT_EXIST",
+    doc: "Account does not exist",
   },
   "3": {
-    name: "EMALFORMED_AUTHENTICATION_KEY",
-    doc: "The provided authentication had an invalid length",
+    name: "ESEQUENCE_NUMBER_TOO_BIG",
+    doc: "Sequence number exceeds the maximum value for a u64",
   },
   "4": {
-    name: "ECANNOT_CREATE_AT_VM_RESERVED",
+    name: "EMALFORMED_AUTHENTICATION_KEY",
+    doc: "The provided authentication key has an invalid length",
   },
   "5": {
-    name: "EGAS",
+    name: "ECANNOT_RESERVED_ADDRESS",
+    doc: "Cannot create account because address is reserved",
   },
   "6": {
-    name: "ECANNOT_CREATE_AT_CORE_CODE",
+    name: "EOUT_OF_GAS",
+    doc: "Transaction exceeded its allocated max gas",
   },
   "7": {
-    name: "EADDR_NOT_MATCH_PREIMAGE",
+    name: "EWRITESET_NOT_ALLOWED",
+    doc: "Writesets are not allowed",
   },
   "8": {
-    name: "EWRITESET_NOT_ALLOWED",
+    name: "EWRONG_CURRENT_PUBLIC_KEY",
+    doc: "Specified current public key is not correct",
   },
   "9": {
-    name: "EMULTI_AGENT_NOT_SUPPORTED",
+    name: "EINVALID_PROOF_OF_KNOWLEDGE",
+    doc: "Specified proof of knowledge required to prove ownership of a public key is invalid",
   },
   "10": {
-    name: "EMODULE_NOT_ALLOWED",
-  },
-  "11": {
-    name: "ESCRIPT_NOT_ALLOWED",
+    name: "ENO_CAPABILITY",
+    doc: "The caller does not have a digital-signature-based capability to call this function",
   },
   "1001": {
     name: "PROLOGUE_EINVALID_ACCOUNT_AUTH_KEY",
@@ -161,7 +220,7 @@ export const errorCodes = {
     name: "PROLOGUE_ESEQUENCE_NUMBER_TOO_NEW",
   },
   "1004": {
-    name: "PROLOGUE_EACCOUNT_DNE",
+    name: "PROLOGUE_EACCOUNT_DOES_NOT_EXIST",
   },
   "1005": {
     name: "PROLOGUE_ECANT_PAY_GAS_DEPOSIT",
@@ -173,18 +232,12 @@ export const errorCodes = {
     name: "PROLOGUE_EBAD_CHAIN_ID",
   },
   "1008": {
-    name: "PROLOGUE_ESCRIPT_NOT_ALLOWED",
-  },
-  "1009": {
-    name: "PROLOGUE_EMODULE_NOT_ALLOWED",
-  },
-  "1010": {
     name: "PROLOGUE_EINVALID_WRITESET_SENDER",
   },
-  "1011": {
+  "1009": {
     name: "PROLOGUE_ESEQUENCE_NUMBER_TOO_BIG",
   },
-  "1012": {
+  "1010": {
     name: "PROLOGUE_ESECONDARY_KEYS_ADDRESSES_COUNT_MISMATCH",
   },
 } as const;
@@ -214,6 +267,37 @@ export const functions = {
       },
     ],
   },
+  rotate_authentication_key_ed25519: {
+    name: "rotate_authentication_key_ed25519",
+    doc: "Rotates the authentication key and records a mapping on chain from the new authentication key to the originating\naddress of the account. To authorize the rotation, a signature under the old public key on a `RotationProofChallenge`\nis given in `current_sig`. To ensure the account owner knows the secret key corresponding to the new public key\nin `new_pubkey`, a proof-of-knowledge is given in `new_sig` (i.e., a signature under the new public key on the\nsame `RotationProofChallenge` struct).",
+    ty_args: [],
+    args: [
+      {
+        name: "curr_sig_bytes",
+        ty: {
+          vector: "u8",
+        },
+      },
+      {
+        name: "new_sig_bytes",
+        ty: {
+          vector: "u8",
+        },
+      },
+      {
+        name: "curr_pk_bytes",
+        ty: {
+          vector: "u8",
+        },
+      },
+      {
+        name: "new_pk_bytes",
+        ty: {
+          vector: "u8",
+        },
+      },
+    ],
+  },
   transfer: {
     name: "transfer",
     ty_args: [],
@@ -234,13 +318,18 @@ export const functions = {
 export const resources = {
   Account: "0x1::account::Account",
   ChainSpecificAccountInfo: "0x1::account::ChainSpecificAccountInfo",
+  OriginatingAddress: "0x1::account::OriginatingAddress",
 } as const;
 
 /** All struct types. */
 export const structs = {
   Account: "0x1::account::Account",
+  CapabilityOffer: "0x1::account::CapabilityOffer",
   ChainSpecificAccountInfo: "0x1::account::ChainSpecificAccountInfo",
   CoinRegisterEvent: "0x1::account::CoinRegisterEvent",
+  OriginatingAddress: "0x1::account::OriginatingAddress",
+  RotationCapability: "0x1::account::RotationCapability",
+  RotationProofChallenge: "0x1::account::RotationProofChallenge",
   SignerCapability: "0x1::account::SignerCapability",
 } as const;
 

@@ -15,5 +15,10 @@ export const idl = {
       abilities: ["key"],
     },
   ],
-  errors: { "1": { name: "ECONFIG", doc: "Error with config" } },
+  errors: {
+    "1": {
+      name: "EINVALID_CONFIG",
+      doc: "The provided on chain config bytes are empty or invalid",
+    },
+  },
 } as const;

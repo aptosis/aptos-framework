@@ -10,6 +10,7 @@ export const idl = {
   functions: [
     {
       name: "set_gas_schedule",
+      doc: "This can be called by on-chain governance to update gas schedule.",
       ty_args: [],
       args: [{ name: "gas_schedule_blob", ty: { vector: "u8" } }],
     },
@@ -35,10 +36,9 @@ export const idl = {
     },
   ],
   errors: {
-    "1": { name: "ECONFIG", doc: "Error with config" },
-    "2": {
-      name: "EGAS_CONSTANT_INCONSISTENCY",
-      doc: "The provided gas constants were inconsistent.",
+    "1": {
+      name: "EINVALID_GAS_SCHEDULE",
+      doc: "The provided gas schedule bytes are empty or invalid",
     },
   },
 } as const;

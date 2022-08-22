@@ -37,7 +37,7 @@ export interface ICoinInfo {
    * For example, if `decimals` equals `2`, a balance of `505` coins should
    * be displayed to a user as `5.05` (`505 / 10 ** 2`).
    */
-  decimals: p.U64;
+  decimals: number;
 
   /** Amount of this coin type in existence. */
   supply: {
@@ -56,6 +56,7 @@ export interface ICoinStore {
     /** Amount of coin this address has. */
     value: p.U64;
   };
+  frozen: boolean;
   deposit_events: {
     /** Total number of events emitted to this event stream. */
     counter: p.U64;
@@ -142,40 +143,45 @@ export * as errors from "./errors.js";
 
 /** Module error codes. */
 export const errorCodes = {
-  "0": {
-    name: "ECOIN_INFO_ADDRESS_MISMATCH",
-    doc: "When address of account which is used to initilize a coin `CoinType`\ndoesn't match the deployer of module containining `CoinType`.",
-  },
   "1": {
-    name: "ECOIN_INFO_ALREADY_PUBLISHED",
-    doc: "When `CoinType` is already initilized as a coin.",
+    name: "ECOIN_INFO_ADDRESS_MISMATCH",
+    doc: "Address of account which is used to initialize a coin `CoinType` doesn't match the deployer of module",
   },
   "2": {
-    name: "ECOIN_INFO_NOT_PUBLISHED",
-    doc: "When `CoinType` hasn't been initialized as a coin.",
+    name: "ECOIN_INFO_ALREADY_PUBLISHED",
+    doc: "`CoinType` is already initialized as a coin",
   },
   "3": {
-    name: "ECOIN_STORE_ALREADY_PUBLISHED",
-    doc: "When an account already has `CoinStore` registered for `CoinType`.",
+    name: "ECOIN_INFO_NOT_PUBLISHED",
+    doc: "`CoinType` hasn't been initialized as a coin",
   },
   "4": {
-    name: "ECOIN_STORE_NOT_PUBLISHED",
-    doc: "When an account hasn't registered `CoinStore` for `CoinType`.",
+    name: "ECOIN_STORE_ALREADY_PUBLISHED",
+    doc: "Account already has `CoinStore` registered for `CoinType`",
   },
   "5": {
-    name: "EINSUFFICIENT_BALANCE",
-    doc: "When there's not enough funds to withdraw from an account or from `Coin` resource.",
+    name: "ECOIN_STORE_NOT_PUBLISHED",
+    doc: "Account hasn't registered `CoinStore` for `CoinType`",
   },
   "6": {
-    name: "EDESTRUCTION_OF_NONZERO_TOKEN",
-    doc: "When destruction of `Coin` resource contains non-zero value attempted.",
+    name: "EINSUFFICIENT_BALANCE",
+    doc: "Not enough coins to complete transaction",
   },
   "7": {
-    name: "ETOTAL_SUPPLY_OVERFLOW",
-    doc: "Total supply of the coin overflows. No additional coins can be minted.",
+    name: "EDESTRUCTION_OF_NONZERO_TOKEN",
+    doc: "Cannot destroy non-zero coins",
   },
   "8": {
-    name: "EINVALID_COIN_AMOUNT",
+    name: "ETOTAL_SUPPLY_OVERFLOW",
+    doc: "Total supply of the coin has overflown. No additional coins can be minted",
+  },
+  "9": {
+    name: "EZERO_COIN_AMOUNT",
+    doc: "Coin amount cannot be zero",
+  },
+  "10": {
+    name: "EFROZEN",
+    doc: "CoinStore is frozen. Coins cannot be deposited or withdrawn",
   },
 } as const;
 
@@ -200,10 +206,8 @@ export const functions = {
 
 /** All struct types with ability `key`. */
 export const resources = {
-  BurnCapability: "0x1::coin::BurnCapability",
   CoinInfo: "0x1::coin::CoinInfo",
   CoinStore: "0x1::coin::CoinStore",
-  MintCapability: "0x1::coin::MintCapability",
 } as const;
 
 /** All struct types. */
@@ -213,6 +217,7 @@ export const structs = {
   CoinInfo: "0x1::coin::CoinInfo",
   CoinStore: "0x1::coin::CoinStore",
   DepositEvent: "0x1::coin::DepositEvent",
+  FreezeCapability: "0x1::coin::FreezeCapability",
   MintCapability: "0x1::coin::MintCapability",
   WithdrawEvent: "0x1::coin::WithdrawEvent",
 } as const;

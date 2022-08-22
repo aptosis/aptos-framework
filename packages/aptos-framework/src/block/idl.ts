@@ -39,7 +39,7 @@ export const idl = {
         { name: "epoch", ty: "u64" },
         { name: "round", ty: "u64" },
         { name: "height", ty: "u64" },
-        { name: "previous_block_votes", ty: { vector: "bool" } },
+        { name: "previous_block_votes_bitvec", ty: { vector: "u8" } },
         { name: "proposer", ty: "address" },
         { name: "failed_proposer_indices", ty: { vector: "u64" } },
         {
@@ -52,13 +52,14 @@ export const idl = {
     },
   ],
   errors: {
-    "0": {
-      name: "EBLOCK_METADATA",
-      doc: "The `BlockResource` resource is in an invalid state",
-    },
     "1": {
-      name: "EVM_OR_VALIDATOR",
-      doc: "An invalid signer was provided. Expected the signer to be the VM or a Validator.",
+      name: "ENUM_NEW_BLOCK_EVENTS_DOES_NOT_MATCH_BLOCK_HEIGHT",
+      doc: "The number of new block events does not equal the current block height.",
     },
+    "2": {
+      name: "EINVALID_PROPOSER",
+      doc: "An invalid proposer was provided. Expected the proposer to be the VM or an active validator.",
+    },
+    "3": { name: "EZERO_EPOCH_INTERVAL", doc: "Epoch interval cannot be 0." },
   },
 } as const;

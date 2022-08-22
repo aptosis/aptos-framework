@@ -37,11 +37,11 @@ export const increase_lockup = (): payloads.IncreaseLockup => ({
  * Note: this triggers setting the operator and owner, set it to the account's address
  * to set later.
  */
-export const initialize_owner_only = ({
+export const initialize_stake_owner = ({
   args,
-}: mod.InitializeOwnerOnlyArgs): payloads.InitializeOwnerOnly => ({
+}: mod.InitializeStakeOwnerArgs): payloads.InitializeStakeOwner => ({
   type: "script_function_payload",
-  function: "0x1::stake::initialize_owner_only",
+  function: "0x1::stake::initialize_stake_owner",
   type_arguments: [],
   arguments: [
     p.serializers.u64(args.initial_stake_amount),
@@ -90,6 +90,16 @@ export const leave_validator_set = ({
   function: "0x1::stake::leave_validator_set",
   type_arguments: [],
   arguments: [p.serializers.hexString(args.pool_address)],
+});
+
+/** Move `amount` of coins from pending_inactive to active. */
+export const reactivate_stake = ({
+  args,
+}: mod.ReactivateStakeArgs): payloads.ReactivateStake => ({
+  type: "script_function_payload",
+  function: "0x1::stake::reactivate_stake",
+  type_arguments: [],
+  arguments: [p.serializers.u64(args.amount)],
 });
 
 /** Rotate the consensus key of the validator, it'll take effect in next epoch. */

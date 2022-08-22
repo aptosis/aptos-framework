@@ -7,7 +7,7 @@ import * as p from "@movingco/prelude";
 
 import type * as mod from "./index.js";
 import type * as payloads from "./payloads.js";
-
+/** This can be called by on-chain governance to update gas schedule. */
 export const set_gas_schedule = ({
   args,
 }: mod.SetGasScheduleArgs): payloads.SetGasSchedule => ({

@@ -19,6 +19,7 @@ export interface IStakingConfig {
   allow_validator_set_change: boolean;
   rewards_rate: p.U64;
   rewards_rate_denominator: p.U64;
+  voting_power_increase_limit: p.U64;
 }
 
 export { idl } from "./idl.js";
@@ -42,16 +43,20 @@ export * as errors from "./errors.js";
 /** Module error codes. */
 export const errorCodes = {
   "1": {
-    name: "EINVALID_LOCKUP_VALUE",
-    doc: "Invalid required stake lockup value.",
+    name: "EZERO_LOCKUP_DURATION",
+    doc: "Stake lockup duration cannot be zero",
   },
   "2": {
-    name: "EINVALID_REWARDS_RATE",
-    doc: "Invalid rewards rate.",
+    name: "EZERO_REWARDS_RATE_DENOMINATOR",
+    doc: "Reward rate denominator cannot be zero",
   },
   "3": {
     name: "EINVALID_STAKE_RANGE",
-    doc: "Invalid required stake range, usually happens if min > max.",
+    doc: "Specified stake range is invalid. Max must be greater than min",
+  },
+  "4": {
+    name: "EINVALID_VOTING_POWER_INCREASE_LIMIT",
+    doc: "The voting power increase limit percentage must be within (0, 50]",
   },
 } as const;
 

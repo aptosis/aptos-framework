@@ -3,16 +3,9 @@
  *
  * @module
  */
-/** Error with config */
-export const ECONFIG = {
+/** The provided gas schedule bytes are empty or invalid */
+export const EINVALID_GAS_SCHEDULE = {
   code: 1,
-  name: "ECONFIG",
-  doc: "Error with config",
-} as const;
-
-/** The provided gas constants were inconsistent. */
-export const EGAS_CONSTANT_INCONSISTENCY = {
-  code: 2,
-  name: "EGAS_CONSTANT_INCONSISTENCY",
-  doc: "The provided gas constants were inconsistent.",
+  name: "EINVALID_GAS_SCHEDULE",
+  doc: "The provided gas schedule bytes are empty or invalid",
 } as const;

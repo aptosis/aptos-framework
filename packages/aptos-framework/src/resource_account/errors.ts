@@ -3,7 +3,9 @@
  *
  * @module
  */
+/** Container resource not found in account */
 export const ECONTAINER_NOT_PUBLISHED = {
-  code: 0,
+  code: 1,
   name: "ECONTAINER_NOT_PUBLISHED",
+  doc: "Container resource not found in account",
 } as const;

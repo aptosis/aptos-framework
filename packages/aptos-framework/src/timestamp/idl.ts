@@ -17,14 +17,13 @@ export const idl = {
     },
   ],
   errors: {
-    "0": {
-      name: "ENOT_GENESIS",
-      doc: "The blockchain is not in the genesis state anymore",
-    },
     "1": {
       name: "ENOT_OPERATING",
       doc: "The blockchain is not in an operating state yet",
     },
-    "2": { name: "ETIMESTAMP", doc: "An invalid timestamp was provided" },
+    "2": {
+      name: "EINVALID_TIMESTAMP",
+      doc: "An invalid timestamp was provided",
+    },
   },
 } as const;

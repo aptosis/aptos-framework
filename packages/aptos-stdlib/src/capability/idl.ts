@@ -38,5 +38,18 @@ export const idl = {
       abilities: ["drop"],
     },
   ],
-  errors: { "0": { name: "ECAP" }, "1": { name: "EDELEGATE" } },
+  errors: {
+    "1": {
+      name: "ECAPABILITY_ALREADY_EXISTS",
+      doc: "Capability resource already exists on the specified account",
+    },
+    "2": {
+      name: "ECAPABILITY_NOT_FOUND",
+      doc: "Capability resource not found",
+    },
+    "3": {
+      name: "EDELEGATE",
+      doc: "Account does not have delegated permissions",
+    },
+  },
 } as const;

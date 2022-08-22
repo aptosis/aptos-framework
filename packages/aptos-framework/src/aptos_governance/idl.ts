@@ -39,8 +39,18 @@ export const idl = {
         { name: "stake_pool", ty: "address" },
         { name: "proposal_id", ty: "u64" },
         { name: "execution_hash", ty: { vector: "u8" } },
-        { name: "metadata_location", ty: { vector: "u8" } },
-        { name: "metadata_hash", ty: { vector: "u8" } },
+        {
+          name: "proposal_metadata",
+          ty: {
+            struct: {
+              name: "0x1::simple_map::SimpleMap",
+              ty_args: [
+                { struct: { name: "0x1::string::String" } },
+                { vector: "u8" },
+              ],
+            },
+          },
+        },
       ],
       abilities: ["drop", "store"],
     },
@@ -55,6 +65,22 @@ export const idl = {
         { name: "should_pass", ty: "bool" },
       ],
       abilities: ["drop", "store"],
+    },
+    {
+      name: "0x1::aptos_governance::ApprovedExecutionHashes",
+      doc: "Used to track which execution script hashes have been approved by governance.\nThis is required to bypass cases where the execution scripts exceed the size limit imposed by mempool.",
+      fields: [
+        {
+          name: "hashes",
+          ty: {
+            struct: {
+              name: "0x1::simple_map::SimpleMap",
+              ty_args: ["u64", { vector: "u8" }],
+            },
+          },
+        },
+      ],
+      abilities: ["key"],
     },
     {
       name: "0x1::aptos_governance::GovernanceConfig",
@@ -170,10 +196,45 @@ export const idl = {
     },
   ],
   errors: {
-    "1": { name: "EINSUFFICIENT_PROPOSER_STAKE", doc: "Error codes." },
-    "2": { name: "ENOT_DELEGATED_VOTER" },
-    "3": { name: "EINSUFFICIENT_STAKE_LOCKUP" },
-    "4": { name: "EALREADY_VOTED" },
-    "5": { name: "ENO_VOTING_POWER" },
+    "1": {
+      name: "EINSUFFICIENT_PROPOSER_STAKE",
+      doc: "The specified stake pool does not have sufficient stake to create a proposal",
+    },
+    "2": {
+      name: "ENOT_DELEGATED_VOTER",
+      doc: "This account is not the designated voter of the specified stake pool",
+    },
+    "3": {
+      name: "EINSUFFICIENT_STAKE_LOCKUP",
+      doc: "The specified stake pool does not have long enough remaining lockup to create a proposal or vote",
+    },
+    "4": {
+      name: "EALREADY_VOTED",
+      doc: "The specified stake pool has already been used to vote on the same proposal",
+    },
+    "5": {
+      name: "ENO_VOTING_POWER",
+      doc: "The specified stake pool must be part of the validator set",
+    },
+    "6": {
+      name: "EPROPOSAL_NOT_RESOLVABLE_YET",
+      doc: "Proposal is not ready to be resolved. Waiting on time or votes",
+    },
+    "7": {
+      name: "ESCRIPT_HASH_ALREADY_ADDED",
+      doc: "Proposal's script hash has already been added to the approved list",
+    },
+    "8": {
+      name: "EPROPOSAL_NOT_RESOLVED_YET",
+      doc: "The proposal has not been resolved yet",
+    },
+    "9": {
+      name: "EMETADATA_LOCATION_TOO_LONG",
+      doc: "Metadata location cannot be longer than 256 chars",
+    },
+    "10": {
+      name: "EMETADATA_HASH_TOO_LONG",
+      doc: "Metadata hash cannot be longer than 256 chars",
+    },
   },
 } as const;

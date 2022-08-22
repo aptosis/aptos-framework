@@ -341,6 +341,7 @@ export interface ITokenStore {
   tokens: {
     handle: p.U128;
   };
+  direct_transfer: boolean;
   deposit_events: {
     /** Total number of events emitted to this event stream. */
     counter: p.U64;
@@ -402,6 +403,14 @@ export interface ITokenStore {
     };
   };
 }
+
+/** Payload arguments for {@link entry.opt_in_direct_transfer}. */
+export type OptInDirectTransferArgs = {
+  args: {
+    /** IDL type: `Bool` */
+    opt_in: boolean;
+  };
+};
 
 export * as entry from "./entry.js";
 export * as entryNames from "./entryNames.js";
@@ -486,6 +495,12 @@ export const errorCodes = {
   "19": {
     name: "ENO_TOKEN_IN_TOKEN_STORE",
   },
+  "20": {
+    name: "ENON_ZERO_PROPERTY_VERSION_ONLY_ONE_INSTANCE",
+  },
+  "21": {
+    name: "EUSER_NOT_OPT_IN_DIRECT_TRANSFER",
+  },
 } as const;
 
 /** All module function IDLs. */
@@ -494,6 +509,16 @@ export const functions = {
     name: "initialize_token_script",
     ty_args: [],
     args: [],
+  },
+  opt_in_direct_transfer: {
+    name: "opt_in_direct_transfer",
+    ty_args: [],
+    args: [
+      {
+        name: "opt_in",
+        ty: "bool",
+      },
+    ],
   },
 } as const;
 

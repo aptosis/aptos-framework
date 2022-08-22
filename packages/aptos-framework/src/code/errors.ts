@@ -3,26 +3,30 @@
  *
  * @module
  */
-/**
- * A package is attempted to publish with module names clashing with modules published by other packages on this
- * address.
- */
+/** Package contains duplicate module names with existing modules publised in other packages on this address */
 export const EMODULE_NAME_CLASH = {
   code: 1,
   name: "EMODULE_NAME_CLASH",
-  doc: "A package is attempted to publish with module names clashing with modules published by other packages on this\naddress.",
+  doc: "Package contains duplicate module names with existing modules publised in other packages on this address",
 } as const;
 
-/** A package is attempted to upgrade which is marked as immutable. */
+/** Cannot upgrade an immutable package */
 export const EUPGRADE_IMMUTABLE = {
   code: 2,
   name: "EUPGRADE_IMMUTABLE",
-  doc: "A package is attempted to upgrade which is marked as immutable.",
+  doc: "Cannot upgrade an immutable package",
 } as const;
 
-/** A package is attempted to upgrade with a weaker policy than previously. */
+/** Cannot downgrade a package's upgradability policy */
 export const EUPGRADE_WEAKER_POLICY = {
   code: 3,
   name: "EUPGRADE_WEAKER_POLICY",
-  doc: "A package is attempted to upgrade with a weaker policy than previously.",
+  doc: "Cannot downgrade a package's upgradability policy",
+} as const;
+
+/** Cannot delete a module that was published in the same package */
+export const EMODULE_MISSING = {
+  code: 4,
+  name: "EMODULE_MISSING",
+  doc: "Cannot delete a module that was published in the same package",
 } as const;

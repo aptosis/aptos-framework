@@ -29,7 +29,7 @@ export const initialize = ({
   arguments: [
     p.serializers.hexString(args.name),
     p.serializers.hexString(args.symbol),
-    p.serializers.u64(args.decimals),
+    args.decimals,
     args.monitor_supply,
   ],
 });

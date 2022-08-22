@@ -38,7 +38,7 @@ export const idl = {
     },
   ],
   errors: {
-    "0": { name: "EKEY_ALREADY_EXISTS" },
-    "1": { name: "EKEY_NOT_FOUND" },
+    "1": { name: "EKEY_ALREADY_EXISTS", doc: "Map key already exists" },
+    "2": { name: "EKEY_NOT_FOUND", doc: "Map key is not found" },
   },
 } as const;

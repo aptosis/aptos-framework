@@ -88,8 +88,9 @@ export * as errors from "./errors.js";
 
 /** Module error codes. */
 export const errorCodes = {
-  "0": {
+  "1": {
     name: "ECONTAINER_NOT_PUBLISHED",
+    doc: "Container resource not found in account",
   },
 } as const;
 

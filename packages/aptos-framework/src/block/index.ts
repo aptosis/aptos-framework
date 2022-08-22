@@ -46,7 +46,7 @@ export interface INewBlockEvent {
   epoch: p.U64;
   round: p.U64;
   height: p.U64;
-  previous_block_votes: ReadonlyArray<boolean>;
+  previous_block_votes_bitvec: p.ByteString;
   proposer: p.RawAddress;
   failed_proposer_indices: ReadonlyArray<p.U64>;
 
@@ -74,13 +74,17 @@ export * as errors from "./errors.js";
 
 /** Module error codes. */
 export const errorCodes = {
-  "0": {
-    name: "EBLOCK_METADATA",
-    doc: "The `BlockResource` resource is in an invalid state",
-  },
   "1": {
-    name: "EVM_OR_VALIDATOR",
-    doc: "An invalid signer was provided. Expected the signer to be the VM or a Validator.",
+    name: "ENUM_NEW_BLOCK_EVENTS_DOES_NOT_MATCH_BLOCK_HEIGHT",
+    doc: "The number of new block events does not equal the current block height.",
+  },
+  "2": {
+    name: "EINVALID_PROPOSER",
+    doc: "An invalid proposer was provided. Expected the proposer to be the VM or an active validator.",
+  },
+  "3": {
+    name: "EZERO_EPOCH_INTERVAL",
+    doc: "Epoch interval cannot be 0.",
   },
 } as const;
 

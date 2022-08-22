@@ -19,6 +19,18 @@ export const idl = {
         },
         { name: "execution_hash", ty: { vector: "u8" } },
         { name: "expiration_secs", ty: "u64" },
+        {
+          name: "metadata",
+          ty: {
+            struct: {
+              name: "0x1::simple_map::SimpleMap",
+              ty_args: [
+                { struct: { name: "0x1::string::String" } },
+                { vector: "u8" },
+              ],
+            },
+          },
+        },
         { name: "min_vote_threshold", ty: "u128" },
       ],
       abilities: ["drop", "store"],
@@ -39,6 +51,19 @@ export const idl = {
             struct: {
               name: "0x1::option::Option",
               ty_args: [{ type_param: 0 }],
+            },
+          },
+        },
+        {
+          name: "metadata",
+          doc: "Optional. Extra metadata about the proposal and can be empty.\nValue is serialized value of an attribute.",
+          ty: {
+            struct: {
+              name: "0x1::simple_map::SimpleMap",
+              ty_args: [
+                { struct: { name: "0x1::string::String" } },
+                { vector: "u8" },
+              ],
             },
           },
         },
@@ -189,9 +214,21 @@ export const idl = {
     },
   ],
   errors: {
-    "1": { name: "EPROPOSAL_EXECUTION_HASH_NOT_MATCHING", doc: "Error codes." },
-    "2": { name: "EPROPOSAL_CANNOT_BE_RESOLVED" },
-    "3": { name: "EPROPOSAL_ALREADY_RESOLVED" },
-    "4": { name: "EPROPOSAL_EMPTY_EXECUTION_HASH" },
+    "1": {
+      name: "EPROPOSAL_EXECUTION_HASH_NOT_MATCHING",
+      doc: "Current script's execution hash does not match the specified proposal's",
+    },
+    "2": {
+      name: "EPROPOSAL_CANNOT_BE_RESOLVED",
+      doc: "Proposal cannot be resolved. Either voting duration has not passed, not enough votes, or fewer yes than no votes",
+    },
+    "3": {
+      name: "EPROPOSAL_ALREADY_RESOLVED",
+      doc: "Proposal cannot be resolved more than once",
+    },
+    "4": {
+      name: "EPROPOSAL_EMPTY_EXECUTION_HASH",
+      doc: "Proposal cannot contain an empty execution script hash",
+    },
   },
 } as const;

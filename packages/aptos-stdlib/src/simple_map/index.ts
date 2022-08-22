@@ -46,11 +46,13 @@ export * as errors from "./errors.js";
 
 /** Module error codes. */
 export const errorCodes = {
-  "0": {
-    name: "EKEY_ALREADY_EXISTS",
-  },
   "1": {
+    name: "EKEY_ALREADY_EXISTS",
+    doc: "Map key already exists",
+  },
+  "2": {
     name: "EKEY_NOT_FOUND",
+    doc: "Map key is not found",
   },
 } as const;
 

@@ -19,17 +19,17 @@ export const errmap = {
       },
     },
     "0x1::big_vector": {
-      "0": {
-        name: "EINDEX_OUT_OF_BOUNDS",
-        doc: "The index into the vector is out of bounds",
-      },
       "1": {
-        name: "EOUT_OF_CAPACITY",
-        doc: "Need to reserve more buckets for push_back_no_grow.",
+        name: "EINDEX_OUT_OF_BOUNDS",
+        doc: "Vector index is out of bounds",
       },
       "2": {
-        name: "ENOT_EMPTY",
-        doc: "Destory a non-empty vector.",
+        name: "EOUT_OF_CAPACITY",
+        doc: "Vector is full",
+      },
+      "3": {
+        name: "EVECTOR_NOT_EMPTY",
+        doc: "Cannot destroy a non-empty vector",
       },
     },
     "0x1::bit_vector": {
@@ -42,17 +42,39 @@ export const errmap = {
         doc: "An invalid length of bitvector was given",
       },
     },
-    "0x1::capability": {
-      "0": {
-        name: "ECAP",
-      },
+    "0x1::bls12381": {
       "1": {
+        name: "EZERO_PUBKEYS",
+        doc: "The caller was supposed to input one or more public keys.",
+      },
+    },
+    "0x1::capability": {
+      "1": {
+        name: "ECAPABILITY_ALREADY_EXISTS",
+        doc: "Capability resource already exists on the specified account",
+      },
+      "2": {
+        name: "ECAPABILITY_NOT_FOUND",
+        doc: "Capability resource not found",
+      },
+      "3": {
         name: "EDELEGATE",
+        doc: "Account does not have delegated permissions",
       },
     },
     "0x1::comparator": {
       "0": {
         name: "EQUAL",
+      },
+    },
+    "0x1::ed25519": {
+      "1": {
+        name: "E_WRONG_PUBKEY_SIZE",
+        doc: "Wrong number of bytes were given as input when deserializing an Ed25519 public key.",
+      },
+      "2": {
+        name: "E_WRONG_SIGNATURE_SIZE",
+        doc: "Wrong number of bytes were given as input when deserializing an Ed25519 signature.",
       },
     },
     "0x1::fixed_point32": {
@@ -93,12 +115,20 @@ export const errmap = {
         doc: "The `Option` is in an invalid state for the operation attempted.\nThe `Option` is `None` while it should be `Some`.",
       },
     },
-    "0x1::simple_map": {
-      "0": {
-        name: "EKEY_ALREADY_EXISTS",
-      },
+    "0x1::secp256k1": {
       "1": {
+        name: "E_DESERIALIZE",
+        doc: "An error occurred while deserializing, for example due to wrong input size.",
+      },
+    },
+    "0x1::simple_map": {
+      "1": {
+        name: "EKEY_ALREADY_EXISTS",
+        doc: "Map key already exists",
+      },
+      "2": {
         name: "EKEY_NOT_FOUND",
+        doc: "Map key is not found",
       },
     },
     "0x1::string": {
@@ -109,14 +139,6 @@ export const errmap = {
       "2": {
         name: "EINVALID_INDEX",
         doc: "Index out of range.",
-      },
-    },
-    "0x1::table": {
-      "100": {
-        name: "EALREADY_EXISTS",
-      },
-      "101": {
-        name: "ENOT_FOUND",
       },
     },
     "0x1::table_with_length": {
