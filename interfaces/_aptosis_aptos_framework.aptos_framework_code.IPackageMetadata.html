@@ -16,7 +16,7 @@
 <li><a href="_aptosis_aptos_framework.aptos_framework_code.IPackageMetadata.html">IPackageMetadata</a></li></ul>
 <h1>Interface IPackageMetadata</h1></div>
 <section class="tsd-panel tsd-comment">
-<div class="tsd-comment tsd-typography"><p>Metadata for a package.</p>
+<div class="tsd-comment tsd-typography"><p>Metadata for a package. All byte blobs are represented as base64-of-gzipped-bytes</p>
 <p>Type name: <code>0x1::code::PackageMetadata</code></p>
 </div></section>
 <section class="tsd-panel tsd-hierarchy">
@@ -24,7 +24,7 @@
 <ul class="tsd-hierarchy">
 <li><span class="target">IPackageMetadata</span></li></ul></section><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/aptosis/aptos-framework/blob/ac192d4/packages/aptos-framework/src/code/index.ts#L34">aptos-framework/src/code/index.ts:34</a></li></ul></aside>
+<li>Defined in <a href="https://github.com/aptosis/aptos-framework/blob/62335c9/packages/aptos-framework/src/code/index.ts#L31">aptos-framework/src/code/index.ts:31</a></li></ul></aside>
 <section class="tsd-panel-group tsd-index-group">
 <section class="tsd-panel tsd-index-panel">
 <details class="tsd-index-content tsd-index-accordion" open><summary class="tsd-accordion-summary tsd-index-summary">
@@ -32,50 +32,67 @@
 <div class="tsd-accordion-details">
 <section class="tsd-index-section">
 <h3 class="tsd-index-heading">Properties</h3>
-<div class="tsd-index-list"><a href="_aptosis_aptos_framework.aptos_framework_code.IPackageMetadata.html#build_info" class="tsd-index-link tsd-kind-property tsd-parent-kind-interface"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><rect fill="var(--color-icon-background)" stroke="#FF984D" stroke-width="1.5" x="1" y="1" width="22" height="22" rx="12" id="icon-1024-path"></rect><path d="M9.354 16V7.24H12.174C12.99 7.24 13.638 7.476 14.118 7.948C14.606 8.412 14.85 9.036 14.85 9.82C14.85 10.604 14.606 11.232 14.118 11.704C13.638 12.168 12.99 12.4 12.174 12.4H10.434V16H9.354ZM10.434 11.428H12.174C12.646 11.428 13.022 11.284 13.302 10.996C13.59 10.7 13.734 10.308 13.734 9.82C13.734 9.324 13.59 8.932 13.302 8.644C13.022 8.356 12.646 8.212 12.174 8.212H10.434V11.428Z" fill="var(--color-text)" id="icon-1024-text"></path></svg><span>build_<wbr/>info</span></a>
+<div class="tsd-index-list"><a href="_aptosis_aptos_framework.aptos_framework_code.IPackageMetadata.html#abis" class="tsd-index-link tsd-kind-property tsd-parent-kind-interface"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><rect fill="var(--color-icon-background)" stroke="#FF984D" stroke-width="1.5" x="1" y="1" width="22" height="22" rx="12" id="icon-1024-path"></rect><path d="M9.354 16V7.24H12.174C12.99 7.24 13.638 7.476 14.118 7.948C14.606 8.412 14.85 9.036 14.85 9.82C14.85 10.604 14.606 11.232 14.118 11.704C13.638 12.168 12.99 12.4 12.174 12.4H10.434V16H9.354ZM10.434 11.428H12.174C12.646 11.428 13.022 11.284 13.302 10.996C13.59 10.7 13.734 10.308 13.734 9.82C13.734 9.324 13.59 8.932 13.302 8.644C13.022 8.356 12.646 8.212 12.174 8.212H10.434V11.428Z" fill="var(--color-text)" id="icon-1024-text"></path></svg><span>abis</span></a>
+<a href="_aptosis_aptos_framework.aptos_framework_code.IPackageMetadata.html#build_info" class="tsd-index-link tsd-kind-property tsd-parent-kind-interface"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-1024-path"></use><use href="#icon-1024-text"></use></svg><span>build_<wbr/>info</span></a>
 <a href="_aptosis_aptos_framework.aptos_framework_code.IPackageMetadata.html#error_map" class="tsd-index-link tsd-kind-property tsd-parent-kind-interface"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-1024-path"></use><use href="#icon-1024-text"></use></svg><span>error_<wbr/>map</span></a>
 <a href="_aptosis_aptos_framework.aptos_framework_code.IPackageMetadata.html#manifest" class="tsd-index-link tsd-kind-property tsd-parent-kind-interface"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-1024-path"></use><use href="#icon-1024-text"></use></svg><span>manifest</span></a>
 <a href="_aptosis_aptos_framework.aptos_framework_code.IPackageMetadata.html#modules" class="tsd-index-link tsd-kind-property tsd-parent-kind-interface"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-1024-path"></use><use href="#icon-1024-text"></use></svg><span>modules</span></a>
 <a href="_aptosis_aptos_framework.aptos_framework_code.IPackageMetadata.html#name" class="tsd-index-link tsd-kind-property tsd-parent-kind-interface"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-1024-path"></use><use href="#icon-1024-text"></use></svg><span>name</span></a>
+<a href="_aptosis_aptos_framework.aptos_framework_code.IPackageMetadata.html#upgrade_number" class="tsd-index-link tsd-kind-property tsd-parent-kind-interface"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-1024-path"></use><use href="#icon-1024-text"></use></svg><span>upgrade_<wbr/>number</span></a>
 <a href="_aptosis_aptos_framework.aptos_framework_code.IPackageMetadata.html#upgrade_policy" class="tsd-index-link tsd-kind-property tsd-parent-kind-interface"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-1024-path"></use><use href="#icon-1024-text"></use></svg><span>upgrade_<wbr/>policy</span></a>
 </div></section></div></details></section></section>
 <section class="tsd-panel-group tsd-member-group">
 <h2>Properties</h2>
+<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface"><a id="abis" class="tsd-anchor"></a>
+<h3 class="tsd-anchor-link"><span>abis</span><a href="#abis" aria-label="Permalink" class="tsd-anchor-icon"><svg class="icon icon-tabler icon-tabler-link" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none" id="icon-anchor-a"></path><path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" id="icon-anchor-b"></path><path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" id="icon-anchor-c"></path></svg></a></h3>
+<div class="tsd-signature">abis<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">readonly </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span></div>
+<div class="tsd-comment tsd-typography"><p>ABIs, in compressed BCS</p>
+</div><aside class="tsd-sources">
+<ul>
+<li>Defined in <a href="https://github.com/aptosis/aptos-framework/blob/62335c9/packages/aptos-framework/src/code/index.ts#L68">aptos-framework/src/code/index.ts:68</a></li></ul></aside></section>
 <section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface"><a id="build_info" class="tsd-anchor"></a>
-<h3 class="tsd-anchor-link"><span>build_<wbr/>info</span><a href="#build_info" aria-label="Permalink" class="tsd-anchor-icon"><svg class="icon icon-tabler icon-tabler-link" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none" id="icon-anchor-a"></path><path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" id="icon-anchor-b"></path><path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" id="icon-anchor-c"></path></svg></a></h3>
+<h3 class="tsd-anchor-link"><span>build_<wbr/>info</span><a href="#build_info" aria-label="Permalink" class="tsd-anchor-icon"><svg class="icon icon-tabler icon-tabler-link" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><use href="#icon-anchor-a"></use><use href="#icon-anchor-b"></use><use href="#icon-anchor-c"></use></svg></a></h3>
 <div class="tsd-signature">build_<wbr/>info<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 <div class="tsd-comment tsd-typography"><p>The BuildInfo, in the BuildInfo.yaml format.</p>
 </div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/aptosis/aptos-framework/blob/ac192d4/packages/aptos-framework/src/code/index.ts#L44">aptos-framework/src/code/index.ts:44</a></li></ul></aside></section>
+<li>Defined in <a href="https://github.com/aptosis/aptos-framework/blob/62335c9/packages/aptos-framework/src/code/index.ts#L47">aptos-framework/src/code/index.ts:47</a></li></ul></aside></section>
 <section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface"><a id="error_map" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>error_<wbr/>map</span><a href="#error_map" aria-label="Permalink" class="tsd-anchor-icon"><svg class="icon icon-tabler icon-tabler-link" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><use href="#icon-anchor-a"></use><use href="#icon-anchor-b"></use><use href="#icon-anchor-c"></use></svg></a></h3>
-<div class="tsd-signature">error_<wbr/>map<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">HexStringArg</span></div>
-<div class="tsd-comment tsd-typography"><p>Error map, in internal encoding.</p>
+<div class="tsd-signature">error_<wbr/>map<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+<div class="tsd-comment tsd-typography"><p>Error map, in compressed BCS</p>
 </div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/aptosis/aptos-framework/blob/ac192d4/packages/aptos-framework/src/code/index.ts#L65">aptos-framework/src/code/index.ts:65</a></li></ul></aside></section>
+<li>Defined in <a href="https://github.com/aptosis/aptos-framework/blob/62335c9/packages/aptos-framework/src/code/index.ts#L65">aptos-framework/src/code/index.ts:65</a></li></ul></aside></section>
 <section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface"><a id="manifest" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>manifest</span><a href="#manifest" aria-label="Permalink" class="tsd-anchor-icon"><svg class="icon icon-tabler icon-tabler-link" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><use href="#icon-anchor-a"></use><use href="#icon-anchor-b"></use><use href="#icon-anchor-c"></use></svg></a></h3>
 <div class="tsd-signature">manifest<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 <div class="tsd-comment tsd-typography"><p>The package manifest, in the Move.toml format.</p>
 </div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/aptosis/aptos-framework/blob/ac192d4/packages/aptos-framework/src/code/index.ts#L47">aptos-framework/src/code/index.ts:47</a></li></ul></aside></section>
+<li>Defined in <a href="https://github.com/aptosis/aptos-framework/blob/62335c9/packages/aptos-framework/src/code/index.ts#L50">aptos-framework/src/code/index.ts:50</a></li></ul></aside></section>
 <section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface"><a id="modules" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>modules</span><a href="#modules" aria-label="Permalink" class="tsd-anchor-icon"><svg class="icon icon-tabler icon-tabler-link" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><use href="#icon-anchor-a"></use><use href="#icon-anchor-b"></use><use href="#icon-anchor-c"></use></svg></a></h3>
-<div class="tsd-signature">modules<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">readonly </span><span class="tsd-signature-symbol">{ </span>abi<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">HexStringArg</span><span class="tsd-signature-symbol">; </span>name<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">; </span>source<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">; </span>source_map<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">HexStringArg</span><span class="tsd-signature-symbol"> }</span><span class="tsd-signature-symbol">[]</span></div>
+<div class="tsd-signature">modules<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">readonly </span><span class="tsd-signature-symbol">{ </span>name<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">; </span>source<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">; </span>source_map<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> }</span><span class="tsd-signature-symbol">[]</span></div>
 <div class="tsd-comment tsd-typography"><p>The list of modules installed by this package.</p>
 </div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/aptosis/aptos-framework/blob/ac192d4/packages/aptos-framework/src/code/index.ts#L50">aptos-framework/src/code/index.ts:50</a></li></ul></aside></section>
+<li>Defined in <a href="https://github.com/aptosis/aptos-framework/blob/62335c9/packages/aptos-framework/src/code/index.ts#L53">aptos-framework/src/code/index.ts:53</a></li></ul></aside></section>
 <section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface"><a id="name" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>name</span><a href="#name" aria-label="Permalink" class="tsd-anchor-icon"><svg class="icon icon-tabler icon-tabler-link" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><use href="#icon-anchor-a"></use><use href="#icon-anchor-b"></use><use href="#icon-anchor-c"></use></svg></a></h3>
 <div class="tsd-signature">name<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 <div class="tsd-comment tsd-typography"><p>Name of this package.</p>
 </div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/aptosis/aptos-framework/blob/ac192d4/packages/aptos-framework/src/code/index.ts#L36">aptos-framework/src/code/index.ts:36</a></li></ul></aside></section>
+<li>Defined in <a href="https://github.com/aptosis/aptos-framework/blob/62335c9/packages/aptos-framework/src/code/index.ts#L33">aptos-framework/src/code/index.ts:33</a></li></ul></aside></section>
+<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface"><a id="upgrade_number" class="tsd-anchor"></a>
+<h3 class="tsd-anchor-link"><span>upgrade_<wbr/>number</span><a href="#upgrade_number" aria-label="Permalink" class="tsd-anchor-icon"><svg class="icon icon-tabler icon-tabler-link" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><use href="#icon-anchor-a"></use><use href="#icon-anchor-b"></use><use href="#icon-anchor-c"></use></svg></a></h3>
+<div class="tsd-signature">upgrade_<wbr/>number<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">BigintIsh</span></div>
+<div class="tsd-comment tsd-typography"><p>The numbers of times this module has been upgraded. Also serves as the on-chain version.
+This field will be automatically assigned on successful upgrade.</p>
+</div><aside class="tsd-sources">
+<ul>
+<li>Defined in <a href="https://github.com/aptosis/aptos-framework/blob/62335c9/packages/aptos-framework/src/code/index.ts#L44">aptos-framework/src/code/index.ts:44</a></li></ul></aside></section>
 <section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface"><a id="upgrade_policy" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>upgrade_<wbr/>policy</span><a href="#upgrade_policy" aria-label="Permalink" class="tsd-anchor-icon"><svg class="icon icon-tabler icon-tabler-link" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><use href="#icon-anchor-a"></use><use href="#icon-anchor-b"></use><use href="#icon-anchor-c"></use></svg></a></h3>
 <div class="tsd-signature">upgrade_<wbr/>policy<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">{ </span>policy<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> }</span></div>
@@ -87,7 +104,7 @@
 <li class="tsd-parameter">
 <h5>policy<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span></h5></li></ul></div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/aptosis/aptos-framework/blob/ac192d4/packages/aptos-framework/src/code/index.ts#L39">aptos-framework/src/code/index.ts:39</a></li></ul></aside></section></section></div>
+<li>Defined in <a href="https://github.com/aptosis/aptos-framework/blob/62335c9/packages/aptos-framework/src/code/index.ts#L36">aptos-framework/src/code/index.ts:36</a></li></ul></aside></section></section></div>
 <div class="col-4 col-menu menu-sticky-wrap menu-highlight">
 <div class="tsd-navigation settings">
 <details class="tsd-index-accordion"><summary class="tsd-accordion-summary">
@@ -108,7 +125,7 @@
 <ul>
 <li class="current"><a href="../modules.html">Aptos <wbr/>Framework <wbr/>Type<wbr/>Script SDK</a>
 <ul>
-<li class="current tsd-kind-module"><a href="../modules/_aptosis_aptos_framework.html">@aptosis/aptos-<wbr/>framework -<wbr/> v0.2.5</a>
+<li class="current tsd-kind-module"><a href="../modules/_aptosis_aptos_framework.html">@aptosis/aptos-<wbr/>framework -<wbr/> v0.2.6</a>
 <ul>
 <li class="tsd-kind-namespace tsd-parent-kind-module"><a href="../modules/_aptosis_aptos_framework.aptos_framework_account.html">aptos_<wbr/>framework_<wbr/>account</a>
 <ul>
@@ -116,6 +133,12 @@
 <li class="tsd-kind-namespace tsd-parent-kind-namespace"><a href="../modules/_aptosis_aptos_framework.aptos_framework_account.entryNames.html">entry<wbr/>Names</a></li>
 <li class="tsd-kind-namespace tsd-parent-kind-namespace"><a href="../modules/_aptosis_aptos_framework.aptos_framework_account.errors.html">errors</a></li>
 <li class="tsd-kind-namespace tsd-parent-kind-namespace"><a href="../modules/_aptosis_aptos_framework.aptos_framework_account.payloads.html">payloads</a></li></ul></li>
+<li class="tsd-kind-namespace tsd-parent-kind-module"><a href="../modules/_aptosis_aptos_framework.aptos_framework_aggregator.html">aptos_<wbr/>framework_<wbr/>aggregator</a>
+<ul>
+<li class="tsd-kind-namespace tsd-parent-kind-namespace"><a href="../modules/_aptosis_aptos_framework.aptos_framework_aggregator.errors.html">errors</a></li></ul></li>
+<li class="tsd-kind-namespace tsd-parent-kind-module"><a href="../modules/_aptosis_aptos_framework.aptos_framework_aggregator_factory.html">aptos_<wbr/>framework_<wbr/>aggregator_<wbr/>factory</a>
+<ul>
+<li class="tsd-kind-namespace tsd-parent-kind-namespace"><a href="../modules/_aptosis_aptos_framework.aptos_framework_aggregator_factory.errors.html">errors</a></li></ul></li>
 <li class="tsd-kind-namespace tsd-parent-kind-module"><a href="../modules/_aptosis_aptos_framework.aptos_framework_aptos_coin.html">aptos_<wbr/>framework_<wbr/>aptos_<wbr/>coin</a>
 <ul>
 <li class="tsd-kind-namespace tsd-parent-kind-namespace"><a href="../modules/_aptosis_aptos_framework.aptos_framework_aptos_coin.entry.html">entry</a></li>
@@ -134,9 +157,7 @@
 <li class="tsd-kind-namespace tsd-parent-kind-module"><a href="../modules/_aptosis_aptos_framework.aptos_framework_bucket_table.html">aptos_<wbr/>framework_<wbr/>bucket_<wbr/>table</a>
 <ul>
 <li class="tsd-kind-namespace tsd-parent-kind-namespace"><a href="../modules/_aptosis_aptos_framework.aptos_framework_bucket_table.errors.html">errors</a></li></ul></li>
-<li class="tsd-kind-namespace tsd-parent-kind-module"><a href="../modules/_aptosis_aptos_framework.aptos_framework_chain_id.html">aptos_<wbr/>framework_<wbr/>chain_<wbr/>id</a>
-<ul>
-<li class="tsd-kind-namespace tsd-parent-kind-namespace"><a href="../modules/_aptosis_aptos_framework.aptos_framework_chain_id.errors.html">errors</a></li></ul></li>
+<li class="tsd-kind-namespace tsd-parent-kind-module"><a href="../modules/_aptosis_aptos_framework.aptos_framework_chain_id.html">aptos_<wbr/>framework_<wbr/>chain_<wbr/>id</a></li>
 <li class="current tsd-kind-namespace tsd-parent-kind-module"><a href="../modules/_aptosis_aptos_framework.aptos_framework_code.html">aptos_<wbr/>framework_<wbr/>code</a>
 <ul>
 <li class="tsd-kind-namespace tsd-parent-kind-namespace"><a href="../modules/_aptosis_aptos_framework.aptos_framework_code.entry.html">entry</a></li>
@@ -163,24 +184,20 @@
 <li class="tsd-kind-namespace tsd-parent-kind-namespace"><a href="../modules/_aptosis_aptos_framework.aptos_framework_gas_schedule.entryNames.html">entry<wbr/>Names</a></li>
 <li class="tsd-kind-namespace tsd-parent-kind-namespace"><a href="../modules/_aptosis_aptos_framework.aptos_framework_gas_schedule.errors.html">errors</a></li>
 <li class="tsd-kind-namespace tsd-parent-kind-namespace"><a href="../modules/_aptosis_aptos_framework.aptos_framework_gas_schedule.payloads.html">payloads</a></li></ul></li>
-<li class="tsd-kind-namespace tsd-parent-kind-module"><a href="../modules/_aptosis_aptos_framework.aptos_framework_genesis.html">aptos_<wbr/>framework_<wbr/>genesis</a>
-<ul>
-<li class="tsd-kind-namespace tsd-parent-kind-namespace"><a href="../modules/_aptosis_aptos_framework.aptos_framework_genesis.errors.html">errors</a></li></ul></li>
-<li class="tsd-kind-namespace tsd-parent-kind-module"><a href="../modules/_aptosis_aptos_framework.aptos_framework_governance_proposal.html">aptos_<wbr/>framework_<wbr/>governance_<wbr/>proposal</a>
-<ul>
-<li class="tsd-kind-namespace tsd-parent-kind-namespace"><a href="../modules/_aptosis_aptos_framework.aptos_framework_governance_proposal.errors.html">errors</a></li></ul></li>
+<li class="tsd-kind-namespace tsd-parent-kind-module"><a href="../modules/_aptosis_aptos_framework.aptos_framework_genesis.html">aptos_<wbr/>framework_<wbr/>genesis</a></li>
+<li class="tsd-kind-namespace tsd-parent-kind-module"><a href="../modules/_aptosis_aptos_framework.aptos_framework_governance_proposal.html">aptos_<wbr/>framework_<wbr/>governance_<wbr/>proposal</a></li>
 <li class="tsd-kind-namespace tsd-parent-kind-module"><a href="../modules/_aptosis_aptos_framework.aptos_framework_managed_coin.html">aptos_<wbr/>framework_<wbr/>managed_<wbr/>coin</a>
 <ul>
 <li class="tsd-kind-namespace tsd-parent-kind-namespace"><a href="../modules/_aptosis_aptos_framework.aptos_framework_managed_coin.entry.html">entry</a></li>
 <li class="tsd-kind-namespace tsd-parent-kind-namespace"><a href="../modules/_aptosis_aptos_framework.aptos_framework_managed_coin.entryNames.html">entry<wbr/>Names</a></li>
 <li class="tsd-kind-namespace tsd-parent-kind-namespace"><a href="../modules/_aptosis_aptos_framework.aptos_framework_managed_coin.errors.html">errors</a></li>
 <li class="tsd-kind-namespace tsd-parent-kind-namespace"><a href="../modules/_aptosis_aptos_framework.aptos_framework_managed_coin.payloads.html">payloads</a></li></ul></li>
+<li class="tsd-kind-namespace tsd-parent-kind-module"><a href="../modules/_aptosis_aptos_framework.aptos_framework_optional_aggregator.html">aptos_<wbr/>framework_<wbr/>optional_<wbr/>aggregator</a>
+<ul>
+<li class="tsd-kind-namespace tsd-parent-kind-namespace"><a href="../modules/_aptosis_aptos_framework.aptos_framework_optional_aggregator.errors.html">errors</a></li></ul></li>
 <li class="tsd-kind-namespace tsd-parent-kind-module"><a href="../modules/_aptosis_aptos_framework.aptos_framework_reconfiguration.html">aptos_<wbr/>framework_<wbr/>reconfiguration</a>
 <ul>
-<li class="tsd-kind-namespace tsd-parent-kind-namespace"><a href="../modules/_aptosis_aptos_framework.aptos_framework_reconfiguration.entry.html">entry</a></li>
-<li class="tsd-kind-namespace tsd-parent-kind-namespace"><a href="../modules/_aptosis_aptos_framework.aptos_framework_reconfiguration.entryNames.html">entry<wbr/>Names</a></li>
-<li class="tsd-kind-namespace tsd-parent-kind-namespace"><a href="../modules/_aptosis_aptos_framework.aptos_framework_reconfiguration.errors.html">errors</a></li>
-<li class="tsd-kind-namespace tsd-parent-kind-namespace"><a href="../modules/_aptosis_aptos_framework.aptos_framework_reconfiguration.payloads.html">payloads</a></li></ul></li>
+<li class="tsd-kind-namespace tsd-parent-kind-namespace"><a href="../modules/_aptosis_aptos_framework.aptos_framework_reconfiguration.errors.html">errors</a></li></ul></li>
 <li class="tsd-kind-namespace tsd-parent-kind-module"><a href="../modules/_aptosis_aptos_framework.aptos_framework_resource_account.html">aptos_<wbr/>framework_<wbr/>resource_<wbr/>account</a>
 <ul>
 <li class="tsd-kind-namespace tsd-parent-kind-namespace"><a href="../modules/_aptosis_aptos_framework.aptos_framework_resource_account.entry.html">entry</a></li>
@@ -214,11 +231,15 @@
 <li class="tsd-kind-namespace tsd-parent-kind-module"><a href="../modules/_aptosis_aptos_framework.aptos_framework_voting.html">aptos_<wbr/>framework_<wbr/>voting</a>
 <ul>
 <li class="tsd-kind-namespace tsd-parent-kind-namespace"><a href="../modules/_aptosis_aptos_framework.aptos_framework_voting.errors.html">errors</a></li></ul></li></ul></li>
-<li class="tsd-kind-module"><a href="../modules/_aptosis_aptos_stdlib.html">@aptosis/aptos-<wbr/>stdlib -<wbr/> v0.2.5</a>
+<li class="tsd-kind-module"><a href="../modules/_aptosis_aptos_stdlib.html">@aptosis/aptos-<wbr/>stdlib -<wbr/> v0.2.6</a>
 <ul>
+<li class="tsd-kind-namespace tsd-parent-kind-module"><a href="../modules/_aptosis_aptos_stdlib.aptos_stdlib_aptos_hash.html">aptos_<wbr/>stdlib_<wbr/>aptos_<wbr/>hash</a></li>
 <li class="tsd-kind-namespace tsd-parent-kind-module"><a href="../modules/_aptosis_aptos_stdlib.aptos_stdlib_big_vector.html">aptos_<wbr/>stdlib_<wbr/>big_<wbr/>vector</a>
 <ul>
 <li class="tsd-kind-namespace tsd-parent-kind-namespace"><a href="../modules/_aptosis_aptos_stdlib.aptos_stdlib_big_vector.errors.html">errors</a></li></ul></li>
+<li class="tsd-kind-namespace tsd-parent-kind-module"><a href="../modules/_aptosis_aptos_stdlib.aptos_stdlib_bls12381.html">aptos_<wbr/>stdlib_<wbr/>bls12381</a>
+<ul>
+<li class="tsd-kind-namespace tsd-parent-kind-namespace"><a href="../modules/_aptosis_aptos_stdlib.aptos_stdlib_bls12381.errors.html">errors</a></li></ul></li>
 <li class="tsd-kind-namespace tsd-parent-kind-module"><a href="../modules/_aptosis_aptos_stdlib.aptos_stdlib_capability.html">aptos_<wbr/>stdlib_<wbr/>capability</a>
 <ul>
 <li class="tsd-kind-namespace tsd-parent-kind-namespace"><a href="../modules/_aptosis_aptos_stdlib.aptos_stdlib_capability.errors.html">errors</a></li></ul></li>
@@ -226,23 +247,26 @@
 <ul>
 <li class="tsd-kind-namespace tsd-parent-kind-namespace"><a href="../modules/_aptosis_aptos_stdlib.aptos_stdlib_comparator.errors.html">errors</a></li></ul></li>
 <li class="tsd-kind-namespace tsd-parent-kind-module"><a href="../modules/_aptosis_aptos_stdlib.aptos_stdlib_debug.html">aptos_<wbr/>stdlib_<wbr/>debug</a></li>
+<li class="tsd-kind-namespace tsd-parent-kind-module"><a href="../modules/_aptosis_aptos_stdlib.aptos_stdlib_ed25519.html">aptos_<wbr/>stdlib_<wbr/>ed25519</a>
+<ul>
+<li class="tsd-kind-namespace tsd-parent-kind-namespace"><a href="../modules/_aptosis_aptos_stdlib.aptos_stdlib_ed25519.errors.html">errors</a></li></ul></li>
 <li class="tsd-kind-namespace tsd-parent-kind-module"><a href="../modules/_aptosis_aptos_stdlib.aptos_stdlib_event.html">aptos_<wbr/>stdlib_<wbr/>event</a></li>
 <li class="tsd-kind-namespace tsd-parent-kind-module"><a href="../modules/_aptosis_aptos_stdlib.aptos_stdlib_guid.html">aptos_<wbr/>stdlib_<wbr/>guid</a>
 <ul>
 <li class="tsd-kind-namespace tsd-parent-kind-namespace"><a href="../modules/_aptosis_aptos_stdlib.aptos_stdlib_guid.errors.html">errors</a></li></ul></li>
 <li class="tsd-kind-namespace tsd-parent-kind-module"><a href="../modules/_aptosis_aptos_stdlib.aptos_stdlib_iterable_table.html">aptos_<wbr/>stdlib_<wbr/>iterable_<wbr/>table</a></li>
-<li class="tsd-kind-namespace tsd-parent-kind-module"><a href="../modules/_aptosis_aptos_stdlib.aptos_stdlib_signature.html">aptos_<wbr/>stdlib_<wbr/>signature</a></li>
+<li class="tsd-kind-namespace tsd-parent-kind-module"><a href="../modules/_aptosis_aptos_stdlib.aptos_stdlib_secp256k1.html">aptos_<wbr/>stdlib_<wbr/>secp256k1</a>
+<ul>
+<li class="tsd-kind-namespace tsd-parent-kind-namespace"><a href="../modules/_aptosis_aptos_stdlib.aptos_stdlib_secp256k1.errors.html">errors</a></li></ul></li>
 <li class="tsd-kind-namespace tsd-parent-kind-module"><a href="../modules/_aptosis_aptos_stdlib.aptos_stdlib_simple_map.html">aptos_<wbr/>stdlib_<wbr/>simple_<wbr/>map</a>
 <ul>
 <li class="tsd-kind-namespace tsd-parent-kind-namespace"><a href="../modules/_aptosis_aptos_stdlib.aptos_stdlib_simple_map.errors.html">errors</a></li></ul></li>
-<li class="tsd-kind-namespace tsd-parent-kind-module"><a href="../modules/_aptosis_aptos_stdlib.aptos_stdlib_table.html">aptos_<wbr/>stdlib_<wbr/>table</a>
-<ul>
-<li class="tsd-kind-namespace tsd-parent-kind-namespace"><a href="../modules/_aptosis_aptos_stdlib.aptos_stdlib_table.errors.html">errors</a></li></ul></li>
+<li class="tsd-kind-namespace tsd-parent-kind-module"><a href="../modules/_aptosis_aptos_stdlib.aptos_stdlib_table.html">aptos_<wbr/>stdlib_<wbr/>table</a></li>
 <li class="tsd-kind-namespace tsd-parent-kind-module"><a href="../modules/_aptosis_aptos_stdlib.aptos_stdlib_table_with_length.html">aptos_<wbr/>stdlib_<wbr/>table_<wbr/>with_<wbr/>length</a>
 <ul>
 <li class="tsd-kind-namespace tsd-parent-kind-namespace"><a href="../modules/_aptosis_aptos_stdlib.aptos_stdlib_table_with_length.errors.html">errors</a></li></ul></li>
 <li class="tsd-kind-namespace tsd-parent-kind-module"><a href="../modules/_aptosis_aptos_stdlib.aptos_stdlib_type_info.html">aptos_<wbr/>stdlib_<wbr/>type_<wbr/>info</a></li></ul></li>
-<li class="tsd-kind-module"><a href="../modules/_aptosis_aptos_token.html">@aptosis/aptos-<wbr/>token -<wbr/> v0.2.5</a>
+<li class="tsd-kind-module"><a href="../modules/_aptosis_aptos_token.html">@aptosis/aptos-<wbr/>token -<wbr/> v0.2.6</a>
 <ul>
 <li class="tsd-kind-namespace tsd-parent-kind-module"><a href="../modules/_aptosis_aptos_token.aptos_token_property_map.html">aptos_<wbr/>token_<wbr/>property_<wbr/>map</a>
 <ul>
@@ -257,7 +281,7 @@
 <ul>
 <li class="tsd-kind-namespace tsd-parent-kind-namespace"><a href="../modules/_aptosis_aptos_token.aptos_token_token_coin_swap.errors.html">errors</a></li></ul></li>
 <li class="tsd-kind-namespace tsd-parent-kind-module"><a href="../modules/_aptosis_aptos_token.aptos_token_token_transfers.html">aptos_<wbr/>token_<wbr/>token_<wbr/>transfers</a></li></ul></li>
-<li class="tsd-kind-module"><a href="../modules/_aptosis_move_stdlib.html">@aptosis/move-<wbr/>stdlib -<wbr/> v0.2.5</a>
+<li class="tsd-kind-module"><a href="../modules/_aptosis_move_stdlib.html">@aptosis/move-<wbr/>stdlib -<wbr/> v0.2.6</a>
 <ul>
 <li class="tsd-kind-namespace tsd-parent-kind-module"><a href="../modules/_aptosis_move_stdlib.move_stdlib_acl.html">move_<wbr/>stdlib_<wbr/>acl</a>
 <ul>
@@ -285,11 +309,13 @@
 <ul>
 <li class="current tsd-kind-interface tsd-parent-kind-namespace"><a href="_aptosis_aptos_framework.aptos_framework_code.IPackageMetadata.html" class="tsd-index-link"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><rect fill="var(--color-icon-background)" stroke="var(--color-ts-interface)" stroke-width="1.5" x="1" y="1" width="22" height="22" rx="6" id="icon-256-path"></rect><path d="M9.51 16V15.016H11.298V8.224H9.51V7.24H14.19V8.224H12.402V15.016H14.19V16H9.51Z" fill="var(--color-text)" id="icon-256-text"></path></svg><span>IPackage<wbr/>Metadata</span></a>
 <ul>
+<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_aptosis_aptos_framework.aptos_framework_code.IPackageMetadata.html#abis" class="tsd-index-link"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-1024-path"></use><use href="#icon-1024-text"></use></svg>abis</a></li>
 <li class="tsd-kind-property tsd-parent-kind-interface"><a href="_aptosis_aptos_framework.aptos_framework_code.IPackageMetadata.html#build_info" class="tsd-index-link"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-1024-path"></use><use href="#icon-1024-text"></use></svg>build_<wbr/>info</a></li>
 <li class="tsd-kind-property tsd-parent-kind-interface"><a href="_aptosis_aptos_framework.aptos_framework_code.IPackageMetadata.html#error_map" class="tsd-index-link"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-1024-path"></use><use href="#icon-1024-text"></use></svg>error_<wbr/>map</a></li>
 <li class="tsd-kind-property tsd-parent-kind-interface"><a href="_aptosis_aptos_framework.aptos_framework_code.IPackageMetadata.html#manifest" class="tsd-index-link"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-1024-path"></use><use href="#icon-1024-text"></use></svg>manifest</a></li>
 <li class="tsd-kind-property tsd-parent-kind-interface"><a href="_aptosis_aptos_framework.aptos_framework_code.IPackageMetadata.html#modules" class="tsd-index-link"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-1024-path"></use><use href="#icon-1024-text"></use></svg>modules</a></li>
 <li class="tsd-kind-property tsd-parent-kind-interface"><a href="_aptosis_aptos_framework.aptos_framework_code.IPackageMetadata.html#name" class="tsd-index-link"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-1024-path"></use><use href="#icon-1024-text"></use></svg>name</a></li>
+<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_aptosis_aptos_framework.aptos_framework_code.IPackageMetadata.html#upgrade_number" class="tsd-index-link"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-1024-path"></use><use href="#icon-1024-text"></use></svg>upgrade_<wbr/>number</a></li>
 <li class="tsd-kind-property tsd-parent-kind-interface"><a href="_aptosis_aptos_framework.aptos_framework_code.IPackageMetadata.html#upgrade_policy" class="tsd-index-link"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-1024-path"></use><use href="#icon-1024-text"></use></svg>upgrade_<wbr/>policy</a></li></ul></li></ul></nav></div></div>
 <div class="container tsd-generator">
 <p>Generated using <a href="https://typedoc.org/" target="_blank">TypeDoc</a></p></div>

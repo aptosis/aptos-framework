@@ -37,7 +37,7 @@ Any pending_active stake is moved to active and adds to the validator&#39;s voti
 <ul class="tsd-hierarchy">
 <li><span class="target">IStakePool</span></li></ul></section><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/aptosis/aptos-framework/blob/ac192d4/packages/aptos-framework/src/stake/index.ts#L120">aptos-framework/src/stake/index.ts:120</a></li></ul></aside>
+<li>Defined in <a href="https://github.com/aptosis/aptos-framework/blob/62335c9/packages/aptos-framework/src/stake/index.ts#L126">aptos-framework/src/stake/index.ts:126</a></li></ul></aside>
 <section class="tsd-panel-group tsd-index-group">
 <section class="tsd-panel tsd-index-panel">
 <details class="tsd-index-content tsd-index-accordion" open><summary class="tsd-accordion-summary tsd-index-summary">
@@ -58,6 +58,7 @@ Any pending_active stake is moved to active and adds to the validator&#39;s voti
 <a href="_aptosis_aptos_framework.aptos_framework_stake.IStakePool.html#operator_address" class="tsd-index-link tsd-kind-property tsd-parent-kind-interface"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-1024-path"></use><use href="#icon-1024-text"></use></svg><span>operator_<wbr/>address</span></a>
 <a href="_aptosis_aptos_framework.aptos_framework_stake.IStakePool.html#pending_active" class="tsd-index-link tsd-kind-property tsd-parent-kind-interface"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-1024-path"></use><use href="#icon-1024-text"></use></svg><span>pending_<wbr/>active</span></a>
 <a href="_aptosis_aptos_framework.aptos_framework_stake.IStakePool.html#pending_inactive" class="tsd-index-link tsd-kind-property tsd-parent-kind-interface"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-1024-path"></use><use href="#icon-1024-text"></use></svg><span>pending_<wbr/>inactive</span></a>
+<a href="_aptosis_aptos_framework.aptos_framework_stake.IStakePool.html#reactivate_stake_events" class="tsd-index-link tsd-kind-property tsd-parent-kind-interface"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-1024-path"></use><use href="#icon-1024-text"></use></svg><span>reactivate_<wbr/>stake_<wbr/>events</span></a>
 <a href="_aptosis_aptos_framework.aptos_framework_stake.IStakePool.html#rotate_consensus_key_events" class="tsd-index-link tsd-kind-property tsd-parent-kind-interface"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-1024-path"></use><use href="#icon-1024-text"></use></svg><span>rotate_<wbr/>consensus_<wbr/>key_<wbr/>events</span></a>
 <a href="_aptosis_aptos_framework.aptos_framework_stake.IStakePool.html#set_operator_events" class="tsd-index-link tsd-kind-property tsd-parent-kind-interface"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-1024-path"></use><use href="#icon-1024-text"></use></svg><span>set_<wbr/>operator_<wbr/>events</span></a>
 <a href="_aptosis_aptos_framework.aptos_framework_stake.IStakePool.html#unlock_stake_events" class="tsd-index-link tsd-kind-property tsd-parent-kind-interface"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-1024-path"></use><use href="#icon-1024-text"></use></svg><span>unlock_<wbr/>stake_<wbr/>events</span></a>
@@ -77,7 +78,7 @@ Any pending_active stake is moved to active and adds to the validator&#39;s voti
 <div class="tsd-comment tsd-typography"><p>Amount of coin this address has.</p>
 </div></li></ul></div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/aptosis/aptos-framework/blob/ac192d4/packages/aptos-framework/src/stake/index.ts#L121">aptos-framework/src/stake/index.ts:121</a></li></ul></aside></section>
+<li>Defined in <a href="https://github.com/aptosis/aptos-framework/blob/62335c9/packages/aptos-framework/src/stake/index.ts#L127">aptos-framework/src/stake/index.ts:127</a></li></ul></aside></section>
 <section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface"><a id="add_stake_events" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>add_<wbr/>stake_<wbr/>events</span><a href="#add_stake_events" aria-label="Permalink" class="tsd-anchor-icon"><svg class="icon icon-tabler icon-tabler-link" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><use href="#icon-anchor-a"></use><use href="#icon-anchor-b"></use><use href="#icon-anchor-c"></use></svg></a></h3>
 <div class="tsd-signature">add_<wbr/>stake_<wbr/>events<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">{ </span>counter<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">BigintIsh</span><span class="tsd-signature-symbol">; </span>guid<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">{ </span>id<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">{ </span>addr<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">HexStringArg</span><span class="tsd-signature-symbol">; </span>creation_num<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">BigintIsh</span><span class="tsd-signature-symbol"> }</span><span class="tsd-signature-symbol"> }</span><span class="tsd-signature-symbol"> }</span></div>
@@ -105,12 +106,12 @@ Any pending_active stake is moved to active and adds to the validator&#39;s voti
 <div class="tsd-comment tsd-typography"><p>If creation_num is <code>i</code>, this is the <code>i+1</code>th GUID created by <code>addr</code></p>
 </div></li></ul></li></ul></li></ul></div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/aptosis/aptos-framework/blob/ac192d4/packages/aptos-framework/src/stake/index.ts#L170">aptos-framework/src/stake/index.ts:170</a></li></ul></aside></section>
+<li>Defined in <a href="https://github.com/aptosis/aptos-framework/blob/62335c9/packages/aptos-framework/src/stake/index.ts#L176">aptos-framework/src/stake/index.ts:176</a></li></ul></aside></section>
 <section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface"><a id="delegated_voter" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>delegated_<wbr/>voter</span><a href="#delegated_voter" aria-label="Permalink" class="tsd-anchor-icon"><svg class="icon icon-tabler icon-tabler-link" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><use href="#icon-anchor-a"></use><use href="#icon-anchor-b"></use><use href="#icon-anchor-c"></use></svg></a></h3>
 <div class="tsd-signature">delegated_<wbr/>voter<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">HexStringArg</span></div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/aptosis/aptos-framework/blob/ac192d4/packages/aptos-framework/src/stake/index.ts#L139">aptos-framework/src/stake/index.ts:139</a></li></ul></aside></section>
+<li>Defined in <a href="https://github.com/aptosis/aptos-framework/blob/62335c9/packages/aptos-framework/src/stake/index.ts#L145">aptos-framework/src/stake/index.ts:145</a></li></ul></aside></section>
 <section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface"><a id="distribute_rewards_events" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>distribute_<wbr/>rewards_<wbr/>events</span><a href="#distribute_rewards_events" aria-label="Permalink" class="tsd-anchor-icon"><svg class="icon icon-tabler icon-tabler-link" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><use href="#icon-anchor-a"></use><use href="#icon-anchor-b"></use><use href="#icon-anchor-c"></use></svg></a></h3>
 <div class="tsd-signature">distribute_<wbr/>rewards_<wbr/>events<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">{ </span>counter<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">BigintIsh</span><span class="tsd-signature-symbol">; </span>guid<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">{ </span>id<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">{ </span>addr<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">HexStringArg</span><span class="tsd-signature-symbol">; </span>creation_num<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">BigintIsh</span><span class="tsd-signature-symbol"> }</span><span class="tsd-signature-symbol"> }</span><span class="tsd-signature-symbol"> }</span></div>
@@ -138,7 +139,7 @@ Any pending_active stake is moved to active and adds to the validator&#39;s voti
 <div class="tsd-comment tsd-typography"><p>If creation_num is <code>i</code>, this is the <code>i+1</code>th GUID created by <code>addr</code></p>
 </div></li></ul></li></ul></li></ul></div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/aptosis/aptos-framework/blob/ac192d4/packages/aptos-framework/src/stake/index.ts#L245">aptos-framework/src/stake/index.ts:245</a></li></ul></aside></section>
+<li>Defined in <a href="https://github.com/aptosis/aptos-framework/blob/62335c9/packages/aptos-framework/src/stake/index.ts#L266">aptos-framework/src/stake/index.ts:266</a></li></ul></aside></section>
 <section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface"><a id="inactive" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>inactive</span><a href="#inactive" aria-label="Permalink" class="tsd-anchor-icon"><svg class="icon icon-tabler icon-tabler-link" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><use href="#icon-anchor-a"></use><use href="#icon-anchor-b"></use><use href="#icon-anchor-c"></use></svg></a></h3>
 <div class="tsd-signature">inactive<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">{ </span>value<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">BigintIsh</span><span class="tsd-signature-symbol"> }</span></div>
@@ -150,7 +151,7 @@ Any pending_active stake is moved to active and adds to the validator&#39;s voti
 <div class="tsd-comment tsd-typography"><p>Amount of coin this address has.</p>
 </div></li></ul></div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/aptosis/aptos-framework/blob/ac192d4/packages/aptos-framework/src/stake/index.ts#L125">aptos-framework/src/stake/index.ts:125</a></li></ul></aside></section>
+<li>Defined in <a href="https://github.com/aptosis/aptos-framework/blob/62335c9/packages/aptos-framework/src/stake/index.ts#L131">aptos-framework/src/stake/index.ts:131</a></li></ul></aside></section>
 <section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface"><a id="increase_lockup_events" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>increase_<wbr/>lockup_<wbr/>events</span><a href="#increase_lockup_events" aria-label="Permalink" class="tsd-anchor-icon"><svg class="icon icon-tabler icon-tabler-link" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><use href="#icon-anchor-a"></use><use href="#icon-anchor-b"></use><use href="#icon-anchor-c"></use></svg></a></h3>
 <div class="tsd-signature">increase_<wbr/>lockup_<wbr/>events<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">{ </span>counter<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">BigintIsh</span><span class="tsd-signature-symbol">; </span>guid<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">{ </span>id<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">{ </span>addr<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">HexStringArg</span><span class="tsd-signature-symbol">; </span>creation_num<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">BigintIsh</span><span class="tsd-signature-symbol"> }</span><span class="tsd-signature-symbol"> }</span><span class="tsd-signature-symbol"> }</span></div>
@@ -178,7 +179,7 @@ Any pending_active stake is moved to active and adds to the validator&#39;s voti
 <div class="tsd-comment tsd-typography"><p>If creation_num is <code>i</code>, this is the <code>i+1</code>th GUID created by <code>addr</code></p>
 </div></li></ul></li></ul></li></ul></div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/aptosis/aptos-framework/blob/ac192d4/packages/aptos-framework/src/stake/index.ts#L215">aptos-framework/src/stake/index.ts:215</a></li></ul></aside></section>
+<li>Defined in <a href="https://github.com/aptosis/aptos-framework/blob/62335c9/packages/aptos-framework/src/stake/index.ts#L236">aptos-framework/src/stake/index.ts:236</a></li></ul></aside></section>
 <section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface"><a id="initialize_validator_events" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>initialize_<wbr/>validator_<wbr/>events</span><a href="#initialize_validator_events" aria-label="Permalink" class="tsd-anchor-icon"><svg class="icon icon-tabler icon-tabler-link" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><use href="#icon-anchor-a"></use><use href="#icon-anchor-b"></use><use href="#icon-anchor-c"></use></svg></a></h3>
 <div class="tsd-signature">initialize_<wbr/>validator_<wbr/>events<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">{ </span>counter<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">BigintIsh</span><span class="tsd-signature-symbol">; </span>guid<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">{ </span>id<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">{ </span>addr<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">HexStringArg</span><span class="tsd-signature-symbol">; </span>creation_num<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">BigintIsh</span><span class="tsd-signature-symbol"> }</span><span class="tsd-signature-symbol"> }</span><span class="tsd-signature-symbol"> }</span></div>
@@ -206,7 +207,7 @@ Any pending_active stake is moved to active and adds to the validator&#39;s voti
 <div class="tsd-comment tsd-typography"><p>If creation_num is <code>i</code>, this is the <code>i+1</code>th GUID created by <code>addr</code></p>
 </div></li></ul></li></ul></li></ul></div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/aptosis/aptos-framework/blob/ac192d4/packages/aptos-framework/src/stake/index.ts#L140">aptos-framework/src/stake/index.ts:140</a></li></ul></aside></section>
+<li>Defined in <a href="https://github.com/aptosis/aptos-framework/blob/62335c9/packages/aptos-framework/src/stake/index.ts#L146">aptos-framework/src/stake/index.ts:146</a></li></ul></aside></section>
 <section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface"><a id="join_validator_set_events" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>join_<wbr/>validator_<wbr/>set_<wbr/>events</span><a href="#join_validator_set_events" aria-label="Permalink" class="tsd-anchor-icon"><svg class="icon icon-tabler icon-tabler-link" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><use href="#icon-anchor-a"></use><use href="#icon-anchor-b"></use><use href="#icon-anchor-c"></use></svg></a></h3>
 <div class="tsd-signature">join_<wbr/>validator_<wbr/>set_<wbr/>events<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">{ </span>counter<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">BigintIsh</span><span class="tsd-signature-symbol">; </span>guid<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">{ </span>id<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">{ </span>addr<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">HexStringArg</span><span class="tsd-signature-symbol">; </span>creation_num<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">BigintIsh</span><span class="tsd-signature-symbol"> }</span><span class="tsd-signature-symbol"> }</span><span class="tsd-signature-symbol"> }</span></div>
@@ -234,7 +235,7 @@ Any pending_active stake is moved to active and adds to the validator&#39;s voti
 <div class="tsd-comment tsd-typography"><p>If creation_num is <code>i</code>, this is the <code>i+1</code>th GUID created by <code>addr</code></p>
 </div></li></ul></li></ul></li></ul></div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/aptosis/aptos-framework/blob/ac192d4/packages/aptos-framework/src/stake/index.ts#L230">aptos-framework/src/stake/index.ts:230</a></li></ul></aside></section>
+<li>Defined in <a href="https://github.com/aptosis/aptos-framework/blob/62335c9/packages/aptos-framework/src/stake/index.ts#L251">aptos-framework/src/stake/index.ts:251</a></li></ul></aside></section>
 <section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface"><a id="leave_validator_set_events" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>leave_<wbr/>validator_<wbr/>set_<wbr/>events</span><a href="#leave_validator_set_events" aria-label="Permalink" class="tsd-anchor-icon"><svg class="icon icon-tabler icon-tabler-link" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><use href="#icon-anchor-a"></use><use href="#icon-anchor-b"></use><use href="#icon-anchor-c"></use></svg></a></h3>
 <div class="tsd-signature">leave_<wbr/>validator_<wbr/>set_<wbr/>events<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">{ </span>counter<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">BigintIsh</span><span class="tsd-signature-symbol">; </span>guid<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">{ </span>id<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">{ </span>addr<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">HexStringArg</span><span class="tsd-signature-symbol">; </span>creation_num<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">BigintIsh</span><span class="tsd-signature-symbol"> }</span><span class="tsd-signature-symbol"> }</span><span class="tsd-signature-symbol"> }</span></div>
@@ -262,17 +263,17 @@ Any pending_active stake is moved to active and adds to the validator&#39;s voti
 <div class="tsd-comment tsd-typography"><p>If creation_num is <code>i</code>, this is the <code>i+1</code>th GUID created by <code>addr</code></p>
 </div></li></ul></li></ul></li></ul></div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/aptosis/aptos-framework/blob/ac192d4/packages/aptos-framework/src/stake/index.ts#L290">aptos-framework/src/stake/index.ts:290</a></li></ul></aside></section>
+<li>Defined in <a href="https://github.com/aptosis/aptos-framework/blob/62335c9/packages/aptos-framework/src/stake/index.ts#L311">aptos-framework/src/stake/index.ts:311</a></li></ul></aside></section>
 <section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface"><a id="locked_until_secs" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>locked_<wbr/>until_<wbr/>secs</span><a href="#locked_until_secs" aria-label="Permalink" class="tsd-anchor-icon"><svg class="icon icon-tabler icon-tabler-link" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><use href="#icon-anchor-a"></use><use href="#icon-anchor-b"></use><use href="#icon-anchor-c"></use></svg></a></h3>
 <div class="tsd-signature">locked_<wbr/>until_<wbr/>secs<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">BigintIsh</span></div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/aptosis/aptos-framework/blob/ac192d4/packages/aptos-framework/src/stake/index.ts#L137">aptos-framework/src/stake/index.ts:137</a></li></ul></aside></section>
+<li>Defined in <a href="https://github.com/aptosis/aptos-framework/blob/62335c9/packages/aptos-framework/src/stake/index.ts#L143">aptos-framework/src/stake/index.ts:143</a></li></ul></aside></section>
 <section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface"><a id="operator_address" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>operator_<wbr/>address</span><a href="#operator_address" aria-label="Permalink" class="tsd-anchor-icon"><svg class="icon icon-tabler icon-tabler-link" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><use href="#icon-anchor-a"></use><use href="#icon-anchor-b"></use><use href="#icon-anchor-c"></use></svg></a></h3>
 <div class="tsd-signature">operator_<wbr/>address<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">HexStringArg</span></div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/aptosis/aptos-framework/blob/ac192d4/packages/aptos-framework/src/stake/index.ts#L138">aptos-framework/src/stake/index.ts:138</a></li></ul></aside></section>
+<li>Defined in <a href="https://github.com/aptosis/aptos-framework/blob/62335c9/packages/aptos-framework/src/stake/index.ts#L144">aptos-framework/src/stake/index.ts:144</a></li></ul></aside></section>
 <section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface"><a id="pending_active" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>pending_<wbr/>active</span><a href="#pending_active" aria-label="Permalink" class="tsd-anchor-icon"><svg class="icon icon-tabler icon-tabler-link" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><use href="#icon-anchor-a"></use><use href="#icon-anchor-b"></use><use href="#icon-anchor-c"></use></svg></a></h3>
 <div class="tsd-signature">pending_<wbr/>active<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">{ </span>value<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">BigintIsh</span><span class="tsd-signature-symbol"> }</span></div>
@@ -284,7 +285,7 @@ Any pending_active stake is moved to active and adds to the validator&#39;s voti
 <div class="tsd-comment tsd-typography"><p>Amount of coin this address has.</p>
 </div></li></ul></div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/aptosis/aptos-framework/blob/ac192d4/packages/aptos-framework/src/stake/index.ts#L129">aptos-framework/src/stake/index.ts:129</a></li></ul></aside></section>
+<li>Defined in <a href="https://github.com/aptosis/aptos-framework/blob/62335c9/packages/aptos-framework/src/stake/index.ts#L135">aptos-framework/src/stake/index.ts:135</a></li></ul></aside></section>
 <section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface"><a id="pending_inactive" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>pending_<wbr/>inactive</span><a href="#pending_inactive" aria-label="Permalink" class="tsd-anchor-icon"><svg class="icon icon-tabler icon-tabler-link" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><use href="#icon-anchor-a"></use><use href="#icon-anchor-b"></use><use href="#icon-anchor-c"></use></svg></a></h3>
 <div class="tsd-signature">pending_<wbr/>inactive<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">{ </span>value<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">BigintIsh</span><span class="tsd-signature-symbol"> }</span></div>
@@ -296,7 +297,35 @@ Any pending_active stake is moved to active and adds to the validator&#39;s voti
 <div class="tsd-comment tsd-typography"><p>Amount of coin this address has.</p>
 </div></li></ul></div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/aptosis/aptos-framework/blob/ac192d4/packages/aptos-framework/src/stake/index.ts#L133">aptos-framework/src/stake/index.ts:133</a></li></ul></aside></section>
+<li>Defined in <a href="https://github.com/aptosis/aptos-framework/blob/62335c9/packages/aptos-framework/src/stake/index.ts#L139">aptos-framework/src/stake/index.ts:139</a></li></ul></aside></section>
+<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface"><a id="reactivate_stake_events" class="tsd-anchor"></a>
+<h3 class="tsd-anchor-link"><span>reactivate_<wbr/>stake_<wbr/>events</span><a href="#reactivate_stake_events" aria-label="Permalink" class="tsd-anchor-icon"><svg class="icon icon-tabler icon-tabler-link" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><use href="#icon-anchor-a"></use><use href="#icon-anchor-b"></use><use href="#icon-anchor-c"></use></svg></a></h3>
+<div class="tsd-signature">reactivate_<wbr/>stake_<wbr/>events<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">{ </span>counter<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">BigintIsh</span><span class="tsd-signature-symbol">; </span>guid<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">{ </span>id<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">{ </span>addr<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">HexStringArg</span><span class="tsd-signature-symbol">; </span>creation_num<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">BigintIsh</span><span class="tsd-signature-symbol"> }</span><span class="tsd-signature-symbol"> }</span><span class="tsd-signature-symbol"> }</span></div>
+<div class="tsd-type-declaration">
+<h4>Type declaration</h4>
+<ul class="tsd-parameters">
+<li class="tsd-parameter">
+<h5>counter<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">BigintIsh</span></h5>
+<div class="tsd-comment tsd-typography"><p>Total number of events emitted to this event stream.</p>
+</div></li>
+<li class="tsd-parameter">
+<h5>guid<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">{ </span>id<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">{ </span>addr<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">HexStringArg</span><span class="tsd-signature-symbol">; </span>creation_num<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">BigintIsh</span><span class="tsd-signature-symbol"> }</span><span class="tsd-signature-symbol"> }</span></h5>
+<div class="tsd-comment tsd-typography"><p>A globally unique ID for this event stream.</p>
+</div>
+<ul class="tsd-parameters">
+<li class="tsd-parameter">
+<h5>id<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">{ </span>addr<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">HexStringArg</span><span class="tsd-signature-symbol">; </span>creation_num<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">BigintIsh</span><span class="tsd-signature-symbol"> }</span></h5>
+<ul class="tsd-parameters">
+<li class="tsd-parameter">
+<h5>addr<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">HexStringArg</span></h5>
+<div class="tsd-comment tsd-typography"><p>Address that created the GUID</p>
+</div></li>
+<li class="tsd-parameter">
+<h5>creation_<wbr/>num<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">BigintIsh</span></h5>
+<div class="tsd-comment tsd-typography"><p>If creation_num is <code>i</code>, this is the <code>i+1</code>th GUID created by <code>addr</code></p>
+</div></li></ul></li></ul></li></ul></div><aside class="tsd-sources">
+<ul>
+<li>Defined in <a href="https://github.com/aptosis/aptos-framework/blob/62335c9/packages/aptos-framework/src/stake/index.ts#L191">aptos-framework/src/stake/index.ts:191</a></li></ul></aside></section>
 <section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface"><a id="rotate_consensus_key_events" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>rotate_<wbr/>consensus_<wbr/>key_<wbr/>events</span><a href="#rotate_consensus_key_events" aria-label="Permalink" class="tsd-anchor-icon"><svg class="icon icon-tabler icon-tabler-link" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><use href="#icon-anchor-a"></use><use href="#icon-anchor-b"></use><use href="#icon-anchor-c"></use></svg></a></h3>
 <div class="tsd-signature">rotate_<wbr/>consensus_<wbr/>key_<wbr/>events<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">{ </span>counter<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">BigintIsh</span><span class="tsd-signature-symbol">; </span>guid<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">{ </span>id<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">{ </span>addr<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">HexStringArg</span><span class="tsd-signature-symbol">; </span>creation_num<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">BigintIsh</span><span class="tsd-signature-symbol"> }</span><span class="tsd-signature-symbol"> }</span><span class="tsd-signature-symbol"> }</span></div>
@@ -324,7 +353,7 @@ Any pending_active stake is moved to active and adds to the validator&#39;s voti
 <div class="tsd-comment tsd-typography"><p>If creation_num is <code>i</code>, this is the <code>i+1</code>th GUID created by <code>addr</code></p>
 </div></li></ul></li></ul></li></ul></div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/aptosis/aptos-framework/blob/ac192d4/packages/aptos-framework/src/stake/index.ts#L185">aptos-framework/src/stake/index.ts:185</a></li></ul></aside></section>
+<li>Defined in <a href="https://github.com/aptosis/aptos-framework/blob/62335c9/packages/aptos-framework/src/stake/index.ts#L206">aptos-framework/src/stake/index.ts:206</a></li></ul></aside></section>
 <section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface"><a id="set_operator_events" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>set_<wbr/>operator_<wbr/>events</span><a href="#set_operator_events" aria-label="Permalink" class="tsd-anchor-icon"><svg class="icon icon-tabler icon-tabler-link" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><use href="#icon-anchor-a"></use><use href="#icon-anchor-b"></use><use href="#icon-anchor-c"></use></svg></a></h3>
 <div class="tsd-signature">set_<wbr/>operator_<wbr/>events<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">{ </span>counter<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">BigintIsh</span><span class="tsd-signature-symbol">; </span>guid<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">{ </span>id<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">{ </span>addr<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">HexStringArg</span><span class="tsd-signature-symbol">; </span>creation_num<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">BigintIsh</span><span class="tsd-signature-symbol"> }</span><span class="tsd-signature-symbol"> }</span><span class="tsd-signature-symbol"> }</span></div>
@@ -352,7 +381,7 @@ Any pending_active stake is moved to active and adds to the validator&#39;s voti
 <div class="tsd-comment tsd-typography"><p>If creation_num is <code>i</code>, this is the <code>i+1</code>th GUID created by <code>addr</code></p>
 </div></li></ul></li></ul></li></ul></div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/aptosis/aptos-framework/blob/ac192d4/packages/aptos-framework/src/stake/index.ts#L155">aptos-framework/src/stake/index.ts:155</a></li></ul></aside></section>
+<li>Defined in <a href="https://github.com/aptosis/aptos-framework/blob/62335c9/packages/aptos-framework/src/stake/index.ts#L161">aptos-framework/src/stake/index.ts:161</a></li></ul></aside></section>
 <section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface"><a id="unlock_stake_events" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>unlock_<wbr/>stake_<wbr/>events</span><a href="#unlock_stake_events" aria-label="Permalink" class="tsd-anchor-icon"><svg class="icon icon-tabler icon-tabler-link" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><use href="#icon-anchor-a"></use><use href="#icon-anchor-b"></use><use href="#icon-anchor-c"></use></svg></a></h3>
 <div class="tsd-signature">unlock_<wbr/>stake_<wbr/>events<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">{ </span>counter<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">BigintIsh</span><span class="tsd-signature-symbol">; </span>guid<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">{ </span>id<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">{ </span>addr<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">HexStringArg</span><span class="tsd-signature-symbol">; </span>creation_num<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">BigintIsh</span><span class="tsd-signature-symbol"> }</span><span class="tsd-signature-symbol"> }</span><span class="tsd-signature-symbol"> }</span></div>
@@ -380,7 +409,7 @@ Any pending_active stake is moved to active and adds to the validator&#39;s voti
 <div class="tsd-comment tsd-typography"><p>If creation_num is <code>i</code>, this is the <code>i+1</code>th GUID created by <code>addr</code></p>
 </div></li></ul></li></ul></li></ul></div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/aptosis/aptos-framework/blob/ac192d4/packages/aptos-framework/src/stake/index.ts#L260">aptos-framework/src/stake/index.ts:260</a></li></ul></aside></section>
+<li>Defined in <a href="https://github.com/aptosis/aptos-framework/blob/62335c9/packages/aptos-framework/src/stake/index.ts#L281">aptos-framework/src/stake/index.ts:281</a></li></ul></aside></section>
 <section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface"><a id="update_network_and_fullnode_addresses_events" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>update_<wbr/>network_<wbr/>and_<wbr/>fullnode_<wbr/>addresses_<wbr/>events</span><a href="#update_network_and_fullnode_addresses_events" aria-label="Permalink" class="tsd-anchor-icon"><svg class="icon icon-tabler icon-tabler-link" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><use href="#icon-anchor-a"></use><use href="#icon-anchor-b"></use><use href="#icon-anchor-c"></use></svg></a></h3>
 <div class="tsd-signature">update_<wbr/>network_<wbr/>and_<wbr/>fullnode_<wbr/>addresses_<wbr/>events<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">{ </span>counter<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">BigintIsh</span><span class="tsd-signature-symbol">; </span>guid<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">{ </span>id<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">{ </span>addr<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">HexStringArg</span><span class="tsd-signature-symbol">; </span>creation_num<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">BigintIsh</span><span class="tsd-signature-symbol"> }</span><span class="tsd-signature-symbol"> }</span><span class="tsd-signature-symbol"> }</span></div>
@@ -408,7 +437,7 @@ Any pending_active stake is moved to active and adds to the validator&#39;s voti
 <div class="tsd-comment tsd-typography"><p>If creation_num is <code>i</code>, this is the <code>i+1</code>th GUID created by <code>addr</code></p>
 </div></li></ul></li></ul></li></ul></div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/aptosis/aptos-framework/blob/ac192d4/packages/aptos-framework/src/stake/index.ts#L200">aptos-framework/src/stake/index.ts:200</a></li></ul></aside></section>
+<li>Defined in <a href="https://github.com/aptosis/aptos-framework/blob/62335c9/packages/aptos-framework/src/stake/index.ts#L221">aptos-framework/src/stake/index.ts:221</a></li></ul></aside></section>
 <section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface"><a id="withdraw_stake_events" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>withdraw_<wbr/>stake_<wbr/>events</span><a href="#withdraw_stake_events" aria-label="Permalink" class="tsd-anchor-icon"><svg class="icon icon-tabler icon-tabler-link" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><use href="#icon-anchor-a"></use><use href="#icon-anchor-b"></use><use href="#icon-anchor-c"></use></svg></a></h3>
 <div class="tsd-signature">withdraw_<wbr/>stake_<wbr/>events<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">{ </span>counter<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">BigintIsh</span><span class="tsd-signature-symbol">; </span>guid<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">{ </span>id<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">{ </span>addr<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">HexStringArg</span><span class="tsd-signature-symbol">; </span>creation_num<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">BigintIsh</span><span class="tsd-signature-symbol"> }</span><span class="tsd-signature-symbol"> }</span><span class="tsd-signature-symbol"> }</span></div>
@@ -436,7 +465,7 @@ Any pending_active stake is moved to active and adds to the validator&#39;s voti
 <div class="tsd-comment tsd-typography"><p>If creation_num is <code>i</code>, this is the <code>i+1</code>th GUID created by <code>addr</code></p>
 </div></li></ul></li></ul></li></ul></div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/aptosis/aptos-framework/blob/ac192d4/packages/aptos-framework/src/stake/index.ts#L275">aptos-framework/src/stake/index.ts:275</a></li></ul></aside></section></section></div>
+<li>Defined in <a href="https://github.com/aptosis/aptos-framework/blob/62335c9/packages/aptos-framework/src/stake/index.ts#L296">aptos-framework/src/stake/index.ts:296</a></li></ul></aside></section></section></div>
 <div class="col-4 col-menu menu-sticky-wrap menu-highlight">
 <div class="tsd-navigation settings">
 <details class="tsd-index-accordion"><summary class="tsd-accordion-summary">
@@ -457,7 +486,7 @@ Any pending_active stake is moved to active and adds to the validator&#39;s voti
 <ul>
 <li class="current"><a href="../modules.html">Aptos <wbr/>Framework <wbr/>Type<wbr/>Script SDK</a>
 <ul>
-<li class="current tsd-kind-module"><a href="../modules/_aptosis_aptos_framework.html">@aptosis/aptos-<wbr/>framework -<wbr/> v0.2.5</a>
+<li class="current tsd-kind-module"><a href="../modules/_aptosis_aptos_framework.html">@aptosis/aptos-<wbr/>framework -<wbr/> v0.2.6</a>
 <ul>
 <li class="tsd-kind-namespace tsd-parent-kind-module"><a href="../modules/_aptosis_aptos_framework.aptos_framework_account.html">aptos_<wbr/>framework_<wbr/>account</a>
 <ul>
@@ -465,6 +494,12 @@ Any pending_active stake is moved to active and adds to the validator&#39;s voti
 <li class="tsd-kind-namespace tsd-parent-kind-namespace"><a href="../modules/_aptosis_aptos_framework.aptos_framework_account.entryNames.html">entry<wbr/>Names</a></li>
 <li class="tsd-kind-namespace tsd-parent-kind-namespace"><a href="../modules/_aptosis_aptos_framework.aptos_framework_account.errors.html">errors</a></li>
 <li class="tsd-kind-namespace tsd-parent-kind-namespace"><a href="../modules/_aptosis_aptos_framework.aptos_framework_account.payloads.html">payloads</a></li></ul></li>
+<li class="tsd-kind-namespace tsd-parent-kind-module"><a href="../modules/_aptosis_aptos_framework.aptos_framework_aggregator.html">aptos_<wbr/>framework_<wbr/>aggregator</a>
+<ul>
+<li class="tsd-kind-namespace tsd-parent-kind-namespace"><a href="../modules/_aptosis_aptos_framework.aptos_framework_aggregator.errors.html">errors</a></li></ul></li>
+<li class="tsd-kind-namespace tsd-parent-kind-module"><a href="../modules/_aptosis_aptos_framework.aptos_framework_aggregator_factory.html">aptos_<wbr/>framework_<wbr/>aggregator_<wbr/>factory</a>
+<ul>
+<li class="tsd-kind-namespace tsd-parent-kind-namespace"><a href="../modules/_aptosis_aptos_framework.aptos_framework_aggregator_factory.errors.html">errors</a></li></ul></li>
 <li class="tsd-kind-namespace tsd-parent-kind-module"><a href="../modules/_aptosis_aptos_framework.aptos_framework_aptos_coin.html">aptos_<wbr/>framework_<wbr/>aptos_<wbr/>coin</a>
 <ul>
 <li class="tsd-kind-namespace tsd-parent-kind-namespace"><a href="../modules/_aptosis_aptos_framework.aptos_framework_aptos_coin.entry.html">entry</a></li>
@@ -483,9 +518,7 @@ Any pending_active stake is moved to active and adds to the validator&#39;s voti
 <li class="tsd-kind-namespace tsd-parent-kind-module"><a href="../modules/_aptosis_aptos_framework.aptos_framework_bucket_table.html">aptos_<wbr/>framework_<wbr/>bucket_<wbr/>table</a>
 <ul>
 <li class="tsd-kind-namespace tsd-parent-kind-namespace"><a href="../modules/_aptosis_aptos_framework.aptos_framework_bucket_table.errors.html">errors</a></li></ul></li>
-<li class="tsd-kind-namespace tsd-parent-kind-module"><a href="../modules/_aptosis_aptos_framework.aptos_framework_chain_id.html">aptos_<wbr/>framework_<wbr/>chain_<wbr/>id</a>
-<ul>
-<li class="tsd-kind-namespace tsd-parent-kind-namespace"><a href="../modules/_aptosis_aptos_framework.aptos_framework_chain_id.errors.html">errors</a></li></ul></li>
+<li class="tsd-kind-namespace tsd-parent-kind-module"><a href="../modules/_aptosis_aptos_framework.aptos_framework_chain_id.html">aptos_<wbr/>framework_<wbr/>chain_<wbr/>id</a></li>
 <li class="tsd-kind-namespace tsd-parent-kind-module"><a href="../modules/_aptosis_aptos_framework.aptos_framework_code.html">aptos_<wbr/>framework_<wbr/>code</a>
 <ul>
 <li class="tsd-kind-namespace tsd-parent-kind-namespace"><a href="../modules/_aptosis_aptos_framework.aptos_framework_code.entry.html">entry</a></li>
@@ -512,24 +545,20 @@ Any pending_active stake is moved to active and adds to the validator&#39;s voti
 <li class="tsd-kind-namespace tsd-parent-kind-namespace"><a href="../modules/_aptosis_aptos_framework.aptos_framework_gas_schedule.entryNames.html">entry<wbr/>Names</a></li>
 <li class="tsd-kind-namespace tsd-parent-kind-namespace"><a href="../modules/_aptosis_aptos_framework.aptos_framework_gas_schedule.errors.html">errors</a></li>
 <li class="tsd-kind-namespace tsd-parent-kind-namespace"><a href="../modules/_aptosis_aptos_framework.aptos_framework_gas_schedule.payloads.html">payloads</a></li></ul></li>
-<li class="tsd-kind-namespace tsd-parent-kind-module"><a href="../modules/_aptosis_aptos_framework.aptos_framework_genesis.html">aptos_<wbr/>framework_<wbr/>genesis</a>
-<ul>
-<li class="tsd-kind-namespace tsd-parent-kind-namespace"><a href="../modules/_aptosis_aptos_framework.aptos_framework_genesis.errors.html">errors</a></li></ul></li>
-<li class="tsd-kind-namespace tsd-parent-kind-module"><a href="../modules/_aptosis_aptos_framework.aptos_framework_governance_proposal.html">aptos_<wbr/>framework_<wbr/>governance_<wbr/>proposal</a>
-<ul>
-<li class="tsd-kind-namespace tsd-parent-kind-namespace"><a href="../modules/_aptosis_aptos_framework.aptos_framework_governance_proposal.errors.html">errors</a></li></ul></li>
+<li class="tsd-kind-namespace tsd-parent-kind-module"><a href="../modules/_aptosis_aptos_framework.aptos_framework_genesis.html">aptos_<wbr/>framework_<wbr/>genesis</a></li>
+<li class="tsd-kind-namespace tsd-parent-kind-module"><a href="../modules/_aptosis_aptos_framework.aptos_framework_governance_proposal.html">aptos_<wbr/>framework_<wbr/>governance_<wbr/>proposal</a></li>
 <li class="tsd-kind-namespace tsd-parent-kind-module"><a href="../modules/_aptosis_aptos_framework.aptos_framework_managed_coin.html">aptos_<wbr/>framework_<wbr/>managed_<wbr/>coin</a>
 <ul>
 <li class="tsd-kind-namespace tsd-parent-kind-namespace"><a href="../modules/_aptosis_aptos_framework.aptos_framework_managed_coin.entry.html">entry</a></li>
 <li class="tsd-kind-namespace tsd-parent-kind-namespace"><a href="../modules/_aptosis_aptos_framework.aptos_framework_managed_coin.entryNames.html">entry<wbr/>Names</a></li>
 <li class="tsd-kind-namespace tsd-parent-kind-namespace"><a href="../modules/_aptosis_aptos_framework.aptos_framework_managed_coin.errors.html">errors</a></li>
 <li class="tsd-kind-namespace tsd-parent-kind-namespace"><a href="../modules/_aptosis_aptos_framework.aptos_framework_managed_coin.payloads.html">payloads</a></li></ul></li>
+<li class="tsd-kind-namespace tsd-parent-kind-module"><a href="../modules/_aptosis_aptos_framework.aptos_framework_optional_aggregator.html">aptos_<wbr/>framework_<wbr/>optional_<wbr/>aggregator</a>
+<ul>
+<li class="tsd-kind-namespace tsd-parent-kind-namespace"><a href="../modules/_aptosis_aptos_framework.aptos_framework_optional_aggregator.errors.html">errors</a></li></ul></li>
 <li class="tsd-kind-namespace tsd-parent-kind-module"><a href="../modules/_aptosis_aptos_framework.aptos_framework_reconfiguration.html">aptos_<wbr/>framework_<wbr/>reconfiguration</a>
 <ul>
-<li class="tsd-kind-namespace tsd-parent-kind-namespace"><a href="../modules/_aptosis_aptos_framework.aptos_framework_reconfiguration.entry.html">entry</a></li>
-<li class="tsd-kind-namespace tsd-parent-kind-namespace"><a href="../modules/_aptosis_aptos_framework.aptos_framework_reconfiguration.entryNames.html">entry<wbr/>Names</a></li>
-<li class="tsd-kind-namespace tsd-parent-kind-namespace"><a href="../modules/_aptosis_aptos_framework.aptos_framework_reconfiguration.errors.html">errors</a></li>
-<li class="tsd-kind-namespace tsd-parent-kind-namespace"><a href="../modules/_aptosis_aptos_framework.aptos_framework_reconfiguration.payloads.html">payloads</a></li></ul></li>
+<li class="tsd-kind-namespace tsd-parent-kind-namespace"><a href="../modules/_aptosis_aptos_framework.aptos_framework_reconfiguration.errors.html">errors</a></li></ul></li>
 <li class="tsd-kind-namespace tsd-parent-kind-module"><a href="../modules/_aptosis_aptos_framework.aptos_framework_resource_account.html">aptos_<wbr/>framework_<wbr/>resource_<wbr/>account</a>
 <ul>
 <li class="tsd-kind-namespace tsd-parent-kind-namespace"><a href="../modules/_aptosis_aptos_framework.aptos_framework_resource_account.entry.html">entry</a></li>
@@ -563,11 +592,15 @@ Any pending_active stake is moved to active and adds to the validator&#39;s voti
 <li class="tsd-kind-namespace tsd-parent-kind-module"><a href="../modules/_aptosis_aptos_framework.aptos_framework_voting.html">aptos_<wbr/>framework_<wbr/>voting</a>
 <ul>
 <li class="tsd-kind-namespace tsd-parent-kind-namespace"><a href="../modules/_aptosis_aptos_framework.aptos_framework_voting.errors.html">errors</a></li></ul></li></ul></li>
-<li class="tsd-kind-module"><a href="../modules/_aptosis_aptos_stdlib.html">@aptosis/aptos-<wbr/>stdlib -<wbr/> v0.2.5</a>
+<li class="tsd-kind-module"><a href="../modules/_aptosis_aptos_stdlib.html">@aptosis/aptos-<wbr/>stdlib -<wbr/> v0.2.6</a>
 <ul>
+<li class="tsd-kind-namespace tsd-parent-kind-module"><a href="../modules/_aptosis_aptos_stdlib.aptos_stdlib_aptos_hash.html">aptos_<wbr/>stdlib_<wbr/>aptos_<wbr/>hash</a></li>
 <li class="tsd-kind-namespace tsd-parent-kind-module"><a href="../modules/_aptosis_aptos_stdlib.aptos_stdlib_big_vector.html">aptos_<wbr/>stdlib_<wbr/>big_<wbr/>vector</a>
 <ul>
 <li class="tsd-kind-namespace tsd-parent-kind-namespace"><a href="../modules/_aptosis_aptos_stdlib.aptos_stdlib_big_vector.errors.html">errors</a></li></ul></li>
+<li class="tsd-kind-namespace tsd-parent-kind-module"><a href="../modules/_aptosis_aptos_stdlib.aptos_stdlib_bls12381.html">aptos_<wbr/>stdlib_<wbr/>bls12381</a>
+<ul>
+<li class="tsd-kind-namespace tsd-parent-kind-namespace"><a href="../modules/_aptosis_aptos_stdlib.aptos_stdlib_bls12381.errors.html">errors</a></li></ul></li>
 <li class="tsd-kind-namespace tsd-parent-kind-module"><a href="../modules/_aptosis_aptos_stdlib.aptos_stdlib_capability.html">aptos_<wbr/>stdlib_<wbr/>capability</a>
 <ul>
 <li class="tsd-kind-namespace tsd-parent-kind-namespace"><a href="../modules/_aptosis_aptos_stdlib.aptos_stdlib_capability.errors.html">errors</a></li></ul></li>
@@ -575,23 +608,26 @@ Any pending_active stake is moved to active and adds to the validator&#39;s voti
 <ul>
 <li class="tsd-kind-namespace tsd-parent-kind-namespace"><a href="../modules/_aptosis_aptos_stdlib.aptos_stdlib_comparator.errors.html">errors</a></li></ul></li>
 <li class="tsd-kind-namespace tsd-parent-kind-module"><a href="../modules/_aptosis_aptos_stdlib.aptos_stdlib_debug.html">aptos_<wbr/>stdlib_<wbr/>debug</a></li>
+<li class="tsd-kind-namespace tsd-parent-kind-module"><a href="../modules/_aptosis_aptos_stdlib.aptos_stdlib_ed25519.html">aptos_<wbr/>stdlib_<wbr/>ed25519</a>
+<ul>
+<li class="tsd-kind-namespace tsd-parent-kind-namespace"><a href="../modules/_aptosis_aptos_stdlib.aptos_stdlib_ed25519.errors.html">errors</a></li></ul></li>
 <li class="tsd-kind-namespace tsd-parent-kind-module"><a href="../modules/_aptosis_aptos_stdlib.aptos_stdlib_event.html">aptos_<wbr/>stdlib_<wbr/>event</a></li>
 <li class="tsd-kind-namespace tsd-parent-kind-module"><a href="../modules/_aptosis_aptos_stdlib.aptos_stdlib_guid.html">aptos_<wbr/>stdlib_<wbr/>guid</a>
 <ul>
 <li class="tsd-kind-namespace tsd-parent-kind-namespace"><a href="../modules/_aptosis_aptos_stdlib.aptos_stdlib_guid.errors.html">errors</a></li></ul></li>
 <li class="tsd-kind-namespace tsd-parent-kind-module"><a href="../modules/_aptosis_aptos_stdlib.aptos_stdlib_iterable_table.html">aptos_<wbr/>stdlib_<wbr/>iterable_<wbr/>table</a></li>
-<li class="tsd-kind-namespace tsd-parent-kind-module"><a href="../modules/_aptosis_aptos_stdlib.aptos_stdlib_signature.html">aptos_<wbr/>stdlib_<wbr/>signature</a></li>
+<li class="tsd-kind-namespace tsd-parent-kind-module"><a href="../modules/_aptosis_aptos_stdlib.aptos_stdlib_secp256k1.html">aptos_<wbr/>stdlib_<wbr/>secp256k1</a>
+<ul>
+<li class="tsd-kind-namespace tsd-parent-kind-namespace"><a href="../modules/_aptosis_aptos_stdlib.aptos_stdlib_secp256k1.errors.html">errors</a></li></ul></li>
 <li class="tsd-kind-namespace tsd-parent-kind-module"><a href="../modules/_aptosis_aptos_stdlib.aptos_stdlib_simple_map.html">aptos_<wbr/>stdlib_<wbr/>simple_<wbr/>map</a>
 <ul>
 <li class="tsd-kind-namespace tsd-parent-kind-namespace"><a href="../modules/_aptosis_aptos_stdlib.aptos_stdlib_simple_map.errors.html">errors</a></li></ul></li>
-<li class="tsd-kind-namespace tsd-parent-kind-module"><a href="../modules/_aptosis_aptos_stdlib.aptos_stdlib_table.html">aptos_<wbr/>stdlib_<wbr/>table</a>
-<ul>
-<li class="tsd-kind-namespace tsd-parent-kind-namespace"><a href="../modules/_aptosis_aptos_stdlib.aptos_stdlib_table.errors.html">errors</a></li></ul></li>
+<li class="tsd-kind-namespace tsd-parent-kind-module"><a href="../modules/_aptosis_aptos_stdlib.aptos_stdlib_table.html">aptos_<wbr/>stdlib_<wbr/>table</a></li>
 <li class="tsd-kind-namespace tsd-parent-kind-module"><a href="../modules/_aptosis_aptos_stdlib.aptos_stdlib_table_with_length.html">aptos_<wbr/>stdlib_<wbr/>table_<wbr/>with_<wbr/>length</a>
 <ul>
 <li class="tsd-kind-namespace tsd-parent-kind-namespace"><a href="../modules/_aptosis_aptos_stdlib.aptos_stdlib_table_with_length.errors.html">errors</a></li></ul></li>
 <li class="tsd-kind-namespace tsd-parent-kind-module"><a href="../modules/_aptosis_aptos_stdlib.aptos_stdlib_type_info.html">aptos_<wbr/>stdlib_<wbr/>type_<wbr/>info</a></li></ul></li>
-<li class="tsd-kind-module"><a href="../modules/_aptosis_aptos_token.html">@aptosis/aptos-<wbr/>token -<wbr/> v0.2.5</a>
+<li class="tsd-kind-module"><a href="../modules/_aptosis_aptos_token.html">@aptosis/aptos-<wbr/>token -<wbr/> v0.2.6</a>
 <ul>
 <li class="tsd-kind-namespace tsd-parent-kind-module"><a href="../modules/_aptosis_aptos_token.aptos_token_property_map.html">aptos_<wbr/>token_<wbr/>property_<wbr/>map</a>
 <ul>
@@ -606,7 +642,7 @@ Any pending_active stake is moved to active and adds to the validator&#39;s voti
 <ul>
 <li class="tsd-kind-namespace tsd-parent-kind-namespace"><a href="../modules/_aptosis_aptos_token.aptos_token_token_coin_swap.errors.html">errors</a></li></ul></li>
 <li class="tsd-kind-namespace tsd-parent-kind-module"><a href="../modules/_aptosis_aptos_token.aptos_token_token_transfers.html">aptos_<wbr/>token_<wbr/>token_<wbr/>transfers</a></li></ul></li>
-<li class="tsd-kind-module"><a href="../modules/_aptosis_move_stdlib.html">@aptosis/move-<wbr/>stdlib -<wbr/> v0.2.5</a>
+<li class="tsd-kind-module"><a href="../modules/_aptosis_move_stdlib.html">@aptosis/move-<wbr/>stdlib -<wbr/> v0.2.6</a>
 <ul>
 <li class="tsd-kind-namespace tsd-parent-kind-module"><a href="../modules/_aptosis_move_stdlib.move_stdlib_acl.html">move_<wbr/>stdlib_<wbr/>acl</a>
 <ul>
@@ -647,6 +683,7 @@ Any pending_active stake is moved to active and adds to the validator&#39;s voti
 <li class="tsd-kind-property tsd-parent-kind-interface"><a href="_aptosis_aptos_framework.aptos_framework_stake.IStakePool.html#operator_address" class="tsd-index-link"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-1024-path"></use><use href="#icon-1024-text"></use></svg>operator_<wbr/>address</a></li>
 <li class="tsd-kind-property tsd-parent-kind-interface"><a href="_aptosis_aptos_framework.aptos_framework_stake.IStakePool.html#pending_active" class="tsd-index-link"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-1024-path"></use><use href="#icon-1024-text"></use></svg>pending_<wbr/>active</a></li>
 <li class="tsd-kind-property tsd-parent-kind-interface"><a href="_aptosis_aptos_framework.aptos_framework_stake.IStakePool.html#pending_inactive" class="tsd-index-link"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-1024-path"></use><use href="#icon-1024-text"></use></svg>pending_<wbr/>inactive</a></li>
+<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_aptosis_aptos_framework.aptos_framework_stake.IStakePool.html#reactivate_stake_events" class="tsd-index-link"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-1024-path"></use><use href="#icon-1024-text"></use></svg>reactivate_<wbr/>stake_<wbr/>events</a></li>
 <li class="tsd-kind-property tsd-parent-kind-interface"><a href="_aptosis_aptos_framework.aptos_framework_stake.IStakePool.html#rotate_consensus_key_events" class="tsd-index-link"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-1024-path"></use><use href="#icon-1024-text"></use></svg>rotate_<wbr/>consensus_<wbr/>key_<wbr/>events</a></li>
 <li class="tsd-kind-property tsd-parent-kind-interface"><a href="_aptosis_aptos_framework.aptos_framework_stake.IStakePool.html#set_operator_events" class="tsd-index-link"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-1024-path"></use><use href="#icon-1024-text"></use></svg>set_<wbr/>operator_<wbr/>events</a></li>
 <li class="tsd-kind-property tsd-parent-kind-interface"><a href="_aptosis_aptos_framework.aptos_framework_stake.IStakePool.html#unlock_stake_events" class="tsd-index-link"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-1024-path"></use><use href="#icon-1024-text"></use></svg>unlock_<wbr/>stake_<wbr/>events</a></li>
