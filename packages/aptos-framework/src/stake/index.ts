@@ -1,5 +1,4 @@
 /**
- *
  * Validator lifecycle:
  * 1. Prepare a validator node set up and call stake::initialize_validator
  * 2. Once ready to deposit stake (or have funds assigned by a staking service in exchange for ownership capability),
@@ -876,7 +875,6 @@ const moduleImpl = {
 } as const;
 
 /**
- *
  * Validator lifecycle:
  * 1. Prepare a validator node set up and call stake::initialize_validator
  * 2. Once ready to deposit stake (or have funds assigned by a staking service in exchange for ownership capability),

@@ -6,7 +6,7 @@
 /** The IDL of the module. */
 export const idl = {
   module_id: "0x1::aptos_governance",
-  doc: "\n* AptosGovernance represents the on-chain governance of the Aptos network. Voting power is calculated based on the\n* current epoch's voting power of the proposer or voter's backing stake pool. In addition, for it to count,\n* the stake pool's lockup needs to be at least as long as the proposal's duration.\n*\n* It provides the following flow:\n* 1. Proposers can create a proposal by calling AptosGovernance::create_proposal. The proposer's backing stake pool\n* needs to have the minimum proposer stake required. Off-chain components can subscribe to CreateProposalEvent to\n* track proposal creation and proposal ids.\n* 2. Voters can vote on a proposal. Their voting power is derived from the backing stake pool. Each stake pool can\n* only be used to vote on each proposal exactly once.\n*\n",
+  doc: "AptosGovernance represents the on-chain governance of the Aptos network. Voting power is calculated based on the\ncurrent epoch's voting power of the proposer or voter's backing stake pool. In addition, for it to count,\nthe stake pool's lockup needs to be at least as long as the proposal's duration.\n\nIt provides the following flow:\n1. Proposers can create a proposal by calling AptosGovernance::create_proposal. The proposer's backing stake pool\nneeds to have the minimum proposer stake required. Off-chain components can subscribe to CreateProposalEvent to\ntrack proposal creation and proposal ids.\n2. Voters can vote on a proposal. Their voting power is derived from the backing stake pool. Each stake pool can\nonly be used to vote on each proposal exactly once.",
   functions: [
     {
       name: "create_proposal",
