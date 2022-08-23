@@ -15,53 +15,31 @@
 <li><a href="_aptosis_aptos_framework.aptos_framework_voting.html">aptos_framework_voting</a></li></ul>
 <h1>Namespace aptos_framework_voting</h1></div>
 <section class="tsd-panel tsd-comment">
-<div class="tsd-comment tsd-typography"><ul>
-<li>This is the general Voting module that can be used as part of a DAO Governance. Voting is designed to be used by</li>
-<li>standalone governance modules, who has full control over the voting flow and is responsible for voting power</li>
-<li>calculation and including proper capabilities when creating the proposal so resolution can go through.</li>
-<li>On-chain governance of the Aptos network also uses Voting.</li>
-<li></li>
-<li>The voting flow:</li>
-<li><ol>
+<div class="tsd-comment tsd-typography"><p>This is the general Voting module that can be used as part of a DAO Governance. Voting is designed to be used by
+standalone governance modules, who has full control over the voting flow and is responsible for voting power
+calculation and including proper capabilities when creating the proposal so resolution can go through.
+On-chain governance of the Aptos network also uses Voting.</p>
+<p>The voting flow:</p>
+<ol>
 <li>The Voting module can be deployed at a known address (e.g. 0x1 for Aptos on-chain governance)</li>
+<li>The governance module, e.g. AptosGovernance, can be deployed later and define a GovernanceProposal resource type
+that can also contain other information such as Capability resource for authorization.</li>
+<li>The governance module&#39;s owner can then register the ProposalType with Voting. This also hosts the proposal list
+(forum) on the calling account.</li>
+<li>A proposer, through the governance module, can call Voting::create_proposal to create a proposal. create_proposal
+cannot be called directly not through the governance module. A script hash of the resolution script that can later
+be called to execute the proposal is required.</li>
+<li>A voter, through the governance module, can call Voting::vote on a proposal. vote requires passing a &amp;ProposalType
+and thus only the governance module that registers ProposalType can call vote.</li>
+<li>Once the proposal&#39;s expiration time has passed and more than the defined threshold has voted yes on the proposal,
+anyone can call resolve which returns the content of the proposal (of type ProposalType) that can be used to execute.</li>
+<li>Only the resolution script with the same script hash specified in the proposal can call Voting::resolve as part of
+the resolution process.</li>
 </ol>
-</li>
-<li><ol start="2">
-<li>The governance module, e.g. AptosGovernance, can be deployed later and define a GovernanceProposal resource type</li>
-</ol>
-</li>
-<li>that can also contain other information such as Capability resource for authorization.</li>
-<li><ol start="3">
-<li>The governance module&#39;s owner can then register the ProposalType with Voting. This also hosts the proposal list</li>
-</ol>
-</li>
-<li>(forum) on the calling account.</li>
-<li><ol start="4">
-<li>A proposer, through the governance module, can call Voting::create_proposal to create a proposal. create_proposal</li>
-</ol>
-</li>
-<li>cannot be called directly not through the governance module. A script hash of the resolution script that can later</li>
-<li>be called to execute the proposal is required.</li>
-<li><ol start="5">
-<li>A voter, through the governance module, can call Voting::vote on a proposal. vote requires passing a &amp;ProposalType</li>
-</ol>
-</li>
-<li>and thus only the governance module that registers ProposalType can call vote.</li>
-<li><ol start="6">
-<li>Once the proposal&#39;s expiration time has passed and more than the defined threshold has voted yes on the proposal,</li>
-</ol>
-</li>
-<li>anyone can call resolve which returns the content of the proposal (of type ProposalType) that can be used to execute.</li>
-<li><ol start="7">
-<li>Only the resolution script with the same script hash specified in the proposal can call Voting::resolve as part of</li>
-</ol>
-</li>
-<li>the resolution process.</li>
-</ul>
 <p><strong>Module ID:</strong> <code>0x1::voting</code></p>
 </div></section><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/aptosis/aptos-framework/blob/62335c9/packages/aptos-framework/src/voting/index.ts#L29">aptos-framework/src/voting/index.ts:29</a></li></ul></aside>
+<li>Defined in <a href="https://github.com/aptosis/aptos-framework/blob/019e555/packages/aptos-framework/src/voting/index.ts#L27">aptos-framework/src/voting/index.ts:27</a></li></ul></aside>
 <section class="tsd-panel-group tsd-index-group">
 <section class="tsd-panel tsd-index-panel">
 <h3 class="tsd-index-heading uppercase">Index</h3>
@@ -112,7 +90,7 @@
 <ul>
 <li class="current"><a href="../modules.html">Aptos <wbr/>Framework <wbr/>Type<wbr/>Script SDK</a>
 <ul>
-<li class="current tsd-kind-module"><a href="_aptosis_aptos_framework.html">@aptosis/aptos-<wbr/>framework -<wbr/> v0.2.6</a>
+<li class="current tsd-kind-module"><a href="_aptosis_aptos_framework.html">@aptosis/aptos-<wbr/>framework -<wbr/> v0.2.7</a>
 <ul>
 <li class="tsd-kind-namespace tsd-parent-kind-module"><a href="_aptosis_aptos_framework.aptos_framework_account.html">aptos_<wbr/>framework_<wbr/>account</a>
 <ul>
@@ -218,7 +196,7 @@
 <li class="current selected tsd-kind-namespace tsd-parent-kind-module"><a href="_aptosis_aptos_framework.aptos_framework_voting.html">aptos_<wbr/>framework_<wbr/>voting</a>
 <ul>
 <li class="tsd-kind-namespace tsd-parent-kind-namespace"><a href="_aptosis_aptos_framework.aptos_framework_voting.errors.html">errors</a></li></ul></li></ul></li>
-<li class="tsd-kind-module"><a href="_aptosis_aptos_stdlib.html">@aptosis/aptos-<wbr/>stdlib -<wbr/> v0.2.6</a>
+<li class="tsd-kind-module"><a href="_aptosis_aptos_stdlib.html">@aptosis/aptos-<wbr/>stdlib -<wbr/> v0.2.7</a>
 <ul>
 <li class="tsd-kind-namespace tsd-parent-kind-module"><a href="_aptosis_aptos_stdlib.aptos_stdlib_aptos_hash.html">aptos_<wbr/>stdlib_<wbr/>aptos_<wbr/>hash</a></li>
 <li class="tsd-kind-namespace tsd-parent-kind-module"><a href="_aptosis_aptos_stdlib.aptos_stdlib_big_vector.html">aptos_<wbr/>stdlib_<wbr/>big_<wbr/>vector</a>
@@ -253,7 +231,7 @@
 <ul>
 <li class="tsd-kind-namespace tsd-parent-kind-namespace"><a href="_aptosis_aptos_stdlib.aptos_stdlib_table_with_length.errors.html">errors</a></li></ul></li>
 <li class="tsd-kind-namespace tsd-parent-kind-module"><a href="_aptosis_aptos_stdlib.aptos_stdlib_type_info.html">aptos_<wbr/>stdlib_<wbr/>type_<wbr/>info</a></li></ul></li>
-<li class="tsd-kind-module"><a href="_aptosis_aptos_token.html">@aptosis/aptos-<wbr/>token -<wbr/> v0.2.6</a>
+<li class="tsd-kind-module"><a href="_aptosis_aptos_token.html">@aptosis/aptos-<wbr/>token -<wbr/> v0.2.7</a>
 <ul>
 <li class="tsd-kind-namespace tsd-parent-kind-module"><a href="_aptosis_aptos_token.aptos_token_property_map.html">aptos_<wbr/>token_<wbr/>property_<wbr/>map</a>
 <ul>
@@ -268,7 +246,7 @@
 <ul>
 <li class="tsd-kind-namespace tsd-parent-kind-namespace"><a href="_aptosis_aptos_token.aptos_token_token_coin_swap.errors.html">errors</a></li></ul></li>
 <li class="tsd-kind-namespace tsd-parent-kind-module"><a href="_aptosis_aptos_token.aptos_token_token_transfers.html">aptos_<wbr/>token_<wbr/>token_<wbr/>transfers</a></li></ul></li>
-<li class="tsd-kind-module"><a href="_aptosis_move_stdlib.html">@aptosis/move-<wbr/>stdlib -<wbr/> v0.2.6</a>
+<li class="tsd-kind-module"><a href="_aptosis_move_stdlib.html">@aptosis/move-<wbr/>stdlib -<wbr/> v0.2.7</a>
 <ul>
 <li class="tsd-kind-namespace tsd-parent-kind-module"><a href="_aptosis_move_stdlib.move_stdlib_acl.html">move_<wbr/>stdlib_<wbr/>acl</a>
 <ul>
